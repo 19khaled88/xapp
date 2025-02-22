@@ -1,0 +1,184 @@
+body {
+    /* background-color: #28282b; */
+    background-color: white;
+    padding: 0;
+    margin: 0;
+}
+
+
+#preloader_icon {
+    background: white url(../images/preloader.gif) no-repeat center center;
+    background-size: 40%;
+    height: 100vh;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; */
+    width: 99%;
+   
+}
+
+
+
+/*Top section start here*/
+
+.accountsTops {
+    position: fixed;
+    /* Make the section fixed */
+    top: 0;
+    /* Position it at the top of the viewport */
+    left: 0;
+    width: 100%;
+
+    background-color: #f0f0f0;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    display: none;
+    button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        background-color: blue;
+        height: 50px;
+
+        p {
+            color: white;
+            font-size: 18px;
+        }
+    }
+
+    
+}
+
+
+.accountsTop {
+    position: fixed; /* Make the section fixed */
+    top: 0; /* Position it at the top of the viewport */
+    left: 0;
+    width: 100%;
+    background-color: blue;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    display: none;
+}
+
+.accountsTop > button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    background-color: blue;
+    height: 50px;
+}
+
+.accountsTop > button > p {
+    color: white;
+    font-size: 18px;
+}
+
+
+/*Top section end here*/
+
+
+/*main section start here*/
+.accountsMains {
+    margin-top: 45px;
+    /* Allow it to grow to fill remaining space */
+    overflow-y: auto;
+    /* Allow vertical scrolling */
+    
+    width: 90%;
+    
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding-top: 10px;
+    margin: auto;
+    div {
+        width: 70%;
+        height: auto;
+        margin: auto;
+        button {
+            padding: 10px 20px 10px 20px;
+            cursor: pointer;
+
+            img{
+                width: 100%;
+                /* height: 100%; */
+                
+            }
+            p {
+                font-size: 19px;
+                margin-top: 8px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+.accountsMain {
+    margin-top: 45px;
+    /* Allow it to grow to fill remaining space */
+    overflow-y: auto;
+    /* Allow vertical scrolling */
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding-top: 10px;
+    margin: auto;
+}
+
+.accountsMain > div {
+    width: 70%;
+    height: auto;
+    margin: auto;
+}
+
+.accountsMain > div > button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.accountsMain > div > button > img {
+    width: 100%;
+    /* height: 100%; */
+}
+
+.accountsMain > div > button > p {
+    font-size: 19px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+
+.accountsMain .odd-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+/*main section end here*/

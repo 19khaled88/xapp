@@ -1,0 +1,705 @@
+ /*Ticker*/
+ .mqdn {
+    padding: 2px;
+    white-space: nowrap;
+    color: white;
+    background-image: url('../../../images/RedBar.png');
+  }
+
+  .mqsm {
+    padding: 2px;
+    white-space: nowrap;
+    color: white;
+    background-image: url('../../../images/BlueBar.png');
+  }
+
+  .mqup {
+    padding: 2px;
+    white-space: nowrap;
+    color: white;
+    background-image: url('../../../images/GreenBar.png');
+  }
+
+  .mqnws {
+    padding: 3px 8px 3px 8px;
+    white-space: nowrap;
+    color: white;
+    background-image: url('../../../images/BlackBar.png');
+    background-size: cover;
+    cursor: pointer;
+  }
+
+  .tdWidth {
+    width: 50px;
+  }
+
+  .tdtxtAlign {
+    text-align: right;
+    word-break: break-all;
+  }
+
+  /**/
+.logolg {
+    height: 30px;
+    width: 30px;
+    border-width: 0;
+    border-radius: 2px;
+}
+#confirmModify,
+#modifyOrder,
+#confirmSell,
+#confirmBuy,
+#popupDiv{
+    position: fixed;
+    background-color: #fff;
+    width: 85%;
+    top: 50vh;
+    left: 50vw;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 10px;
+    z-index: 1008;
+    text-align: center;
+}
+#popupDiv > h5{
+    text-align: center;
+    padding: 8px 0px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 10px 10px 0px 0px;
+    font-weight: 500;
+}
+#modifyOrder > h5,
+#confirmSell > h5 {
+    background-color: red;
+    padding: 8px 0px;
+    color: #fff;
+    border-radius: 10px 10px 0px 0px;
+}
+#confirmModify > h5,
+#confirmBuy > h5{
+    background-color: #000;
+    padding: 7px 0px;
+    color: #fff;
+    border-radius: 10px 10px 0px 0px;
+}
+#popupDiv > p {
+    padding: 10px 5px;
+    line-height: 20px;
+}
+#popupDiv > div{
+    border-top: 1px solid #000;
+    padding: 5px 0px;
+}
+#modifyOrder > p,
+#confirmSell > p,
+#confirmBuy > p {
+    padding-top: 5px;
+    font-size: 12px;
+}
+#confirmSell > p > span,
+#confirmBuy > p > span{
+    font-weight: 500;
+    font-size: 16px;
+}
+#confirmModify > div,
+#modifyOrder > div,
+#confirmSell > div,
+#confirmBuy > div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #000;
+    margin-top: 10px;
+    padding: 5px 0px;
+}
+#confirmModify > div > p,
+#modifyOrder > div > p,
+#confirmSell > div > p,
+#confirmBuy > div > p{
+    border: 1px solid #000;
+    padding: 3px 10px;
+    border-radius: 5px;
+    color: #fff;
+    width: 48%;
+}
+#popupDiv > div > p{
+    border-radius: 5px;
+    padding: 3px 0px;
+    background-color: #4CB050;
+    color: #fff;
+    margin: 0px 5px;
+}
+#mainContentSection{
+    background-color :#111111;
+}
+.orderModifyBody{
+    flex-direction: column;
+    border: none !important;
+}
+.orderModifyRow{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px 5px;
+}
+.orderModifyRow > p,
+.orderModifyRow > input{
+    width: 50%;
+}
+.orderModifyRow > input{
+    /* background-color: transparent; */
+    border-radius: 5px;
+    text-align: right;
+    height: 30px;
+}
+.orderModifyRow > p:first-child{
+    text-align: left;
+}
+h6{
+    margin: 0px;
+}
+/* .stock_ticker_box {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+} */
+
+.scrolling-content > marquee > div{
+    display: inline-block;
+}
+.ticker_item{
+    background-color: green;
+    color: #fff;
+    margin: 5px 5px 0px 5px;
+    padding: 10px;
+    text-align: center;
+}
+/* ============ allcompany list============= */
+.allCompanyList{
+    margin-top: 5px;
+    list-style-type: none;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 2px #000000de;
+    padding: 0px;
+    
+}
+.allCompanyList > .allCompanyListItem{
+    border-bottom: 1px solid #00000059;
+    padding: 5px 10px;
+    margin-bottom: 2px;
+}
+
+
+/*============Schedual market============*/
+
+.box{
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 2px #111;
+    background-color: #2C2C2E;
+    color: #fff;
+}
+/* .marketScheduleBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+.marketScheduleBox > .marketStatus,
+.marketScheduleBox > .remaining_time{
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+}
+.marketStatus > p,
+.remaining_time > h4{
+    width: 50%;
+}
+.marketStatus > p:last-child,
+.remaining_time > h4:last-child{
+    text-align: right;
+}
+.remaining_time > h4{
+    font-weight: 700;
+    margin-top: 5px;
+    font-size: 18px;
+}
+#trade_status{
+    color: green;
+}
+
+/*==============search==============*/
+#tradeSearchBox{
+    display: flex;
+    padding: 15px 0px;
+}
+#tradeSearchBox > .search{
+    width: 85%;
+    margin-right: 10px;
+    position: relative;
+}
+#tradeSearchBox > .search > input{
+    width: 100%;
+    border-radius: 5px;
+    padding: 7px 10px;
+    border: none;
+}
+#tradeSearchBox > .relaod{
+    width: 15%;
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*=============btn==============*/
+.tradeAllBtnBox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.singleBtn{
+    background-color: #737373;
+    width: 75px;
+    height: 35px;
+    margin: 2px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+/*=============selected stock==============*/
+.selectedStockSection{
+    margin-top: 10px;
+}
+.selectedStockBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5px;
+}
+.selectedStockBox > .innerCol:last-child{
+    text-align: right;
+}
+.innerCol > p{
+    font-size: 12px;
+}
+.innerCol > h4{
+    font-size: 18px;
+}
+/*=============main trade==============*/
+.mainTradeSection{
+    margin-top: 10px;
+}
+.mainTradeSection > .container > .box >.btnGroup{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0px;
+    margin: 10px 0px;
+    background-color: #868686;
+    border-radius: 10px;
+}
+.mainTradeSection > .container > .box > .btnGroup > .Btn{
+    padding: 10px 10px;
+    border: 1px solid #0000005b;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    width: 48%;
+}
+.mainTradeSection > .container > .box > .btnGroup > .active{
+    background-color: #5C5C5C;
+    color: #fff;
+}
+.buyerSeller{
+    display: flex;
+}
+.buyerSeller > h3{
+    width: 50%;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+}
+.buySellData{
+    height: 390px;
+    overflow-y: auto;
+}
+.buySellData > .ipoContent > div > table{
+    margin-top: 5px;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 2px;
+}
+.buySellData > .ipoContent > div > table > tbody >tr > th{
+    background-color: #5C5C5C;
+    position: sticky;
+    top: 0;
+    color: #fff;
+    text-align: center;
+    padding-top: 0;
+    font-size: 14px;
+    font-weight: 600;
+    width: 16.6667%;
+    overflow-wrap: anywhere;
+}
+.buySellData > .ipoContent > div > table > tbody >tr > td:nth-child(3){
+    border-right: 4px solid #5C5C5C;
+}
+.buySellData > .ipoContent > div > table > tbody >tr > td:nth-child(4){
+    border-left: 4px solid #5C5C5C;
+}
+.buySellData > .ipoContent > div > table > tbody >tr > td{
+    text-align: center;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 5px 0px;
+    font-size: 12px;
+    width: 16.6667%;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+.buySellData > .ipoContent > div > table > tbody >tr > td:first-child{
+    -webkit-padding-start: 10px;
+    border-left: 1px solid #000;
+    border-radius: 15px 0px 0px 15px;
+}
+.buySellData > .ipoContent > div > table > tbody >tr > td:last-child{
+    -webkit-padding-end: 10px;
+    border-right: 1px solid #000;
+    border-radius: 0px 15px 15px 0px;
+}
+.buySellData > .ipoContent > div > table > tbody >tr > td:nth-child(1),
+.buySellData > .ipoContent > div > table > tbody >tr > td:nth-child(2),
+.buySellData > .ipoContent > div > table > tbody >tr > td:nth-child(3){
+    color: #4CB050;
+    font-weight: 700;
+}
+.buySellData > .ipoContent > div > table > tbody >tr > td:nth-child(4),
+.buySellData > .ipoContent > div > table > tbody >tr > td:nth-child(5),
+.buySellData > .ipoContent > div > table > tbody >tr > td:nth-child(6){
+    color: red;
+    font-weight: 700;
+}
+.cseFooter,
+.dseFooter{
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    background-color: #2C2C2E;
+    color: #fff;
+    justify-content: space-between;
+}
+
+.cseFooter > div{
+    width: 50%;
+    padding: 0px 8px;
+}
+.cseFooter > div:first-child{
+    border-right: 1px solid #5C5C5C;
+}
+.item{
+    display: flex;
+    padding: 5px 0px;
+}
+.item > .left{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 55%;
+}
+.item > .right{
+    text-align: right;
+    width: 45%;
+}
+.item > .left  > p,
+.item > .right > p{
+    font-size: 12px;
+}
+
+/*=============BuySell order==============*/
+.exchangeBox{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.buySellSection{
+    margin: 10px 0px;
+}
+.buySellSection > .container > .box >.btnGroup{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0px;
+    margin: 10px 0px;
+    background-color: #868686;
+    border-radius: 10px;
+}
+.buySellSection > .container > .box > .btnGroup > .Btn{
+    padding: 10px 10px;
+    border: 1px solid #0000005b;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    width: 35%;
+    color: #000;
+    width: 48%;
+}
+.availableFund{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.rowForm-1{
+    margin-bottom: 20px !important;
+}
+.rowForm-1 > .rowItem > input {
+    border: 1px solid #fff;
+    background-color: unset;
+    padding: 5px;
+    height: 50px;
+}
+.rowForm-1 > .box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-color: #fff;
+    width: 50%;
+}
+.rowForm-1 > .rowItem{
+    display: flex;
+    align-items: center;
+}
+.rowForm-1 > .rowItem > input{
+    margin-right: 10px;
+}
+.rowForm-1 > .box > div > input{
+    margin-right: 10px;
+}
+.rowForm{
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.rowForm > label,
+.rowForm > input{
+    width: 50%;
+}
+.rowForm > input{
+    background-color: unset;
+    border: 1px solid #98989A;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: right;
+    color: #fff;
+}
+.orderSubmit{
+    margin-top: 15px;
+}
+.orderSubmit > input{
+    width: 100%;
+    background-color: #868686;
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+#buyFormSubmit > .rowForm > input[readonly]{
+    background-color: #98989A !important;
+}
+.fundStatusBox {
+    transform: translateY(-50%) translateX(-40vw);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80vw;
+    z-index: 1005;
+    animation: animatedFundStatus 0.5s linear(0.54 -17.65%, 1 100%);
+}
+@keyframes animatedFundStatus {
+    from {
+        transform: translateY(-100vh) translateX(-40vw);
+    }
+    to {
+        transform: translateY(-50%) translateX(-40vw); 
+    }
+}
+
+/* #overlay{
+    animation: overlay 0.5s linear(0.54 -17.65%, 1 100%);
+}
+@keyframes overlay {
+    from {
+        top: -200vh;
+    }
+    to {
+        top: 0; 
+    }
+} */
+
+.fundStatusBox > .container > .box{
+    background-color: #fff;
+    color: #000;
+    padding: 0;
+}
+.fundStatusBox > .container > .box > .head{
+    text-align: center;
+    background-color: #000;
+    padding: 5px 0px;
+    color: #fff;
+    border-radius: 10px 10px 0px 0px;
+}
+.fundStatusBox > .container > .box > .footer{
+    text-align: center;
+    background-color: #5c5c5cad;
+    padding: 5px 0px;
+    color: #fff;
+    border-radius: 0px 0px 10px 10px;
+}
+.fundStatusBox > .container > .box > .body > .item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    
+}
+.scrolling-content {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+  #tradeMarqueeContainer > table{
+    margin: 5px 0px;
+  }
+  /* .scrolling-content >  #tradeMarqueeContainer {
+    display: inline-flex;
+    padding-left: 100%;
+    animation: marquee 800s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  } */
+  /* =====================open Order=================== */
+  .openOrderHeading > h3{
+    text-align: center;
+    padding: 10px 0px;
+    color: #fff;
+    margin-bottom: 15px;
+  }
+.openOrderSection > .container > .box{
+padding: 0;
+}
+.openOrderItem{
+    margin: 0px 10px;
+    color: #000;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.openOrderItem  > .openOrderHeading{
+    display: flex;
+    align-items: center;
+    background-color: #98989A;
+    border-radius: 10px 10px 0px 0px;
+    justify-content: space-around;
+}
+.openOrderItem  > .heading > h5{
+    width: 20%;
+    border-right: 1px solid #fff;
+    padding: 10px 10px;
+    font-weight: 600;
+}
+.script_status{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    padding: 10px 10px;
+}
+.script_status > h5{
+    font-weight: 600;
+}
+.openOrderDetails{
+    display: flex;
+}
+.openOrderColumn{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 5px;
+}
+.openOrderItem > .footerBtn{
+    display: flex;
+    align-items: center;
+    padding: 10px 5px;
+}
+.openOrderDate{
+    width: 40%;
+    padding: 0px 5px;
+}
+.openOrderBtn{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 5px;
+}
+.openOrderCancele{
+    background-color: red;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+}
+.openOrderModify{
+    background-color: #4CB050;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+}
+#openOrderContent{
+    min-height: 300px;
+    margin-bottom: 15px;
+}
+
+/* ========off hour ticker */
+#offHourTickerCSE,
+#offHourTickerDSE{
+    display: flex;
+    padding-left: 100%;
+    animation: marquee 30s linear infinite;
+
+}
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+#offHourTickerCSE > div,
+#offHourTickerDSE > div {
+    text-align: center;
+}
+#offHourTickerCSE > div > h6,
+#offHourTickerDSE > div > h6{
+    font-size: 10px;
+}
+#offHourTickerCSE > div > p,
+#offHourTickerDSE > div > p{
+    font-size: 10px;
+}
+.exchangeImage{
+    z-index: 10;
+}
+

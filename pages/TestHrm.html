@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/hrm.css" />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"> -->
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="../assets/js/sweetAlert@2.js"></script>
+    <link rel="manifest" href="../manifest.json">
+
+
+    <title>HRM</title>
+
+    <style>
+      /* Loading overlay styles */
+      #loading {
+        /* display: none;  */
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        background: white;
+        z-index: 9999; /* High z-index to overlay all content */
+        display: flex; /* Flexbox to center content */
+        justify-content: center;
+        align-items: center;
+        color: black;
+        font-size: 24px;
+      }
+      #hrm_out_btn{
+        display: none;
+        background-color: #0d47a1;
+        border: none;
+      }
+
+      #button_loading {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        z-index: 9999; /* Ensures it's on top of everything */
+      }
+
+      .button_spinner {
+        width: 40px; /* Adjust size */
+        height: 40px; /* Adjust size */
+        border: 4px solid #f3f3f3; /* Light gray */
+        border-top: 4px solid #3498db; /* Blue */
+        border-radius: 50%;
+        animation: spin 2s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      /* Ensures Swal dialog is on top of the loading page */
+      .swal2-container {
+        z-index: 9999 !important; /* Higher z-index than the loading overlay */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="preloader_icon"></div>
+    <section class="section-container">
+      <section class="hrmTop" id="hrmTop">
+
+        <!-- <button class="hrm_back_btn" onclick="routeToPage('../index.html','','')"></button> -->
+        <!-- <button class="hrm_back_btn" onclick="handleBackButton()">
+          <img
+            src="../assets/images/arrow-left-icon.png"
+            alt="No Image"
+            width="18"
+            height="18"
+          />
+          <p>Human Resource</p>
+        </button> -->
+
+       <button class="hrm_back_btn" id="hrm_back_btn" onclick="safeExecute(handleBackButton)">
+          <i class="fa-solid fa-arrow-left fa-2x" style="color:white;"></i>
+       </button>
+        <p>Employees</p>
+        <button class="hrm_home_btn" id="hrm_home_btn" onclick="safeExecute(handleBackButton)">
+          <i class="fa-solid fa-house fa-2x" style="color:white;"></i>
+       </button>
+       <button class="hrm_out_btn" id="hrm_out_btn" onclick="safeExecute(logout)">
+          <i class="fa-solid fa-arrow-right-from-bracket fa-2x" style="color:white;"></i>
+       </button>
+      </section>
+      <section class="hrmMain" id="hrmMain">
+        
+      </section>
+    </section>
+
+    <div id="button_loading">
+      <div class="button_spinner"></div>
+    </div>
+    <div id="loading">
+      <img src="../assets/images/preloader.gif" width="200px" height="150px" alt="No Image"/>
+    </div>
+    
+   
+    <script src="../assets/js/clickableIcons.js" onerror="handleScriptError('clickableIcons.js')"></script>
+    <script src="../assets/js/navButton.js" onerror="handleScriptError('navButton.js')"></script>
+    <script src="../assets/js/checkPlatform.js" onerror="handleScriptError('checkPlatform.js')"></script>
+    <script src="../assets/js/storageManage.js" onerror="handleScriptError('storageManage.js')"></script>
+    <script src="../assets/js/onlineCheck.js" onerror="handleScriptError('onlineCheck.js')"></script>
+
+
+    <script>
+      window.addEventListener("load", function () {
+        try {
+
+          var loader = document.getElementById("preloader_icon");
+          
+          loader.style.display = "none";
+        } catch (error) {
+          alert("Error during page load:", error);
+        }
+      });
+
+      function handleScriptError(scriptName) {
+        console.error(`Error loading script: ${scriptName}`);
+        alert(`An error occurred while loading ${scriptName}. Some features may not work as expected.`);
+      }
+
+      function safeExecute(func) {
+        try {
+          func();
+        } catch (error) {
+          console.error("Error in function execution:", error);
+          alert("An unexpected error occurred. Please try again.");
+        }
+      }
+    </script>
+    
+    
+  </body>
+</html>

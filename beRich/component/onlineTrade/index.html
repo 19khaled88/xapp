@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head id="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  id="boots" rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.min.css">
+    <link id="main-page" rel="stylesheet" href="./css/mainPage.css">
+
+    <script id="pdfJs1" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script id="pdfJs2" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js"></script>
+
+    <script id="fetch" src="./apiFetching/fetchData.js"></script>
+    <script id="routes" src="./route/route.js"></script>
+    <script id="main" src="./js/mainPage.js"></script>
+    <script id="boots" src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script id="jQuery" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script id="ticker" src="../../vendor/jquery.signalR-2.4.1.min.js"></script>
+    <script id="marQ" src="../../vendor/jquery.marquee.min.js"></script>
+
+    <title>Online Trade</title>
+
+    <script id="jQueryUi" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link id='jQueryStyle' rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+
+</head> 
+<body style="height: 100vh; width: 100vw;">
+    <div id="overlay"></div>
+    <div style="display: none;" id="popUpLogoutDiv"></div>
+    <div id="loadingApi" style="display: none;">
+        <div class="loadingApiBox" style='background-color: #00000070;'>
+            <!-- style='background-color: #F1F2F4;' -->
+            <img style="width: 20%; height: auto;" src="../../images/Cube@1x-1.0s-200px-200px.gif" alt="01 Logo">
+        </div>
+    </div>
+    <section class="mainSection" id="mainSection">
+        
+       
+        <!-- <div id="loadingApi" style="display: none;">
+            <div class="loadingApiBox" style='background-color: #F1F2F4;'>
+                <img style="width: 20%; height: auto;" src="../images/loading.gif" alt="01 Logo">
+            </div>
+        </div> -->
+        <div class="mainContentSection" id="mainContentSection">
+            
+        </div>
+
+      
+
+        
+        
+    
+        <div style="display: none;" class="settings" id="settings">
+            <div class="container">
+                <div class="box">
+                    <div class="head">SETTINGS</div>
+                    <div class="body" onclick="changePass()">Change Password</div>
+                    <div class="footer" onclick="closeSettings()"><p>CANCEL</p></div>
+                </div>
+            </div>
+        </div>
+       
+    </section>
+    <script>
+        // document.getElementById('overlay').addEventListener('click', closeSettings)
+        // document.getElementById('overlay').addEventListener('click', closeSupportTeam)
+        window.onload = async function() {
+            
+        }
+        
+        
+            
+    </script>
+    <!-- <script src="../vendor/sweetAlert2.js"></script> -->
+    
+</body>
+    
+</html>

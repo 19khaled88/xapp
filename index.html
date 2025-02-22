@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/css/home.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js"></script>
+    <script src="./assets/js/onlineCheck.js"></script>
+    <script src="./assets/js/hash.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./assets/css/sweetAlert.css"/>
+    <link rel="manifest" href="manifest.json">
+
+    <style>
+      /* Loading overlay styles */
+      #loading {
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        background: white;
+        z-index: 9999; /* High z-index to overlay all content */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        font-size: 24px;
+      }
+      /* Ensures Swal dialog is on top of the loading page */
+      .swal2-container {
+        z-index: 10000 !important; /* Higher z-index than the loading overlay */
+      }
+
+     
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+        color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="section-container">
+      <section class="top-section" id="top-section">
+        <div class="app-title" id="app-title">
+          <img src="assets/images/xlimited_logo.png" alt="No Image" />
+          <h2>App</h2>
+        </div>
+        <div class="welcome" id="welcome">
+            <img src="" alt="" /> 
+            <span class="short_info" id="short_info">
+              <h4 class="short_info_name" id="short_info_name">Name</h4>
+              <p class="short_info_degi" id="short_info_degi">Position</p>
+              <p class="short_info_comp" id="short_info_comp">Company</p>
+            </span>
+        </div>
+       
+      </section>
+
+      <section class="main" id="main">
+        
+      </section>
+
+      <section class="bottom-section" id="bottom-section">
+        <button id="hrmButton" class="hrm_nav">
+          <span class="material-symbols-outlined">
+            person_apron
+            </span>
+          <p>Employees</p>
+        </button>
+        <button id="notification_nav">
+          <span class="material-symbols-outlined">
+            notifications
+            </span>
+          <p>Notifications</p>
+        </button>
+        <button id="contact_nav">
+          <span class="material-symbols-outlined">
+            contacts
+            </span>
+          <p>Contacts</p>
+        </button>
+        <button id="options_nav">
+          <span class="material-symbols-outlined">
+            settings
+          </span>
+          <p>Options</p>
+        </button>
+      </section>
+
+
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          
+        </div>
+      </div>
+    </div>
+
+    <div id="loading" style="display: flex;">
+      <img src="assets/images/preloader.gif" width="200px" height="150px" alt="No Image"/>
+    </div>
+
+ 
+    <script  src="assets/js/checkPlatform.js" defer></script>
+    <script  src="assets/js/auth.js" defer></script>
+    
+
+    <script src="assets/js/common.js" defer></script>
+    <script src="assets/js/navButton.js" defer></script>
+    <script src="assets/js/storageManage.js" defer></script>
+    
+    
+
+    <script>
+      
+      if (!navigator.onLine) {
+
+      handleOffline();
+      document.getElementById('main').innerHTML ='Network problem! retry again.'
+      }
+
+      window.addEventListener('error', (e) => {
+        // document.body.innerHTML = `
+        //   <h1>Something went wrong!</h1>
+        //   <p>${e.message}</p>
+        // `;
+      });
+ 
+
+      document.addEventListener("DOMContentLoaded",function(){
+        const modal = document.getElementById("myModal");
+    
+        window.addEventListener("click",function(event){
+          if (event.target === modal) {
+            modal.style.display = "none";
+          }
+        });
+      });
+
+    </script>
+  </body> 
+</html>
+
+

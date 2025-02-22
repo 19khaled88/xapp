@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Send OTP</title>
+        <link rel="stylesheet" href="../assets/css/sendOTP.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="manifest" href="../manifest.json">
+        <style>
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            input[type="number"] {
+                -moz-appearance: textfield;
+            }
+        </style>
+
+    </head>
+    <body>
+        <section id="root_section">
+            <section id="top_title">
+                <h1>Secured Page</h1>
+            </section>
+            <section id="form_part">
+                <form id="sendOTPForm">
+                    <h1>Put Your official number</h1>
+                    <span>
+                        <label for="mobile">Mobile:</label>
+                        <!-- <input  type="number" id="mobile" name="mobile" required> -->
+                        <input type="tel" id="mobile" name="mobile" pattern="[0-9]*" inputmode="numeric" required>
+                    </span>
+                    <button type="submit">Get OTP</button>
+                </form>
+            </section>
+            <!-- <span>
+                Open Telegram and search for <strong><a href="https://t.me/BotFather" target="_blank">BotFather</a></strong>.
+            </span> -->
+        </section>
+
+        <script src="../assets/js/sendOTP.js"></script>
+        <script src="../assets/js/storageManage.js"></script>
+        
+        <script src="" async defer></script>
+    </body>
+</html>
+

@@ -1,0 +1,3258 @@
+body,html {
+    background-color: white;
+    /* background-color: #28282b; */
+    margin: 0;
+    padding: 0;
+
+    height: 100%;
+}
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    /* height: 100vh; */
+}
+
+
+
+.accountsActivityTops {
+    position: fixed;
+    /* Make the section fixed */
+    top: 0;
+    /* Position it at the top of the viewport */
+    left: 0;
+    width: 100%;
+
+    background-color: #f0f0f0;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+
+    button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        background-color: blue;
+        height: 50px;
+
+        p {
+            color: white;
+            font-size: 18px;
+        }
+    }
+    /* display: none; */
+}
+
+.accountsActivityTopss{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #0d47a1;
+   
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+
+    button{
+        width: 50px;
+        height: 50px;
+        padding-left: 5px;
+        border: none;
+        background-color: #0d47a1;
+        i{    
+            color: white;
+        }
+    }
+    p{
+        color: white;
+        padding-right: 5px;
+        font-size: 20px;
+        flex: 1;
+        text-align: center;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 500;
+    }
+}
+
+
+
+.accountsActivityTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #0d47a1;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.accountsActivityTop > button {
+    width: 50px;
+    height: 50px;
+    padding-left: 5px;
+    border: none;
+    background-color: #0d47a1;
+}
+
+.accountsActivityTop > button > i {    
+    color: white;
+}
+
+.accountsActivityTop > p {
+    color: white;
+    padding-right: 5px;
+    font-size: 20px;
+    flex: 1;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+
+
+
+.accountsctivityMains{
+    /* Allow it to grow to fill remaining space */
+    overflow-y: auto;
+    /* Allow vertical scrolling */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    margin:0 auto;
+    padding-top: 0;
+
+    .bill_entry_container {
+        width: 100%;
+       
+        /*position maker code starts*/
+            /* position: relative; */
+        /*position maker code ends*/
+
+        .bill_entry_button_container {
+            width: 100%;
+            margin-bottom: 5px;
+            height: 45px;
+            
+            /*position maker code starts*/
+                /* position: fixed;
+                top: 10px;
+                background-color: #fff;
+                left: 2%;
+                right: 2%;
+                width: 96%; */
+
+
+                /* position: absolute;
+                z-index: 999;
+                overflow: hidden;
+                width: 100%;
+                background-color: #fff; */
+            /*position maker code ends*/
+
+            div {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                height: 40px;
+                gap: 2px;
+                color: black;
+                button {
+                    flex: 1;
+                    height: 25px;
+                    text-transform: uppercase;
+                    padding: 0;
+                    margin: 0;
+                    border: none;
+                    height: 40px;
+                    font-size: 16px;
+                    font-family: 'Roboto',sans-serif;
+                }
+
+                button.active {
+                    border: none;
+                    border-bottom: 1px solid #dc3737;
+                    padding: 0;
+                    color: #dc3737;
+                    height: 40px;
+                    font-size: 16px;
+                    background-color: rgb(194, 224, 224);
+                }
+            }
+        }
+
+        .bill_entry_details_container {
+            
+            .entry_container_top {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                /* width: 98%; */
+                padding: 5px 0 8px 0;
+                border-bottom: 1px solid gray;
+                margin-bottom: 5px;
+                gap: 5px;
+               
+                /*position maker code starts*/
+                    /* position: absolute;
+                    z-index: 2; */
+                    margin-top: 111px;
+                    position: fixed;
+                    z-index: 999;
+                    overflow: hidden;
+                    /* width: 100%; */
+                    background-color: #fff;
+                    left: 2%;
+                    right: 2%;
+                /*position maker code ends*/
+                
+            }
+
+            .entry_container_top >  span {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 15px;
+                color: rgb(40, 39, 39);
+                border: 1px solid gray;
+                p {
+                    margin: 0;
+                    padding: 2px;
+                    background-color: #fff;
+                    border-left: 1px solid gray;
+                    /* border: 1px solid gray; */
+                }
+            }
+
+            .entry_container_top > span > span {
+                
+                height: 100%;
+                padding: 2px 3px 2px 2px; 
+                i{
+                    height: 100%;
+                    width: fit-content;
+                }
+
+            }
+
+            .entry_container_middle {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                /* color: white; */
+
+                /* position maker code starts*/
+             
+                /* position maker code ends*/
+
+
+                /* position: relative;
+                height: 100vh; */
+
+
+                #view_class {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding-top: 0;
+                    gap: 3px;
+
+                    /*position maker code starts*/
+                    position: fixed;
+                    background-color: #fff;
+                    top: 96px;
+                    width: 96%;
+                    left: 2%;
+                    right: 2%;
+                    /*position maker code ends*/
+                  
+                    span {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 5px;
+                        width: 100%;
+                        height: 40px;
+                        label {
+                            width: 30%;
+                            color: rgb(63, 62, 62);
+                        }
+
+                        select {
+                            width: 100%;
+                            border-radius: 4px;
+                            padding: 5px 0 5px 0;
+                            border: none;
+                            border: 1px solid rgb(202, 196, 196);
+                            background-color: white;
+                            height: 40px;
+                            option {
+                                font-size: 12px;
+                                padding: 0;
+                                margin: 0;
+                                background-color: white;
+                            }
+
+                            option:hover {
+                                background-color: #dc3737;
+                            }
+                        }
+
+                        input {
+                            width: 70%;
+                            border-radius: 4px;
+                            padding: 5px 0 5px 5px;
+                            margin-left: 3px;
+                            border: none;
+                            border: 1px solid gray;
+                            background-color: rgb(197, 212, 212);
+                        }
+
+                        textarea {
+                            width: 70%;
+                            border-radius: 4px;
+                            padding: 0;
+                            background-color: rgb(197, 212, 212);
+                        }
+
+                        .rtl-cursor {
+                            direction: rtl;
+                        }
+                    }
+
+                    #field {
+                        width: 98%;
+                        margin: 5px;
+
+                        #handle_files {
+                            display: flex;
+                            flex-direction: column;
+                            width: 95%;
+                            margin: auto;
+                            border: 1px solid gray;
+                            padding: 5px;
+
+                            input[type="file"] {
+                                width: fit-content;
+                                display: block;
+                            }
+
+                            .imageThumb {
+                                max-height: 75px;
+                                border: 2px solid;
+                                margin: 10px 10px 0 0;
+                                padding: 1px;
+                            }
+
+                            .remove {
+                                display: block;
+                                background: #444;
+                                border: 1px solid black;
+                                color: white;
+                                text-align: center;
+                                cursor: pointer;
+                            }
+
+                            .remove:hover {
+                                background: white;
+                                color: black;
+                            }
+
+                            .custom-file-input {
+                                position: relative;
+                                text-align: center;
+                                align-items: center;
+                                justify-content: center;
+                                overflow: hidden;
+                                display: flex;
+                                cursor: pointer;
+                                border: 1px solid #ccc;
+                                height: 50px;
+                                width: 50px;
+                                padding: 6px;
+                                border-radius: 4px;
+                                background-color: #f8f9fa;
+                                color: #343a40;
+                            }
+
+                            /* Style for the hidden file input */
+                            #files {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                opacity: 0;
+                                width: 100%;
+                                height: 100%;
+                                cursor: pointer;
+                            }
+
+                            /* Style for preview container */
+                            #preview {
+                                margin-top: 10px;
+                                display: grid;
+                                grid-template-columns: repeat(4, 1fr);
+                                gap: 5px;
+                                justify-content: center;
+                                align-items: end;
+
+                                .pip {
+                                    position: relative;
+                                    width: 100%;
+                                    height: 100%;
+
+                                    .fileThumb {
+                                        color: black;
+                                    }
+
+                                    img {
+                                        width: 50px;
+                                        height: 50px;
+                                    }
+
+                                    button {
+                                        position: absolute;
+                                        top: 0;
+                                        right: 0;
+                                        border: none;
+                                        width: fit-content;
+                                        height: fit-content;
+                                        border-radius: 50%;
+                                        background-color: red;
+                                    }
+                                }
+                            }
+
+                            /
+                        }
+
+                        .pip {
+                            display: inline-block;
+                            margin: 0;
+                        }
+                    }
+
+                    /* button {
+                        width: 100%;
+                        height: 45px;
+                        margin-top: 5px;
+                        background-color: green;
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                    } */
+                    #search-submit{
+                        width: 100%;
+                        height: 45px;
+                        margin-top: 5px;
+                        background-color: #08c531;
+                        text-transform: uppercase;
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                    }
+
+                    .date_container {
+                        padding-top: 5px;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        gap: 5px;
+                        width: 100%;
+                        input {
+                            height: 35px;
+                            width: 50%;
+                            color: #000;
+                            text-align: center;
+                            border-radius: 4px;
+                            font-size: 17px;
+                            font-weight: 500;
+                            border: 1px solid rgb(184, 178, 178);
+                        }
+                        .datepicker{
+                            .datepicker-picker{
+                                display: flex;
+                                flex-direction: column;
+                                .datepicker-header{
+                                  width: 100%;
+                                  height: 45px;
+                                  .datepicker-controls{
+                                    height: 45px;
+                                    display: flex;
+                                    flex-direction: row;
+                                    width: 99%;
+                                   
+                                    gap: 3px;
+                                    button{
+                                      background-color: #08c531;
+                                      color: white;
+                                      height: 45px;
+                                    }
+                                    button:nth-child(1){
+                                      padding-left: 18px;
+                                      padding-right: 18px;
+                                    }
+                                    button:nth-child(3){
+                                      padding-left: 18px;
+                                      padding-right: 18px;
+                                    }
+                                  }
+                                }
+                            }
+                            .days-of-week{
+                                display: flex;
+                                width: 98%;
+                                flex-direction: row;
+                                justify-content: space-evenly;
+                                height: 45px;
+                                .dow{
+                                  height: 45px;
+                                }
+                            }
+                          }
+                    }
+                }
+
+                .filepond--root{
+                    display: flex;
+                    
+                }
+
+                #entry_class{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 5px;
+
+                    flex: 1 1 auto;
+                    overflow-y: auto;
+                    /* padding-top: 110px; */
+
+                    /* position maker code starts*/
+                        /* position: absolute;
+                        z-index: 2;  */
+                        
+                    /* position maker code ends*/
+
+                     /* position: fixed; */
+                    background-color: #fff;
+                    top: 50px;
+                    width: 100%;
+                    left: 2%;
+                    right: 2%;
+                    
+                    transition: transform 0.3s ease; /* Smooth transition */
+
+                    span {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 5px;
+                        width: 100%;
+                        /* height: 35px; */
+                        /* height: 30px; */
+                        label {
+                            width: 30%;
+                            color: rgb(63, 62, 62);
+                        }
+
+                        select {
+                            width: 70%;
+                            border-radius: 4px;
+                            padding: 5px 0 5px 0;
+                            border: none;
+                            border: 1px solid rgb(192, 178, 178);
+                            background-color: white;
+                            /* height: 35px; */
+                            option {
+                                font-size: 15px;
+                                padding: 0;
+                                margin: 0;
+                                background-color: white;
+                                height: 50vh;
+
+                            }
+                            
+                            option:hover {
+                                background-color: #dc3737;
+                            }
+                        }
+
+                        input {
+                            width: 70%;
+                            border-radius: 4px;
+                            padding: 5px 0 5px 5px;
+                            margin-left: 3px;
+                            border: none;
+                            border: 1px solid rgb(192, 178, 178);
+                            background-color: white;
+                        }
+
+                        textarea {
+                            width: 70%;
+                            border-radius: 4px;
+                            padding: 0;
+                            background-color: white;
+                            border: 1px solid rgb(192, 178, 178);
+                            
+                        }
+                        #billAmountInput{
+                            direction: rtl;
+                        }
+
+                        .rtl-cursor {
+                            direction: rtl;
+                        }
+
+                        .datepicker{
+                            .datepicker-picker{
+                                display: flex;
+                                flex-direction: column;
+                                .datepicker-header{
+                                  width: 100%;
+                                  height: 45px;
+                                  .datepicker-controls{
+                                    height: 45px;
+                                    display: flex;
+                                    flex-direction: row;
+                                    width: 99%;
+                                    gap: 3px;
+                                    button{
+                                      background-color: #08c531;
+                                      color: white;
+                                      height: 45px;
+                                    }
+                                    button:nth-child(1){
+                                      padding-left: 18px;
+                                      padding-right: 18px;
+                                    }
+                                    button:nth-child(3){
+                                      padding-left: 18px;
+                                      padding-right: 18px;
+                                    }
+                                  }
+                                }
+                            }
+                            .days-of-week{
+                                display: flex;
+                                width: 98%;
+                                flex-direction: row;
+                                justify-content: space-evenly;
+                                height: 45px;
+                                .dow{
+                                  height: 45px;
+                                }
+                            }
+                          }
+                    }
+
+                    div{
+                        #handle_files {
+                            display: flex;
+                            flex-direction: column;
+                            width: 95%;
+                            margin: auto;
+                            border: 1px solid gray;
+                            padding: 5px;
+                           
+                            label{
+                                
+                                input[type="file"] {
+                                    width: fit-content;
+                                    display: block;
+                                    height: 20px;
+                                    width: 20px;
+                                
+                                }
+                            }
+                            
+
+                            .imageThumb {
+                                max-height: 75px;
+                                border: 2px solid;
+                                margin: 10px 10px 0 0;
+                                padding: 1px;
+                            }
+
+                            .remove {
+                                display: block;
+                                background: #444;
+                                border: 1px solid black;
+                                color: white;
+                                text-align: center;
+                                cursor: pointer;
+                            }
+
+                            .remove:hover {
+                                background: white;
+                                color: black;
+                            }
+
+                            .custom-file-input {
+                                position: relative;
+                                text-align: center;
+                                align-items: center;
+                                justify-content: center;
+                                overflow: hidden;
+                                display: flex;
+                                cursor: pointer;
+                                border: 1px solid #ccc;
+                                height: 50px;
+                                width: 50px;
+                                padding: 6px;
+                                border-radius: 4px;
+                                background-color: #f8f9fa;
+                                color: #343a40;
+                            }
+
+                            /* Style for the hidden file input */
+                            #files {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                opacity: 0;
+                                width: 100%;
+                                height: 100%;
+                                cursor: pointer;
+                            }
+
+                            /* Style for preview container */
+                            #preview {
+                                margin-top: 10px;
+                                display: grid;
+                                grid-template-columns: repeat(4, 1fr);
+                                gap: 5px;
+                                justify-content: center;
+                                align-items: end;
+
+                                .pip {
+                                    position: relative;
+                                    width: 100%;
+                                    height: 100%;
+
+                                    .fileThumb {
+                                        color: black;
+                                    }
+
+                                    img {
+                                        width: 50px;
+                                        height: 50px;
+                                    }
+
+                                    button {
+                                        position: absolute;
+                                        top: 0;
+                                        right: 0;
+                                        border: none;
+                                        width: fit-content;
+                                        height: fit-content;
+                                        border-radius: 50%;
+                                        background-color: red;
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+
+                    span:nth-child(-n+5){
+                        height: 40px;
+                       
+                       
+                    }
+
+
+                    span:nth-child(7){
+                        height: 40px;
+                    }
+
+                    .field {
+                        width: 100%;
+                        /* margin: 5px; */
+                        height: auto;
+                        margin: 0;
+                        #handle_filess {
+                            display: flex;
+                            flex-direction: row;
+                            flex-wrap: wrap;
+                            /* display: grid;
+                            grid-template-columns: repeat(4,1fr); */
+                            /* grid-auto-flow: dense;
+                            direction: rtl; */
+                            width: 95%;
+                            margin: auto;
+                            border: 1px solid gray;
+                            padding: 5px;
+
+                            label{
+                            flex: 1 0 21%; /* explanation below */
+                            margin: 5px;
+                            /* height: 100px; */
+                            /* max-width: 25%; */
+
+                                input[type="file"] {
+                                    width: fit-content;
+                                    display: block;
+                                    /* height: 20px;
+                                    width: 20px; */
+                                }
+                                img{
+                                    height: 20px;
+                                    width: 20px;
+                                    width: fit-content;
+                                    display: block;
+                                }
+                                button{
+                                    height: 20px;
+                                    width: 20px;
+                                    width: fit-content;
+                                    display: block;
+                                }
+                            }
+                            
+
+                            .imageThumb {
+                                max-height: 75px;
+                                border: 2px solid;
+                                margin: 10px 10px 0 0;
+                                padding: 1px;
+                            }
+
+                            .remove {
+                                display: block;
+                                background: #444;
+                                border: 1px solid black;
+                                color: white;
+                                text-align: center;
+                                cursor: pointer;
+                            }
+
+                            .remove:hover {
+                                background: white;
+                                color: black;
+                            }
+
+                            .custom-file-input {
+                                /* position: relative;
+                                text-align: center;
+                                align-items: center;
+                                justify-content: center;
+                                overflow: hidden;
+                                display: flex;
+                                cursor: pointer;
+                                border: 1px solid #ccc;
+                                height: 50px;
+                                width: 50px;
+                                padding: 6px;
+                                border-radius: 4px;
+                                background-color: #f8f9fa;
+                                color: #343a40; */
+                                max-width: 25%;
+                            }
+
+                            /* Style for the hidden file input */
+                            #files {
+                                /* position: absolute;
+                                top: 0;
+                                left: 0;
+                                opacity: 0;
+                                width: 100%;
+                                height: 100%;
+                                cursor: pointer; */
+                            }
+
+                            /* Style for preview container */
+                            #preview {
+                                margin-top: 10px;
+                                display: grid;
+                                grid-template-columns: repeat(4, 1fr);
+                                gap: 5px;
+                                justify-content: center;
+                                align-items: end;
+
+                                .pip {
+                                    position: relative;
+                                    width: 100%;
+                                    height: 100%;
+
+                                    .fileThumb {
+                                        color: black;
+                                    }
+
+                                    img {
+                                        width: 50px;
+                                        height: 50px;
+                                    }
+
+                                    button {
+                                        position: absolute;
+                                        top: 0;
+                                        right: 0;
+                                        border: none;
+                                        width: fit-content;
+                                        height: fit-content;
+                                        border-radius: 50%;
+                                        background-color: red;
+                                    }
+                                }
+                            }
+
+                            
+                        }
+
+                        #handle_files{
+                            display: grid;
+                            grid-template-columns: repeat(4, 1fr);
+                            gap: 8px;
+                            width: auto;
+                            margin: 0;
+                            label{
+                                
+                                #files{
+                                    width: 75%;
+                                }
+                               
+                            }
+                           .img_remove{
+                                width: 100%;
+                                min-height: 75%;
+                                max-height: 80px;
+                                position: relative;
+                                border: 1px solid gray;
+                                border-radius: 5px;
+                                    img{
+                                        height: 100%;
+                                        width: 100%;
+                                        
+                                    }
+                                    button{
+                                        position: absolute;
+                                        top: -10px;
+                                        right: 0;
+                                        width:20px;
+                                        height: 20px;
+                                        border-radius: 50%;
+                                        background-color: #dc3737;
+                                    }
+                            }
+                        }
+
+                        .pip {
+                            display: inline-block;
+                            margin: 0;
+                        }
+                    }
+
+                    #billNoteTextArea{
+                        padding-left: 5px;
+                        padding-top: 4px;
+                    }
+                    #billAmountInput{
+                        padding-right: 5px;
+                    }
+
+                    /* button {
+                        width: 100%;
+                        height: 30px;
+                        margin-top: 5px;
+                        background-color: rgb(0, 162, 255);
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                    } */
+
+                    #date_container {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 5px;
+                    }
+
+                    #addBillContainer{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 3px;
+                        justify-content: space-between;
+                        label{
+                            width: auto;
+                        }
+                        button{
+                            width: 20%;
+                            height: 50px;
+                            border-radius: 0;
+                            margin: 0;
+                            font-weight: 600;
+                            font-size: 15px;
+                            background-color: rgb(0, 162, 255);
+                            text-transform: uppercase;
+                            color: white;
+                            border: none;
+                            font-family: 'Roboto',sans-serif;
+                        }
+                    }
+
+                    #addBillInfo{
+                        width: 70%;
+                        color: #a3a0a0;
+                        font-size: 17px;
+
+                        display: flex;
+                        flex-direction: row;
+                        gap: 5px;
+                        flex-wrap: wrap;
+                        p{
+                            /* flex: 1 1 auto; */
+                            padding: 0;
+                            margin: 0;
+                            width: fit-content;
+                            color: #0343b8;
+                        }
+                    }
+
+                    #bill_entry_table_attrib{
+                        width: 98%;
+                        margin: auto;
+                        border-collapse: collapse;
+                        thead{
+                            tr{
+                               
+                                th{
+                                    color: black;
+                                    font-size: 15px;
+                                    border: 0.5px solid gray;
+                                }
+                                th:nth-child(1){
+                                    width: 20%;
+                                    text-align: left;
+                                    padding-left: 5px;
+                                }
+                                th:nth-child(2){
+                                    width: 50%;
+                                    text-align: left;
+                                    padding-left: 5px;
+                                }
+                                th:nth-child(3){
+                                    width: 30%;
+                                    text-align: right;
+                                    padding-right: 5px;
+                                }
+                            }
+                        }
+
+                        tbody{
+                            tr{
+                                td{
+                                    color: black;
+                                    font-size: 15px;
+                                    border: 0.5px solid gray;
+                                }
+                                td:nth-child(1){
+                                    width: 20%;
+                                    border-left:0.5px solid gray;
+                                    border-right:0.5px solid gray;
+                                    border-bottom:0.5px solid gray;
+                                    color: black;
+                                    text-align: left;
+                                    padding-left: 5px;
+                                }
+                                td:nth-child(2){
+                                    width: 50%;
+                                    border-left:0.5px solid gray;
+                                    border-right:0.5px solid gray;
+                                    border-bottom:0.5px solid gray;
+                                    color: black;
+                                    text-align: left;
+                                    padding-left: 5px;
+                                }
+                                td:nth-child(3){
+                                    width: 30%;
+                                    border-left:0.5px solid gray;
+                                    border-right:0.5px solid gray;
+                                    border-bottom:0.5px solid gray;
+                                    color: black;
+                                    text-align: right;
+                                    padding-right: 5px;
+                                }
+                            }
+                        }
+
+                        tfoot{
+                            width: 100%;
+                            tr{
+                               
+                               width: 100%;
+                                td{
+                                    color: black;
+                                    font-size: 15px;
+                                }
+                                td:nth-child(1){
+                                    width: 20%;
+                                    border-left:0.5px solid gray;
+                                    border-right:0.5px solid gray;
+                                    border-bottom:0.5px solid gray;
+                                    text-align: left;
+                                    padding-left: 5px;
+                                   
+                                }
+                                td:nth-child(2){
+                                    width: 50%;
+                                    /* border-top:0.5px solid gray;
+                                    border-left: 0.5px solid gray; */
+                                    border-bottom: 0.5px solid gray;
+                                }
+                                td:nth-child(3){
+                                    width: 30%;
+                                    /* border-top:0.5px solid gray; */
+                                    border-right: 0.5px solid gray;
+                                    border-bottom: 0.5px solid gray;
+                                    text-align: right;
+                                    padding-right: 5px;
+                                }
+                            }
+                        }
+                    }
+
+                    #final_submit{
+                        height: 30px;
+                        border-radius: 0;
+                        background-color: rgb(10, 182, 10);
+                        text-transform: uppercase;
+                    }
+
+                   
+                    
+                }
+               
+                #bill_entry_table_attrib{
+                    width: 98%;
+                    margin: auto;
+                    border-collapse: collapse;
+                    thead{
+                        tr{
+                            
+                            th{
+                                color: black;
+                                font-size: 15px;
+                                border: 0.5px solid gray;
+                            }
+                            th:nth-child(1){
+                                width: 20%;
+                                text-align: left;
+                                padding-left: 5px;
+                            }
+                            th:nth-child(2){
+                                width: 50%;
+                                text-align: left;
+                                padding-left: 5px;
+                            }
+                            th:nth-child(3){
+                                width: 30%;
+                                text-align: right;
+                                padding-right: 5px;
+                            }
+                        }
+                    }
+
+                    tbody{
+                        tr{
+                            td{
+                                color: black;
+                                font-size: 15px;
+                                border: 0.5px solid gray;
+                            }
+                            td:nth-child(1){
+                                width: 20%;
+                                border-left:0.5px solid gray;
+                                border-right:0.5px solid gray;
+                                border-bottom:0.5px solid gray;
+                                color: black;
+                                text-align: left;
+                                padding-left: 5px;
+                            }
+                            td:nth-child(2){
+                                width: 50%;
+                                border-left:0.5px solid gray;
+                                border-right:0.5px solid gray;
+                                border-bottom:0.5px solid gray;
+                                color: black;
+                                text-align: left;
+                                padding-left: 5px;
+                            }
+                            td:nth-child(3){
+                                width: 30%;
+                                border-left:0.5px solid gray;
+                                border-right:0.5px solid gray;
+                                border-bottom:0.5px solid gray;
+                                color: black;
+                                text-align: right;
+                                padding-right: 5px;
+                            }
+                        }
+                    }
+
+                    tfoot{
+                        width: 100%;
+                        tr{
+                            
+                            width: 100%;
+                            td{
+                                color: black;
+                                font-size: 15px;
+                            }
+                            td:nth-child(1){
+                                width: 20%;
+                                border-left:0.5px solid gray;
+                                border-right:0.5px solid gray;
+                                border-bottom:0.5px solid gray;
+                                text-align: left;
+                                padding-left: 5px;
+                                
+                            }
+                            td:nth-child(2){
+                                width: 50%;
+                                /* border-top:0.5px solid gray;
+                                border-left: 0.5px solid gray; */
+                                border-bottom: 0.5px solid gray;
+                            }
+                            td:nth-child(3){
+                                width: 30%;
+                                /* border-top:0.5px solid gray; */
+                                border-right: 0.5px solid gray;
+                                border-bottom: 0.5px solid gray;
+                                text-align: right;
+                                padding-right: 5px;
+                            }
+                        }
+                    }
+                }
+
+                #final_submit{
+                    height: 30px;
+                    border-radius: 0;
+                    background-color: rgb(10, 182, 10);
+                    text-transform: uppercase;
+                } 
+               
+                #approval_class {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2px;
+                    padding-top: 0;
+                    width: 100%;
+                    gap: 3px;
+
+                    /* position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    z-index: 10;
+                    background: white;
+                    padding: 10px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+
+
+                    /*position maker code starts*/
+                    position: fixed;
+                    background-color: #fff;
+                    top: 96px;
+                    width: 96%;
+                    left: 2%;
+                    right: 2%;
+                    /*position maker code ends*/
+
+                    span {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 5px;
+                        width: 100%;
+                        height: 40px;
+                        label {
+                            width: 30%;
+                            color: rgb(63, 62, 62);
+                        }
+
+                        select {
+                            width: 100%;
+                            border-radius: 4px;
+                            padding: 5px 0 5px 0;
+                            border: none;
+                            border: 1px solid rgb(192, 190, 190);
+                            background-color: white;
+                            height: 40px;
+                            option {
+                                font-size: 12px;
+                                padding: 0;
+                                margin: 0;
+                                background-color: white;
+                            }
+
+                            option:hover {
+                                background-color: #dc3737;
+                            }
+                        }
+
+                        input {
+                            width: 70%;
+                            border-radius: 4px;
+                            padding: 5px 0 5px 5px;
+                            margin-left: 3px;
+                            border: none;
+                            border: 1px solid gray;
+                            background-color: white;
+                        }
+
+                        textarea {
+                            width: 70%;
+                            border-radius: 4px;
+                            padding: 0;
+                            background-color: white;
+                        }
+
+                        .rtl-cursor {
+                            direction: rtl;
+                        }
+                    }
+
+
+                    /* button {
+                        width: 100%;
+                        height: 45px;
+                        margin-top: 5px;
+                        background-color: green;
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                    } */
+                    #search-submit{
+                        width: 100%;
+                        height: 45px;
+                        margin-top: 5px;
+                        background-color: #08c531 ;
+                        text-transform: uppercase;
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                    }
+
+                    #date_container {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 5px;
+                        padding-top: 5px;
+                        input {
+                            height: 35px;
+                            width: 50%;
+                            color: #000;
+                            text-align: center;
+                            font-weight: 500;
+                            font-size: 17px;
+                            border-radius: 4px;
+                            border: 1px solid rgb(184, 178, 178);
+                        }
+                        .datepicker{
+                            .datepicker-picker{
+                                display: flex;
+                                flex-direction: column;
+                                .datepicker-header{
+                                  width: 100%;
+                                  height: 45px;
+                                  .datepicker-controls{
+                                    height: 45px;
+                                    display: flex;
+                                    flex-direction: row;
+                                    width: 99%;
+                                    gap: 3px;
+                                    button{
+                                      background-color: #08c531;
+                                      color: white;
+                                      height: 45px;
+                                    }
+                                    button:nth-child(1){
+                                      padding-left: 18px;
+                                      padding-right: 18px;
+                                    }
+                                    button:nth-child(3){
+                                      padding-left: 18px;
+                                      padding-right: 18px;
+                                    }
+                                  }
+                                }
+                            }
+                            .days-of-week{
+                                display: flex;
+                                width: 98%;
+                                flex-direction: row;
+                                justify-content: space-evenly;
+                                height: 45px;
+                                .dow{
+                                  height: 45px;
+                                }
+                            }
+                          }
+                    }
+                }
+
+                #all_cards{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    background-color: #FFFFFF;
+                    
+                    /* position: absolute;
+                    top: 200px; 
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    overflow: auto;
+                    height: calc(100% - 100px); 
+                    background: #f0f0f0;
+                    padding: 20px;
+                    box-sizing: border-box; */
+
+
+                    /*position maker code starts*/
+                    
+                    /*position maker code ends*/
+
+
+                    #single_card{
+                        color: black;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                        /* border: 1px solid rgb(199, 195, 195); */
+                        border-radius: 8px;
+                        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+                        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+                        padding: 7px;
+                        margin: 1px;
+                        span{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            width: 100%;
+                            img{
+                                width: 70px;
+                                height: 60px;
+                            }
+                            p{
+                                margin: 0;
+                            }
+                        }
+                        p{
+                            margin: 0;
+                        }
+                        span:nth-child(1){
+                            justify-content: space-between;
+
+                        }
+                        span:nth-child(4){
+                            label{
+                                padding-right: 5px;
+                                font-size: 14px;
+                            }
+                            p{
+                                font-size: 14px;
+                                font-weight: 700;
+                            }
+                        }
+
+                        span:nth-child(5){
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+                        span:nth-child(6){
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+                        p:nth-child(8){
+                            color: #a3a0a0;
+                        }
+                        #bill_show_btns{
+                            display: flex;
+                            flex-direction: row;
+                            width: 100%;
+                            justify-content: space-between;
+                            align-items: center;
+                            gap: 10px;
+                            height: 38px;
+                            padding-top: 6px;
+                            padding-bottom: 3px;
+                            button{
+                                flex: 1;
+                                padding: 5px;
+                                
+                                border: 0.5px solid gray;
+                                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                                height: 38px;
+
+                                background: #299deb;
+                                border-radius: 999px;
+                                box-shadow: #5E5DF0 0 10px 20px -10px;
+                                box-sizing: border-box;
+                                color: #FFFFFF;
+                                cursor: pointer;
+                                font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+                                font-size: 14px;
+                                font-weight: 600;
+                                line-height: 20px;
+                                opacity: 1;
+                                outline: 0 solid transparent;
+                                padding: 5px 15px;
+                                user-select: none;
+                                -webkit-user-select: none;
+                                touch-action: manipulation;
+                                
+                                word-break: break-word;
+                                border: 0;
+                                
+                            }
+                        }
+                        #authority_btn{
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            align-items: center;
+                            width: 100%;
+                            gap: 10px;
+                            height: 38px;
+                            padding-top: 3px;
+                            padding-bottom: 6px;
+                            button:nth-child(1){
+                                height: 38px;
+                                flex: 1;
+                                background: #2ea44f;;
+                                border-radius: 999px;
+                                box-shadow: #2ea44f;
+                                box-sizing: border-box;
+                                color: #FFFFFF;
+                                cursor: pointer;
+                                font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+                                font-size: 14px;
+                                font-weight: 600;
+                                line-height: 20px;
+                                opacity: 1;
+                                outline: 0 solid transparent;
+                                padding: 5px 15px;
+                                user-select: none;
+                                -webkit-user-select: none;
+                                touch-action: manipulation;
+                                width: fit-content;
+                                word-break: break-word;
+                                border: 0;  
+                            }
+                            button:nth-child(2){
+                                height: 38px;
+                                flex: 1;
+                                background: #FF013C ;;
+                                border-radius: 999px;
+                                box-shadow: #2ea44f;
+                                box-sizing: border-box;
+                                color: #FFFFFF;
+                                cursor: pointer;
+                                font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+                                font-size: 14x;
+                                font-weight: 600;
+                                line-height: 20px;
+                                opacity: 1;
+                                outline: 0 solid transparent;
+                                padding: 5px 15px;
+                                user-select: none;
+                                -webkit-user-select: none;
+                                touch-action: manipulation;
+                                width: fit-content;
+                                word-break: break-word;
+                                border: 0;
+                            }
+                        }
+                        #authority_btn_paid{
+                            display: flex;
+                            width: 100%;
+                            gap: 10px;
+                            height: 38px;
+                            padding-top: 3px;
+                            padding-bottom: 6px;
+                            button{
+                                flex: none; /* Disable flex behavior */
+                                width: 50%; 
+                                height: 38px;
+                                background: #d64bb3;;
+                                border-radius: 999px;
+                                box-shadow: #d64bb3;
+                                box-sizing: border-box;
+                                color: #FFFFFF;
+                                cursor: pointer;
+                                font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+                                font-size: 14px;
+                                font-weight: 600;
+                                line-height: 20px;
+                                opacity: 1;
+                                outline: 0 solid transparent;
+                                padding: 5px 15px;
+                                user-select: none;
+                                -webkit-user-select: none;
+                                touch-action: manipulation;
+                               
+                                word-break: break-word;
+                                border: 0;  
+                            }
+                        }
+                        
+                    }
+                }
+
+                #all_cards > #single_card > #bill_cancel_btn{
+                    width: 100% !important;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-end;
+                    align-items: center;
+                    gap: 10px;
+                    height: 38px;
+                    padding-top: 6px;
+
+                    button{
+                        background-color: #FF013C;
+                        color: white;
+                        border-radius: 999px;
+                        height: 38px;
+                        font-weight: 600;
+                        font-size: 14px;
+                        line-height: 20px;
+                        padding: 5px 15px;
+                        outline: 0 solid transparent;
+                        cursor: pointer;
+                        border: 0;
+                        width: 48%;
+                    }
+                }
+                
+                #final_submit{
+                    background-color: #08c531;
+                    color: white;
+                    text-transform: uppercase;
+                    margin-top: 8px;
+                    height: 40px;
+                    font-size: 16px;
+                    border: none;
+                }
+
+            }
+        }
+
+        #bill_entry_title {
+            margin-top: 90px;
+            
+            /*position maker code starts*/
+                /* position: fixed;
+                top: 10px;
+                background-color: #fff;
+                left: 2%;
+                right: 2%;
+                width: 96%; */
+                position: fixed;
+                z-index: 999;
+                overflow: hidden;
+                width: 99%;
+                background-color: #fff;
+                padding-bottom: 10px;
+                left: 2%;
+                right: 2%;
+            /*position maker code ends*/
+            h2 {
+                margin: 0;
+                font-size: 15px;
+                color: rgb(73, 71, 71);
+                text-align: center;
+                padding-top: 5px;
+            }
+        }
+
+    }
+
+}
+
+.accountsctivityMain{
+     overflow-y: auto;
+     /* Allow vertical scrolling */
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     width: 95%;
+     margin:0 auto;
+     padding-top: 0;
+}
+.accountsctivityMain > .bill_entry_container{
+    width: 100%;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_button_container {
+    width: 100%;
+    margin-bottom: 5px;
+    height: 45px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_button_container > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px;
+    
+    color: black;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_button_container > div > button {
+    flex: 1;
+    height: 25px;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+    border: none;
+    height: 40px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    margin-right: 2px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_button_container > div > button:last-child{
+    margin-right: 0;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_button_container > div > button.active {
+    border: none;
+    border-bottom: 1px solid #dc3737;
+    padding: 0;
+    color: #dc3737;
+    height: 40px;
+    font-size: 16px;
+    background-color: rgb(194, 224, 224);
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 98%; */
+    padding: 5px 0 8px 0;
+    border-bottom: 1px solid gray;
+    margin-bottom: 5px;
+    
+
+    /* position maker code starts */
+    /* position: absolute;
+    z-index: 2; */
+    margin-top: 111px;
+    position: fixed;
+    z-index: 999;
+    overflow: hidden;
+    /* width: 100%; */
+    background-color: #fff;
+    left: 2%;
+    right: 2%;
+    /* position maker code ends */
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    font-size: 15px;
+    color: rgb(40, 39, 39);
+    border: 1px solid gray;  
+    margin-right: 5px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span:last-child{
+    margin-right: 0;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span:nth-child(1){
+    width: 50%;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span:nth-child(2){
+    width: 25%;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span:nth-child(3){
+    width: 25%;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span > p {
+    margin: 0;
+    padding: 2px;
+    background-color: #fff;
+    border-left: 1px solid gray;
+    height: 100%;
+    
+ 
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span  {
+    height: 100%;
+    padding: 2px 3px 2px 2px; 
+    width: 20%;
+   
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span > i{
+    height: 100%;
+    width: fit-content;
+    padding-left: 2px;
+}
+
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
+   
+
+    /* Position maker code starts */
+    position: fixed;
+    background-color: #fff;
+    top: 95px;
+    width: 96%;
+    left: 2%;
+    right: 2%;
+    /* Position maker code ends */
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > span {
+    display: flex;
+    flex-direction: row;
+    
+    width: 100%;
+    height: 40px;
+    margin-bottom: 5px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > span:last-child{
+    margin-bottom: 0;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > span:nth-child(2) > select{
+    margin-right: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > span:nth-child(2) > select:last-child{
+    margin-right: 0;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > span > label {
+    width: 30%;
+    color: rgb(63, 62, 62);
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > span > select {
+    width: 100%;
+    border-radius: 4px;
+    padding: 5px 0;
+    border: none;
+    border: 1px solid rgb(202, 196, 196);
+    background-color: white;
+    height: 40px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > span > select > option {
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > span > select > option:hover {
+    background-color: #dc3737;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > span > input {
+    width: 70%;
+    border-radius: 4px;
+    padding: 5px 0 5px 5px;
+    margin-left: 3px;
+    border: none;
+    border: 1px solid gray;
+    background-color: rgb(197, 212, 212);
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > span > textarea {
+    width: 70%;
+    border-radius: 4px;
+    padding: 0;
+    background-color: rgb(197, 212, 212);
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > span > .rtl-cursor {
+    direction: rtl;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > #field {
+    width: 98%;
+    margin: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > #field > #handle_files {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > #field > #handle_files > input[type="file"] {
+    width: fit-content;
+    display: block;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > #field > #handle_files > .imageThumb {
+    max-height: 75px;
+    border: 2px solid;
+    margin: 10px 10px 0 0;
+    padding: 1px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > #field > #handle_files >.remove {
+    display: block;
+    background: #444;
+    border: 1px solid black;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > #field > #handle_files > .remove:hover {
+    background: white;
+    color: black;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > #field > #handle_files > .custom-file-input {
+    position: relative;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    display: flex;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    height: 50px;
+    width: 50px;
+    padding: 6px;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+/* Style for the hidden file input */
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > #field > #handle_files > #files {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+/* Style for preview container */
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > #field > #handle_files > #preview {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    justify-content: center;
+    align-items: end;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > #field > #handle_files > #preview > .pip {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > #field > #handle_files > #preview > .pip > .fileThumb {
+    color: black;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > #field > #handle_files > #preview > .pip > img {
+    width: 50px;
+    height: 50px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > #field > #handle_files > #preview > .pip > button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > #search-submit {
+    width: 100%;
+    height: 45px;
+    margin-top: 5px;
+    background-color: #08c531;
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > .date_container {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   
+    width: 100%;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > .date_container > input {
+    height: 35px;
+    width: 50%;
+    color: #000;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 17px;
+    font-weight: 500;
+    border: 1px solid rgb(184, 178, 178);
+    margin-right: 5px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > .date_container > input:last-child{
+    margin-right: 0;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > .date_container > .datepicker > .datepicker-picker {
+    display: flex;
+    flex-direction: column;  
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > .date_container > .datepicker > .datepicker-picker > .datepicker-header {
+    width: 100%;
+    height: 45px;
+
+    
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > .date_container > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls {
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    width: 99%;
+    gap: 3px;   
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > .date_container > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls >  button {
+    background-color: #08c531;
+    color: white;
+    height: 45px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > .date_container > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls >  button:nth-child(1) {
+    padding-left: 18px;
+    padding-right: 18px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > .date_container > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls > button:nth-child(3) {
+    padding-left: 18px;
+    padding-right: 18px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > .date_container > .datepicker >  .days-of-week {
+    display: flex;
+    width: 98%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 45px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #view_class > .date_container > .datepicker >  .days-of-week >   .dow {
+    height: 45px;
+}
+
+
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > .filepond--root{
+    display: flex;  
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    flex: 1 1 auto;
+    overflow-y: auto;
+    background-color: #fff;
+    top: 50px;
+    width: 100%;
+    left: 2%;
+    right: 2%;
+    transition: transform 0.3s ease; /* Smooth transition */
+
+    margin-bottom: 20px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+    margin-bottom: 8px;
+    /* height: 35px; */
+    /* height: 30px; */
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > label {
+    width: 30%;
+    color: rgb(63, 62, 62);
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > select {
+    width: 70%;
+    border-radius: 4px;
+    padding: 5px 0;
+    border: none;
+    border: 1px solid rgb(192, 178, 178);
+    background-color: white;
+    /* height: 35px; */
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > select > option {
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    height: 50vh;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > select > option:hover {
+    background-color: #dc3737;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > input {
+    width: 70%;
+    border-radius: 4px;
+    padding: 5px 5px 5px 5px;
+    margin-left: 3px;
+    border: none;
+    border: 1px solid rgb(192, 178, 178);
+    background-color: white;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > textarea {
+    width: 70%;
+    border-radius: 4px;
+    padding: 1px 0 0 3px;
+    background-color: white;
+    border: 1px solid rgb(192, 178, 178);
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > #billAmountInput {
+    /* direction: rtl; */
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > .rtl-cursor {
+    direction: rtl;
+}
+
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > .datepicker > .datepicker-picker {
+    display: flex;
+    flex-direction: column;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > .datepicker > .datepicker-picker > .datepicker-header {
+    width: 100%;
+    height: 45px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls {
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    width: 99%;
+    gap: 3px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls > button {
+    background-color: #08c531;
+    color: white;
+    height: 45px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls >  button:nth-child(1) {
+    padding-left: 18px;
+    padding-right: 18px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls >  button:nth-child(3) {
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > .datepicker > .days-of-week {
+    display: flex;
+    width: 98%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 45px; 
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span > .datepicker > .days-of-week > .dow {
+    height: 45px;
+}
+
+
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > div > #handle_files {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > div > #handle_files > label > input[type="file"] {
+    width: fit-content;
+    display: none;
+    height: 20px;
+    width: 20px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > div > #handle_files > .imageThumb {
+    max-height: 75px;
+    border: 2px solid;
+    margin: 10px 10px 0 0;
+    padding: 1px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > div > #handle_files > .remove {
+    display: block;
+    background: #444;
+    border: 1px solid black;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > div > #handle_files > .remove:hover {
+    background: white;
+    color: black;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > div > #handle_files > .custom-file-input {
+    position: relative;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    height: 60px;
+    width: 60px;
+    padding: 0;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    color: #343a40;
+
+    font-size: 15px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > div > #handle_files > .custom-file-input > span:nth-child(1){
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    height: 30%;
+    font-size: 17px;
+    padding-right: 8px;
+    padding-top: 3px;
+   
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > div > #handle_files > .custom-file-input > span:nth-child(2){
+    width: fit-content;
+    height: 80%;
+}
+
+/* Style for the hidden file input */
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > div > #handle_files > #files {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* Style for preview container */
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > div > #handle_files > #preview {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    justify-content: center;
+    align-items: end;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > div > #handle_files > #preview > .pip {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > div > #handle_files > #preview > .pip > .fileThumb {
+    color: black;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > div > #handle_files > #preview > .pip > img {
+    width: 50px;
+    height: 50px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > div > #handle_files > #preview > .pip > button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span:nth-child(-n+5){
+    height: 40px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span:nth-child(7){
+    height: 40px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > span:nth-child(7) > input {
+
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > .field {
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > .field > #handle_files {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    width: auto;
+    margin: 0;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > .field > #handle_files > label > #files {
+    width: 75%;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > .field > #handle_files > .img_remove {
+    width: 100%;
+    min-height: 75%;
+    max-height: 80px;
+    position: relative;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > .field > #handle_files > .img_remove > img {
+    height: 100%;
+    width: 100%;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > .field > #handle_files > .img_remove > button {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #dc3737;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > .field > .pip {
+    display: inline-block;
+    margin: 0;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #billNoteTextArea{
+    padding-left: 5px;
+    padding-top: 4px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #billAmountInput{
+    padding-right: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #date_container {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #addBillContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+    justify-content: space-between;
+    padding-top: 8px;
+    
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #addBillContainer > label{
+    width: auto;
+    flex-grow: 1;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #addBillContainer > button{
+    width: 20%;
+    height: 50px;
+    border-radius: 0;
+    margin: 0;
+    font-weight: 600;
+    font-size: 15px;
+    background-color: rgb(0, 162, 255);
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    font-family: 'Roboto',sans-serif;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #addBillContainer > #addBillInfo{
+    /* width: 70%;
+    color: #a3a0a0;
+    font-size: 17px; */
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+
+    /* display: block;         */
+    font-size: 16px;        /* Adjust font size for readability */
+    line-height: 1.5;
+    
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #addBillContainer > #addBillInfo > p{
+    /* flex: 1 1 auto; */
+    padding: 0;
+    margin: 0;
+    width: fit-content;
+   
+    
+    margin-right: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #bill_entry_table_attrib {
+    width: 98%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #bill_entry_table_attrib > thead > tr > th {
+    color: black;
+    font-size: 15px;
+    border: 0.5px solid gray;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #bill_entry_table_attrib > thead > tr > th:nth-child(1) {
+    width: 20%;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #bill_entry_table_attrib > thead > tr > th:nth-child(2) {
+    width: 50%;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #bill_entry_table_attrib > thead > tr > th:nth-child(3) {
+    width: 30%;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #bill_entry_table_attrib > tbody > tr > td {
+    color: black;
+    font-size: 15px;
+    border: 0.5px solid gray;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #bill_entry_table_attrib > tbody > tr > td:nth-child(1) {
+    width: 20%;
+    border-left: 0.5px solid gray;
+    border-right: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #bill_entry_table_attrib > tbody > tr > td:nth-child(2) {
+    width: 50%;
+    border-left: 0.5px solid gray;
+    border-right: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #bill_entry_table_attrib > tbody > tr > td:nth-child(3) {
+    width: 30%;
+    border-left: 0.5px solid gray;
+    border-right: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #bill_entry_table_attrib > tfoot > tr {
+    width: 100%;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #bill_entry_table_attrib > tfoot > tr > td {
+    color: black;
+    font-size: 15px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #bill_entry_table_attrib > tfoot > tr > td:nth-child(1) {
+    width: 20%;
+    border-left: 0.5px solid gray;
+    border-right: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #bill_entry_table_attrib > tfoot > tr > td:nth-child(2) {
+    width: 50%;
+    border-bottom: 0.5px solid gray;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #bill_entry_table_attrib > tfoot > tr > td:nth-child(3) {
+    width: 30%;
+    border-right: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+    text-align: right;
+    padding-right: 5px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #entry_class > #final_submit{
+    height: 30px;
+    border-radius: 0;
+    background-color: rgb(10, 182, 10);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #bill_entry_table_attrib {
+    width: 98%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #bill_entry_table_attrib > thead > tr > th {
+    color: black;
+    font-size: 15px;
+    border: 0.5px solid gray;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #bill_entry_table_attrib > thead > tr > th:nth-child(1) {
+    width: 20%;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #bill_entry_table_attrib > thead > tr > th:nth-child(2) {
+    width: 50%;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #bill_entry_table_attrib > thead > tr > th:nth-child(3) {
+    width: 30%;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #bill_entry_table_attrib > tbody > tr > td {
+    color: black;
+    font-size: 15px;
+    border: 0.5px solid gray;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #bill_entry_table_attrib > tbody > tr > td:nth-child(1) {
+    width: 20%;
+    border-left: 0.5px solid gray;
+    border-right: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #bill_entry_table_attrib > tbody > tr > td:nth-child(2) {
+    width: 50%;
+    border-left: 0.5px solid gray;
+    border-right: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #bill_entry_table_attrib > tbody > tr > td:nth-child(3) {
+    width: 30%;
+    border-left: 0.5px solid gray;
+    border-right: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #bill_entry_table_attrib > tfoot > tr {
+    width: 100%;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #bill_entry_table_attrib > tfoot > tr > td {
+    color: black;
+    font-size: 15px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #bill_entry_table_attrib > tfoot > tr > td:nth-child(1) {
+    width: 20%;
+    border-left: 0.5px solid gray;
+    border-right: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #bill_entry_table_attrib > tfoot > tr > td:nth-child(2) {
+    width: 50%;
+    border-bottom: 0.5px solid gray;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #bill_entry_table_attrib > tfoot > tr > td:nth-child(3) {
+    width: 30%;
+    border-right: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #final_submit{
+    height: 30px;
+    border-radius: 0;
+    background-color: rgb(10, 182, 10);
+    text-transform: uppercase;
+}
+
+
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class {
+    display: flex;
+    flex-direction: column;
+    
+    padding-top: 0;
+    width: 100%;
+    
+    /* Position maker code starts */
+    position: fixed;
+    background-color: #fff;
+    top: 95px;
+    width: 96%;
+    left: 2%;
+    right: 2%;
+    /* Position maker code ends */
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > span {
+    display: flex;
+    flex-direction: row;
+   
+    width: 100%;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > span:nth-child(2) > select{
+    margin-right: 5px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > span:nth-child(2) > select:last-child{
+    margin-right: 0;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > span:last-child{
+    margin-bottom: 0;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > span > label {
+    width: 30%;
+    color: rgb(63, 62, 62);
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > span > select {
+    width: 100%;
+    border-radius: 4px;
+    padding: 5px 0;
+    border: none;
+    border: 1px solid rgb(192, 190, 190);
+    background-color: white;
+    height: 40px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > span > select > option {
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > span > select > option:hover {
+    background-color: #dc3737;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > span > input {
+    width: 70%;
+    border-radius: 4px;
+    padding: 5px 0 5px 5px;
+    margin-left: 3px;
+    border: none;
+    border: 1px solid gray;
+    background-color: white;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > span > textarea {
+    width: 70%;
+    border-radius: 4px;
+    padding: 0;
+    background-color: white;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > span > .rtl-cursor {
+    direction: rtl;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > #search-submit {
+    width: 100%;
+    height: 45px;
+    margin-top: 5px;
+    background-color: #08c531;
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > #date_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > #date_container > input {
+    height: 35px;
+    width: 50%;
+    color: #000;
+    text-align: center;
+    font-weight: 500;
+    font-size: 17px;
+    border-radius: 4px;
+    border: 1px solid rgb(184, 178, 178);
+    margin-right: 5px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > #date_container > input:last-child{
+    margin-right: 0;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > #date_container > .datepicker {
+    /* display: flex;
+    flex-direction: column; */
+
+    padding-top: 4px;
+    position: absolute;
+    z-index: 20;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > #date_container > .datepicker > .datepicker-picker {
+    display: flex;
+    flex-direction: column;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > #date_container > .datepicker > .datepicker-picker > .datepicker-header {
+    width: 100%;
+    height: 45px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > #date_container > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-title {
+    background-color: #f5f5f5;
+    box-shadow: inset 0 -1px 1px hsla(0, 0%, 4%, .1);
+    font-weight: 700;
+    padding: .375rem .75rem;
+    text-align: center;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > #date_container > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls {
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    width: 99%;
+    gap: 3px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > #date_container > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls > button {
+    background-color: #08c531;
+    color: white;
+    height: 45px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > #date_container > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls > button:nth-child(1) {
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > #date_container > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls > button:nth-child(3) {
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > #date_container > .datepicker > .days-of-week {
+    display: flex;
+    width: 98%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 45px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #approval_class > #date_container > .datepicker > .days-of-week > .dow {
+    height: 45px;
+}
+
+
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards {
+    display: flex;
+    flex-direction: column;
+    
+    background-color: #FFFFFF;
+    margin-bottom: 8px;
+    /* Position maker code starts */
+
+    /* Position maker code ends */
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    
+    border-radius: 8px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 7px 7px 15px;
+    margin: 1px;
+    margin-bottom: 8px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > span{
+    margin-bottom: 5px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > p{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > span:last-child{
+    margin-bottom: 0;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card:last-child{
+    margin-bottom: 0;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > span > img {
+    width: 62px;
+    height: 60px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > span > p {
+    margin: 0;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > span:nth-child(1) {
+    justify-content: space-between;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > span:nth-child(4) > label {
+    padding-right: 5px;
+    font-size: 14px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > span:nth-child(4) > p {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > span:nth-child(5) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > span:nth-child(6) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > p:nth-child(8) {
+    color: #a3a0a0;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > #bill_show_btns {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    
+    height: 38px;
+    padding-top: 6px;
+    padding-bottom: 3px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > #bill_show_btns > button {
+    flex: 1;
+    padding: 5px;
+    border: 0.5px solid gray;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 38px;
+    background: #299deb;
+    border-radius: 999px;
+    box-shadow: #5E5DF0 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 5px 15px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    word-break: break-word;
+    border: 0;
+    margin-right: 10px;
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > #bill_show_btns > button:last-child{
+    margin-right: 0;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > #authority_btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+    height: 38px;
+    padding-top: 3px;
+    padding-bottom: 6px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > #authority_btn > button:nth-child(1) {
+    height: 38px;
+    flex: 1;
+    background: #2ea44f;
+    border-radius: 999px;
+    box-shadow: #2ea44f;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 5px 15px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+    margin-right: 10px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > #authority_btn > button:nth-child(2) {
+    height: 38px;
+    flex: 1;
+    background: #FF013C;
+    border-radius: 999px;
+    box-shadow: #2ea44f;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+    font-size: 14px; /* Corrected from '14x' to '14px' */
+    font-weight: 600;
+    line-height: 20px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 5px 15px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+    margin-right: 0;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > #authority_btn_paid {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    height: 38px;
+    padding-top: 3px;
+    padding-bottom: 6px;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > #authority_btn_paid > button {
+    flex: none; /* Disable flex behavior */
+    width: 50%;
+    height: 38px;
+    background: #d64bb3;
+    border-radius: 999px;
+    box-shadow: #d64bb3;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 5px 15px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    word-break: break-word;
+    border: 0;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > #bill_cancel_btn{
+    width: 100% !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    height: 38px;
+    padding-top: 6px;
+
+    
+}
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #all_cards > #single_card > #bill_cancel_btn > button{
+    background-color: #FF013C;
+    color: white;
+    border-radius: 999px;
+    height: 38px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 5px 15px;
+    outline: 0 solid transparent;
+    cursor: pointer;
+    border: 0;
+    width: 48%;
+}
+
+.accountsctivityMain > .bill_entry_container > .bill_entry_details_container >.entry_container_middle > #final_submit{
+    background-color: #08c531;
+    color: white;
+    text-transform: uppercase;
+    margin-top: 8px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+.accountsctivityMain > .bill_entry_container >  #bill_entry_title {
+    margin-top: 90px;
+
+    /* position maker code starts */
+    position: fixed;
+    z-index: 999;
+    overflow: hidden;
+    width: 99%;
+    background-color: #fff;
+    padding-bottom: 10px;
+    left: 2%;
+    right: 2%;
+    /* position maker code ends */
+}
+.accountsctivityMain > .bill_entry_container >  #bill_entry_title > h2 {
+    margin: 0;
+    font-size: 15px;
+    color: rgb(73, 71, 71);
+    text-align: center;
+    padding-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 364px) and (max-height: 896px) {
+    
+
+}
+
+@media screen and (max-width: 372px) {
+    /* #entry_container_top > span  {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        
+    }
+    #entry_container_top > span > p{
+        border-left:none;
+    }
+    */
+
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span {
+
+    }
+
+}
+
+@media screen and (max-width:430px) {
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span:nth-child(1){
+        width: 44%;
+    }
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span:nth-child(2){
+        width: 33%;
+    }
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span:nth-child(3){
+        width: 33%;
+    }
+}
+
+@media screen and (max-width:384px) {
+
+}
+
+@media screen and (max-width:397px) {
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span > p {
+        border-left: none;
+    }
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span > .fa-lg {
+        line-height: 1em !important;
+    }
+}
+
+
+@media screen and (max-width:316px) {
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span:nth-child(1){
+        width: 47%;
+    }
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span:nth-child(2){
+        width: 33%;
+    }
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span:nth-child(3){
+        width: 30%;
+    }
+}
+
+@media screen and (max-width:300px) { 
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span > p{
+        padding: 0 !important;
+    }
+
+}
+
+@media screen and (max-width:293px) {
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span:nth-child(1){
+        width: 49%;
+    }
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span:nth-child(2){
+        width: 33%;
+    }
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span:nth-child(3){
+        width: 28%;
+    }
+}
+@media screen and (max-width:282px) {
+    .accountsctivityMain > .bill_entry_container > .bill_entry_details_container > .entry_container_top > span {
+        margin-right: 2px;
+    }
+}
+
+
+
+

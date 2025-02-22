@@ -1,0 +1,946 @@
+body {
+    background-color: white;
+}
+
+#preloader_icon {
+    background: white url(../images/preloader.gif) no-repeat center center;
+    background-size: 40%;
+    height: 100vh;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; */
+}
+
+
+/*Top section start here*/
+
+.hrmTopss {
+    position: fixed;
+    /* Make the section fixed */
+    top: 0;
+    /* Position it at the top of the viewport */
+    left: 0;
+    width: 100%;
+
+    background-color: #f0f0f0;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+
+    background-color: blue;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    
+    /* display: none; */
+    button {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        background-color: blue;
+        height: 50px;
+
+        p {
+            color: white;
+            font-size: 18px;
+        }
+    }
+
+}
+
+.hrmTops{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #0d47a1;
+   
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+
+    .hrm_back_btn{
+        width: 50px;
+        height: 50px;
+        padding-left: 5px;
+        border: none;
+        background-color: #0d47a1;
+        img{
+            width: 50%;
+            height: 60%;
+       
+        }
+    }
+
+    .hrm_home_btn{
+        width: 50px;
+        height: 50px;
+        padding-left: 5px;
+        border: none;
+        background-color: #0d47a1;
+        img{
+            width: 50%;
+            height: 60%;
+       
+        }
+    }
+    
+    p{
+        color: white;
+        padding-right: 5px;
+        font-size: 20px;
+        flex: 1;
+        text-align: center;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 500;
+    }
+}
+
+
+.hrmTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #0d47a1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.hrmTop > .hrm_back_btn {
+    width: 50px;
+    height: 50px;
+    padding-left: 5px;
+    border: none;
+    background-color: #0d47a1;
+}
+
+.hrmTop > .hrm_back_btn > img {
+    width: 50%;
+    height: 60%;
+}
+
+.hrmTop > .hrm_home_btn {
+    width: 50px;
+    height: 50px;
+    padding-left: 5px;
+    border: none;
+    background-color: #0d47a1;
+}
+
+.hrmTop > .hrm_home_btn > img {
+    width: 50%;
+    height: 60%;
+}
+
+.hrmTop > p {
+    color: white;
+    padding-right: 5px;
+    font-size: 20px;
+    flex: 1;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+
+/*Top section end here*/
+
+
+
+/*main section start here*/
+.hrmMains {
+   
+    /* Allow it to grow to fill remaining space */
+    overflow-y: auto;
+    /* Allow vertical scrolling */
+
+    /* display: grid;
+   
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px; */
+
+    padding: 1px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+   
+
+    #General_Information{
+        display: flex;
+        flex-direction: column;
+        /* gap: 18px; */
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 2px 2px rgba(0,0,0,0.15), 0 4px 4px rgba(0,0,0,0.15), 0 8px 8px rgba(0,0,0,0.15);;
+        /* padding: 0 0 15px; */
+        background-color: #fff;
+        label{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 100%;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            font-size: 20px;
+            background-color: rgb(0, 89, 255);
+            color: white;
+            font-family: "Poppins", sans-serif;
+        }
+        
+    }
+    #Employee_Statements{
+        display: flex;
+        flex-direction: column;
+        /* gap: 18px; */
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 2px 2px rgba(0,0,0,0.15), 0 4px 4px rgba(0,0,0,0.15), 0 8px 8px rgba(0,0,0,0.15);
+        /* padding: 0 0 15px; */
+        background-color: #fff;
+        label{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 100%;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            font-size: 20px;
+            background-color: rgb(0, 89, 255);
+            color: white;
+            font-family: "Poppins", sans-serif;
+        }
+    }
+    #Employee_Application{
+        display: flex;
+        flex-direction: column;
+        /* gap: 18px; */
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 2px 2px rgba(0,0,0,0.15), 0 4px 4px rgba(0,0,0,0.15), 0 8px 8px rgba(0,0,0,0.15);
+        /* padding: 0 0 15px; */
+        background-color: #fff;
+        label{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 100%;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            font-size: 20px;
+            background-color: rgb(0, 89, 255);
+            color: white;
+            font-family: "Poppins", sans-serif;
+        }
+    }
+    .classified-div{
+        margin: 0 auto;
+        /* width: 95%; */
+        width: 100%;
+       
+        display: grid;
+        height: auto;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        /* background-color: #fff; */
+        background-color: #E3E7E9;
+        
+        padding-top: 10px;
+        padding-bottom: 10px;
+        /* padding: 5px; */
+        /* .odd-div{
+            height: 100%;
+            width: 100%;
+            
+        }
+        .even-div{
+            height: 100%;
+            width: 100%;
+        } */
+        
+    }
+    .classified-div > div{
+        width: 100%;
+        border-radius: 8px;
+        background-color: #E3E7E9;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        button{
+            width: 90%;
+            border-radius: 25px;
+            /* display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: center; */
+            border: none;
+            padding: 0;
+            margin: 0;
+            background-color: #fff;
+            /* background-image: linear-gradient( 173.1deg,  rgba(226,66,249,0.94) 10.2%, rgba(79,147,249,1) 77.3% ); */
+            position: relative;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4), 0px 7px 13px -3px rgba(0, 0, 0, 0.3), inset 0px -3px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
+            
+            #icon_holder{
+                position: absolute;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 35%;
+                background-color: #E0FBE2;
+                border-radius: 50%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                img{
+                    height: 60%;
+                    width: 60%;
+                }
+            }
+           
+            #para_span{
+                height: 50%;
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                p{
+                    font-family: "Roboto", sans-serif;
+                    padding:8px 5px 0;
+                    font-size: 15px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    margin:  8px auto 5px;
+                    /* color: white; */
+                    
+                }
+
+                
+            }
+        }
+     }
+
+
+}
+
+
+.hrmMain {
+    overflow-y: auto; /* Allow vertical scrolling */
+    padding: 1px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* .hrmMain > #General_Information {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px,
+                rgba(0, 0, 0, 0.07) 0px 2px 2px,
+                rgba(0, 0, 0, 0.07) 0px 4px 4px,
+                rgba(0, 0, 0, 0.07) 0px 8px 8px,
+                rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15),
+                0 2px 2px rgba(0, 0, 0, 0.15),
+                0 4px 4px rgba(0, 0, 0, 0.15),
+                0 8px 8px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+}
+
+.hrmMain > #General_Information > label {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+                rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+                rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    font-size: 20px;
+    background-color: rgb(0, 89, 255);
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+.hrmMain > #General_Information > .classified-div {
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    height: auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #E3E7E9;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.hrmMain > #General_Information > .classified-div > div {
+    width: 100%;
+    border-radius: 8px;
+    background-color: #E3E7E9;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.hrmMain > #General_Information > .classified-div > div > button {
+    width: 90%;
+    border-radius: 25px;
+    border: none;
+    padding: 0 0 15px 0;
+    margin: 0;
+    background-color: #fff;
+    position: relative;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
+}
+
+.hrmMain > #General_Information > .classified-div > div > button > #icon_holder {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35%;
+    background-color: #E0FBE2;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.hrmMain > #General_Information > .classified-div > div > button > #icon_holder > img {
+    height: 60%;
+    width: 60%;
+}
+
+.hrmMain > #General_Information > .classified-div > div > button > #para_span {
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hrmMain > #General_Information > .classified-div > div > button > #para_span > p {
+    font-family: "Roboto", sans-serif;
+    padding: 8px 5px 0;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 8px auto 5px;
+} */
+
+
+.hrmMain > .category-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px,
+                rgba(0, 0, 0, 0.07) 0px 2px 2px,
+                rgba(0, 0, 0, 0.07) 0px 4px 4px,
+                rgba(0, 0, 0, 0.07) 0px 8px 8px,
+                rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15),
+                0 2px 2px rgba(0, 0, 0, 0.15),
+                0 4px 4px rgba(0, 0, 0, 0.15),
+                0 8px 8px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+}
+
+.hrmMain > .category-container > label {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+                rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+                rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    font-size: 20px;
+    background-color: rgb(0, 89, 255);
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+.hrmMain > .category-container > .classified-div {
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    height: auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #E3E7E9;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.hrmMain > .category-container > .classified-div > div {
+    width: 100%;
+    border-radius: 8px;
+    background-color: #E3E7E9;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.hrmMain > .category-container > .classified-div > div > button {
+    width: 90%;
+    border-radius: 25px;
+    border: none;
+    padding: 0 0 15px 0;
+    margin: 0;
+    background-color: #fff;
+    position: relative;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
+}
+
+.hrmMain > .category-container > .classified-div > div > button > #icon_holder {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35%;
+    background-color: #E0FBE2;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.hrmMain > .category-container > .classified-div > div > button > #icon_holder > img {
+    height: 60%;
+    width: 60%;
+}
+
+.hrmMain > .category-container > .classified-div > div > button > #para_span {
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hrmMain > .category-container > .classified-div > div > button > #para_span > p {
+    font-family: "Roboto", sans-serif;
+    padding: 8px 5px 0;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 8px auto 5px;
+}
+
+/* 
+.hrmMain > #Employee_Statements {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px,
+                rgba(0, 0, 0, 0.07) 0px 2px 2px,
+                rgba(0, 0, 0, 0.07) 0px 4px 4px,
+                rgba(0, 0, 0, 0.07) 0px 8px 8px,
+                rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15),
+                0 2px 2px rgba(0, 0, 0, 0.15),
+                0 4px 4px rgba(0, 0, 0, 0.15),
+                0 8px 8px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+}
+
+.hrmMain > #Employee_Statements > label {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+                rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+                rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    font-size: 20px;
+    background-color: rgb(0, 89, 255);
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+.hrmMain > #Employee_Statements > .classified-div {
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    height: auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #E3E7E9;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.hrmMain > #Employee_Statements > .classified-div > div {
+    width: 100%;
+    border-radius: 8px;
+    background-color: #E3E7E9;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.hrmMain > #Employee_Statements > .classified-div > div > button {
+    width: 90%;
+    border-radius: 25px;
+    border: none;
+    padding: 0 0 15px 0;
+    margin: 0;
+    background-color: #fff;
+    position: relative;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
+}
+
+.hrmMain > #Employee_Statements > .classified-div > div > button > #icon_holder {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35%;
+    background-color: #E0FBE2;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.hrmMain > #Employee_Statements > .classified-div > div > button > #icon_holder > img {
+    height: 60%;
+    width: 60%;
+}
+
+.hrmMain > #Employee_Statements > .classified-div > div > button > #para_span {
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hrmMain > #Employee_Statements > .classified-div > div > button > #para_span > p {
+    font-family: "Roboto", sans-serif;
+    padding: 8px 5px 0;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 8px auto 5px;
+}
+
+.hrmMain > #Employee_Application {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px,
+                rgba(0, 0, 0, 0.07) 0px 2px 2px,
+                rgba(0, 0, 0, 0.07) 0px 4px 4px,
+                rgba(0, 0, 0, 0.07) 0px 8px 8px,
+                rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15),
+                0 2px 2px rgba(0, 0, 0, 0.15),
+                0 4px 4px rgba(0, 0, 0, 0.15),
+                0 8px 8px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+}
+
+.hrmMain > #Employee_Application > label {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+                rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+                rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    font-size: 20px;
+    background-color: rgb(0, 89, 255);
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+.hrmMain > #Employee_Application > .classified-div {
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    height: auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #E3E7E9;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.hrmMain > #Employee_Application > .classified-div > div {
+    width: 100%;
+    border-radius: 8px;
+    background-color: #E3E7E9;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.hrmMain > #Employee_Application > .classified-div > div > button {
+    width: 90%;
+    border-radius: 25px;
+    border: none;
+    padding: 0 0 15px 0;
+    margin: 0;
+    background-color: #fff;
+    position: relative;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
+}
+
+.hrmMain > #Employee_Application > .classified-div > div > button > #icon_holder {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35%;
+    background-color: #E0FBE2;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.hrmMain > #Employee_Application > .classified-div > div > button > #icon_holder > img {
+    height: 60%;
+    width: 60%;
+}
+
+.hrmMain > #Employee_Application > .classified-div > div > button > #para_span {
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hrmMain > #Employee_Application > .classified-div > div > button > #para_span > p {
+    font-family: "Roboto", sans-serif;
+    padding: 8px 5px 0;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 8px auto 5px;
+} */
+
+
+
+.hrmMain .odd-div {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center; */
+
+}
+
+/*main section end here*/
+@media screen and (max-width:274px) {
+
+    .hrmMain > #Employee_Application > .classified-div > div > button > #icon_holder {top:8px !important;} 
+    .hrmMain > #Employee_Application > .classified-div > div > button > #para_span > p {
+        padding: 0px 5px 0 !important;
+        margin: 3px auto 5px !important;
+        font-size: 10px !important;
+     }
+
+    .hrmMain > #General_Information > .classified-div > div > button > #icon_holder {top:8px !important;} 
+    .hrmMain > #General_Information > .classified-div > div > button > #para_span > p {
+        padding: 0px 5px 0 !important;
+        margin: 3px auto 5px !important;
+        font-size: 10px !important;
+     }
+
+    .hrmMain > #Employee_Statements > .classified-div > div > button > #icon_holder {top:8px !important;} 
+    .hrmMain > #Employee_Statements > .classified-div > div > button > #para_span > p {
+        padding: 0px 5px 0 !important;
+        margin: 3px auto 5px !important;
+        font-size: 10px !important;
+     }
+
+
+}
+
+@media screen and (max-width:324px) {
+    .hrmMain > #Employee_Application > .classified-div > .odd-div > button > #para_span > p,
+    .hrmMain > #Employee_Application > .classified-div > .even-div > button > #para_span > p{
+        font-size: 11px;
+    }
+    .hrmMain > #General_Information > .classified-div > .odd-div > button > #para_span > p,
+    .hrmMain > #General_Information > .classified-div > .even-div > button > #para_span > p{
+        font-size: 11px;
+    }
+    .hrmMain > #Employee_Statements > .classified-div > .odd-div > button > #para_span > p,
+    .hrmMain > #Employee_Statements > .classified-div > .even-div > button > #para_span > p{
+        font-size: 11px;
+    }
+    
+}
+
+
+@media screen and (max-width: 370px) {
+  
+}
+
+@media screen and (max-width: 350px) {
+    .hrmMain > #Employee_Application > label{ font-size:16px; }
+    .hrmMain > #General_Information > label{ font-size:16px; }
+    .hrmMain > #Employee_Statements > label{ font-size:16px; }
+    
+}
+@media screen and (max-width: 576px) {
+  
+}
+@media screen and (max-width: 768px) {
+  
+}
+@media screen and (max-width: 992px) {
+  
+}
+@media screen and (max-width: 1200px) {
+  
+}
+@media screen and (max-width: 1400px) {
+  
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) { 
+
+ }
+
+
+/*If the browser window is 576px or smaller*/
+@media only screen and (max-width: 575px) {
+   
+}
+
+/* x-small devices*/
+@media only screen and (min-width: 576px) {
+   #hrmMain{
+        width: 400px;
+   }
+}
+
+/* Small devices (portrait tablets and large phones, 601px and up) */
+@media only screen and (min-width: 600px) {
+    
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1400px) {
+    
+}

@@ -1,0 +1,41 @@
+<!-- verifyOTP.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify OTP</title>
+  <link rel="stylesheet" href="../assets/css/verifyOTP.css">
+  <link rel="manifest" href="../manifest.json">
+  <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+</style>
+</head>
+<body>
+  <section id="root_section">
+    <section id="top_title">
+      <h1>OTP Verification Page</h1>
+  </section>
+  <section id="form_part">
+    <form id="verifyOTPForm">
+        <h1>Enter the OTP sent to your mobile / Telegram</h1>
+        <span>
+            <label for="otp">OTP:</label>
+            <input  type="number" id="otp" name="otp" required>
+        </span>
+        <button type="submit">Verify OTP</button>
+    </form>
+</section>
+  </section>
+  <script src="../assets/js/verifyOTP.js"></script>
+  <script src="../assets/js/sweetAlert2@11.js"></script>
+</body>
+</html>

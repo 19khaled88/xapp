@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.min.css">
+    <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <title>News</title>
+    <link rel="stylesheet" href="./css/news.css">
+    <script src="./apFetching/fetch.js"></script>
+    
+    <script id="jQuery" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script id="jQueryUi" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link id='jQueryStyle' rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <section class="newsMainSection">
+        <div style="display: none;" id="overlay"></div>
+        <div style="display: none;" id="popUpOverlay"></div>
+        <div style="display: none;" id="popUpDiv"></div>
+        <div style="text-align: center;" class="nav-section" id="nav-section">
+            <button onclick="handleBackBtn(pageName='berich_home',obj={url:`index.html`})">
+                <i class="fa-solid fa-arrow-left fa-lg" style="color:white;"></i>
+            </button>
+            <h1 style="color: #fff; margin: 0; padding: 5px 0px; font-size: 18px;">News</h1>
+            <button onclick="handleBackBtn()">
+                <i class="fa-solid fa-arrow-right-from-bracket fa-lg" style="color:white;"></i>
+            </button>
+        </div>
+        <div style="display: none;" id="loader"><img src="../../images/Cube@1x-1.0s-200px-200px.gif" alt="Loader"></div>
+        <div style="flex: 0 0 auto;" class="btnRow">
+            <div id="paperNews" style="border-bottom: 2px solid #ff0000; color: #ff0000;" onclick="handleBtn('paperNews')">PAPER NEWS</div>
+            <div id="exchangeNews" onclick="handleBtn('exchangeNews')">EXCHANGE NEWS</div>
+        </div> 
+        <div style="flex: 1 1 auto;height: 100%; overflow-y: auto;" id="detailsBody" class="detailsBody">
+            <div style="height: 100%;" class="container">
+                <div style="display: flex; height: 100%;flex-direction: column;" id="paperNewsContent"></div>
+                <div style="display: none; height: 100%;flex-direction: column;" id="exchangeNewsContent"></div>
+            </div>
+            <div style='display: none;' id='showMediaNewsDetails'></div>
+        </div>
+    </section>
+</body>
+<script>
+    window.onload = async function() {
+        await fetchData()
+        executePaperNews()
+        executeExchangeNews()
+    }
+</script>
+<script src="./js/news.js"></script>
+<script src="../../js/navRoot.js"></script>
+</html>

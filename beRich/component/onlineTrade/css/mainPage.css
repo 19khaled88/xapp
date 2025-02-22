@@ -1,0 +1,776 @@
+/*-----------------Utilities-------------------*/
+/* ========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#loadingApi{
+    width: 100vw;
+    height: calc(100vh - 125px);
+    /* background-color: #CFE4EE; */
+    position: absolute;
+    top: calc(0px + 55px);
+    left: 0;
+    /* transform: translate(-50%, -50%); */
+    z-index: 1000;
+    /* height: 80%;
+    width: 100%;
+    position: fixed;
+    top: 56px;
+    background-color: #CFE4EE;
+    z-index: 1001; */
+}
+#loadingApi > .loadingApiBox{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #fff; */
+}
+input[readonly] {
+    background-color: #f0f0f0 !important;
+    opacity: 1;
+    cursor: not-allowed;
+}
+#popUpLogoutDiv{
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: #fff;
+    width: 85%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px #000;
+    text-align: center;
+    z-index: 1055;
+}
+#popUpLogoutDiv > h5{
+    background-color: #000;
+    border-radius: 10px 10px 0px 0px;
+    color: #fff;
+    padding: 8px 0px;
+}
+#popUpLogoutDiv > p {
+    padding: 10px 0px;
+}
+#loginAgain{
+    border-top: 1px solid #000;
+    padding: 5px 0px;
+}
+#loginAgain > p{
+    display: inline-block;
+    border: 1px solid #000;
+    padding: 3px 15px;
+    border-radius: 5px;
+    width: 95%;
+    background-color: #0d6efd;
+    color: #fff;
+}
+#popUpOk{
+    border-top: 1px solid #000;
+    padding: 5px 0px;
+}
+#popUpOk > p{
+    display: inline-block;
+    border: 1px solid #000;
+    padding: 3px 15px;
+    border-radius: 5px;
+    width: 95%;
+    background-color: #0d6efd;
+    color: #fff;
+}
+/* ========================================== */
+.loading-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+  
+  .loading-spinner img {
+    width: 50px; /* Adjust the width as needed */
+  }
+*{
+    
+    word-wrap: break-word;
+    margin: 0px;
+}
+p{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+h1{
+    /* font-size: 22px; */
+    margin: 0px;
+}
+h3{
+    font-size: 16px;
+    margin: 0px;
+    color: #000;
+}
+h5{
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+}
+hr{
+    margin: 0;
+    opacity: 1;
+}
+
+.section-header{
+    height: 80px;
+}
+.appInfo > div{
+    font-size: 1rem;
+}
+.pageHeading{
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+.heading{
+    text-align: center;
+    padding: 10px 0px;
+    background-color: rgb(3, 3, 51);
+    color: #fff;
+    margin-bottom: 5px;
+}
+.heading > h1{
+    font-size: 16px;
+}
+body{
+   
+    background-color: #676a6666;
+    
+}
+.mainSection{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.nav-socialIcon{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+.hr-highlite{
+    border-bottom: 3px solid #000;
+}
+.hideCanvas{
+    visibility: hidden !important;
+}
+/*-----------------Header-------------------*/
+.topSection{
+    flex: 0 0 auto;
+    width: 100%;
+    height: 55px;
+    background-color: #fff;
+    z-index: 1000;
+}
+.logo-01 > img{
+    width: 40px;
+}
+.about01  > h5{
+    font-size: 1rem;
+    font-weight: 500;
+}
+/*-----------------main-------------------*/
+
+.mainContentSection{
+    flex: 1 1 auto;
+    overflow-y: auto;
+    height: 100%;
+}
+.pageHeading  > .heading{
+    text-align: center;
+    padding: 10px 0px;
+    background-color: rgb(3, 3, 51);
+    color: #fff;
+}
+/*-----------------Footer-------------------*/
+.bottomSection{
+    flex: 0 0 auto;
+    z-index: 999;
+    justify-content: space-around;
+    padding: 5px 0px;
+    background-color: #dee2e6;
+    width: 100%;
+    /* box-shadow: 0px -4px 10px -1px #000000a1; */
+
+}
+.innerBottom{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.footer-icon{
+    font-size: 11px;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 5px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+}
+.activeBtn{
+    background-color: #221177 !important;
+    color: #fff;
+}
+
+/*-----------------Support Team-------------------*/
+.support-content > div > a {
+    font-weight: 700;
+    font-size: 16px;
+    color: #007bff;
+}
+.support-slide {
+    z-index: 1010;
+    position: fixed;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    background-color: #f2f2f2;
+    padding: 0px 20px;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2);
+    transition:  0.5s ease-in-out;
+}
+.support-content {
+    text-align: center;
+}
+.supportHeading,
+.sendMessageHeading{
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid #000;
+/* padding-bottom: 5px; */
+}
+.supportHeading > span,
+.supportHeading >img,
+.sendMessageHeading>img{
+    padding-right: 5px;
+    width: 30px;
+    height: auto;
+}
+.supportCall{
+    border-bottom: 1px solid #000;
+    padding: 10px 0px;
+}
+.supportCall > a{
+    font-weight: 500;
+    font-size: 16px;
+    color: #007bff;
+}
+.supportIcon{
+    width: 35px;
+    height: auto;
+}
+.supportIconGroup{
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 1px solid #000;
+}
+.innerIconGroup{
+    display: flex;
+}
+.innerElement{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.innerElement > span{
+    color: #000;
+    font-weight: 700;
+    font-size: 14px;
+}
+/*--------------send message and video chat section---------------*/
+#video_req_mobileContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#video_req_mobileContainer > select{
+    width: 22%;
+    height: 35px;
+    margin-bottom: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #000;
+    /* padding-left: 20px; */
+}
+#video_req_mobileContainer > input{
+    width: 75%;
+    height: 35px;
+    margin-bottom: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding-left: 20px;
+    color: #000;
+}
+.sendMessageBody > form >select {
+    background-color: transparent;
+    height: 35px;
+    border-radius: 5px;
+    width: 100%;
+    color: #000;
+    margin-bottom: 10px;
+}
+.sendMessageSection,
+.videoChatSection{
+    z-index: 1035;
+    height: 100%;
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    transition:  0.5s ease-in-out;
+    overflow-y: auto;
+}
+.sendMessageHeading{
+    background-color: #2e0339;
+}
+.sendMessageHeading > h3{
+    color: white;
+    margin: 0;
+    padding: 10px 0px;
+}
+.sendMessageBody > form{
+    margin-top: 10px;
+}
+.sendMessageBody > form >select{
+    width: 100%;
+    color: #000;
+    margin-bottom: 10px;
+}
+/* .sendMessageBody > form .inputStyle{
+    width: 100%;
+    height: 60px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding-left: 20px;
+} */
+.sendMessageBody > form > input::placeholder,
+.sendMessageBody > form > input{
+    color: #000;
+}
+.sendMessageBody > form > textarea{
+    border-color: #000;
+    background-color: transparent;
+    width: 100%;
+    padding:5px 20px;
+    border-radius: 10px;
+}
+.fileContent{
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fileContent > h5 {
+    font-weight: 700;
+}
+.file-box{
+    width: 100%;
+}
+.file-box > input{
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 5px 5px;
+}
+#file-inputMP{
+    display: none;
+}
+#file-labelMP{
+    width: 100%;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 5px 5px;
+}
+#preview-containerMP {
+    text-align: center;
+    display: none;
+    margin-top: 10px;
+    position: relative;
+  }
+  #undo-button{
+    position: absolute;
+    top: 0;
+    right: -20px;
+    cursor: pointer;
+    color: red;
+  }
+
+  #preview-imageMP {
+    max-width: 100%;
+    max-height: 100px;
+    margin-bottom: 10px;
+  }
+
+  #undo-button  > img {
+    width: 20px;
+  }
+#fileInputMP{
+    color: #000;
+    width: 100%;
+}
+/* .submitSendMsg{
+    margin-top: 35px;
+    margin-bottom: 20px;
+    background-color: green;
+    border-radius: 10px;
+    padding: 10px 0px;
+    width: 100%;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 400;
+} */
+/*-----------------Send Message-------------------*/
+
+.sendMessageHeading{
+    background-color: #2e0339;
+}
+.sendMessageHeading > h3{
+    color: white;
+    margin: 0;
+    padding: 10px 0px;
+}
+.sendMessageBody > form{
+    margin-top: 10px;
+}
+.sendMessageBody > form >select{
+    width: 100%;
+    color: #000;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.sendMessageBody > form .inputStyle{
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    /* background-color: transparent; */
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding-left: 20px;
+    font-size: 14px;
+}
+.sendMessageBody > form > input::placeholder,
+.sendMessageBody > form > input{
+    color: #000;
+}
+.sendMessageBody > form > textarea{
+    border-color: #000;
+    background-color: transparent;
+    width: 100%;
+    padding:5px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.file{
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+.file > span{
+    font-weight: 900;
+    font-size: 20px;
+}
+.fileInputLabel input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+.fileInputLabel span {
+    font-weight: 600;
+    font-size: 25px;
+    /* background-color: #007bff; */
+    color: #000;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.fileInputLabel {
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    color: #000;
+    border: 1px solid #007bff;
+    display: inline-block;
+    padding: 12px 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 100%;
+}
+.fileInputLabel:hover {
+    /* background-color: #007bff; */
+    color: #fff;
+}
+#fileInput{
+    color: #000;
+    width: 100%;
+}
+.submitSendMsg{
+    border-radius: 10px;
+    width: 100%;
+    color: #fff !important;
+    font-size: 14px;
+}
+
+.messageHistorySection {
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+.messageHisHeading{
+    padding: 10px 0px;
+}
+.messageHisHeading > h3 {
+    text-align: center;
+}
+.sent_message_body{
+    max-height: 400px;
+    overflow-y: auto;
+}
+.sent_message_body > .msgBox {
+    border: 1px solid #000;
+    margin: 10px 0px;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.msgBox > .msgBoxItem{
+    display: flex;
+    font-size: 14px;
+}
+.msgBoxItem > p:first-child{
+    width: 40%;
+}
+.msgBoxItem > p:last-child{
+    width: 60%;
+}
+
+/*============Notification Number===========*/
+.notiBox{
+    position: relative;
+}
+#unreadNotiNo{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    background-color: #ff0000;
+    padding: 0px 7px;
+    font-size: 14px;
+    transform: translate(40%, -40%);
+}
+/*-----------------Bootstrap class-------------------*/
+.nav-item > div:active {
+    background-color: #0000ff66;
+}
+.navbar-toggler:focus{
+    box-shadow: none !important;
+}
+.nav-item{
+    font-size: 14px;
+}
+.fixed-top{
+    position: unset !important;
+}
+.bg-light{
+    background-color: #fff !important;
+}
+.navbar-toggler{
+    background-color: #A4B799 !important;
+    padding: 2px 5px;
+}
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+}
+.offcanvas-title {
+    width: 70px;
+    height: 70px;
+}
+.offcanvas-start {
+    width: 80%; 
+}
+.offcanvas-start.show {
+    transform: translateX(0);
+    width: 80%; 
+}
+.offcanvas-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.offcanvas-header > .header_box_1{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.offcanvas-header > .header_box_2{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.offcanvas-header > div:last-child{
+    margin-bottom: 0px;
+}
+/* .loading {
+    background-color: #2e0339;
+    height: 100vh;
+    width: 100vw;
+} */
+#overlay{
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000082;
+    position: absolute;
+    top: 0;
+    z-index: 1008;
+}
+#overlayVideoChat{
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000082;
+    position: absolute;
+    top: 0;
+    z-index: 1036;
+}
+/*=================settings===============*/
+.settings {
+    background-color: #fff;
+    box-shadow: 0px 0px 3px 1px #000;
+    border-radius: 10px;
+    transform: translateY(-50%) translateX(-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80vw;
+    z-index: 1038;
+}
+.settings > .head{
+    background-color: #000;
+    text-align: center;
+    color: #fff;
+    padding: 7px 0px;
+    border-radius: 10px 10px 0px 0px;
+}
+.settings > .footer{
+    border-top: 1px solid #000;
+    padding: 3px 0px;
+    display: flex;
+    justify-content: center;
+}
+.settings > .footer > p{
+    width: 98%;
+    padding: 5px 0px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    text-align: center;
+}
+.settings > .body{
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 5px;
+}
+#reqTimeValidationSpan{
+    margin-bottom: 3px;
+    text-align: right;
+    margin-top: -5px;
+    color: red;
+}
+@keyframes animatedSettings {
+    from {
+        transform: translateY(-100vh) translateX(-40vw);
+    }
+    to {
+        transform: translateY(-50%) translateX(-40vw); 
+    }
+}
+
+/* #overlay{
+    animation: overlay 0.5s linear(0.54 -17.65%, 1 100%);
+}
+@keyframes overlay {
+    from {
+        top: -200vh;
+    }
+    to {
+        top: 0; 
+    }
+} */
+.settings > .container > .box{
+    color: #000;
+    padding: 0;
+}
+.settings > .container > .box > .head{
+    text-align: center;
+    background-color: #000;
+    padding: 5px 0px;
+    color: #fff;
+    border-radius: 10px 10px 0px 0px;
+}
+.settings > .container > .box > .footer{
+    text-align: center;
+    background-color: #fff;
+    padding: 5px 0px;
+    color: #fff;
+    border-radius: 0px 0px 10px 10px;
+}
+.settings > .container > .box > .footer > p{
+    background-color: red;
+    border-radius: 10px;
+    padding: 5px 0px;
+    margin: 0px 5px;
+}
+.settings > .container > .box > .body {
+    font-weight: 700;
+    padding: 10px 0px;
+    text-align: center;
+    background-color: #fff;
+}
+/* ============date picker============ */
+.ui-datepicker select.ui-datepicker-year ,
+.ui-datepicker select.ui-datepicker-month {
+    margin: 0px 4px !important;
+    max-width: 100px !important; /* Adjust the width as needed */
+    max-height: 200px !important; /* Adjust the height as needed */
+}
+.ui-datepicker select.ui-datepicker-year option,
+.ui-datepicker select.ui-datepicker-month option{
+    font-size: 14px !important; /* Adjust the font size as needed */
+    
+}

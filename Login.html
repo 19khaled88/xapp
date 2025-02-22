@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/css/login.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="./assets/css/sweetAlert.css"/>
+
+    <style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+          font-size: 36px; 
+          padding: 5px; 
+        }
+        .swal2-container {
+            width: 100% !important;
+        }
+
+        /* console.log(document.querySelector('swal2-container'))
+                console.log(document.querySelector('swal2-center'))
+                console.log(document.querySelector('swal2-backdrop-show')) */
+    </style>
+</head>
+<body>
+    <div id="container" class="container">
+        <span id="back_btn_container" class="back_btn_container">
+            <button id="back_btn" class="back_btn material-symbols-outlined" >
+                keyboard_return
+            </button>
+            
+        </span>
+        <h1 >Welcome to XAPP</h1>
+        <p>Please sign in below</p>
+        <div class="loginForm" id="loginForm">
+            <span>
+                <label>Phone</label>
+                <p>Use Official Phone Number</p>
+            </span>
+            <input id="cellNbr" type="tel" name="mobile" pattern="[0-9]*" inputmode="numeric" required placeholder="Official Number"/>
+            <button id="signInBtn" class="signInBtn" type="submit">Get OTP</button>
+        </div>
+        <div class="otpForm" id="otpForm">
+            <span>
+                <label>OTP</label>
+                <p>Please Use Sent OTP</p>
+            </span>
+            <input  type="number" id="otp" name="otp" required/>
+            <button id="otpBtn" class="otpBtn" type="submit">Verify OTP</button>
+        </div>
+    </div>
+
+    
+    <script  src="assets/js/checkPlatform.js" defer></script>
+    <script src="assets/js/storageManage.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./assets/js/hash.js"></script>
+    
+    <script>
+        const rootUrl = 'https://api.ctgshop.com';
+
+        async function checkAuthenticationOnLoad(authKey) {
+
+            const currentUrl = window.location.href;
+            const loginPageUrl = 'https://ctgshop.com/xapp/test/login.html';
+            const indexPageUrl = 'https://ctgshop.com/xapp/test/index.html';
+     
+                try {
+                    const getData = await localStorageManager('get','xAppUserInfo');
+                    if(!getData){
+                        if(currentUrl !== loginPageUrl){
+                            window.location.href = loginPageUrl
+                        }
+                    } 
+                    else if(getData && !getData.emPhone && !getData.authid)
+                    {
+                        if(currentUrl !== loginPageUrl){
+                            window.location.href = loginPageUrl;
+                        }
+                        return false;
+                    }
+                    else 
+                    {
+                        if(currentUrl !== indexPageUrl){
+                            window.location.href = indexPageUrl
+                        }
+                        return true;
+                    }
+                }
+                catch (error) 
+                {
+                    if(currentUrl !== loginPageUrl) {
+                        window.location.href = loginPageUrl
+                        
+                    }
+                    return false;
+                }
+            
+        }
+
+        // Call the function on page load
+        window.onload = function () {
+            checkAuthenticationOnLoad('xAppUserInfo');
+        };
+
+
+        // function createHash(data1, data2, data3, data4,data5,data6,data7,data8) {
+        //     // Concatenate data into a single string with a delimiter
+        //     const combinedString = `${data1}|${data2}|${data3}|${data4}|${data5}|${data6}|${data7}|${data8}|`;
+            
+        //     // Encode to Base64
+        //     const encodedString = btoa(combinedString);
+        
+        //     return encodedString;
+        // }
+
+       
+
+        document.getElementById('signInBtn').addEventListener('click', function() {
+            const cellNbrInput = document.getElementById('cellNbr'); // Get the input element
+            const cellNbrValue = cellNbrInput.value; // Get the input value
+            
+            let testMode = true;
+
+            if (cellNbrValue.trim() === "") {
+                    
+                Swal.fire({
+                    icon: "error",
+                    text: "Please enter a valid phone number.",
+                    timer: 3000, // Time in milliseconds (5 seconds)
+                    timerProgressBar: true, // Show progress bar for the timer
+                    willClose: () => {
+                        window.location.href = 'https://ctgshop.com/xapp/test/login.html';
+                    }
+                                    
+                });
+            } 
+            else 
+            {
+
+                const postUrl = `${rootUrl}/xapi/dash_api.ashx?cmd=xlogin`
+
+
+                let mobile = cellNbrValue
+
+                let formData = {};
+
+                let type = String(platformDesObj.type);
+                let webView = String(platformDesObj.isWebView);
+                let platform = String(platformDesObj.platform);
+                let browser = String(platformDesObj.browser);
+                let sHeight = String(platformDesObj.sHeight);
+                let sWidth = String(platformDesObj.sWidth);
+                let dpi = String(platformDesObj.dpi);
+
+            
+
+                // const secretkey = createHash(type,webView,platform,browser,sHeight,sWidth,dpi,)
+                const staticHash = createHash("Android","true","Linux aarch64","Chrome","851","393","2.75",);
+                const dynamicHash = createHash(type,webView,platform,browser,sHeight,sWidth,dpi,);
+                
+                formData.emPhone        = mobile;
+                formData.otp            = "";
+                formData.authid         = "";
+                formData.secretkey      = mobile === '01730444535' ? staticHash : dynamicHash;
+                // formData.secretkey      = secretkey;
+
+
+                let formObject = {};
+                
+                // Iterate through the formData object and add key-value pairs to formObject
+                for (let key in formData) {
+                    if (formData.hasOwnProperty(key)) {
+                    formObject[key] = formData[key].toString();
+                    }
+                }
+
+                var jsonString = JSON.stringify(formObject); // Convert formObject to a JSON string
+
+                var form = new FormData(); // Create a new FormData object
+
+                form.append("postData", jsonString); // Append the JSON string to the FormData object
+
+                fetch(postUrl,{
+                    method:'POST',
+                    body:form
+                })
+                .then(response=>{
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(async data=>{
+                    
+                    if(data.status === true){
+                        const res = data.data; 
+                        
+                        if(res.authid && res.authid.length > 0){
+                            
+                            await localStorageManager('set','xAppUserInfo',{emPhone:mobile,authid:res.authid});
+                            sessionStorageManagerSync.setItem('xAppUserInfo',{emPhone:mobile,authid:res.authid})
+                            const getData = await localStorageManager('get','xAppUserInfo');                            
+                            
+                            // alert(JSON.stringify({'set time storage':getData,'set time session':sessionStorageManagerSync.getItem('xAppUserInfo')}))
+                            if(getData && getData.authid && getData.authid.length > 0 && getData.emPhone && getData.emPhone.length > 0){
+                            
+                                const targetedUrl = `https://ctgshop.com/xapp/test/index.html?identity=${res.emCode}&name=${res.emName}&boss=${res.bossID}&bossName=`
+                                
+                                // window.location.href = 'https://ctgshop.com/xapp/index.html';
+                                window.location.href = targetedUrl;
+                            } 
+                            else 
+                            {
+                            
+                                // document.getElementById('loading').style.display = 'flex'
+                                Swal.fire({
+                                    icon: "error",
+                                    text: data.message,
+                                    timer: 5000, // Time in milliseconds (5 seconds)
+                                    timerProgressBar: true, // Show progress bar for the timer
+                                    willClose: () => { 
+                                        window.location.href = 'https://ctgshop.com/xapp/test/login.html';
+                                        
+                                    }
+                                    
+                                });
+                            }
+
+                        }
+                        else
+                        {
+                            const getLoginForm = document.getElementById('loginForm')
+                            const getOtpForm = document.getElementById('otpForm')
+                            getLoginForm ? getLoginForm.style.display = 'none' : "";
+                            getOtpForm ? getOtpForm.style.display = 'flex' : "";
+
+
+
+                            // Use event delegation to handle dynamically created elements
+                            document.getElementById('otpForm').addEventListener('click', function (event) {
+                                const postUrl = `${rootUrl}/xapi/dash_api.ashx?cmd=xlogin`
+                                
+
+                                if (event.target && event.target.id === 'otpBtn') {
+                                    event.preventDefault(); // Prevent default form submission
+                                    const otpInput = document.getElementById('otp');
+                                    const otpValue = otpInput.value;
+                                    
+                                    // const cellNbrInput = document.getElementById('cellNbr');
+                                    // const cellNbrValue = cellNbrInput.value;
+
+                                    let newFormData ={}
+
+                                    newFormData.emPhone = mobile;
+                                    newFormData.otp = otpValue;
+                                    newFormData.authid = "";
+                                    newFormData.secretkey = secretkey;
+
+                                    
+                                    let formObject = {};
+
+                                    // Iterate through the formData object and add key-value pairs to formObject
+                                    for (let key in newFormData) {
+                                        if (newFormData.hasOwnProperty(key)) {
+                                        formObject[key] = newFormData[key].toString();
+                                        }
+                                    }
+
+                                    var jsonString = JSON.stringify(formObject); // Convert formObject to a JSON string
+
+                                    var form = new FormData(); // Create a new FormData object
+
+                                    form.append("postData", jsonString); // Append the JSON string to the FormData object
+
+
+                                    fetch(postUrl,{
+                                        method:'POST',
+                                        body:form
+                                    })
+                                    .then(response=>{
+                                        if (!response.ok) {
+                                            throw new Error('Network response was not ok ' + response.statusText);
+                                        }
+                                        return response.json();
+                                    })
+                                    .then(data=>{
+                                        
+                                        if (data.status === true && data.data && data.data.authid && data.data.authid.length > 0) {
+                                            // Create the user info object
+                                            const x_App_User_Info = {
+                                                emPhone: mobile,
+                                                authid: data.data.authid,
+                                            };
+                                        
+                                            // Store the user info in localStorage as a JSON string
+                                            localStorage.setItem('xAppUserInfo', JSON.stringify(x_App_User_Info));
+                                        
+                                            // Store session info in sessionStorage as a JSON string
+                                            sessionStorage.setItem('xAppUsersession', JSON.stringify({
+                                                bossId: data.data.bossID,
+                                                emCode: data.data.emCode,
+                                                emName: data.data.emName
+                                            }));
+                                        
+                                            // Retrieve the stored user info from localStorage
+                                            const storedXAppUserInfo = localStorage.getItem('xAppUserInfo');                  
+                                        
+                                            // Parse the stored JSON string back into an object
+                                            const parsedXAppUserInfo = JSON.parse(storedXAppUserInfo);
+                                        
+                                            // Compare the parsed object with the original object
+                                            if (parsedXAppUserInfo.authid === x_App_User_Info.authid && parsedXAppUserInfo.emPhone === x_App_User_Info.emPhone) {
+                                                
+                                                // Redirect to the desired page if the stored data is correct
+                                                window.location.href = 'https://ctgshop.com/xapp/test/index.html';
+                                            } else {
+                                                // Log an error if the data doesn't match
+                                                Swal.fire({
+                                                    text: "State not created",
+                                                    icon: "warning",
+                                                    timer: 20000, // Time in milliseconds (5 seconds)
+                                                    timerProgressBar: true, // Show progress bar for the timer
+                                                    willClose: () => {
+                                                        // Redirect when the dialog closes after the timer
+                                                        window.location.href = 'https://ctgshop.com/xapp/test/login.html';
+                                                    }
+                                                });
+                                            }
+                                        } 
+                                        else 
+                                        {
+                                            // console.log('authid does not exist or is empty.');
+                                            Swal.fire({
+                                                text: "Auth Id not exist",
+                                                icon: "warning",
+                                                timer: 20000, // Time in milliseconds (5 seconds)
+                                                timerProgressBar: true, // Show progress bar for the timer
+                                                willClose: () => {
+                                                    // Redirect when the dialog closes after the timer
+                                                    window.location.href = 'https://ctgshop.com/xapp/test/login.html';
+                                                }
+                                            });
+                                        }
+                                    })
+                                    .catch(error=>{
+                                        Swal.fire({
+                                            text: "Connection error!",
+                                            icon: "warning",
+                                            timer: 20000, // Time in milliseconds (5 seconds)
+                                            timerProgressBar: true, // Show progress bar for the timer
+                                            willClose: () => {
+                                                // Redirect when the dialog closes after the timer
+                                                window.location.href = 'https://ctgshop.com/xapp/test/login.html';
+                                            }
+                                        });
+                                    });
+                            
+                            
+                                }
+                            });
+                        }
+                    } 
+                    else if(data.status === false && data.message === 'User already has a device registered. Please contact with HR to unregister old device.')
+                    {
+                        // document.getElementById('loading').style.display = 'flex'
+                        Swal.fire({
+                            icon: "error",
+                            text: data.message,
+                            timer: 5000, // Time in milliseconds (5 seconds)
+                            timerProgressBar: true, // Show progress bar for the timer
+                            willClose: () => {
+                                window.location.href = 'https://ctgshop.com/xapp/test/login.html';
+                            }
+                            
+                        });    
+                    } 
+                    else if(data.status === false && data.message === 'User not found')
+                    {
+                        
+                        document.getElementById('loading').style.display = 'flex'
+                        Swal.fire({
+                            icon: "error",
+                            text: data.message,
+                            timer: 5000, // Time in milliseconds (5 seconds)
+                            timerProgressBar: true, // Show progress bar for the timer
+                            willClose: () => {
+                                window.location.href = 'https://ctgshop.com/xapp/test/login.html';
+                            }
+                        });
+                    }
+                    else if(data.status === false)
+                    {
+                        
+                        // document.getElementById('loading').style.display = 'flex'
+                        Swal.fire({
+                            icon: "error",
+                            text: data.message,
+                            timer: 155000, 
+                            timerProgressBar: true, 
+                            
+                            willClose: () => {
+                                window.location.href = 'https://ctgshop.com/xapp/test/';
+                                // document.getElementById('loading').style.display = 'flex'
+                            }
+                        });
+                    }
+
+
+                    
+                })
+                .catch((error)=>{
+                    // document.getElementById('loading').style.display = 'flex'
+                    
+                        Swal.fire({
+                            icon: "error",
+                            text: data.message,
+                            timer: 5000, // Time in milliseconds (5 seconds)
+                            timerProgressBar: true, // Show progress bar for the timer
+                            willClose: () => {
+                                // window.location.href = 'https://www.google.com/';
+                            }
+                        });
+                    
+                    }) 
+            
+            }
+        });              
+        
+
+
+        document.getElementById('back_btn').addEventListener('click',function(){
+            
+            const getLoginForm = document.getElementById('loginForm')
+            const getOtpForm = document.getElementById('otpForm')
+                    
+            const loginFormDisplay = window.getComputedStyle(getLoginForm).display;
+            const otpFormDisplay = window.getComputedStyle(getOtpForm).display;
+
+            
+            if(otpFormDisplay === 'flex'){
+                getOtpForm.style.display = 'none'
+                getLoginForm.style.display = 'flex'
+                
+            }
+            
+            // swal2-container swal2-center swal2-backdrop-show
+                    
+        })
+
+        
+    </script>
+
+
+<!-- {"emPhone":"01730444535","otp":"","authid":"20240915143734954_94cf7470384a489db127340efd1b657a","secretkey":"QW5kcm9pZHxmYWxzZXxMaW51eCBhcm12ODF8Q2hyb21lfDg1MXwzOTN8Mi43NXx1bmRlZmluZWR8"} -->
+</body>
+</html>

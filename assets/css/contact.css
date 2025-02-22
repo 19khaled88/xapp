@@ -1,0 +1,1857 @@
+body {
+    background-color: #fff;
+    margin: 0;
+}
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.contactTops {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #28282b;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+    width: 100vw;
+
+    .backBtns {
+        display: flex;
+        /* display: none; */
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(13, 212, 227, 0.93);
+        height: 30px;
+        width: 100%;
+        .contact_back_btn{
+            background-color: transparent;
+            border: none;
+            
+        }
+        
+    }
+
+    .backBtn{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        background-color: #0d47a1;
+       
+    
+        /* position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999; */
+    
+        button{
+            width: 50px;
+            height: 50px;
+            padding-left: 5px;
+            border: none;
+            background-color: #0d47a1;
+            img{
+                width: 50%;
+                height: 60%;
+           
+            }
+        }
+        p{
+            color: white;
+            padding-right: 5px;
+            font-size: 20px;
+            flex: 1;
+            text-align: center;
+            font-family: 'Roboto',sans-serif;
+            font-weight: 500;
+        }
+    }
+
+    .search-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 40px;
+        width: 100%;
+        gap: 1px;
+        #inputSpace {
+            height: 98%;
+            width: 80%;
+            border:none;
+            color: white;
+            input {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                background-color: white;
+                color: black;
+                font-size: 15px;
+                padding-left: 5px;
+                border: none;
+            }
+        }
+
+        #searchBtn {
+            width: 20%;
+            height: 100%;
+            /* border:2px solid gray; */
+            #empSearchButton {
+                height: 100%;
+                width: 100%;
+                background-color: #08c531;
+                border: none;
+                i{
+                    color: white;
+                }
+            }
+        }
+
+    }
+
+    .filter-container {
+        display: flex;
+        flex-direction: row;
+        gap: 2px;
+        padding: 1px 2px 4px;
+        width: 98%;
+        
+       
+        .filterBtn{
+            width: 14.3%;
+            /* height: 14.3%; */
+            button {
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                h1 {
+                    margin: 0;
+                }
+
+                label {
+                    font-size: 8px;
+                } 
+                img{
+                    width: 80%;
+                    height: 80%;
+                }
+            }
+        }
+    }
+}
+
+
+.contactTop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #28282b;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+    width: 100vw;
+}
+.contactTop > .backBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #0d47a1;
+}
+.contactTop > .backBtn > button{
+    width: 50px;
+    height: 50px;
+    padding-left: 5px;
+    border: none;
+    background-color: #0d47a1;
+}
+.contactTop > .backBtn > button > img{
+    width: 50%;
+    height: 60%;
+}
+.contactTop > .backBtn > p{
+    color: white;
+    padding-right: 5px;
+    font-size: 20px;
+    flex: 1;
+    text-align: center;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 500;
+}
+.contactTop > .search-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    
+}
+.contactTop > .search-container > #inputSpace{
+    height: 98%;
+    flex: 1;
+    border:none;
+    outline: none;
+    color: white;
+    /* margin-right: 2px;
+    padding-left: 3px; */
+}
+.contactTop > .search-container > #inputSpace > input{
+    height: 100%;
+    width: 98%;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: black;
+    font-size: 15px;
+    padding-left: 4px;
+    border: none;
+    margin-right: 2px;
+}
+.contactTop > .search-container > #searchBtn {
+    width: 16%;
+    height: 100%;
+    
+    /* border:2px solid gray; */
+    margin-right: 2px;
+}
+.contactTop > .search-container > #searchBtn > #empSearchButton {
+    height: 100%;
+    width: 100%;
+    background-color: #08c531;
+    border: none;
+    
+}
+.contactTop > .search-container > #searchBtn > #empSearchButton >i{
+    color: white;
+}
+
+
+
+
+.contactTop > .search-container > #filter{
+    height: 100%;
+    width: 15%;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end !important;
+    align-items: center;
+}
+.contactTop > .search-container > #filter > .material-symbols-outlined{
+    width: 100%;
+    height: 98%;
+    border: none;
+    outline: none;
+    font-size: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    float: right;
+    align-items: center;
+    color: white;
+    background-color: #08c531; /* Replace with desired color */
+}
+.contactTop > .search-container > #filter > .extended-filter-content > .operationDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.contactTop > .search-container > #filter > .extended-filter-content > .operationDiv > .close-title{
+    width: fit-content;
+    color: white;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    line-height: normal;
+    background-color: #a8a8ad4a;
+}
+.contactTop > .search-container > #filter > .extended-filter-content > .confirmButton{
+    background-color: #08c531;
+    color: white;
+    cursor: pointer;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 100%;
+    font-size: 22px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin:20px auto 12px;
+    border-radius: 50px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+}
+.contactTop > .search-container > #filter > .extended-filter-content > .content > .close-content,
+.contactTop > .search-container > #filter > .extended-filter-content > .content.active > .close-content {
+    width: fit-content;
+    padding: 10px 30px;
+    background-color: #CC2B52;
+    color: white;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    margin-bottom:  3px;
+}
+.contactTop > .search-container > #filter > .extended-filter-content > .content.active > div:nth-child(1) > span:nth-child(1) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.hrmActivityMain > .contactTop > .search-container > #filter > .extended-filter-content > .content.active > div:nth-child(1) > span:nth-child(1) > p {
+    margin: 0;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+.contactTop > .search-container > #filter > .extended-filter-content > .content.active > div:nth-child(1) > span:nth-child(1) > button {
+    width: fit-content;
+    border-radius: 50px;
+    line-height: normal;
+    background-color: #a8a8ad4a;
+    color: black;
+}
+.contactTop > .search-container > #filter > .extended-filter-content >.collapsible {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin:0 auto 10px;
+    border-radius: 10px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+}
+.contactTop > .search-container > #filter > .extended-filter-content >.content {
+    padding: 0 18px;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);; 
+    color: white;
+    /* padding: 15px; */
+    margin: 2px 0;
+    /* border: 1px solid rgb(221, 221, 221); */
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+    position: fixed; 
+    right: 0;
+    left: 0;
+    transition: top 0.3s ease; 
+    /* top: -50px; */
+    display: none; /* Initially hidden */
+}
+.contactTop > .search-container > #filter > .extended-filter-content >.content > .content_overlay {
+    padding: 0 18px;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: rgb(0,0,0,0.5);; 
+    color: white;
+    padding: 15px;
+    margin: 2px 0;
+    
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+    position: fixed; 
+    right: 0;
+    left: 0;
+    transition: top 0.3s ease; 
+    display: none; /* Initially hidden */
+}
+.contactTop > .search-container > #filter > .extended-filter-content >.content.active{
+    display: block !important;
+}
+.contactTop > .search-container > #filter > .extended-filter-content >.content.active > div:nth-child(1) > .checkbox_container{
+    display: flex;
+    flex-direction: column;
+    padding-top: 3px;
+    width: 100%;
+    overflow: auto;
+    justify-content: flex-start;
+}
+.contactTop > .search-container > #filter > .extended-filter-content >.content.active > div:nth-child(1) > .checkbox_container > span {
+    width: 99%;
+    padding: 5px 0;
+    border: 1px solid gray;
+    margin: 0 auto 4px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+}
+.contactTop > .search-container > #filter > .extended-filter-content >.content.active > div:nth-child(1) > .checkbox_container > span >input{
+    margin-right: 10px;
+    margin-left: 5px;
+}
+.contactTop > .search-container > #filter > .extended-filter-content >.content.active > div:nth-child(1) > .checkbox_container > span > label {
+    color: black;
+}
+.contactTop > .search-container > #filter > .extended-filter-content >.content.active > div:nth-child(2) > span{
+    padding: 5px 0;
+}
+.contactTop > .search-container > #filter > .extended-filter-content >.content >  div {
+    display: flex;
+    flex-direction: column;
+}
+.contactTop > .search-container > #filter > .extended-filter-content >.content > div > span{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+.contactTop > .search-container > #filter > .extended-filter-content >.content > div > span:nth-child(n + 2){
+    padding: 4px 0;
+}
+.contactTop > .search-container > #filter > .extended-filter-content >.content > div > span > label{
+    color: black;
+    padding-left: 5px;
+}
+.contactTop > .search-container > #filter > .extended-filter-content {
+    background-color: #FFFFFF; 
+    color: white;
+    padding: 15px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+    position: fixed; 
+    right: 0;
+    left: 0;
+    transition: top 0.3s ease; 
+    top: -50px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+     /* margin: 2px 0; */
+}
+.contactTop > .search-container > #filter > .extended-filter-content.active {
+    transition: top 0.3s ease; 
+    right: 0;
+
+}
+.contactTop > .search-container > #filter > .extended-filter-content > .content.active {
+    display: block; /* Show when active */
+}
+.contactTop > .search-container > #filter > .filter_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    display: none;
+
+    transition: top 0.3s ease;
+;
+}
+
+
+
+
+.contactTop > .search-container > #extendedFilter {
+    height: 100%;
+    width: 15%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end !important;
+    align-items: center;
+    
+}
+.contactTop > .search-container > #extendedFilter > .extended-filter-content,
+.contactTop > .filter-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 2px 4px;
+    width: 98%;
+    
+}
+.contactTop > .filter-container > .filterBtn {
+    width: 50px !important;
+    margin-right: 3px;
+    height: 50px !important;
+} 
+.contactTop > .filter-container > .filterBtn:last-child{
+    margin-right: 0;
+}
+.contactTop > .filter-container > .filterBtn > button {
+    padding: 0;
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+}
+.contactTop > .filter-container > .filterBtn > button > h1 {
+    margin: 0;
+}
+.contactTop > .filter-container > .filterBtn > button > label {
+    font-size: 8px;
+} 
+.contactTop > .filter-container > .filterBtn > button > img{
+    width: 80%;
+    height: 80%;
+}
+
+
+
+
+.contactsMains {
+
+    padding-top: 32%;
+    
+    .goBack{
+        display: flex;
+        
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        height: 35px;
+        width: 100%;
+        border: none;
+        background-color: rgb(19, 86, 195);
+        img{
+            width: 18px;
+            height: 15px;
+        }
+        p{
+            margin: 0;
+            color: white;
+        }
+
+        display: none;
+    }
+    .individual-employee-container {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100vw;
+
+        .contentContainer {
+            /* position: relative; */
+            top: 0;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            background-color: gray;
+            width: 100vw;
+            max-height: 70vh;
+            overflow-y: auto;
+            /* padding: 10px; */
+
+            label {
+                width: 100%;
+                font-size: 14px;
+                color: white;
+                padding: 5px;
+            }
+        }
+
+        #single_emps {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-top: 10px;
+            padding-bottom:10px;
+            width: 100%;
+            .employee {
+                display: flex;
+                flex-direction: row;
+                gap: 5px;
+                box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+                margin-left: 5px;
+                margin-right: 5px;
+                border-radius: 10px;
+                .leftView  {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    flex: 1;
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                    span {
+                        color: black;
+                        width: 20%;
+                        text-align: center;
+                    }
+
+                    #image_icon{
+                        width: 80%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 5px;
+                        height: 100%;
+                        #connect{
+                            display: flex;
+                            flex-direction: row;
+                            gap: 8px;
+                            button{
+                                padding: 0;
+                                border: none;
+                                background-color: white;
+                                img{
+                                    width: 100%;
+                                    height: 95%;
+                                }
+                            }
+                        }
+                        img {
+                            max-width: 100%;
+                            max-height: 100%;
+                            border-radius: 8px;
+                            flex: 1;
+                        }
+                        .lazy{
+                            display: none;
+                        }
+                        span{
+                            width: 100%;
+                            flex: 1;
+                        }
+                    }
+                }
+
+                .rightView {
+                    flex: 2;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 3px;
+                    color: black;
+
+                    .emName {
+                        font-size: 15px;
+                    }
+
+                    p {
+                        margin: 0;
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            /* .employee {
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+                padding: 0 5px 0 5px;
+                .leftView{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    flex: 1;
+                    gap: 2px;
+                    span{
+                        color: white;
+                        width: 22%;
+                    }
+                    img {
+                        width: 78%;
+                        height: 100%;
+                    }
+                }
+                .rightView{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    flex: 2;
+                    .emName{
+                        font-size: 15px;
+                        font-weight: bold;
+                    }
+                    p {
+                        font-size: 11px;
+                        color: white;
+                        margin: 0;
+                    }
+                }
+
+                
+
+                
+            } */
+        }
+
+        #single_emp{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-top: 10px;
+            padding-bottom:10px;
+            width: 100%;
+        }
+        #single_emp > .employee {
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-radius: 10px;
+        }
+        #single_emp > .employee > .leftView{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        #single_emp > .employee > .leftView > span {
+            color: black;
+            width: 20%;
+            text-align: center;
+        }
+        #single_emp > .employee > .leftView > #image_icon{
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5px;
+            height: 100%;
+        }
+        #single_emp > .employee > .leftView > #image_icon > #connect {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+        }
+        #single_emp > .employee > .leftView > #image_icon > #connect > button{
+            padding: 0;
+            border: none;
+            background-color: white;
+            
+        }
+        #single_emp > .employee > .leftView > #image_icon > #connect > button > img{
+            width: 100%;
+            height: 95%;
+        }
+        #single_emp > .employee > .leftView > #image_icon > img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+            flex: 1;
+        }
+        #single_emp > .employee > .leftView > #image_icon > .lazy{
+            display: none;
+        }
+        #single_emp > .employee > .leftView > #image_icon > span{
+            width: 100%;
+            flex: 1;
+        }
+        #single_emp > .employee > .rightView {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 3px;
+            color: black;
+
+            
+        }
+        #single_emp > .employee > .rightView >.emName {
+            font-size: 15px;
+        }
+        #single_emp > .employee > .rightView > p {
+            margin: 0;
+            font-size: 12px;
+        }
+
+
+
+
+
+        #double_column {
+            position: absolute;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 12px;
+            column-gap: 8px;
+            padding: 5px;
+            min-width: 97%;
+            .employee {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+                box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+                border-radius: 10px;
+                .topView {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 2px;
+                    align-items: center;
+                    flex: 0 0 10%;
+                    width: 100%;
+                    
+                    p {
+                        margin: 0;
+                        font-size: 12px;
+                        color: black;
+                        height: 30px;
+                        width: 100%;
+                        text-align: center;
+                        padding-top: 5px;
+                    }
+                }
+
+                .buttomView {
+                    flex: 1;
+                    width: 100%;
+                    /* height: 100%; */
+                    height: 30vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 5px;
+
+                    #imgDiv{
+                        /* display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        align-items: center; */
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        flex: 1;
+                        align-items: center;
+                        img{
+                            width: 90%;
+                            border-radius: 10px;
+                            /* height: auto; */
+                            /* height: 30vh; */
+                        }
+                    }
+
+                    #connect{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        gap: 15px;
+                        height: 40px;
+                        width: 100%;
+                        padding-bottom: 3px;
+                        padding-top: 5px;
+                        button{
+                            padding: 0;
+                            border: none;
+                            background-color: white;
+                            img {
+                                width: 35px;
+                                height: 35px;
+                            }
+                        }
+                    }
+                   
+                  
+                }
+            }
+        }
+
+        #single_column {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-top: 10px;
+            padding-bottom:10px;
+            width: 100%;
+            .employee {
+                display: flex;
+                flex-direction: row;
+                gap: 5px;
+
+                box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+                margin-left: 5px;
+                margin-right: 5px;
+                border-radius: 10px;
+
+                .leftView {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    flex: 1;
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+
+                    #image_icon{
+                        width: 80%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 5px;
+                        height: 100%;
+                        #connect{
+                            display: flex;
+                            flex-direction: row;
+                            gap: 8px;
+                            button{
+                                padding: 0;
+                                border: none;
+                                background-color: white;
+                                img{
+                                    width: 100%;
+                                    height: 95%;
+                                }
+                            }
+                        }
+                        img {
+                            max-width: 100%;
+                            max-height: 100%;
+                            border-radius: 8px;
+                            flex: 1;
+                        }
+                        span{
+                            width: 100%;
+                            flex: 1;
+                        }
+                    }
+
+                    span {
+                        color: black;
+                        width: 20%;
+                        text-align: center;
+                    }
+
+                    
+                }
+
+                .rightView {
+                    flex: 2;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    color: black;
+
+                    .emName {
+                        font-size: 15px;
+                    }
+
+                    p {
+                        margin: 0;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+
+        #emp-details {
+
+            .topDetails {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+                color: white;
+                padding-bottom: 15px;
+                background-color: gray;
+
+                .em_image {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding-top: 20px;
+                    img {
+                        width: 180px;
+                        height: 180px;
+                        border-radius: 50%;
+                    }
+                }
+
+                #connect {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 5px;
+
+                    button {
+                        width: 40px;
+                        height: 40px;
+                        border: none;
+                        border-radius: 50%;
+                        /* width: 40px;
+                        height: 40px;
+                        padding: 5px;
+                        border: none;
+                        border-radius: 50%;
+                        cursor: pointer;
+                        color: white; */
+                        position: relative;
+                        background-color: white;
+                        cursor: pointer;
+                        img {
+                            width: 70%;
+                            height: 70%;
+                            position: absolute;
+                            top: 50;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+
+                            
+                        }
+                    }
+
+
+                }
+            }
+
+            .bottomDetils {
+                padding: 15px 5px 15px;
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+
+                span {
+                    display: flex;
+                    flex-direction: row;
+                    font-size: 13px;
+
+                    label {
+                        
+                        width: 35%;
+                        font-size: 14px;
+                        color: black;
+                        font-weight: 600;
+                    }
+
+                    p {
+                        margin: 0;
+                        color: gray;
+                        width: 65%;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        #image_icon{
+
+        }
+    }
+}
+
+
+
+
+.contactsMain {
+    padding-top: 32%;
+}
+
+.contactsMain > .goBack {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: 35px;
+    width: 100%;
+    border: none;
+    background-color: rgb(19, 86, 195);
+    display: none;
+}
+.contactsMain > .goBack > img {
+    width: 18px;
+    height: 15px;
+}
+.contactsMain > .goBack > p {
+    margin: 0;
+    color: white;
+}
+.contactsMain > .individual-employee-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 99vw;
+}
+.contactsMain > .individual-employee-container > .contentContainer {
+    top: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    background-color: gray;
+    width: 100vw;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+.contactsMain > .individual-employee-container > .contentContainer > label {
+    width: 100%;
+    font-size: 14px;
+    color: white;
+    padding: 5px;
+}
+.contactsMain > .individual-employee-container > #single_emp {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.contactsMain > .individual-employee-container > #single_emp > .employee {
+    display: flex;
+    flex-direction: row;
+    
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+}
+.contactsMain > .individual-employee-container > #single_emp > .employee:last-child{
+    margin-bottom: 0;
+}
+/* Left view styling */
+.contactsMain > .individual-employee-container > #single_emp > .employee > .leftView {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.contactsMain > .individual-employee-container > #single_emp > .employee > .leftView > span {
+    color: black;
+    width: 20%;
+    text-align: center;
+}
+
+/* Image icon styling */
+.contactsMain > .individual-employee-container > #single_emp > .employee > .leftView > #image_icon {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+    height: 100%;
+}
+.contactsMain > .individual-employee-container > #single_emp > .employee > .leftView > #image_icon > #connect {
+    display: flex;
+    flex-direction: row;
+    
+}
+.contactsMain > .individual-employee-container > #single_emp > .employee > .leftView > #image_icon > #connect > button {
+    padding: 0;
+    border: none;
+    background-color: white;
+    margin-right: 5px;
+}
+.contactsMain > .individual-employee-container > #single_emp > .employee > .leftView > #image_icon > #connect > button:last-child{
+    margin-right: 0;
+}
+.contactsMain > .individual-employee-container > #single_emp > .employee > .leftView > #image_icon > #connect > button > img {
+    width: 100%;
+    height: 95%;
+}
+.contactsMain > .individual-employee-container > #single_emp > .employee > .leftView > #image_icon > img {
+    max-width: 100%;
+    max-height: 80%;
+    border-radius: 8px;
+    flex: 1;
+    margin-bottom: 8px;
+}
+.contactsMain > .individual-employee-container > #single_emp > .employee > .leftView > #image_icon > .lazy {
+    display: none;
+}
+.contactsMain > .individual-employee-container > #single_emp > .employee > .leftView > #image_icon > span {
+    width: fit-content !important;
+    flex: 1;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+/* Right view styling */
+.contactsMain > .individual-employee-container > #single_emp > .employee > .rightView {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    color: black;
+}
+.contactsMain > .individual-employee-container > #single_emp > .employee > .rightView > .emName {
+    font-size: 15px;
+}
+.contactsMain > .individual-employee-container > #single_emp > .employee > .rightView > p {
+    margin: 0;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+.contactsMain > .individual-employee-container > #single_emp > .employee > .rightView > p:last-child{
+    margin-bottom: 0;
+}
+
+ 
+.contactsMain > .individual-employee-container > #double_column {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 12px;
+    column-gap: 8px;
+    padding: 5px;
+    min-width: 97%;
+}
+.contactsMain > .individual-employee-container > #double_column > .employee {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px, rgba(14, 30, 37, 0.32) 0px 2px 16px;
+    border-radius: 10px;
+}
+.contactsMain > .individual-employee-container > #double_column > .employee > .topView {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    align-items: center;
+    flex: 0 0 10%;
+    width: 100%;
+}
+.contactsMain > .individual-employee-container > #double_column > .employee > .topView > p {
+    margin: 0;
+    font-size: 12px;
+    color: black;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    padding-top: 5px;
+}
+.contactsMain > .individual-employee-container > #double_column > .employee > .buttomView {
+    flex: 1;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+.contactsMain > .individual-employee-container > #double_column > .employee > .buttomView > #imgDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    align-items: center;
+}
+.contactsMain > .individual-employee-container > #double_column > .employee > .buttomView > #imgDiv > img {
+    width: 90%;
+    border-radius: 10px;
+}
+.contactsMain > .individual-employee-container > #double_column > .employee > .buttomView > #connect {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    height: 40px;
+    width: 100%;
+    padding-bottom: 3px;
+    padding-top: 5px;
+}
+.contactsMain > .individual-employee-container > #double_column > .employee > .buttomView > #connect > button {
+    padding: 0;
+    border: none;
+    background-color: white;
+}
+.contactsMain > .individual-employee-container > #double_column > .employee > .buttomView > #connect > button > img {
+    width: 30px;
+    height: 30px;
+}
+
+.contactsMain > .individual-employee-container > #single_column  {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.contactsMain > .individual-employee-container > #single_column > .employee {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+.contactsMain > .individual-employee-container > #single_column > .employee > .leftView {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.contactsMain > .individual-employee-container > #single_column > .employee > .leftView > span {
+    color: black;
+    width: 20%;
+    text-align: center;
+}
+.contactsMain > .individual-employee-container > #single_column > .employee > .leftView > #image_icon {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+}
+.contactsMain > .individual-employee-container > #single_column > .employee > .leftView > #image_icon > #connect {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    padding-top: 8px;
+}
+.contactsMain > .individual-employee-container > #single_column > .employee > .leftView > #image_icon > #connect > button {
+    padding: 0;
+    border: none;
+    background-color: white;
+}
+.contactsMain > .individual-employee-container > #single_column > .employee > .leftView > #image_icon > #connect > button > img {
+    width: 100%;
+    height: 95%;
+}
+.contactsMain > .individual-employee-container > #single_column > .employee > .leftView > #image_icon > img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+    flex: 1;
+}
+.contactsMain > .individual-employee-container > #single_column > .employee > .leftView > #image_icon > span {
+    width: 100%;
+    flex: 1;
+
+   
+}
+.contactsMain > .individual-employee-container > #single_column > .employee > .leftView > span {
+    color: black;
+    width: 20%;
+    text-align: center;
+}
+.contactsMain > .individual-employee-container > #single_column > .employee > .leftView > span > i {
+
+}
+.contactsMain > .individual-employee-container > #single_column > .employee > .rightView {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+}
+.contactsMain > .individual-employee-container > #single_column > .employee > .rightView > .emName {
+    font-size: 15px;
+}
+.contactsMain > .individual-employee-container > #single_column > .employee > .rightView > p {
+    margin: 0;
+    font-size: 12px;
+}
+
+
+.contactsMain > .individual-employee-container > #emp-details > .topDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    padding-bottom: 15px;
+    background-color: gray;
+}
+.contactsMain > .individual-employee-container > #emp-details > .topDetails > .em_image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+.contactsMain > .individual-employee-container > #emp-details > .topDetails > .em_image > img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+}
+.contactsMain > .individual-employee-container > #emp-details > .topDetails > #connect {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.contactsMain > .individual-employee-container > #emp-details > .topDetails > #connect > button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    position: relative;
+    background-color: white;
+    cursor: pointer;
+}
+.contactsMain > .individual-employee-container > #emp-details > .topDetails > #connect > button > img {
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.contactsMain > .individual-employee-container > #emp-details > .bottomDetils {
+    padding: 15px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.contactsMain > .individual-employee-container > #emp-details > .bottomDetils > span {
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+}
+.contactsMain > .individual-employee-container > #emp-details > .bottomDetils > span > label {
+    width: 35%;
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+}
+.contactsMain > .individual-employee-container > #emp-details > .bottomDetils > span > p {
+    margin: 0;
+    color: gray;
+    width: 65%;
+    font-size: 14px;
+}
+
+
+/* Add similar styles for other nested elements like #double_column, #single_column, #emp-details, etc. */
+
+
+
+
+
+
+/* Initially hide the image */
+#image_icon img {
+    visibility: hidden;
+}
+/* Show spinner when loading */
+#image_icon.loading .spin {
+    display: block;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+/* Hide spinner when loaded */
+#image_icon.loaded .spin {
+    display: none;
+    width: fit-content !important;
+    
+}
+/* Show image when loaded */
+#image_icon.loaded img {
+    visibility: visible;
+}
+
+/* Initially hide the image */
+#imgDiv img {
+    visibility: hidden;
+}
+/* Show spinner when loading */
+#imgDiv.loading .spin {
+    display: block;
+}
+/* Hide spinner when loaded */
+#imgDiv.loaded .spin {
+    display: none;
+}
+/* Show image when loaded */
+#imgDiv.loaded img {
+    visibility: visible;
+}
+
+
+
+#overlays{
+    width: 100%;
+    max-height: 80vh;
+    background-color: #a8a8ad;
+    background-color: #4b59bf;
+    display: none;
+    flex-direction: column;
+    color: white;
+    position: fixed;
+    font-size: 15px;
+    z-index: 999;
+    padding: 5px;
+ 
+    gap: 15px;
+    overflow-y: auto;
+    label{
+        padding-left: 5px;
+    }
+    label:nth-child(1){padding-top: 8px;}
+    label:last-child{padding-bottom: 8px;}
+}
+#overlay {
+    width: 100%;
+    max-height: 80vh;
+    background-color: #4b59bf;
+    display: none;
+    flex-direction: column;
+    color: white;
+    position: fixed;
+    font-size: 15px;
+    z-index: 999;
+    padding: 15px 5px 5px 10px;
+    gap: 15px;
+    overflow-y: auto;
+}
+#overlay > label {
+    padding-left: 5px;
+}
+#overlay > label:nth-child(1) {
+    padding-top: 8px;
+}
+#overlay > label:last-child {
+    padding-bottom: 8px;
+}
+
+
+
+
+
+#single_emp_overlay{
+    display: none; /* Initially hidden */
+    position: fixed; /* Stay in place */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000; /* Ensure it is on top of other elements */
+    overflow: auto; /* Enable scrolling if content is too tall */
+
+    flex-direction: column;
+}
+#single_emp_overlays > .goBack{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background-color: #4b59bf;
+    color: white;
+    border: none;
+    img{
+        width: 20px;
+        height: 20px;
+        padding-left: 8px;
+    }
+    p{
+        text-align: left;
+        width: 70%;
+        font-size: 18px;
+        margin: 15px 0;
+    }
+}
+#single_emp_overlay > .goBack {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background-color: #4b59bf;
+    color: white;
+    border: none;
+}
+#single_emp_overlay > .goBack > img {
+    width: 20px;
+    height: 20px;
+    padding-left: 8px;
+}
+#single_emp_overlay > .goBack > p {
+    text-align: left;
+    width: 70%;
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+
+
+#single_emp_overlays > .individual-employee-container {
+    width: 100vw !important;
+    #emp-details{
+        display: flex;
+        flex-direction: column;
+
+        .topDetails{
+            background-color: #a8a8ad;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            
+           
+            .em_image{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: auto;
+                gap: 8px;
+                padding-top: 5px;
+
+                span{
+                    color: white;
+                }
+                img{
+                    width: 200px;
+                    height: 200px;
+                    border-radius: 50%;
+                }
+            }
+            #connect{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 12px;
+                padding-bottom: 5px;
+               
+                padding-top: 5px;
+                button{
+                    background-color: #a8a8ad;
+                    padding: 0;
+                    margin: 0;
+                    border: none;
+                    img{
+                        width: 30px;
+                    }
+                }
+            }
+        }
+        .bottomDetils{
+            
+            background-color: #fff;
+            
+            span{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                height: 25px;
+                label{
+                    width: 40%;
+                    color: #000;
+                    font-size: 15px;
+                    padding-left: 8px;
+                }
+                p{
+                    color: #a8a8ad;
+                    padding: 0 8px 0 0;
+                    margin: 0;
+                    width: 60%;
+                    font-size: 13px;
+                }
+            }
+            span:nth-child(1){
+                padding-top: 12px;
+            }
+        }
+    }
+}
+#single_emp_overlay > .individual-employee-container {
+    width: 100vw !important;
+}
+#single_emp_overlay > .individual-employee-container > #emp-details {
+    display: flex;
+    flex-direction: column;
+}
+#single_emp_overlay > .individual-employee-container > #emp-details > .topDetails {
+    background-color: #a8a8ad;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+#single_emp_overlay > .individual-employee-container > #emp-details > .topDetails > .em_image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    gap: 8px;
+    padding-top: 5px;
+}
+#single_emp_overlay > .individual-employee-container > #emp-details > .topDetails > .em_image > span {
+    color: white;
+}
+#single_emp_overlay > .individual-employee-container > #emp-details > .topDetails > .em_image > img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+#single_emp_overlay > .individual-employee-container > #emp-details > .topDetails > #connect {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+#single_emp_overlay > .individual-employee-container > #emp-details > .topDetails > #connect > button {
+    background-color: #a8a8ad;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+#single_emp_overlay > .individual-employee-container > #emp-details > .topDetails > #connect > button > img {
+    width: 30px;
+}
+#single_emp_overlay > .individual-employee-container > #emp-details > .bottomDetils {
+    background-color: #fff;
+}
+#single_emp_overlay > .individual-employee-container > #emp-details > .bottomDetils > span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 25px;
+}
+#single_emp_overlay > .individual-employee-container > #emp-details > .bottomDetils > span > label {
+    width: 40%;
+    color: #000;
+    font-size: 15px;
+    padding-left: 8px;
+}
+#single_emp_overlay > .individual-employee-container > #emp-details > .bottomDetils > span > p {
+    color: #a8a8ad;
+    padding: 0 8px 0 0;
+    margin: 0;
+    width: 60%;
+    font-size: 13px;
+}
+#single_emp_overlay > .individual-employee-container > #emp-details > .bottomDetils > span:nth-child(1) {
+    padding-top: 12px;
+}
+
+
+
+
+
+
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content {
+display: block;
+margin: auto;
+width: 90%;
+/* height: 60%; */
+
+}
+
+.lightbox-close {
+position: absolute;
+top: 15px;
+right: 35px;
+color: #fff;
+font-size: 40px;
+font-weight: bold;
+transition: 0.3s;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+color: #bbb;
+text-decoration: none;
+cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 276px) {
+    .contactsMain > .individual-employee-container > #single_column > .employee > .rightView > .emName {
+        font-size: 13px;
+    }
+    .contactsMain > .individual-employee-container > #single_column > .employee > .rightView > p
+   
+     { 
+        margin: 0;
+        font-size: 10px;
+    }
+
+    .contactsMain > .individual-employee-container > #single_emp > .employee > .rightView > .emName {
+        font-size: 13px;
+    }
+    .contactsMain > .individual-employee-container > #single_emp > .employee > .rightView > p {
+        margin: 0;
+        font-size: 10px;
+    }
+}

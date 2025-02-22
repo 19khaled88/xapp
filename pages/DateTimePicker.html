@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+   
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/cuppa-datepicker-styles.css" />
+
+    
+    <script type="text/javascript" src="../assets/js/cuppa-calendar.js"></script>
+    <script type="text/javascript" src="../assets/js/moment.js"></script>
+    <title>Date & Time</title>
+
+    <script>
+        var cal = null;
+
+        function formatDate(date, format) {
+                const day = ("0" + date.getDate()).slice(-2);
+                const month = ("0" + (date.getMonth() + 1)).slice(-2);
+                const year = date.getFullYear();
+    
+                if (format === "DD-MM-YYYY") {
+                    return `${year}-${month}-${day}`;
+                } else if (format === "DD/MM/YYYY") {
+                    return `${year}/${month}/${day}`;
+                }
+                return '';
+            }
+
+        window.onload = function () { 
+            // Get the current date
+            const currentDate = new Date();
+          
+            cal = new WinkelCalendar({
+                container: 'cuppaDatePickerContainer',
+                bigBanner: true,
+                defaultDate: formatDate(currentDate, "DD/MM/YYYY"),
+                format : "DD/MM/YYYY",
+                onSelect : onDateChange
+                
+            });	
+            cal2 = new WinkelCalendar({
+                container: 'cuppaDatePicker',
+                bigBanner: false,
+                defaultDate: formatDate(currentDate, "DD/MM/YYYY"),
+                format : "DD/MM/YYYY",
+                onSelect : onDateChange
+                
+            });	
+        }
+        function onDateChange(dateString){
+            //document.getElementById('container2').innerHTML = date;
+            const date = new Date(dateString);
+            const day = ("0" + date.getDate()).slice(-2);
+            const month = ("0" + (date.getMonth() + 1)).slice(-2);
+            const monthNumber = date.getMonth();
+            const year = date.getFullYear();
+
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const monthName = monthNames[monthNumber];
+            let format = 'DD/MM/YYYY'
+
+            let formattedDate;
+            switch(format) {
+                case "DD-MM-YYYY":
+                    formattedDate = `${day}-${monthName}-${year}`;
+                    break;
+                case "DD/MM/YYYY":
+                    formattedDate = `${day}/${monthName}/${year}`;
+                    break;
+                case "MM/DD/YYYY":
+                    formattedDate = `${monthName}/${day}/${year} `;
+                    break;
+                case "YYYY/MM/DD":
+                    formattedDate = `${year}/${monthName}/${day}`;
+                    break;
+                default:
+                    formattedDate = `${day}-${monthName}-${year}`;
+                    break;
+            }
+            console.log(formattedDate)
+            // return formattedDate;
+        }
+        
+    </script>
+
+</head>
+
+<body>
+
+
+    <div class="container datepicker-container col-sm-6 col-md-6 col-lg-3">
+        <div id="cuppaDatePickerContainer"></div>
+
+      </div>
+</body>
+
+</html>

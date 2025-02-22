@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body, html{
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Ensure the body takes up the full height of the viewport */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    font-family: Arial, sans-serif; /* Optional: Add a default font */
+    background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+    background-image: linear-gradient(-20deg, #fbfcdb 0%, #e9defa 100%);
+
+   
+    overflow: hidden;
+}
+
+body{
+    height: 100vh;
+    
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    background-color: #FDFCFD;
+    border-radius: 15px;
+    border: 1px solid #cdc8c8;
+
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+
+    opacity: 0;
+    transform: translateY(-100%);
+    animation: slideInFromTop 1s ease-out forwards;
+}
+
+/* Animation keyframes */
+@keyframes slideInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%); /* Start offscreen */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at the center */
+    }
+}
+
+.container > h1 {
+    color: #131517;
+    width: 100%;
+    margin: 0 0 10px;
+    font-size: 24px;
+}
+
+
+.container > p {
+    margin: 0 0 20px; 
+    font-size: 18px; 
+    color: #666; 
+    width: 100%;
+}
+.container > .back_btn_container  {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.container > .back_btn_container > .back_btn {
+    border-radius: 50%;
+    border: none;
+}
+
+
+.container > .loginForm,
+.container > .otpForm {
+    width: 100%; /* Make the form take the full container width */
+}
+
+.container > .loginForm,
+.container > .otpForm {
+    width: 100%; /* Make the form take the full container width */
+}
+.container > .loginForm{
+    display: flex;
+    flex-direction: column;
+}
+.container > .otpForm {
+    display: none;
+    flex-direction: column;
+}
+.container > .loginForm > span,
+.container > .otpForm > span{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.container > .loginForm > span > label,
+.container > .otpForm > span > label{
+    font-weight: 600;
+    color: #686A6C;
+}
+.container > .loginForm > span > p,
+.container > .otpForm > span > p{
+    color: #AAABAA;
+}
+.container > .loginForm > input,
+.container > .otpForm > input {
+    width: 100%; /* Make the input field take up the full width */
+    padding: 10px; /* Add padding inside the input */
+    margin-bottom: 15px; /* Space below the input field */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Round the corners of the input */
+}
+
+.container > .loginForm .signInBtn,
+.container > .otpForm .signInBtn {
+    width: 100%; /* Button spans full width */
+    padding: 10px; /* Adjust padding for the button */
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Round the corners */
+    cursor: pointer; /* Change cursor on hover */
+    font-size: 16px; /* Adjust button font size */
+    font-weight: 600;
+}
+
+.container > .loginForm > .otpBtn,
+.container > .otpForm > .otpBtn{
+    width: 100%; /* Button spans full width */
+    padding: 10px; /* Adjust padding for the button */
+    background-color: #2ff14f; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Round the corners */
+    cursor: pointer; /* Change cursor on hover */
+    font-size: 16px; /* Adjust button font size */
+    font-weight: 600;
+}
+
+.container > .signInBtn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}

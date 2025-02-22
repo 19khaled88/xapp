@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=no" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" /> -->
+    <link rel="stylesheet" href="../assets/css/notice_board.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="../assets/js/pdf.min.2.10.377.js"></script>
+    <script src="../assets/js/pdf.worker.min.2.10.377.js"></script>
+    <script src="../assets/js/pinch-zoom.umd.min.2.3.4.js"></script>
+
+    <script src="../assets/js//hammer.min.2.0.8.js"></script>
+    <link rel="manifest" href="../manifest.json">
+    <title>Notice Board</title>
+    <style>
+        /* #pdfViewer {
+            width: 100%;
+            height: 100%;
+        } */
+        .swal2-title{
+            display: none !important;
+        }
+        .swal2-actions{
+            display: none !important;
+        }
+       
+        .swal2-custom-fullscreen-container{
+            width: 100%;
+            height: 100%;
+            overflow-y: auto; 
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        .swal2-html-container{
+            margin: 0 !important;
+        }
+        
+        .pdf-container {
+            height: calc(100vh - 90px); /* Adjust height based on your layout */
+            overflow-y: auto; /* Make the div scrollable */
+            padding-top: 45px; /* Ensure content does not overlap with the close button */
+            background-color: white;
+        }
+
+        #zoomControl{
+            position: fixed !important;
+            height: 40px;
+            top:10px;
+            left: 15px;
+            z-index: 9999;
+
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+        #zoomIn{
+            width: 40px;
+            height: 40px;
+        }
+        #zoomOut{
+            width: 40px;
+            height: 40px;
+        }
+
+        .swal2-alert-custom-fullscreen{
+            width: 98vw !important;
+            height: 100vh !important;
+            max-width: 98vw !important;
+            max-height: 100vh !important;
+            box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+            padding: 0 !important;
+            overflow: hidden; 
+
+            position: relative;
+        }
+        .swal2-close{
+           position: fixed !important;
+           height: 40px;
+           top:5px;
+           right: 15px;
+           z-index: 9999;
+
+        }
+        .swal2-custom-fullscreen-html-container{
+
+            position: absolute !important;
+            top: 45px !important;
+           
+            left: 0 !important;
+            right: 0 !important;
+            overflow-y: scroll !important;
+
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100vw !important;
+            height: 90vh !important;
+
+            /* height: 100vh !important;
+            display: flex;
+            justify-content: center;
+            align-items: center; */
+        }
+        .swal2-image{
+            position: absolute !important;
+            top: 45px !important;
+           
+            left: 0 !important;
+            right: 0 !important;
+            overflow-y: scroll !important;
+
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100vw !important;
+            height: 90vh !important; 
+        }
+        canvas {
+            margin-bottom: 10px;
+            transform-origin: 0 0; /* Ensures zooming from the top-left corner */
+        }
+
+        .zoomable-image {
+            transition: transform 0.2s; /* Animation */
+            cursor: pointer;
+        }
+
+        .zoomed {
+            transform: scale(2); /* Scale the image to double its size */
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <section class="section-container">
+        <section class="noticeTop" id="noticeTop">
+            <!-- <button class="notice_back_btn" onclick="routeToPage('HRM.html','hrmMain','hrmIcon','')">
+           
+                <img src="../assets/images/arrow-left-icon.png" alt="No Image" width="18" height="18" />
+                <p>Notice Board</p>
+            </button> -->
+            <button class="notice_back_btn" onclick="routeToPage('HRM.html','hrmMain','hrmIcon','')">
+                <i class="fa-solid fa-arrow-left fa-2x" style="color:white;"></i>
+            </button>
+            <p>Notice Board</p>
+        </section>
+        <section class="noticeMain" id="noticeMain"></section>
+        <!-- Overlay container -->
+        <section id="pdfOverlay" class="overlay">
+            <!-- Modal content -->
+            <div class="modal">
+                <!-- Close button -->
+                <button class="close-button" onclick="closePDFOverlay()">
+                    <img src="../assets/images/backBtn.png" width="18px" height="15px"/>
+                    Back
+                </button>
+                <!-- PDF container -->
+                
+                <canvas id="pdfViewer"></canvas>
+            </div>
+        </section>
+    </section>
+    
+    
+    <script src="../assets/js/notice_board.js"></script>
+    <script src="../assets/js/navButton.js"></script>
+    <script src="../assets/js/sweetAlert@2.js"></script>
+    
+</body>
+
+</html>

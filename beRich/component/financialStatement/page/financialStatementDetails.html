@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../vendor/bootstrap/css/bootstrap.min.css">
+    <script src="../../../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <title>Portfolio Manager</title>
+    <link rel="stylesheet" href="../css/financialStatementDetails.css">
+    <script src="../apFetching/fetch.js"></script>
+    
+    <script id="jQuery" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script id="jQueryUi" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link id='jQueryStyle' rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <section class="finacialStatementDetailsSection">
+        <div style="display: none;" id="overlay"></div>
+        <div style="display: none;" id="popUpOverlay"></div>
+        <div style="display: none;" id="popUpDiv"></div>
+        <div style="display: none;" id="loader"><img src="../../../images/Cube@1x-1.0s-200px-200px.gif" alt="Loader"></div>
+        <div style="text-align: center; margin-bottom: 5px;" class="nav-section" id="nav-section">
+            <button onclick="handleBackBtn(pageName='financial_statement',obj={url:`component/financialStatement/index.html`})">
+                <i class="fa-solid fa-arrow-left fa-lg" style="color:white;"></i>
+            </button>
+            <h1 style="color: #fff; margin: 0; padding: 5px 0px; font-size: 18px;"> Details Financial Statement</h1>
+            <button onclick="handleBackBtn()">
+                <i class="fa-solid fa-arrow-right-from-bracket fa-lg" style="color:white;"></i>
+            </button>
+        </div>
+        <div style="flex: 1 1 auto;height: 100%; overflow-y: auto;" class="detailsBody">
+            
+            <div style="height: 100%;" class="container">
+                <div style="display: flex; height: 100%;" id="finacialStatementDetailsContent">
+                    <div class="dateRow">
+                        <div class="dateFrom">
+                            <input id="dateFrom" type="text"  readonly>
+                        </div>
+                        <div class="dateTo">
+                            <input id="dateTo" type="text" readonly>
+                        </div>
+                        <div class="okBtn">
+                            <input id="okBtn" type="submit" value="OK">
+                        </div>
+                    </div>
+                    <div class="contentRow">
+                        <div class="left">
+                           <p>Client ID</p>
+                        </div>
+                        <div class="right"> 
+                            <p id="selectedClientID"></p>
+                        </div>
+                    </div>
+                    <div class="contentRow">
+                        <div class="left">
+                           <p>Client Name</p>
+                        </div>
+                        <div class="right">
+                            <p id="selectedClientName"></p>
+                        </div>
+                    </div>
+                    <div class="contentRow">
+                        <div class="left">
+                           <p>Date Range</p>
+                        </div>
+                        <div class="right">
+                            <p id="selectedDateRange"></p>
+                        </div>
+                    </div>
+                    <div class="contentRow">
+                        <div class="left">
+                           <p>Opening Balance</p>
+                        </div>
+                        <div class="right">
+                            <p id="selectedOpeningBalance"></p>
+                        </div>
+                    </div>
+                    <div class="contentRow">
+                        <div class="left">
+                           <p>Closing Balance</p>
+                        </div>
+                        <div class="right">
+                            <p id="selectedClosingBlance"></p>
+                        </div>
+                    </div>
+                <div style="margin-top: 10px;    flex: 1 1 auto;height: 100%;min-height: 150px;overflow-y: auto;" id="finacialStatementDetailsTable"></div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="../js/financialStatementDetails.js"></script>
+<script>
+    $("#dateFrom").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/M/yy"
+        });
+    
+        $("#dateTo").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/M/yy"
+        });
+    let today = new Date().toISOString().split('T')[0];
+    today = customDateConverter(today, 'defaultToCustom');
+    // console.log(today);
+
+    document.getElementById('dateFrom').value = today;
+    document.getElementById('dateTo').value = today;
+    window.onload = async function() {
+        async function showLoader(){
+            document.getElementById('overlay').style.display = 'block'
+            document.getElementById('loader').style.display = 'block'
+
+        }
+        async function hideLoader(){
+            document.getElementById('overlay').style.display = 'none'
+            document.getElementById('loader').style.display = 'none'
+        }
+        async function executeBtn(){
+            const urlParams= new URLSearchParams(window.location.search);
+            sessionStorage.setItem('invID', urlParams.get('invID'));
+
+            const dateFrom = document.getElementById('dateFrom').value
+            const dateTo = document.getElementById('dateTo').value
+            const fetchedFinasTable = await get_financialStatement(urlParams.get('invID'), dateFrom, dateTo)
+            // console.log(fetchedFinasTable)    
+            document.getElementById('selectedClientID').innerText = `: ${urlParams.get('invID')}`;
+            document.getElementById('selectedClientName').innerText = `: ${urlParams.get('name')}`
+            document.getElementById('selectedDateRange').innerText = `: ${dateFrom} To ${dateTo}`
+            
+            if(fetchedFinasTable.status === true){
+                document.getElementById('selectedOpeningBalance').innerText = `: ${Number(fetchedFinasTable.OpeningBalance).toLocaleString("en-IN")}`
+                document.getElementById('selectedClosingBlance').innerText = `: ${Number(fetchedFinasTable.CloBalance).toLocaleString("en-IN")}`
+                executeFinancialStatementTable(fetchedFinasTable.FinancialStatement,  fetchedFinasTable.OpeningBalance)
+                // portfolioManagerTable.scrollTo({
+                //     top: 0,
+                //     behavior: 'smooth'
+                // });
+            }
+            else{
+                document.getElementById('popUpOverlay').style.display = 'block'
+                document.getElementById('popUpDiv').style.display = 'block'
+                document.getElementById('popUpDiv').innerHTML = `
+                    <div class='popUpHead'>
+                        <h6>Failed</h6>
+                    </div>
+                    <div class='popUpBody'>
+                        <p>${fetchedFinasTable.message}</p>
+                    </div>
+                    <div id='popUpOkBtn' class='popUpFooter'>
+                        <p>OK</p>
+                    </div>
+                `
+                document.getElementById('popUpOkBtn').addEventListener('click', ()=>{
+                    document.getElementById('popUpOverlay').style.display = 'none'
+                    document.getElementById('popUpDiv').style.display = 'none'
+                })
+                
+            }
+        }
+        await showLoader()
+        await executeBtn()
+        await hideLoader()
+        
+    }
+</script>
+<script src="../../../js/navRoot.js"></script>
+</html>

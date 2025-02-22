@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css">
+    <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+    <title>Be Rich</title>
+    <link rel="stylesheet" href="./css/beRich.css">
+    <script src="./apFetching/fetch.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script id="jQuery" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script id="jQueryUi" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link id='jQueryStyle' rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <section class="beRichSection">
+        <div style="display: none;" id="overlay"></div>
+        <div style="display: none;" id="popUpOverlay"></div>
+        <div style="display: none;" id="popUpDiv"></div>
+        <div style="display: none;" id="loader"><img src="./images/Cube@1x-1.0s-200px-200px.gif" alt="Loader"></div>
+        <div class="nav-section" id="nav-section">
+            <button onclick="handleBackBtn()">
+                <i class="fa-solid fa-arrow-left fa-lg" style="color:white;"></i>
+            </button>
+            <h5>Be Rich Limited</h5>
+            
+        </div>
+        <!-- <div id='home_marquee_section' class='home_marquee_section'>
+            <div class='container'>
+                <div class='home_marquee'>
+                    <div id="marqueeContainer">This is an example. for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.This is an example for marquee.</div>
+                </div>
+            </div>
+        </div> -->
+        <div class="container allCompBtn">
+            <section class="port_man com_sec" id="port_man">
+                <span>
+                    Portfolio Manager
+                </span>
+                <div>
+                    <div style="height: auto;" class="innerBtn" onclick="navigatorComponent('./component/clientPortFolio/index.html')">
+                        <img style="width: 100%; height: auto;" src="./images/berich_portfoliologo.png" alt="Client Portfolio">
+                    </div>
+                    <div style="height: auto;" class="innerBtn" onclick="navigatorComponent('./component/portfolioManager/index.html')">
+                        <img style="width: 100%; height: auto;" src="./images/berich_portfoliom_logo.png" alt="Trade Portfolio Manager">
+                    </div>
+                    <div style="height: auto; " class="innerBtn" onclick="navigatorComponent('./component/onlineTrade/index.html')">
+                        <img style="width: 100%; height: auto;" src="./images/berich_onlinelogo.png" alt="Online Trade">
+                    </div>
+                    <div style="height: auto;" class="innerBtn" onclick="navigatorComponent('./component/orderStatus/index.html')">
+                        <img style="width: 100%; height: auto;" src="./images/berich_order_status.png" alt="Order Status">
+                    </div>
+                    <!-- <div style="height: auto;" class="innerBtn" onclick="navigatorComponent()">
+                        <img style="width: 100%; height: auto;" src="./images/br_pending_list.png" alt="Pending Order List">
+                    </div> -->
+                  
+                    <div style="height: auto;" class="innerBtn" onclick="navigatorComponent('./component/financialStatement/index.html')">
+                        <img style="width: 100%; height: auto;" src="./images/berich_financialst_logo.png" alt="Financial Statement">
+                    </div>
+                    <div style="height: auto;" class="innerBtn" onclick="navigatorComponent('./component/stockStatement/index.html')">
+                        <img style="width: 100%; height: auto;" src="./images/berich_stockst_logo.png" alt="Stock Statement">
+                    </div>
+                    <!-- <div style="height: auto;" class="innerBtn" onclick="navigatorComponent()">
+                        <img style="width: 100%; height: auto;" src="./images/br_money_receipt.png" alt="Money Receipt">
+                    </div>
+                    <div style="height: auto;" class="innerBtn" onclick="navigatorComponent()">
+                        <img style="width: 100%; height: auto;" src="./images/btnsendsms.png" alt="Send SMS to Client">
+                    </div>
+                    <div style="height: auto;" class="innerBtn" onclick="navigatorComponent()">
+                        <img style="width: 100%; height: auto;" src="./images/br_bhsettings.png" alt="Black Hole Setting">
+                    </div> -->
+
+                </div>
+            </section>
+            <section class="shr_mar com_sec" id="shr_mar">
+                <span>
+                    Share Market
+                </span>
+                <div>
+                    <div style="height: auto;" class="innerBtn" onclick="navigatorComponent('./component/sharePrice/index.html')">
+                        <img style="width: 100%; height: auto;" src="./images/berich_share_price.png" alt="Share Price">
+                    </div>
+                  
+                    <div style="height: auto;" class="innerBtn" onclick="navigatorComponent('./component/news/index.html')">
+                        <img style="width: 100%; height: auto;" src="./images/br_news.png" alt="News">
+                    </div>
+                   
+                </div>
+            </section>
+         
+            
+           
+            
+        </div>
+    </section>
+</body>
+<script>
+    
+    window.onload = async function() {
+        const urlParams= new URLSearchParams(window.location.search);
+        const pageTitle = urlParams.get("name");
+        sessionStorage.setItem('name', urlParams.get('name'));
+        // alert(JSON.stringify(pageTitle))
+    }
+    
+</script>
+<script src="./js/beRich.js"></script>
+<script src="./js/navRoot.js"></script>
+</html>

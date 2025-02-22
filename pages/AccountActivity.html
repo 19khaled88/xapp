@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../assets/css/accounts_activity.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <title>Accounts_Activity</title>
+
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+
+    <!-- Datepicker vanilajs-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/css/datepicker.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker-full.min.js"></script>
+    <!-- Datepicker vanilajs-->
+    <script src="../assets/js/pinch-zoom-js@2.3.5/dist/pinch-zoom.umd.min.js"></script>
+    <script src="https://unpkg.com/detect-keyboard-user"></script>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="../assets/css/lineicons.com/4.0/lineicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="../assets/css/sweetAlert.css"/>
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    
+    <script src="../assets/js/common.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="manifest" href="../manifest.json">
+
+    <style>
+
+      .no-scroll {
+        overflow: hidden !important;
+        height: 100%;
+      }
+      body.no-scroll {
+        position: fixed;
+        width: 100%;
+      }
+
+      .datepicker{
+        .datepicker-picker{
+            display: flex;
+            flex-direction: column;
+            .datepicker-header{
+              width: 100%;
+              height: 45px;
+              .datepicker-controls{
+                height: 45px;
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                
+                gap: 3px;
+                button{
+                  background-color: #0ceb3c;
+                  color: white;
+                  height: 45px;
+                }
+                button:nth-child(1){
+                  padding-left: 18px;
+                  padding-right: 18px;
+                }
+                button:nth-child(3){
+                  padding-left: 18px;
+                  padding-right: 18px;
+                }
+              }
+            }
+            .datepicker-main{
+              .datepicker-view{
+
+
+                .month{
+                  height: 4.5rem !important;
+                }
+                .year{
+                  height: 4.5rem !important;
+                }
+              }
+            }
+        }
+        .days-of-week{
+            display: flex;
+            width: 98%;
+            flex-direction: row;
+            justify-content: space-evenly;
+            height: 45px;
+            .dow{
+              height: 45px;
+            }
+        }
+      }
+      .overlay {
+        position: fixed;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        visibility: hidden;
+        
+        opacity: 0;
+        transition: visibility 0s, opacity 0.3s;
+      }
+      #overlay_cancel{
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 45px;
+        right: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center; 
+        
+      }
+      #overlay_cancel > img{
+        width: 40px;
+        height: 40px;
+      }
+      #overlayImageContainer{
+        max-height: 90vh;
+        overflow: auto;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 8px;
+        padding-top: 100px;
+        /* padding-top: 55px; */
+       
+      }
+      #overlayImageContainer > .bill_image_view{
+          background-color: #fff;
+        }
+      #overlayImageContainer > .bill_image_view > p{
+        margin: 0;
+      }
+
+      .material-symbols-outlined {
+        color: white;
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+      
+      .fullscreen_popup_show{
+        height: 90vh;
+        .fullscreen_show{
+          height: 88vh;
+        }
+      }
+
+      .swal2-container{
+        width: 100vw !important;
+        height: 100vh !important;
+        padding: 0 !important;
+        .swal2-alert-custom-fullscreen{
+          height: 100vh;
+          width: 100%;
+
+          position: relative;
+          .swal2-close{
+            position: fixed;
+            z-index: 10;
+          
+            right: 10px;
+            background-color: white;
+         
+            padding-right: 9px;
+            float: right;
+            height: 50px;
+          }
+          .swal2-html-container{
+            padding: 0 !important;
+            .pinch-zoom-container{
+              height: 90vh !important;
+              margin-top: 50px;
+            }
+          }
+          .swal2-custom-fullscreen-html-container{
+            position: absolute !important;
+            top: 45px !important;
+            height: 90vh !important;
+            padding-top: 0;
+            /* padding-left: 4px;
+            padding-right: 4px; */
+            overflow: auto;
+           
+          }
+        }
+        
+      }
+     
+     .swal2-icon-warning{
+        max-width: 98vw !important;
+      }
+      .swal2-actions{
+        height: fit-content;
+        margin: 0;
+      }
+ 
+      #support-title{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 8px;
+        p{
+          margin: 0;
+        }
+      }
+      .not_show_confirm_button{
+        display: none !important;
+      }
+      .show_bill_single{
+        border: 1px solid gray;
+        padding: 1px !important;
+        /* margin-top: 1.2em; */
+        div{
+          border-bottom: 1px solid gray;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          
+          label{
+            padding-left: 5px;
+            width: 40%;
+            text-align: left;
+            
+          }
+          p{
+            padding-right: 5px;
+            margin: 0;
+            width: 60%;
+            text-align: right;
+            border-left: 1px solid gray;
+          }
+        }
+        div:last-child{
+          border-bottom: none;
+        }
+      }
+
+      .bill_image_view{
+        border: 1px solid gray;
+        padding: 5px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        p{
+          margin: 5px;
+          text-align: left;
+          padding-left: 5px;
+        }
+      }
+      .approve_screen{
+        margin: 0 auto !important;
+        width: 97%;
+        margin-bottom: 10px !important;
+        margin-top: 10px !important;
+        padding: 20px 2px 10px !important;
+
+        label{
+
+        }
+        input{
+          width: 100%;
+          margin: 0 !important;
+          
+          padding-left:0 0 0 2px !important;
+        }
+        button{
+            margin: 0 !important;
+            padding: 1 !important;
+        }
+     
+      }
+
+      .cancel_popup_show{
+        position: fixed !important;
+        top: 15px !important;
+        left: 5px !important;
+        right: 5px !important;
+        width: 95% !important;
+      }
+
+      .approve_popup_show{
+        position: fixed !important;
+        top: 15px !important;
+        left: 5px !important;
+        right: 5px !important;
+        width: 95% !important;
+      }
+
+      .swal2-actions{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        .swal2-confirm{
+          padding: 15px 20px;
+        }
+        .swal2-deny{
+          padding: 15px 20px;;
+        }
+        .swal2-cancel{
+          padding: 15px 20px;;
+        }
+      }
+      
+    </style>
+
+
+</head>
+<body>
+    <section class="section-container">
+        <section class="accountsActivityTop" id="accountsActivityTop">
+          <button class="accounts_Activity_back_btn" onclick="routeToPage('HRM.html','hrmMain','hrmIcon','')">
+            <i class="fa-solid fa-arrow-left fa-2x" style="color:white;"></i>
+          </button>
+          <p>Accounts Activity</p>
+          <button class="accounts_Activity_back_btn" id="accounts_Activity_back_btn" onclick="handleBackButton()">
+            <i class="fa-solid fa-house fa-2x"></i>
+          </button>
+        </section>
+        <section class="accountsctivityMain" id="accountsActivityMain">
+        </section>
+        <div id="overlay" class="overlay">
+           <button id="overlay_cancel"><img src="../assets/images/24gl-cross.png"/></button>
+          <!-- <img id="overlayImage" src="" alt="No Image"> -->
+          <div id="overlayImageContainer"></div>
+        </div>
+    </section>
+    <!-- billNoteTextArea -->
+
+    <div class="dark-overlay" id="darkOverlay"></div>
+   
+    <script src="../assets/js/accounts_activity.js"></script>
+    <script src="../assets/js/navButton.js"></script>
+  
+    
+</body>
+</html>

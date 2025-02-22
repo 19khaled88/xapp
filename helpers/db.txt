@@ -1,0 +1,721 @@
+{
+  "hrmIcon": [
+    {
+      "image": "../assets/images/hrm/leave.png",
+      "icon":"../assets/icons/leave_application.png",
+      "title": "leave application",
+      "category":"Employee Application"
+    },
+    {
+      "image": "../assets/images/hrm/hr_policy.png",
+      "icon":"../assets/icons/hr-policy.png",
+      "title": "HR policy",
+      "category":"General Information"
+    },
+    {
+      "image": "../assets/images/hrm/holidays.png",
+      "icon":"../assets/icons/holiday.png",
+      "title": "holidays",
+      "category":"General Information"
+    },
+    {
+      "image": "../assets/images/hrm/attendance.png",
+      "icon":"../assets/icons/attendance.png",
+      "title": "attendance",
+      "category":"Employee Statements"
+    },
+    {
+      "image": "../assets/images/hrm/payslip.png",
+      "icon":"../assets/icons/payslip.png",
+      "title": "payslip",
+      "category":"Employee Statements"
+    },
+    
+    {
+      "image": "../assets/images/hrm/work-from-home.png",
+      "icon":"../assets/icons/work-from-home-icon.png",
+      "title": "work from home application",
+      "category":"Employee Application"
+    },
+      
+    {
+      "image": "../assets/images/hrm/work-from-home.png",
+      "icon":"../assets/icons/remote-work-icon.png",
+      "title": "work from other location",
+      "category":"Employee Application"
+    },
+    {
+      "image": "../assets/images/hrm/loan.png",
+      "icon":"../assets/icons/loan-application-icon.png",
+      "title": "loan application",
+      "category":"Employee Application"
+    },
+
+    {
+      "image": "../assets/images/hrm/late.png",
+      "icon":"../assets/icons/late_application.png",
+      "title": "late application",
+      "category":"Employee Application"
+    },
+    
+    {
+      "image": "../assets/images/hrm/tax.png",
+      "icon":"../assets/icons/tax.png",
+      "title": "Income tax",
+      "category":"Employee Statements"
+    },
+    {
+      "image": "../assets/images/hrm/leave status.png",
+      "icon":"../assets/icons/leave_status.png",
+      "title": "leave status",
+      "category":"General Information"
+    },
+    {
+      "image": "../assets/images/hrm/work-from-home-status.png",
+      "icon":"../assets/icons/work-from-home_status.png",
+      "title": "work from home status",
+      "category":"General Information"
+    },
+    {
+      "image": "../assets/images/hrm/work-from-home-status.png",
+      "icon":"../assets/icons/remote_work_status.png",
+      "title": "work from other location status",
+      "category":"General Information"
+    },
+    {
+      "image": "../assets/images/hrm/provident-fund.png",
+      "icon":"../assets/icons/provident-fund.png",
+      "title": "provident fund",
+      "category":"Employee Statements"
+    },
+    {
+      "image": "../assets/images/hrm/saving-scheme.png",
+      "icon":"../assets/icons/saving_scheme.png",
+      "title": "mandatory saving scheme",
+      "category":"Employee Statements"
+    },
+  
+    {
+      "image": "../assets/images/hrm/loan-status.png",
+      "icon":"../assets/icons/loan-application-approved-icon.png",
+      "title": "loan status",
+      "category":"Employee Statements"
+    },
+    {
+      "image": "../assets/images/hrm/liveroster.png",
+      "icon":"../assets/icons/live_roster_duty.png",
+      "title": "live roster duty",
+      "category":"General Information"
+    },
+    {
+      "image":"../assets/images/hrm/notice.png",
+      "icon":"../assets/icons/notice.png",
+      "title":"notice",
+      "category":"General Information"
+    },
+    {
+      "image":"../assets/images/hrm/contacts.png",
+      "icon":"../assets/icons/contacts.png",
+      "title":"contacts",
+      "category":"General Information"
+    },
+    {
+      "image":"../assets/images/hrm/accounts.png",
+      "icon":"../assets/icons/accounting-auditing-icon.png",
+      "title":"bill application",
+      "category":"Employee Application"
+    }
+    ,
+    {
+      "image":"../assets/images/hrm/otp.png",
+      "icon":"../assets/icons/otp.png",
+      "title":"OTP",
+      "category":"General Information"
+    },
+    {
+      "image":"../assets/images/hrm/otp.png",
+      "icon":"../assets/icons/check_in.png",
+      "title":"Check In",
+      "category":"General Information"
+    }
+  ],
+
+  "Image": [
+    "./assets/images/Amy Logo.png",
+    "./assets/images/Be Rich Logo.png",
+    "./assets/images/Be Rich Manufacturing Logo.png",
+    "./assets/images/BeFresh Logo.png",
+    "./assets/images/BeFreshEdu Logo.png",
+    "./assets/images/CtgShop.com_Logo,_2018.svg.png",
+    "./assets/images/South East Money Exchange Logo.png",
+    "./assets/images/x-limited.png",
+    "./assets/images/best_erp.png"
+  ],
+
+  "accounts": [
+    {
+      "image": "../assets/images/accounts/bill.png",
+      "icon": "../assets/images/accounts/bill.png",
+      "title": "Bill entry",
+      "category":"Employee Application"
+    }
+  ],
+
+  "hr_policy": [
+    {
+      "title": "attendance policy",
+      "image": "../assets/images/paper-clip.png"
+    },
+    {
+      "title": "nonus policy",
+      "image": "../assets/images/paper-clip.png"
+    },
+    {
+      "title": "leave and holiday policy",
+      "image": "../assets/images/paper-clip.png"
+    },
+    {
+      "title": "medical policy",
+      "image": "../assets/images/paper-clip.png"
+    },
+    {
+      "title": "provident fund policy",
+      "image": "../assets/images/paper-clip.png"
+    },
+    {
+      "title": "loan agreement",
+      "image": "../assets/images/paper-clip.png"
+    },
+
+    {
+      "title": "laptop policy",
+      "image": "../assets/images/paper-clip.png"
+    },
+
+    {
+      "title": "mandatory saving scheme policy",
+      "image": "../assets/images/paper-clip.png"
+    },
+
+    {
+      "title": "salary and other benefits",
+      "image": "../assets/images/paper-clip.png"
+    },
+    {
+      "title": "digital security policy",
+      "image": "../assets/images/paper-clip.png"
+    },
+    {
+      "title": "mandatory use of offical mobile sim and email address",
+      "image": "../assets/images/paper-clip.png"
+    },
+    {
+      "title": "dress code",
+      "image": "../assets/images/paper-clip.png"
+    }
+  ],
+
+  "holiday_list": [
+    {
+      "date": ["21/Feb/2024", "Wednesday"],
+      "purpose": "Martyr Day and International Mother Language Day"
+    },
+    {
+      "date": ["26/Feb/2024", "Monday"],
+      "purpose": "Shab-e-Barat"
+    },
+    {
+      "date": ["26/Mar/2024", "Tuesday"],
+      "purpose": "Independence Day"
+    },
+    {
+      "date": ["07/Apr/2024", "Sunday"],
+      "purpose": "Shab-e-Qadr**"
+    },
+    {
+      "date": ["10/Apr/2024", "Wednesday"],
+      "purpose": "Eid-Ul-Fitr**"
+    },
+    {
+      "date": ["11/Apr/2024", "Thursday"],
+      "purpose": "Eid-Ul-Fitr**"
+    },
+    {
+      "date": ["12/Apr/2024", "Friday"],
+      "purpose": "Eid-Ul-Fitr**"
+    },
+    {
+      "date": ["14/Aprp/2024", "Sunday"],
+      "purpose": "Pohela Boishakh"
+    },
+    {
+      "date": ["1/May/2024", "Wednesday"],
+      "purpose": "May Day"
+    },
+    {
+      "date": ["16/Jun/2024", "Sunday"],
+      "purpose": "Eid-Ul-Adha**"
+    },
+    {
+      "date": ["17/Jun/2024", "Monday"],
+      "purpose": "Eid-Ul-Adha**"
+    },
+    {
+      "date": ["18/Jun/2024", "Tuesday"],
+      "purpose": "Eid-Ul-Adha**"
+    },
+    {
+      "date": ["17/Jul/2024", "Wednesday"],
+      "purpose": "Muharram (Ashura)**"
+    },
+    {
+      "date": ["15/Aug/2024", "Thursday"],
+      "purpose": "National Mourning Day"
+    },
+    {
+      "date": ["16/Aug/2024", "Monday"],
+      "purpose": "Eid-e-Milad-UI-Nabi**"
+    },
+    {
+      "date": ["13/Oct/2024", "Sunday"],
+      "purpose": "Durga Puja"
+    },
+    {
+      "date": ["16/Oct/2024", "Monday"],
+      "purpose": "Victory Day"
+    }
+  ],
+
+  "attendance": [
+    {
+      "months": [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ]
+    },
+    {
+      "years": [
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026",
+        "2027",
+        "2028",
+        "2029",
+        "2030",
+        "2031",
+        "2032",
+        "2033",
+        "2034",
+        "2035",
+        "2036",
+        "2037",
+        "2038",
+        "2039",
+        "2040"
+      ]
+    },
+    {
+      "daysOfWeek": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ]
+    },
+    {
+      "status": ["Present", "DutyOff", "Holiday", "Absent", "Leave", "Late"]
+    }
+  ],
+
+  "dateTimeInfo": [
+    {
+      "months": [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ]
+    },
+    {
+      "years": [
+        "2008",
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
+        "2026",
+        "2027",
+        "2028",
+        "2029",
+        "2030",
+        "2031",
+        "2032",
+        "2033",
+        "2034",
+        "2035",
+        "2036",
+        "2037",
+        "2038",
+        "2039",
+        "2040"
+      ]
+    },
+    {
+      "daysOfWeek": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ]
+    },
+    {
+      "status": ["Present", "DutyOff", "Holiday", "Absent", "Leave", "Late"]
+    }
+  ],
+
+  "paySlipBreakDownTitle": {
+    "Be Rich": [
+      {
+        "Minimum Payment": 101010
+      },
+      {
+        "Adjustments": [
+          { "-Tax": 0 },
+          { "-Provident Fund": 0 },
+          { "-MSS": 0 },
+          { "-Loan": 0 },
+          { "+Others Add.": 2020 },
+          { "-Others Ded.": 0 }
+        ]
+      }
+    ],
+    "Be Fresh": [
+      {
+        "Minimum Payment": 202020
+      },
+      {
+        "Adjustments": [
+          { "-Tax": 0 },
+          { "-Provident Fund": 0 },
+          { "-MSS": 0 },
+          { "-Loan": 0 },
+          { "+Others Add.": 2020 },
+          { "-Others Ded.": 0 }
+        ]
+      }
+    ]
+  },
+
+  "lateReasonTitle": {
+    "apply": [
+      "Family Issue",
+      "Sickness",
+      "Official Issues",
+      "Weather Issues",
+      "Political Issues"
+    ],
+    "view": ["Date/Time", "Status", "Reason", "Note"],
+    "approval":[""]
+  },
+
+  "leaveApplicationTitle":{
+    "apply":[
+      "Personal Issue",
+      "Religious Issue",
+      "Family Issue",
+      "My Sickness",
+      "Sickness of Family Person",
+      "Maternity Issue",
+      "Paternity Issue",
+      "Personal Tour",
+      "Family Tour"
+      
+    ],
+    "view":[],
+    "approval":[""]
+  },
+
+  "taxActivity":{
+
+  },
+
+  "workFromHome":{
+    "apply":[
+      "Personal Issue",
+      "Religious Issue",
+      "Family Issue",
+      "My Sickness",
+      "Sickness of Family Person",
+      "Maternity Issue",
+      "Paternity Issue",
+      "Official Order"
+      
+    ],
+    "view":[],
+    "approval":[""]
+  },
+
+  "workFromOtherLocation":{
+    "apply":[
+      "Other Office",
+      "Outside Office",
+      "Other District",
+      "Other Country"
+    ],
+    "view":[],
+    "approval":[""]
+  },
+  
+  "Bill_entry":{
+    "Entry":{
+      "short_title":[
+        "Bill Ref",
+        "Date",
+        "Time"
+      ],
+      "Company":[
+        "Be Rich Limited",
+        "Be Fresh Limited",
+        "01 Limited",
+        "Testing company"
+      ],
+      "Bill Type":[
+        "-SELECT TYPE-",
+        "MEDICAL BILL",
+        "TRAVEL BILL",
+        "ENTERTAINMENT BILL",
+        "MISCELLANEOUS BILL",
+        "LOCAL CONVEYANCE BILL",
+        "PETTY CASH",
+        "DIRECTORS EXPENSES",
+        "COMMUNICATION EXPENSES",
+        "PRINTING & STATIONERY EXPENSES",
+        "LEGAL & STATUTORY EXPENSES",
+        "BANK CHARGE",
+        "ADVERTISEMENT EXPENSES",
+        "REPAIR & MAINTENANCE",
+        "BUSINESS DEVELOPMENT",
+        "POSTAGE & TELEGRAM",
+        "LOAN PAYMENT"
+      ],
+      "Bill date":[
+
+      ],
+      "Purpose":[
+        "-SELECT PURPOSE-"
+      ],
+      "Bill For":[
+        "SELF"
+      ],
+      "Note":[
+
+      ],
+      "Amount(Tk)":[
+
+      ]
+    },
+    "view":{
+      "Company":[
+        "ALL COMPANY",
+        "Be Rich Limited",
+        "Be Fresh Limited",
+        "01 Limited",
+        "Testing company"
+      ],
+      "ALL Type":[
+        "ALL TYPE",
+        "MEDICAL BILL",
+        "TRAVEL BILL",
+        "ENTERTAINMENT BILL",
+        "MISCELLANEOUS BILL",
+        "LOCAL CONVEYANCE BILL",
+        "PETTY CASH",
+        "DIRECTORS EXPENSES",
+        "COMMUNICATION EXPENSES",
+        "PRINTING & STATIONERY EXPENSES",
+        "LEGAL & STATUTORY EXPENSES",
+        "BANK CHARGE",
+        "ADVERTISEMENT EXPENSES",
+        "REPAIR & MAINTENANCE",
+        "BUSINESS DEVELOPMENT",
+        "POSTAGE & TELEGRAM",
+        "LOAN PAYMENT"
+      ],
+      "ALL STATUS":[
+        "ALL STATUS",
+        "PENDING",
+        "CHECKED",
+        "PAID",
+        "CANCELLED"
+      ]
+    },
+    "Approval":{
+      "Company":[
+        "ALL COMPANY",
+        "Be Rich Limited",
+        "Be Fresh Limited",
+        "01 Limited",
+        "Testing company"
+      ],
+      "ALL Type":[
+        "ALL TYPE",
+        "MEDICAL BILL",
+        "TRAVEL BILL",
+        "ENTERTAINMENT BILL",
+        "MISCELLANEOUS BILL",
+        "LOCAL CONVEYANCE BILL",
+        "PETTY CASH",
+        "DIRECTORS EXPENSES",
+        "COMMUNICATION EXPENSES",
+        "PRINTING & STATIONERY EXPENSES",
+        "LEGAL & STATUTORY EXPENSES",
+        "BANK CHARGE",
+        "ADVERTISEMENT EXPENSES",
+        "REPAIR & MAINTENANCE",
+        "BUSINESS DEVELOPMENT",
+        "POSTAGE & TELEGRAM",
+        "LOAN PAYMENT"
+      ],
+      "ALL STATUS":[
+        "ALL STATUS",
+        "PENDING",
+        "CHECKED",
+        "PAID",
+        "CANCELLED"
+      ]
+    }
+  },
+  
+  "options":[
+    "My Personal Profile",
+    "One Time Password",
+    "Company's Contacts Details",
+    "Send SMS",
+    "Exit From App"
+  ],
+
+  "companyDetails":[
+    { "img":"../assets/images/Be Rich Logo.png",
+       "BE RICH LIMITED":[
+          {"Hotline":"017 3004 2525"},
+          {"Phone Trade":"017 3004 2508"},
+          {"Online Trade":"017 3004 2524"},
+          {"Email":"berich@berichbd.com"},
+          {"Web":"www.berichbd.com"}
+      ]      
+    },
+    { "img":"../assets/images/BeFresh Logo.png",
+      "BE FRESH LIMITED":[  
+      {"Hotline":"017 3004 2505"},
+      {"Amy Support":"017 0816 9900"},
+      {"Email":"befresh@befreshbd.com"},
+      {"Web":"www.befreshbd.com"}
+      ] 
+    },
+    {"img":"../assets/images/CtgShop.com_Logo,_2018.svg.png",
+      "CTGSHOP.COM LIMITED":[
+       
+        {"Hotline":"017 3040 4242"},
+        {"Email":"support@ctgshop.com"},
+        {"Web":"www.ctgshop.com"}
+      ]
+    },
+    {"img":"../assets/images/Speed Track Logo.png",
+      "SPEED TRACK (PVT) LIMITED":[
+        
+        {"Hotline":"017 3035 8932"},
+        {"Email":"speedtrackcng@gmail.com"},
+        {"Web":"www.speedtrackbd.com"}
+      ]
+    },
+    {"img":"../assets/images/BeFreshEdu Logo.png",
+    "BE FRESH EDUCATION & JOBS":[
+       
+      {"Hotline":"017 3040 4271"},
+      {"Email":"contacts@befreshedujobs.com"},
+      {"Web":"www.befreshedujobs.com"}
+      ]
+    },
+    {"img":"../assets/images/amybd.png",
+      "Amy Travel Technology Limited":[
+        
+        {"Hotline":"096 7878 5656"},
+        {"Whatsapp":"017 0816 9900"},
+        {"Email":"support@amybd.com"},
+        {"Web":"www.amybd.com"}
+      ]
+    },
+    {"img":"../assets/images/Be Rich Manufacturing Logo.png",
+      "BE RICH (MFG) LIMITED":[
+       
+        {"Hotline":"017 3040 4220"},
+        {"Email":"berichmfg@berichmfg.com"},
+        {"Web":"www.berichmfg.com"}
+      ]
+    },
+    {"img":"../assets/images/South East Money Exchange Logo.png",
+      "SOUTH EAST MONEY EXCHANGE":[
+       
+        {"Hotline":"017 3044 4519"},
+        {"Email":"info@befreshfx.com"},
+        {"Web":"www.befreshfx.com"}
+      ]
+    }
+  ]
+
+}
+
+

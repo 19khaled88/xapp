@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.min.css">
+    <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <title>Financial Statement</title>
+    <link rel="stylesheet" href="./css/financialStatement.css">
+    <script src="./apFetching/fetch.js"></script>
+    <script src="./js/financialStatement.js"></script>
+    <script id="jQuery" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script id="jQueryUi" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link id='jQueryStyle' rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <section class="finacialStatementSection">
+        <div style="display: none;" id="overlay"></div>
+        <div style="display: none;" id="popUpOverlay"></div>
+        <div style="display: none;" id="popUpDiv"></div>
+        <div style="display: none;" id="loader"><img src="../../images/Cube@1x-1.0s-200px-200px.gif" alt="Loader"></div>
+        <div style="text-align: center;" class="nav-section" id="nav-section">
+            <button onclick="handleBackBtn(pageName='berich_home',obj={url:`index.html`})">
+                <i class="fa-solid fa-arrow-left fa-lg" style="color:white;"></i>
+            </button>
+            <h1 style="color: #fff; margin: 0; padding: 5px 0px; font-size: 18px;">Finacial Statement</h1>
+            <button onclick="handleBackBtn()">
+                <i class="fa-solid fa-arrow-right-from-bracket fa-lg" style="color:white;"></i>
+            </button>
+        </div>
+        <div class="container">
+            <h6 id="portfolioManagerName" class="portfolioManagerName"></h6>
+            <div class="dataBox">
+                <div class="dataRow">
+                    <div class="left">
+                        <p>Client ID:</p>
+                    </div>
+                    <div class="right">
+                        <select name="clientID" id="clientID"></select>
+                    </div>
+                </div>
+                <div class="innerBox">
+                    <div class="dataRow">
+                        <div class="left">
+                            <p>Client ID:</p>
+                        </div>
+                        <div class="right">
+                            <p id="selectedClientID"></p>
+                        </div>
+                    </div>
+                    <div class="dataRow">
+                        <div class="left">
+                            <p>Client Name:</p>
+                        </div>
+                        <div class="right">
+                            <p id="selectedClientName"></p>
+                        </div>
+                    </div>
+                    <div id="showDetails">
+                        <p>Show Details</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    
+</body>
+<script>
+    let idNameList
+    document.getElementById('showDetails').addEventListener('click', async()=>{
+        try {
+            const result = await pareseUrlAndStore(window.location.href);
+            // window.location.href = `./page/financialStatementDetails.html?invID=${document.getElementById('selectedClientID').innerText}&name=${document.getElementById('selectedClientName').innerText}&emcode=${encodeURIComponent(result.emcode)}`; 
+            window.location.href = `./page/financialStatementDetails.html?invID=${document.getElementById('selectedClientID').innerText}&name=${document.getElementById('selectedClientName').innerText}&mother_acc_name=${encodeURIComponent(result.name)}&emcode=${encodeURIComponent(result.emcode)}`; 
+        } catch (error) {
+            
+        }
+    })
+    document.getElementById('clientID').addEventListener('change', ()=>{
+            const selectedClient = idNameList.find(client => client.inv_id === document.getElementById('clientID').value);
+            if (selectedClient) {
+                document.getElementById('selectedClientID').innerText = selectedClient.inv_id;
+                document.getElementById('selectedClientName').innerText = selectedClient.inv_name;
+            }
+
+    })
+    window.onload = async function() {
+        async function executeFunc(){
+            const urlParams= new URLSearchParams(window.location.search);
+            document.getElementById('portfolioManagerName').innerText = `List of investors under Portfolio Manager - ${urlParams.get('name')}`
+            // sessionStorage.setItem('name', urlParams.get('name'));
+            const fetchedData = await get_inv_pm_wise(urlParams.get('name'))
+            // console.log(fetchedData);
+            if(fetchedData.status === true){
+                idNameList = fetchedData.Data
+                fetchedData.Data.forEach((option, index) =>{
+                    const newOption = document.createElement('option')
+                    newOption.value = option.inv_id;
+                    newOption.textContent = option.inv_id;
+                    document.getElementById('clientID').appendChild(newOption)
+                    if (index === 0){
+                        document.getElementById('selectedClientID').innerText = (option.inv_id);
+                        document.getElementById('selectedClientName').innerText = (option.inv_name);
+                    }
+                
+                })
+            }
+        }
+        await executeLoader(executeFunc)
+    }
+</script>
+<script src="../../js/navRoot.js"></script>
+</html>

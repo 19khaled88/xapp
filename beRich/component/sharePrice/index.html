@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.min.css">
+    <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <title>Share Price</title>
+    <link rel="stylesheet" href="./css/sharePrice.css">
+    <script src="./apFetching/fetch.js"></script>
+    
+    <script id="jQuery" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script id="jQueryUi" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link id='jQueryStyle' rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <section class="sharePriceMainSection">
+        <div style="display: none;" id="overlay"></div>
+        <div style="display: none;" id="popUpOverlay"></div>
+        <div style="display: none;" id="popUpDiv"></div>
+        <div style="display: none;" id="loader"><img src="../../images/Cube@1x-1.0s-200px-200px.gif" alt="Loader"></div>
+        <div style="text-align: center;" class="nav-section" id="nav-section">
+            <button onclick="handleBackBtn(pageName='berich_home',obj={url:`index.html`})">
+                <i class="fa-solid fa-arrow-left fa-lg" style="color:white;"></i>
+            </button>
+            <h1 style="color: #fff; margin: 0; padding: 5px 0px; font-size: 18px;">Share Price</h1>
+            <button onclick="handleBackBtn()">
+                <i class="fa-solid fa-arrow-right-from-bracket fa-lg" style="color:white;"></i>
+            </button>
+        </div>
+        <div style="flex: 0 0 auto;" class="btnRow">
+            <div id="sharePriceBtn" style="border-bottom: 2px solid #ff0000; color: #ff0000;" onclick="handleBtn('sharePriceBtn')">CURRENT SHARE PRICE</div>
+            <div id="watchListBtn" onclick="handleBtn('watchListBtn')">WATCH LIST</div>
+        </div> 
+        
+        <div style="flex: 1 1 auto;height: 100%; overflow-y: auto;" class="detailsBody">
+            <div style="height: 100%;" class="container">
+                <div style="display: flex; height: 100%;" id="sharePriceContent">
+                    
+                    <div class="buttonRow">
+                        <div class="allButton">
+                            <select id="MS_selectType" class="allBtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <option>Select Type</option>
+                            </select>
+                            <select id="MS_selectSector" class="allBtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <option>Select Sector</option>
+                            </select>
+                            <select id="MS_selectSort" class="allBtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <option>Select Sort</option>
+                            </select>
+                        </div>
+                    </div>
+            
+                    <div class="searchBox">
+                        <div class="MS_searchRow">
+                            <div style="width: 90%; height:auto" class="MS_searchBox">
+                                <input id="searchSharePrice" type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="searchIcon">
+                                <img class="MS_searchIcon" style="width: 20px; height:auto" src="../../images/magnifying-glass.png" alt="search icon">
+                            </div>
+                            <div id="MS_Reload" class="reload">
+                                <img style="width: 30px; height:auto" src="../../images/reload.png" alt="Reload">
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="companyDataSection" style="flex: 1 1 auto;height: 100%;overflow-y: auto;">
+                        <div class="MS_table" id="MS_table"></div>
+                    </div>
+                </div>
+                <div style="display: none; height: 100%;" id="watchListContent">
+                    <div class="findAddRefreshBox">
+                        <div class="companySearchBox" style="width: 70%;height: 100%;align-content: center">
+                            <div class="search-reload" id="search-reload">
+                                <input id='searchCompany' type="text" class="form-control" placeholder="Select Company" aria-label="Search" aria-describedby="searchIcon">                
+                            </div>
+                            <div class= 'container' style="position: absolute;z-index: 105;padding-left:0px;">
+                                <ul style='display: none' class='allCompanyList' id='allCompanyList'></ul>
+                            </div>
+                        </div>
+                        <div id="addBtn" class="addBox" style="width: 15%;height: 100%;align-content: center; background-color: green;text-align: center;margin-left: 5px;color: #fff;border-radius: 5px;">ADD</div>
+                        <div class="refreshBox" id="refreshBox" style="width: 15%;height: 100%;align-content: center;text-align: center;margin-left: 5px;border: 1px solid #000;border-radius: 5px;">
+                            <img src="../../images/reload.png" alt="Refresh" style="width: 25px;height: auto;">
+                        </div>
+                    </div>
+                    <div style="flex: 1 1 auto;height: 100%;overflow-y: auto;" id="watchListTable"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+    window.onload = async function() {
+        async function showLoader(){
+            document.getElementById('overlay').style.display = 'block'
+            document.getElementById('loader').style.display = 'block'
+
+        }
+        async function hideLoader(){
+            document.getElementById('overlay').style.display = 'none'
+            document.getElementById('loader').style.display = 'none'
+        }
+        async function executeBtn(){
+            await renderOptions()
+            await fetchSharePriceData()
+            renderMS_table()
+            renderWatchTable()
+        }
+        await showLoader()
+        await executeBtn()
+        await hideLoader()
+
+    }
+</script>
+<script src="./js/sharePrice.js"></script>
+<script src="../../js/navRoot.js"></script>
+</html>

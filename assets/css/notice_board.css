@@ -1,0 +1,363 @@
+body {
+    background-color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    /* height: 100vh; */
+}
+
+.noticeTopss {
+    position: fixed;
+    /* Make the section fixed */
+    top: 0;
+    /* Position it at the top of the viewport */
+    left: 0;
+    right: 0;
+    width: 100%;
+
+
+    /* padding: 10px; */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+
+    /* background-color: blue; */
+    display: flex;
+    /* display: none; */
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+
+    .notice_back_btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        background-color: blue;
+        height: 50px;
+        width: 100%;
+        p {
+            color: white;
+            font-size: 18px;
+        }
+    }
+}
+
+.noticeTops{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #0d47a1;
+   
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+
+    button{
+        width: 50px;
+        height: 50px;
+        padding-left: 5px;
+        border: none;
+        background-color: #0d47a1;
+        img{
+            width: 50%;
+            height: 60%;
+       
+        }
+    }
+    p{
+        color: white;
+        padding-right: 5px;
+        font-size: 20px;
+        flex: 1;
+        text-align: center;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 500;
+    }
+}
+
+
+
+.noticeTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #0d47a1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+.noticeTop > button {
+    width: 50px;
+    height: 50px;
+    padding-left: 5px;
+    border: none;
+    background-color: #0d47a1;
+}
+.noticeTop > button > img {
+    width: 50%;
+    height: 60%;
+}
+.noticeTop > p {
+    color: white;
+    padding-right: 5px;
+    font-size: 20px;
+    flex: 1;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+
+
+
+.noticeMains {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin: 0px auto 2px;
+
+    padding-top: 15px;
+
+
+    .individual-notice {
+        color: black;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 8px;
+        width: 95%;
+
+        .title-attachment{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5px;
+            border-bottom: 1px solid gray;
+
+            p {
+                width: 80%;
+                font-size: 17px;
+                text-align: left;
+                font-weight: 600;
+                
+            }
+
+            button {
+                width: 15%;
+                max-height: 30%;
+                background-color: #fff;
+                border: none;
+
+                img {
+                    width: 100%;
+                    max-height: 10%;
+                }
+            }
+        }
+
+        .title {
+            font-size: 17px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid gray;
+        }
+
+        p {
+            text-align: right;
+            margin: 0;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .info {
+            font-size: 15px;
+        }
+
+
+    }
+}
+
+
+.noticeMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    margin: 0px auto 2px;
+    padding-top: 50px;
+}
+.noticeMain > .individual-notice {
+    color: black;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 8px;
+    width: 95%;
+    margin-bottom: 8px;
+}
+.noticeMain > .individual-notice > .title-attachment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    border-bottom: 1px solid gray;
+}
+.noticeMain > .individual-notice > .title-attachment > p {
+    width: 80%;
+    font-size: 17px;
+    text-align: left;
+    font-weight: 600;
+}
+.noticeMain > .individual-notice > .title-attachment > button {
+    width: 15%;
+    max-height: 30%;
+    background-color: #fff;
+    border: none;
+}
+.noticeMain > .individual-notice > .title-attachment > button > img {
+    width: 100%;
+    max-height: 10%;
+}
+.noticeMain > .individual-notice > .title {
+    font-size: 17px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 1px solid gray;
+}
+.noticeMain > .individual-notice > p {
+    text-align: right;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+}
+.noticeMain > .individual-notice > .info {
+    font-size: 15px;
+}
+
+/* Overlay styles */
+#pdfOverlays {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            display: none !important; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+    /* Modal styles */
+    .modal {
+            background-color: white;
+            padding:10px;
+            width: 90vw; /* 90% of viewport width */
+            height: 100vh; /* 90% of viewport height */
+            max-width: 100%; /* Limit maximum width */
+            max-height: 100%; /* Limit maximum height */
+            overflow: auto;
+            border-radius: 8px;
+            /* pdfContainer styles */
+        #pdfContainer {
+            width: 100%;
+            height: 100%;
+            img{
+                padding-top: 50px;
+                width: 100%;
+                height: 80%;
+            }
+        }
+        .close-button {
+            position: absolute;
+            top: 4.5%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            border: none;
+            padding: 5px;
+            width: 18%;
+            background-color: rgb(58, 79, 201);
+            display: flex;
+            color: white;
+            border-radius: 5px;
+            flex-direction: row;
+            justify-content: center;
+            gap: 5px;
+            font-size: 13px;
+        }
+    }
+
+    
+}
+
+
+#pdfOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    display: none !important; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+}
+#pdfOverlay > .modal {
+    background-color: white;
+    padding: 10px;
+    width: 90vw; /* 90% of viewport width */
+    height: 100vh; /* 90% of viewport height */
+    max-width: 100%; /* Limit maximum width */
+    max-height: 100%; /* Limit maximum height */
+    overflow: auto;
+    border-radius: 8px;
+}
+#pdfOverlay > .modal > #pdfContainer {
+    width: 100%;
+    height: 100%;
+}
+#pdfOverlay > .modal > #pdfContainer > img {
+    padding-top: 50px;
+    width: 100%;
+    height: 80%;
+}
+#pdfOverlay > .modal > .close-button {
+    position: absolute;
+    top: 4.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+    width: 18%;
+    background-color: rgb(58, 79, 201);
+    display: flex;
+    color: white;
+    border-radius: 5px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+    font-size: 13px;
+}
+
+

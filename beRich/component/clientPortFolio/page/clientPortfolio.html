@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../vendor/bootstrap/css/bootstrap.min.css">
+    <script src="../../../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <title>Client Portfolio</title>
+    <link rel="stylesheet" href="../css/clientPortfolio.css">
+    <script src="../apFetching/fetch.js"></script>
+    
+    <script id="jQuery" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script id="jQueryUi" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link id='jQueryStyle' rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <section class="clientPortfolioMainSection">
+        <div style="display: none;" id="overlay"></div>
+        <div style="display: none;" id="popUpOverlay"></div>
+        <div style="display: none;" id="popUpDiv"></div>
+        <div style="display: none;" id="loader"><img src="../../../images/Cube@1x-1.0s-200px-200px.gif" alt="Loader"></div>
+        <div style="text-align: center;" class="nav-section" id="nav-section">
+            <button onclick="handleBackBtn(pageName='client_portfolio',obj={url:`component/clientPortFolio/index.html`})">
+                <i class="fa-solid fa-arrow-left fa-lg" style="color:white;"></i>
+            </button>
+            <h1 style="color: #fff; margin: 0; padding: 5px 0px; font-size: 18px;">Client Portfolio details</h1>
+            <button onclick="handleBackBtn()">
+                <i class="fa-solid fa-arrow-right-from-bracket fa-lg" style="color:white;"></i>
+            </button>
+        </div>
+        <div class="container">
+            <h5 style="text-align: center; font-size: 16px;" id="dateBox"></h5>
+        </div>
+        
+        <div class="container" style="flex: 1 1 auto;height: 100%;overflow-y: auto;">
+            <div class="box" id="profile-content">
+                <div class="leftSide">
+                    <div class="userImage">
+                        <img id="imgID" style="width: 75px" alt="userImage">
+                    </div>
+                    <div class="profileBtn">
+                        <div id="getProfile">PROFILE</div>
+                    </div>
+                </div>
+                <div class="rightSide">
+                    <div id="mainInfo" class="mainInfo"></div>
+                    
+                </div>
+            </div>
+            <div class="box">
+                <div id="table1"></div>
+            </div>
+            <div class="box">
+                <div id="table2"></div>
+            </div>
+            <div class="box">
+                <div id="table3"></div>
+            </div>
+            <div class="box1">
+                <div id="table4" style="flex: 1 1 auto; max-height: 350px; overflow-y: auto;"></div>
+                <div id='tableFooter'> ekhane footer bosbe </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+    const urlParams= new URLSearchParams(window.location.search);
+    const inv_id = urlParams.get('inv_id')
+
+    let today = new Date().toISOString().split('T')[0];
+    today = customDateConverter(today, 'defaultToCustom');
+    document.getElementById('getProfile').addEventListener('click', ()=>{
+        window.location.href = `./investorProfile.html?inv_id=${inv_id}`
+    })
+    document.getElementById('dateBox').innerText = today;
+    window.onload = async function() {
+        async function executeFunc(){
+            const fetchedData = await getClientPortfolio(inv_id)
+        
+            if(fetchedData.status === true){
+                document.getElementById('imgID').setAttribute('src', fetchedData.ImageList[0].inv_ph);
+                executeMainInfo(fetchedData);
+                executeTable1(fetchedData)
+                executeTable2(fetchedData)
+                executeTable3(fetchedData)
+                executeTable4(fetchedData.StockList)
+            
+            }
+            else{
+                document.getElementById('popUpOverlay').style.display = 'block'
+                document.getElementById('popUpDiv').style.display = 'block'
+                document.getElementById('popUpDiv').innerHTML = `
+                    <div class='popUpHead'>
+                        <h6>Failed</h6>
+                    </div>
+                    <div class='popUpBody'>
+                        <p>${fetchedData.message}</p>
+                    </div>
+                    <div id='popUpOkBtn' class='popUpFooter'>
+                        <p>OK</p>
+                    </div>
+                `
+                document.getElementById('popUpOkBtn').addEventListener('click', ()=>{
+                    document.getElementById('popUpOverlay').style.display = 'none'
+                    document.getElementById('popUpDiv').style.display = 'none'
+                })
+                
+            } 
+        }
+        await executeLoader(executeFunc)
+    }
+</script>
+<script src="../js/clientPortfolio.js"></script>
+<script src="../../../js/navRoot.js"></script>
+</html>

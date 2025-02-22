@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../vendor/bootstrap/css/bootstrap.min.css">
+    <script src="../../../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/investorProfile.css">
+    <title>Investor Profile</title>
+    <script src="../apFetching/fetch.js"></script>
+</head>
+<body>
+    <section class="investorProfileSection">
+        <div style="display: none;" id="overlay"></div>
+        <div style="display: none;" id="popUpOverlay"></div>
+        <div style="display: none;" id="popUpDiv"></div>
+        <div style="display: none;" id="loader"><img src="../../../images/Cube@1x-1.0s-200px-200px.gif" alt="Loader"></div>
+        <div style="background-color: #0000ff;text-align: center;">
+            <h1 style="color: #fff; margin: 0; padding: 5px 0px; font-size: 18px;">Account Profile</h1>
+        </div>
+        <div class="investorImage">
+            <img id="invImg" alt="Investor Image" style="width: 100px; height: auto;">
+        </div>
+        <div class="container" id="investorDetails" style="flex: 1 1 auto; height: 100%; overflow-y: auto;"></div>
+    </section>
+</body>
+<script>
+    const urlParams= new URLSearchParams(window.location.search);
+    const inv_id = urlParams.get('inv_id')
+    
+    window.onload = async function() {
+        async function executeFunc(){
+            const fetchedData = await getInvDetails(inv_id)
+            // console.log(fetchedData)
+        
+            if(fetchedData.status === true){
+                document.getElementById('invImg').setAttribute('src', fetchedData.Photo[0].Photo);
+                const selectedDiv = document.getElementById('investorDetails')
+                
+                fetchedData.Data.forEach(element => {
+                    const newElement = document.createElement('div')
+                    newElement.innerHTML = `
+                        <div class="left">
+                            <p>${element.title}</p>
+                        </div>
+                        <div class="right">
+                            <p>:</p>
+                            <p>${element.value}</p>
+                        </div>
+                    `
+                    selectedDiv.appendChild(newElement);
+                });
+            }
+            else{
+                document.getElementById('popUpOverlay').style.display = 'block'
+                document.getElementById('popUpDiv').style.display = 'block'
+                document.getElementById('popUpDiv').innerHTML = `
+                    <div class='popUpHead'>
+                        <h6>Failed</h6>
+                    </div>
+                    <div class='popUpBody'>
+                        <p>${fetchedData.message}</p>
+                    </div>
+                    <div id='popUpOkBtn' class='popUpFooter'>
+                        <p>OK</p>
+                    </div>
+                `
+                document.getElementById('popUpOkBtn').addEventListener('click', ()=>{
+                    document.getElementById('popUpOverlay').style.display = 'none'
+                    document.getElementById('popUpDiv').style.display = 'none'
+                })
+                
+            }
+        }
+        await executeLoader(executeFunc)
+          
+    }
+</script>
+</html>

@@ -1,0 +1,717 @@
+
+/* sweet alert css code*/
+    /* SweetAlert Container */
+    .swal2-container {
+        z-index: 10000; /* Ensure it's on top */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full viewport height */
+        width: 90vw;
+
+        position: fixed; /* Fixes to the viewport to avoid stacking issues */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    /* Alert Box */
+    .swal2-container > .my-swal2-popup-class {
+        width: 98vw !important; /* Responsive width */
+        /* max-width: 90vw !important; */
+        border-radius: 8px; /* Rounded corners */
+        background-color: #fff; /* White background */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        padding:20px 5px 20px 5px; /* Padding inside the alert */
+
+        z-index: 10001;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        max-height: 100vh;
+
+        position: relative;
+    }
+    .swal2-container > .fullscreen_popup_show {
+        width: 100vw !important;
+        height: 100vh !important;
+
+        border-radius: 8px; /* Rounded corners */
+        background-color: #fff; /* White background */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        padding:20px 5px 20px 5px; /* Padding inside the alert */
+
+        z-index: 10001;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+    }
+
+    .swal2-container > .fullscreen_popup_show > .swal2-close {
+       
+        font-size: 40px; 
+        z-index: 2;
+        padding: 0;
+        overflow: hidden;
+        color: #ccc;
+        font-family: monospace;
+        justify-self: end;
+        width: 40px; 
+        height: 40px; 
+        margin: 0; 
+        background: none; 
+        /* border: 2px solid rgba(255, 255, 255, 0.5); */
+        /* border-radius: 5px;  */
+        border: none;
+        outline: none;
+        cursor: pointer; 
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        transition: color 0.1s;
+        /* position: fixed;
+        right: 5px; */
+        position: fixed; /* Position the button absolutely */
+        top: 20px; /* Adjust as needed */
+        right: 10px; /* Adjust as needed */
+        z-index: 1000; /* Ensure it appears on top of other elements */
+        
+    }
+
+    .swal2-container > .fullscreen_popup_show > .fullscreen_show{
+        font-size: 16px; /* Font size for content */
+        color: #666; /* Lighter color for content */
+        margin-bottom: 20px; /* Space below content */
+
+        line-height: 1.5;
+        padding:10px 5px; /* Padding inside the container */
+        background-color: #f9f9f9; /* Light background for contrast */
+        border-radius: 5px; /* Smooth corners */
+        box-sizing: border-box; /* Ensure padding is inside the width */
+        overflow-y: auto; /* Ensure content scrolls if it exceeds container height */
+        
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        width: 85vw !important;
+        z-index: 10002;
+        max-height: 80vh;
+        -webkit-box-sizing: border-box; /* Older WebKit support */
+        -moz-box-sizing: border-box; /* Older Firefox support */
+        -webkit-overflow-scrolling: touch;
+        margin: 0 auto;
+    }
+    
+
+    /* Title */
+    .swal2-container > .my-swal2-popup-class > .swal2-title {
+        font-size: 20px; /* Title font size */
+        color: #333; /* Dark color for readability */
+        margin-bottom: 15px; /* Space below the title */
+    }
+
+    /* HTML Container */
+    .swal2-container > .my-swal2-popup-class > .my-swal2-html-class {
+        font-size: 16px; /* Font size for content */
+        color: #666; /* Lighter color for content */
+        margin-bottom: 20px; /* Space below content */
+
+        line-height: 1.5;
+        padding:10px 5px; /* Padding inside the container */
+        background-color: #f9f9f9; /* Light background for contrast */
+        border-radius: 5px; /* Smooth corners */
+        box-sizing: border-box; /* Ensure padding is inside the width */
+        overflow-y: auto; /* Ensure content scrolls if it exceeds container height */
+        
+        width: 85vw !important;
+        z-index: 10002;
+        max-height: 70vh;
+        -webkit-box-sizing: border-box; /* Older WebKit support */
+        -moz-box-sizing: border-box; /* Older Firefox support */
+        -webkit-overflow-scrolling: touch;
+        margin: 0 auto;
+    }
+
+    .swal2-container > .my-swal2-popup-class > .my-swal2-html-class > .show_bill_single > div,
+    .swal2-container > .fullscreen_popup_show > .fullscreen_show > .show_bill_single > div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px solid gray;
+    }
+    .swal2-container > .my-swal2-popup-class > .my-swal2-html-class > .show_bill_single > div:last-child,
+    .swal2-container > .fullscreen_popup_show > .fullscreen_show > .show_bill_single > div:last-child{
+        border-bottom: 0;
+    }
+    .swal2-container > .my-swal2-popup-class > .my-swal2-html-class > .show_bill_single > div > label,
+    .swal2-container > .fullscreen_popup_show > .fullscreen_show > .show_bill_single > div > label{
+        width: 40%;
+        border-right: 1px solid gray;
+    }
+    .swal2-container > .my-swal2-popup-class > .my-swal2-html-class > .show_bill_single > div > p,
+    .swal2-container > .fullscreen_popup_show > .fullscreen_show > .show_bill_single > div > p{
+        width: 60%;
+        margin: 0;
+    }
+
+    .swal2-container > .my-swal2-popup-class > .my-swal2-html-class > .pinch-zoom-container > div,
+    .swal2-container > .fullscreen_popup_show > .fullscreen_show > .pinch-zoom-container > div {
+        width: 100%;
+        height: 100% !important;
+    }
+    .swal2-container > .my-swal2-popup-class > .my-swal2-html-class > .pinch-zoom-container > div > img,
+    .swal2-container > .fullscreen_popup_show > .fullscreen_show > .pinch-zoom-container > div > img {
+        width: 100%;
+        height: 100% !important;
+    }
+
+    /* Buttons */
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-actions> .swal2-confirm,
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-actions> .swal2-cancel,
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-actions> .swal2-deny,
+    .swal2-container > .my-swal2-popup-class > .swal2-actions> .swal2-confirm, 
+    .swal2-container > .my-swal2-popup-class > .swal2-actions> .swal2-cancel,
+    .swal2-container > .my-swal2-popup-class > .swal2-actions> .swal2-deny {
+        /* background-color: #0ceb3c;  */
+        color: white; /* Button text color */
+        border: none; /* Remove border */
+        border-radius: 4px; /* Rounded button corners */
+        padding: 14px 20px; /* Button padding */
+        font-size: 16px; /* Button font size */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s; /* Smooth transition */
+        outline: none;
+        width: 30%;
+    }
+    .swal2-container > .my-swal2-popup-class > .swal2-actions> .swal2-confirm,
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-actions> .swal2-confirm{
+        background-color: #7066e0;
+    }
+
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-actions> .swal2-cancel,
+    .swal2-container > .my-swal2-popup-class > .swal2-actions> .swal2-cancel{
+        background-color: #dc3741;
+    }
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-actions> .swal2-deny,
+    .swal2-container > .my-swal2-popup-class > .swal2-actions> .swal2-deny{
+        background-color: #6e7881;
+    }
+    .swal2-container > .my-swal2-popup-class > .swal2-actions>button,
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-actions>button{
+        margin-right: 10px;
+    }
+
+    .swal2-container > .my-swal2-popup-class > .swal2-actions>button:last-child,
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-actions>button:last-child{
+        margin-right: 0;
+    }
+
+    .swal2-container > .swal2-alert-custom-fullscreen {
+        width: 100vw !important;
+        height: 100vh !important;
+
+        border-radius: 8px; /* Rounded corners */
+        background-color: #fff; /* White background */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        padding:20px 5px 20px 5px; /* Padding inside the alert */
+
+        z-index: 10001;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+    }
+
+    .swal2-container > .swal2-alert-custom-fullscreen > .swal2-close {
+       
+        font-size: 40px; 
+        z-index: 2;
+        padding: 0;
+        overflow: hidden;
+        color: #ccc;
+        font-family: monospace;
+        justify-self: end;
+        width: 40px; 
+        height: 40px; 
+        margin: 0; 
+        background: none; 
+        /* border: 2px solid rgba(255, 255, 255, 0.5); */
+        /* border-radius: 5px;  */
+        border: none;
+        outline: none;
+        cursor: pointer; 
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        transition: color 0.1s;
+        /* position: fixed;
+        right: 5px; */
+        position: fixed; /* Position the button absolutely */
+        top: 20px; /* Adjust as needed */
+        right: 10px; /* Adjust as needed */
+        z-index: 1000; /* Ensure it appears on top of other elements */
+        
+    }
+
+    .swal2-container > .swal2-alert-custom-fullscreen > .swal2-custom-fullscreen-html-containers {
+        font-size: 16px; /* Font size for content */
+        color: #666; /* Lighter color for content */
+        margin-bottom: 20px; /* Space below content */
+
+        line-height: 1.5;
+        padding:10px 5px; /* Padding inside the container */
+        background-color: #f9f9f9; /* Light background for contrast */
+        border-radius: 5px; /* Smooth corners */
+        box-sizing: border-box; /* Ensure padding is inside the width */
+        overflow-y: auto; /* Ensure content scrolls if it exceeds container height */
+        
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        width: 85vw !important;
+        z-index: 10002;
+        height: 90vh;
+        -webkit-box-sizing: border-box; /* Older WebKit support */
+        -moz-box-sizing: border-box; /* Older Firefox support */
+        -webkit-overflow-scrolling: touch;
+        margin: 0 auto;
+    }
+    .swal2-container > .swal2-alert-custom-fullscreen > .swal2-custom-fullscreen-html-containers > .pinch-zoom-container{
+        height: 90vh !important;
+        margin-top: 0 !important;
+      }
+
+
+    .swal2-container > .my-swal2-popup-confirm_class{
+        width: 98vw !important; /* Responsive width */
+        /* max-width: 90vw !important; */
+        border-radius: 8px; /* Rounded corners */
+        background-color: #fff; /* White background */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        padding:20px 5px 20px 5px; /* Padding inside the alert */
+
+        z-index: 10001;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        max-height: 100vh;
+
+        position: relative;
+      }
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-close {
+       
+        font-size: 40px; 
+        z-index: 2;
+        padding: 0;
+        overflow: hidden;
+        color: #ccc;
+        font-family: monospace;
+        justify-self: end;
+        width: 40px; 
+        height: 40px; 
+        margin: 0; 
+        background: none; 
+        /* border: 2px solid rgba(255, 255, 255, 0.5); */
+        /* border-radius: 5px;  */
+        border: none;
+        outline: none;
+        cursor: pointer; 
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        transition: color 0.1s;
+        /* position: fixed;
+        right: 5px; */
+        position: fixed; /* Position the button absolutely */
+        top: 20px; /* Adjust as needed */
+        right: 10px; /* Adjust as needed */
+        z-index: 1000; /* Ensure it appears on top of other elements */
+        
+    }
+
+
+    .swal2-container > .paid_popup_show,
+    .swal2-container > .approve_popup_show,
+    .swal2-container > .cancel_popup_show{
+        /* width: 98vw !important;  */
+        /* max-width: 90vw !important; */
+        border-radius: 8px; /* Rounded corners */
+        background-color: #fff; /* White background */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        padding:20px 5px 20px 5px; /* Padding inside the alert */
+
+        z-index: 10001;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        max-height: 100vh;
+
+        position: relative;
+    }
+    .swal2-container > .paid_popup_show > .swal2-close,
+    .swal2-container > .approve_popup_show > .swal2-close,
+    .swal2-container > .cancel_popup_show > .swal2-close{
+        font-size: 40px; 
+        z-index: 2;
+        padding: 0;
+        overflow: hidden;
+        color: #ccc;
+        font-family: monospace;
+        justify-self: end;
+        width: 40px; 
+        height: 40px; 
+        margin: 0; 
+        background: none; 
+        /* border: 2px solid rgba(255, 255, 255, 0.5); */
+        /* border-radius: 5px;  */
+        border: none;
+        outline: none;
+        cursor: pointer; 
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        transition: color 0.1s;
+        /* position: fixed;
+        right: 5px; */
+        position: fixed; /* Position the button absolutely */
+        top: 20px; /* Adjust as needed */
+        right: 10px; /* Adjust as needed */
+        z-index: 1000; /* Ensure it appears on top of other elements */
+    }
+    .swal2-container > .paid_popup_show > .swal2-icon,
+    .swal2-container > .approve_popup_show > .swal2-icon,
+    .swal2-container > .cancel_popup_show > .swal2-icon{
+        display: flex; /* Ensures the content is centered */
+        justify-content: center; /* Horizontally centers the icon */
+        align-items: center; /* Vertically centers the icon */
+        margin: 0 auto; /* Ensures the icon is centered relative to the modal */
+        width: 80px; /* Set a consistent width for the icon */
+        height: 80px; /* Set a consistent height for the icon */
+        border-radius: 50%; /* Make sure it's circular */
+        background-color: #ffc107; /* Yellow background for warning */
+        color: #fff; /* White color for icon content */
+        margin-bottom: 20px;
+    }
+    .swal2-container > .paid_popup_show > .swal2-title,
+    .swal2-container > .approve_popup_show > .swal2-title,
+    .swal2-container > .cancel_popup_show > .swal2-title{
+        font-size: 20px; /* Title font size */
+        color: #333; /* Dark color for readability */
+        margin-bottom: 15px; /* Space below the title */
+    }
+    .swal2-container > .approve_popup_show > .approve_screen> div  {
+        height: 45px;
+    }
+    .swal2-container > .approve_popup_show > .approve_screen> div >label,
+    .swal2-container > .approve_popup_show > .approve_screen> div >input,
+    .swal2-container > .approve_popup_show > .approve_screen> div >button {
+        height: 45px !important;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .swal2-container > .approve_popup_show > .approve_screen> div > .swal2-input,
+    .swal2-container > .cancel_popup_show > .swal2-input{
+        height: 2.625em;
+        padding: 0 .75em;
+
+        box-sizing: border-box;
+        width: auto;
+        transition: border-color .1s, box-shadow .1s;
+        border: 1px solid hsl(0, 0%, 85%);
+        border-radius: .1875em;
+        background: rgba(0, 0, 0, 0);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .06), 0 0 0 3px rgba(0, 0, 0, 0);
+        color: inherit;
+        font-size: 1.125em;
+    }
+    .swal2-container > .paid_popup_show > .swal2-actions,
+    .swal2-container > .approve_popup_show > .swal2-actions,
+    .swal2-container > .cancel_popup_show > .swal2-actions{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        margin-top: 20px;
+    }
+    .swal2-container > .approve_popup_show > .approve_screen> div > button{
+        padding: 8px !important;
+       
+        width: 50px !important;
+        margin: 0 !important;
+        border: none;
+        outline: none;
+        background-color: darkviolet;
+        color: white;
+    }
+    .swal2-container > .paid_popup_show > .swal2-actions > button,
+    .swal2-container > .approve_popup_show > .swal2-actions > button,
+    .swal2-container > .cancel_popup_show > .swal2-actions > button{
+        margin-right: 20px;
+        border: none;
+        outline: none;
+        width: 30% !important;
+    }
+    .swal2-container > .paid_popup_show > .swal2-actions > button:last-child,
+    .swal2-container > .approve_popup_show > .swal2-actions > button:last-child,
+    .swal2-container > .cancel_popup_show > .swal2-actions > button:last-child{
+        margin-right: 0;
+    }
+    .swal2-container > .paid_popup_show > .swal2-actions > .swal2-confirm,
+    .swal2-container > .approve_popup_show > .swal2-actions > .swal2-confirm,
+    .swal2-container > .cancel_popup_show > .swal2-actions > .swal2-confirm{
+        background-color: #7066e0;
+        padding: 15px 20px;
+        color: #fff;
+        font-size: 1em;
+    }
+    .swal2-container > .paid_popup_show > .swal2-actions > .swal2-deny,
+    .swal2-container > .approve_popup_show > .swal2-actions > .swal2-deny,
+    .swal2-container > .cancel_popup_show > .swal2-actions > .swal2-deny{
+        background-color: #6e7881;
+        padding: 15px 20px;
+        color: #fff;
+        font-size: 1em;
+    }
+    .swal2-container > .paid_popup_show > .swal2-actions > .swal2-cancel,
+    .swal2-container > .approve_popup_show > .swal2-actions > .swal2-cancel,
+    .swal2-container > .cancel_popup_show > .swal2-actions > .swal2-cancel{
+        background-color: #dc3741;
+        padding: 15px 20px;
+        color: #fff;
+        font-size: 1em;
+    }
+
+
+    .swal2-container > .paid_popup_show > .swal2-actions,
+    .swal2-container > .my-swal2-popup-class > .swal2-actions,
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+
+    .swal2-container > .paid_popup_show > .swal2-actions > button,
+    .swal2-container > .my-swal2-popup-class > .swal2-actions > button,
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-actions > button{
+        margin-right: 10px;
+        text-align: center;
+        width: 30% !important;
+      }
+
+    .swal2-container > .paid_popup_show > .swal2-actions > button:last-child,
+    .swal2-container > .my-swal2-popup-class > .swal2-actions > button:last-child,
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-actions > button:last-child{
+        margin-right: 0;
+        text-align: center;
+      }
+
+    /* Button Hover Effects */
+    .swal2-container > .paid_popup_show > .swal2-actions> .swal2-confirm:hover,
+    .swal2-container > .my-swal2-popup-class > .swal2-actions> .swal2-confirm:hover, 
+    .swal2-container > .my-swal2-popup-class > .swal2-actions> .swal2-cancel:hover {
+        background-color: #0bb32c; /* Darker green on hover */
+    }
+
+    /* Close Button */
+    .swal2-container > .my-swal2-popup-class > .swal2-close {
+       
+        font-size: 40px; 
+        z-index: 2;
+        padding: 0;
+        overflow: hidden;
+        color: #ccc;
+        font-family: monospace;
+        justify-self: end;
+        width: 40px; 
+        height: 40px; 
+        margin: 0; 
+        background: none; 
+        /* border: 2px solid rgba(255, 255, 255, 0.5); */
+        /* border-radius: 5px;  */
+        border: none;
+        outline: none;
+        cursor: pointer; 
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        transition: color 0.1s;
+        
+
+        /* position: fixed;
+        
+        right: 5px; */
+
+
+        position: absolute; /* Position the button absolutely */
+        top: 10px; /* Adjust as needed */
+        right: 10px; /* Adjust as needed */
+        z-index: 1000; /* Ensure it appears on top of other elements */
+        
+    }
+
+    /* Adjust for Fullscreen */
+    .swal2-alert-custom-fullscreen {
+        height: 100vh; /* Full height for fullscreen */
+        width: 100%; /* Full width */
+    }
+
+
+    .dark-overlay {
+        position: fixed; /* Fixed position */
+        top: 0; /* Full height */
+        left: 0; /* Full width */
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+        z-index: 9999; /* Above all other content */
+        display: none; /* Hidden by default */
+    }
+
+    body.transparent {
+        overflow: hidden; /* Prevent scrolling */
+        position: relative; /* Maintain layout */
+    }
+
+
+
+    /* Container for the warning icon */
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-icon,
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-warning,
+    .swal2-container > .my-swal2-popup-confirm_class > .swal2-icon-show,
+    .swal2-container > .my-swal2-popup-class > .swal2-icon, 
+    .swal2-container > .my-swal2-popup-class > .swal2-warning, 
+    .swal2-container > .my-swal2-popup-class > .swal2-icon-show {
+        display: flex; /* Ensures the content is centered */
+        justify-content: center; /* Horizontally centers the icon */
+        align-items: center; /* Vertically centers the icon */
+        margin: 0 auto; /* Ensures the icon is centered relative to the modal */
+        width: 80px; /* Set a consistent width for the icon */
+        height: 80px; /* Set a consistent height for the icon */
+        border-radius: 50%; /* Make sure it's circular */
+        background-color: #ffc107; /* Yellow background for warning */
+        color: #fff; /* White color for icon content */
+        margin-bottom: 20px;
+    }
+    .swal2-container > .my-swal2-popup-confirm_class > .my-swal2-html-confirm-class{
+        padding: 15px 8px 15px !important;
+    }
+
+    /* Adjust icon size */
+    .swal2-container > .my-swal2-popup-class > .swal2-icon > .swal2-icon-content, 
+    .swal2-container > .my-swal2-popup-class > .swal2-warning > .swal2-icon-content {
+        font-size: 40px; /* Icon size adjustment */
+    }
+
+    .swal2-container > .my-swal2-popup-class > .swal2-actions {
+        display: -webkit-flex; /* Older WebKit support */
+        display: flex;
+        -webkit-justify-content: center; /* WebKit support for justify-content */
+        justify-content: center;
+        gap: 10px; /* Space between buttons */
+        width: 100%; /* Ensure the actions take full width */
+        margin-top: 20px; /* Space above the buttons */
+    }
+    
+    /* Style for confirm button */
+    .swal2-container > .my-swal2-popup-class > .swal2-actions > .swal2-confirm {
+        background-color: #0ceb3c; /* Green background for confirm */
+        background-color: #7066e0;
+        color: white; /* White text */
+        border: none !important; /* No border */
+        outline: none !important;
+        padding: 10px 20px; /* Padding for button size */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor on hover */
+        font-size: 16px; /* Font size */
+        transition: background-color 0.3s; /* Smooth hover transition */
+    }
+    
+    /* Style for deny button */
+    .swal2-container > .my-swal2-popup-class > .swal2-actions > .swal2-deny {
+        background-color: #ffc107; /* Yellow background for deny */
+        color: white; /* White text */
+        border: none !important; /* No border */
+        outline: none !important;
+        padding: 10px 20px; /* Padding for button size */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor on hover */
+        font-size: 16px; /* Font size */
+        transition: background-color 0.3s; /* Smooth hover transition */
+    }
+    
+    /* Style for cancel button */
+   .swal2-container > .my-swal2-popup-class > .swal2-actions > .swal2-cancel {
+        background-color: #dc3545; /* Red background for cancel */
+        color: white; /* White text */
+        border: none !important; /* No border */
+        outline: none !important;
+        padding: 10px 20px; /* Padding for button size */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor on hover */
+        font-size: 16px; /* Font size */
+        transition: background-color 0.3s; /* Smooth hover transition */
+    }
+
+    .swal2-confirm-custom {
+        background-color: #7066e0; /* Green background */
+        color: white; /* White text color */
+        border: none; /* Remove border */
+        border-radius: 4px; /* Rounded corners */
+        padding: 10px 20px; /* Padding for the button */
+        font-size: 16px; /* Font size */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s; /* Smooth transition */
+    }
+
+
+    .swal2-container > .my-swal2-popup-class > .swal2-error > .swal2-x-mark > .swal2-x-mark-line-left{
+        top: 0 !important;
+    }
+    .swal2-container > .my-swal2-popup-class > .swal2-icon > .swal2-x-mark > .swal2-x-mark-line-left{
+        top: 0 !important;
+    }
+    .swal2-container > .my-swal2-popup-class > .swal2-error > .swal2-x-mark > .swal2-x-mark-line-right{
+        top: 0 !important;
+    }
+    .swal2-container > .my-swal2-popup-class > .swal2-icon > .swal2-x-mark > .swal2-x-mark-line-right{
+        top: 0 !important;
+    }
+    
+    /* Button hover effects */
+    .swal2-container > .my-swal2-popup-class > .swal2-actions > .swal2-confirm:hover {
+        background-color: #0bb32c; /* Darker green on hover */
+    }
+    
+    .swal2-container > .my-swal2-popup-class > .swal2-actions > .swal2-deny:hover {
+        background-color: #e0a800; /* Darker yellow on hover */
+    }
+    
+    .swal2-container > .my-swal2-popup-class > .swal2-actions > .swal2-cancel:hover {
+        background-color: #c82333; /* Darker red on hover */
+    }
+    
+    .swal2-confirm-custom:hover {
+        background-color: #0bb32c; /* Darker green on hover */
+    }
+
+
+/* sweet alert css code*/
