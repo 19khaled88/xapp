@@ -96,10 +96,7 @@ p {
     
 }
 
-.container > .main {
-
-}
-
+/* befresh client balance css code*/
 .container > .main > .main_title{
     text-align: center;
     padding: 10px 0;
@@ -109,10 +106,10 @@ p {
     font-weight: bold;
 }
 .container > .main > .input_fields{
-    padding-top: 15px;
+    padding-top: 20px;
     width: 95%;
     margin: auto;
-`
+
     display: flex;
     flex-direction: column;
 }
@@ -121,28 +118,30 @@ p {
     border: none;
     outline: none;
     border-bottom: 1px solid gray;
-    font-size: 16px;
+    font-size: 17px;
 }
 .container > .main > .input_fields > .date_range{
     display: flex;
     align-items: center; /* Align inputs and button vertically */
     justify-content: space-between; /* Space between inputs and button */
     gap: 10px; /* Add spacing between elements */
-    padding-top: 5px;
+    padding-top: 10px;
+    height: 50px;
 }
 .container > .main > .input_fields > .date_range > .date{
     display: flex;
     gap: 10px; /* Space between the two inputs */
+    height: 100%;
 }
 .container > .main > .input_fields > .date_range > .date > input{
    
     padding: 5px;
-    width: 45%; /* Adjust width as needed */
+    width: 50%; /* Adjust width as needed */
     text-align: center;
 }
 .container > .main > .input_fields > .date_range > button{
    
-    padding: 5px 10px;
+    padding: 0 10px;
     cursor: pointer;
     border: none;
     outline: none;
@@ -150,9 +149,10 @@ p {
     color: white;
     width: 15%;
     text-align: center;
+    height: 100%;
 }
 .container > .main > .balance{
-    padding-top: 10px;
+    padding-top: 20px;
     width: 95%;
     margin: auto;
     color: rgb(75, 71, 71);
@@ -161,10 +161,269 @@ p {
     display: flex;
     flex-direction: row;
 }
+.container > .main > .balance > span:last-child{
+    padding-top: 10px;
+}
 .container > .main > .balance > span > label,
 .container > .main > .balance > span > p{
     padding: 5px 0;
+    font-weight: bold;
 }
-.container > .footer{
+/* befresh client balance css code*/
 
+
+
+
+/* befresh client dues css code*/
+.container > .main > .date_range_dues{
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    width: 95%;
+    margin: auto;
+    margin-top: 15px;
 }
+.container > .main > .date_range_dues > .date{
+    width: 70%;
+    height: 100%;
+}
+.container > .main > .date_range_dues > .date > input{
+    height: 100%;
+    width: 90%;
+    text-align: center;
+}
+.container > .main > .date_range_dues > button{
+    height: 100%;
+    flex: 1;
+    text-align: center;
+    border: none;
+    outline: none;
+    background-color: #0dc30d;
+    color: white;
+}
+.container > .main > h4{
+    width: 95%;
+    margin: auto;
+    text-align: center;
+}
+.container > .main > .client_info{
+    width: 95%;
+    margin: auto;
+}
+.container > .main > .client_info  > .table_title{
+    display: flex;
+    flex-direction: row;
+}
+.container > .main > .client_info  > .table_title > p:nth-child(1){
+    width: 10%;
+}
+.container > .main > .client_info  > .table_title > p:nth-child(2),
+.container > .main > .client_info  > .table_title > p:nth-child(3),
+.container > .main > .client_info  > .table_title > p:nth-child(4)
+{
+    width: 30%;
+}
+.container > .main > .client_info > .content{
+    min-height: 50px;
+    width: 100%;
+} 
+.container > .main > .total_amount{
+    width: 95%;
+    margin: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+/* befresh client dues css code*/
+
+/* befresh client money receipt css code*/
+.container > .main > .nav_button{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container > .main > .nav_button > button{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.container > .main > .content{
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    width: 95%;
+    margin: auto;
+}
+.container > .main > .content > .client_id_mobile{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.container > .main > .content > .client_id_mobile > input{
+    height: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(63, 61, 61);
+    flex: 1;
+    margin-right: 5px;
+    font-size: 17px;
+}
+.container > .main > .content > .client_id_mobile > button{
+    height: 100%;
+    padding: 0 25px;
+    text-align: center;
+    background-color: #1eb51e;
+    border-radius: 3px;
+    color: white;
+}
+.container > .main > .content > .client_name{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.container > .main > .content > .client_name > label{
+    color: gray;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 30%;
+}
+.container > .main > .content > .client_name > input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+    height: 100%;
+    flex: 1;
+}
+.container > .main > .content > .client_number{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.container > .main > .content > .client_number > label{
+    color: gray;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 30%;
+}
+.container > .main > .content > .client_number > input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+    height: 100%;
+    flex: 1;
+}
+.container > .main > .content > .mr_amount{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.container > .main > .content > .mr_amount > label{
+    color: gray;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 30%;
+}
+.container > .main > .content > .mr_amount > input{
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(214, 7, 41);
+    height: 100%;
+    flex: 1;
+}
+.container > .main > .content > .mr_amount > p{
+    color: gray;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.container > .main > .content > .pay_mode {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.container > .main > .content > .pay_mode > label{
+    color: gray;
+    width: 30%;
+}
+
+
+
+
+.container > .main > .content > .location {
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+.container > .main > .content > .location > label{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: gray;
+    width: 30%;
+}
+.container > .main > .content > .service > select{
+    flex: 1;
+    height: 100%;
+    font-size: 16px;
+}
+
+.container > .main > .content > .service {
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+.container > .main > .content > .service > label{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: gray;
+    width: 30%;
+}
+.container > .main > .content > .location > select{
+    flex: 1;
+    height: 100%;
+    font-size: 16px;
+}
+.container > .main > .content > button{
+    color: white;
+    background-color: #1eb51e;
+    padding: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 20px;
+}
+/* befresh client money receipt css code*/
