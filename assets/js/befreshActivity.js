@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded',()=>{
                 moneyReceipt();
                 break;
             case "Befresh Activity Report":
-
+                report();
+                break;
             case "Befresh Passenger List":
 
             case "Befresh Business Performance":
@@ -143,16 +144,16 @@ function moneyReceipt(){
 
     main.innerHTML = '';
     const html =`
-        <div class="nav_button" id="nav_button">
+        <div class="money_receipt_nav_button" id="money_receipt_nav_button">
             <button class="entry" id="entry">MONEY RECEIPT ENTRY</button>
             <button class="view" id="view">MONEY RECEIPT VIEW</button>
         </div>
-        <div class="content" id="content"></div>
+        <div class="money_receipt_content" id="money_receipt_content"></div>
     `
     main.insertAdjacentHTML("beforeend",html);
 
 
-    const buttons =  document.getElementById('nav_button').querySelectorAll('button')
+    const buttons =  document.getElementById('money_receipt_nav_button').querySelectorAll('button')
     if(buttons){
         buttons.forEach((button,index)=>{
             button.addEventListener('click',()=>{
@@ -183,7 +184,7 @@ function manageMoneyReceipt(tag,buttons = null){
         }
 
         if(button.id === tag && button.id === 'entry'){
-            const content = document.getElementById('content')
+            const content = document.getElementById('money_receipt_content')
             content.innerHTML = "";
 
             const html = `
@@ -242,15 +243,137 @@ function manageMoneyReceipt(tag,buttons = null){
 
             document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`
         }else if(button.id === tag && button.id === 'view'){
-            const content = document.getElementById('content')
+            const content = document.getElementById('money_receipt_content')
             content.innerHTML = "";
 
             const html = `
-            
+                <div class="date_range" id="date_range">
+                    <div class="date" id="date">
+                    </div>
+                  <button>OK</button>
+                </div>
+                <span>Date: </span>
+                <div class="view_content" id="view_content">
+                    <span class="label" id="label">
+                        <label>Date/Name</label>
+                        <label>ID/Phone</label>
+                        <label>Amount</label>
+                        <label>Status</label>
+                    </span>
+                    <span class="detail_info" id="detail_info"></span>
+                </div>
+                <div class="view_total" id="view_total">
+                    <span>
+                        <label>Total Client : </label>
+                        <p>0</p>
+                    </span>
+                    <p>0</p>
+                </div>
             `
+            content.insertAdjacentHTML("beforeend",html);
+
+            const startDatePickerInput = handleDateAndTime('fromDate');
+            const endDatePickerInput = handleDateAndTime('toDate');
+
+            document.getElementById('date').appendChild(startDatePickerInput.elementName);
+            document.getElementById('date').appendChild(endDatePickerInput.elementName);
+
+            document.getElementById('detail_info').style.cssText=`
+                    display:flex;
+                    height:${Math.floor(100 - Number(pxToVh(
+                        document.getElementById('nav_div').offsetHeight + 
+                        document.getElementById('money_receipt_nav_button').offsetHeight + 
+                        document.getElementById('date_range').offsetHeight + 
+                        document.getElementById('label').offsetHeight ) + 10))}vh;
+                    
+            `;
+
+            document.getElementById('view_total').style.cssText = `
+                position:fixed;
+                bottom:0;
+                left:0;
+                right:0;
+
+            `
+            
         }
     }) : "";
+}
+
+function report(){
+    const main = document.getElementById('main');
+
+    main.innerHTML = '';
+    const html =`
+        <div class="report_nav_button" id="report_nav_button">
+            <button class="entry" id="entry">ACTIVITY ENTRY</button>
+            <button class="view" id="view">ACTIVITY VIEW</button>
+        </div>
+        <div class="report_content" id="report_content"></div>
+    `
+    main.insertAdjacentHTML("beforeend",html);
+
+    const buttons =  document.getElementById('report_nav_button').querySelectorAll('button')
+    if(buttons){
+        buttons.forEach((button,index)=>{
+            button.addEventListener('click',()=>{
+                
+                manageReport(button.id,buttons)
+            })
+        })
+    }
 
 
-  
+    manageReport('entry',buttons)
+}
+
+function manageReport(tag,buttons = null){
+
+    buttons !== null ? buttons.forEach((button,index)=>{
+
+        button.style.cssText = `
+            color:black;
+            border-bottom:none;
+        `
+
+        if(button.id === tag){
+            button.style.cssText = `
+                color:#ed0f35;
+                font-weight:bold;
+                border-bottom: 2px solid #ed0f35;
+            `
+        }
+
+        if(button.id === tag && button.id === 'entry'){
+            const content = document.getElementById('report_content');
+            console.log(content)
+            content.innerHTML = "";
+
+            const html = `
+
+
+            `
+            content.insertAdjacentHTML('beforeend',html);
+            document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
+            document.getElementById('report_content').style.cssText = `
+                height:${Math.floor(100 - Number(pxToVh(document.getElementById('nav_div').offsetHeight + document.getElementById('report_nav_button').offsetHeight) + 5))}vh;
+                border:1px solid gray;
+                border-radius:5px;
+                width:95%;
+                margin:auto;
+                margin-top:8px;
+            `
+        } else if(button.id === tag && button.id === 'view'){
+            const content = document.getElementById('report_content');
+            console.log(content)
+            content.innerHTML = "";
+
+            const html = `
+
+
+            `
+            content.insertAdjacentHTML('beforeend',html);
+
+        }
+    }) : "";
 }

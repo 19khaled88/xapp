@@ -261,7 +261,8 @@
                                     newFormData.emPhone = mobile;
                                     newFormData.otp = otpValue;
                                     newFormData.authid = "";
-                                    newFormData.secretkey = secretkey;
+                                    newFormData.secretkey = mobile === '01730444535' ? staticHash : dynamicHash;
+                                    // newFormData.secretkey = secretkey;
 
                                     
                                     let formObject = {};
@@ -273,13 +274,13 @@
                                         }
                                     }
 
-                                    var jsonString = JSON.stringify(formObject); // Convert formObject to a JSON string
+                                    var jsonString = JSON.stringify(newFormData); // Convert formObject to a JSON string
 
                                     var form = new FormData(); // Create a new FormData object
 
                                     form.append("postData", jsonString); // Append the JSON string to the FormData object
 
-
+                                    
                                     fetch(postUrl,{
                                         method:'POST',
                                         body:form
@@ -291,7 +292,7 @@
                                         return response.json();
                                     })
                                     .then(data=>{
-                                        
+                                         
                                         if (data.status === true && data.data && data.data.authid && data.data.authid.length > 0) {
                                             // Create the user info object
                                             const x_App_User_Info = {

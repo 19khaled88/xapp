@@ -138,6 +138,11 @@ p {
     padding: 5px;
     width: 50%; /* Adjust width as needed */
     text-align: center;
+
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
 }
 .container > .main > .input_fields > .date_range > button{
    
@@ -191,6 +196,11 @@ p {
     height: 100%;
     width: 90%;
     text-align: center;
+
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
 }
 .container > .main > .date_range_dues > button{
     height: 100%;
@@ -240,7 +250,7 @@ p {
 /* befresh client dues css code*/
 
 /* befresh client money receipt css code*/
-.container > .main > .nav_button{
+.container > .main > .money_receipt_nav_button{
     height: 40px;
     display: flex;
     flex-direction: row;
@@ -248,27 +258,27 @@ p {
     align-items: center;
 }
 
-.container > .main > .nav_button > button{
+.container > .main > .money_receipt_nav_button > button{
     height: 100%;
     width: 100%;
     text-align: center;
 }
 
-.container > .main > .content{
+.container > .main > .money_receipt_content{
     display: flex;
     flex-direction: column;
     padding-top: 15px;
     width: 95%;
     margin: auto;
 }
-.container > .main > .content > .client_id_mobile{
+.container > .main > .money_receipt_content > .client_id_mobile{
     height: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-.container > .main > .content > .client_id_mobile > input{
+.container > .main > .money_receipt_content > .client_id_mobile > input{
     height: 100%;
     border: none;
     outline: none;
@@ -277,7 +287,7 @@ p {
     margin-right: 5px;
     font-size: 17px;
 }
-.container > .main > .content > .client_id_mobile > button{
+.container > .main > .money_receipt_content > .client_id_mobile > button{
     height: 100%;
     padding: 0 25px;
     text-align: center;
@@ -285,14 +295,14 @@ p {
     border-radius: 3px;
     color: white;
 }
-.container > .main > .content > .client_name{
+.container > .main > .money_receipt_content > .client_name{
     height: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-.container > .main > .content > .client_name > label{
+.container > .main > .money_receipt_content > .client_name > label{
     color: gray;
     height: 100%;
     display: flex;
@@ -300,21 +310,21 @@ p {
     align-items: center;
     width: 30%;
 }
-.container > .main > .content > .client_name > input{
+.container > .main > .money_receipt_content > .client_name > input{
     border: none;
     outline: none;
     border-bottom: 1px solid gray;
     height: 100%;
     flex: 1;
 }
-.container > .main > .content > .client_number{
+.container > .main > .money_receipt_content > .client_number{
     height: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-.container > .main > .content > .client_number > label{
+.container > .main > .money_receipt_content > .client_number > label{
     color: gray;
     height: 100%;
     display: flex;
@@ -322,21 +332,21 @@ p {
     align-items: center;
     width: 30%;
 }
-.container > .main > .content > .client_number > input{
+.container > .main > .money_receipt_content > .client_number > input{
     border: none;
     outline: none;
     border-bottom: 1px solid gray;
     height: 100%;
     flex: 1;
 }
-.container > .main > .content > .mr_amount{
+.container > .main > .money_receipt_content > .mr_amount{
     height: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-.container > .main > .content > .mr_amount > label{
+.container > .main > .money_receipt_content > .mr_amount > label{
     color: gray;
     height: 100%;
     display: flex;
@@ -344,28 +354,30 @@ p {
     align-items: center;
     width: 30%;
 }
-.container > .main > .content > .mr_amount > input{
+.container > .main > .money_receipt_content > .mr_amount > input{
     border: none;
     outline: none;
     border-bottom: 2px solid rgb(214, 7, 41);
     height: 100%;
     flex: 1;
+
+    
 }
-.container > .main > .content > .mr_amount > p{
+.container > .main > .money_receipt_content > .mr_amount > p{
     color: gray;
     height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.container > .main > .content > .pay_mode {
+.container > .main > .money_receipt_content > .pay_mode {
     margin-top: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-.container > .main > .content > .pay_mode > label{
+.container > .main > .money_receipt_content > .pay_mode > label{
     color: gray;
     width: 30%;
 }
@@ -373,7 +385,7 @@ p {
 
 
 
-.container > .main > .content > .location {
+.container > .main > .money_receipt_content > .location {
     height: 40px;
     display: flex;
     flex-direction: row;
@@ -381,7 +393,7 @@ p {
     align-items: center;
     margin-top: 10px;
 }
-.container > .main > .content > .location > label{
+.container > .main > .money_receipt_content > .location > label{
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -390,13 +402,13 @@ p {
     color: gray;
     width: 30%;
 }
-.container > .main > .content > .service > select{
+.container > .main > .money_receipt_content > .service > select{
     flex: 1;
     height: 100%;
     font-size: 16px;
 }
 
-.container > .main > .content > .service {
+.container > .main > .money_receipt_content > .service {
     height: 40px;
     display: flex;
     flex-direction: row;
@@ -404,7 +416,7 @@ p {
     align-items: center;
     margin-top: 10px;
 }
-.container > .main > .content > .service > label{
+.container > .main > .money_receipt_content > .service > label{
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -413,12 +425,12 @@ p {
     color: gray;
     width: 30%;
 }
-.container > .main > .content > .location > select{
+.container > .main > .money_receipt_content > .location > select{
     flex: 1;
     height: 100%;
     font-size: 16px;
 }
-.container > .main > .content > button{
+.container > .main > .money_receipt_content > button{
     color: white;
     background-color: #1eb51e;
     padding: 10px 0;
@@ -426,4 +438,103 @@ p {
     text-align: center;
     margin-top: 20px;
 }
+
+.container > .main > .money_receipt_content > .date_range{
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+}
+.container > .main > .money_receipt_content > .date_range > .date{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    height: 100%;
+    padding-right: 8px;
+}
+.container > .main > .money_receipt_content > .date_range > .date > input{
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
+}
+.container > .main > .money_receipt_content > .date_range > .date > input:nth-child(1){
+    margin-right: 5px;
+}
+.container > .main > .money_receipt_content > .date_range > button{
+    width: 20%;
+    border: none;
+    outline: none;
+    text-align: center;
+    background-color: #1eb51e;
+    color: white;
+}
+
+.container > .main > .money_receipt_content > .view_content > .label {
+    display: flex;
+    flex-direction: row;
+}
+.container > .main > .money_receipt_content > .view_content > .label > label{
+    font-size: 15px;
+    color: gray;
+}
+
+.container > .main > .money_receipt_content > .view_content > .label > label:nth-child(1){
+    width: 40%;
+}
+.container > .main > .money_receipt_content > .view_content > .label > label:nth-child(2),
+.container > .main > .money_receipt_content > .view_content > .label > label:nth-child(3)
+{
+    width: 23%;
+}
+.container > .main > .money_receipt_content > .view_content > .label > label:nth-child(4)
+{
+    width: 13%;
+}
+
+.container > .main > .money_receipt_content > .view_content > .detail_info{
+    
+}
+
+.container > .main > .money_receipt_content > .view_total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin: auto;
+    height: 40px;
+}
+.container > .main > .money_receipt_content > .view_total > span{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.container > .main > .money_receipt_content > .view_total > span > label{
+    padding-right: 10px;
+}
+
+.container > .main > .money_receipt_content > .view_total > p{
+    width: 50%;
+    text-align: center;
+}
 /* befresh client money receipt css code*/
+
+
+/* befresh client report css code*/
+.container > .main > .report_nav_button{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.container > .main > .report_nav_button > button{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+/* befresh client report css code*/
