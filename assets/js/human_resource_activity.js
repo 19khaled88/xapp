@@ -11557,15 +11557,61 @@ function temporarilyClosed(identity,emName,applyReportingBoss,reportingBossName)
  
 }
 
-
-function incentiveFunc(){
+async function incentiveFunc(){
   const hrmActivityMain = document.getElementById('hrmActivityMain');
 
   let em_Name;
  
+  let plan = [];
+
+
+  const html = `
+  <form class="incentiveContainer" id="incentiveContainer">
+    <select class="empDropDown" id="empDropDown">
+    
+    </select>
+    <select class="compDropDown" id="compDropDown">
+      
+    </select>
+    <div style="display:none" class="dateRange" id="dateRange"> 
+      <div class="fromDate" id="fromDate"></div>
+      <div class="toDate" id="toDate"></div>
+    </div>
+    <div class="month_year" id="month_year">
+      <span class="month">
+        <label for="monthSelect">Month:</label>
+        <select id="monthSelect" class="monthSelect">
+          <!-- Months will be dynamically inserted -->
+        </select>
+      </span>
+
+      <span class="year">
+        <label for="yearSelect">Year:</label>
+        <select id="yearSelect" class="yearSelect">
+          <!-- Years will be dynamically inserted -->
+        </select>
+      </span>
+    </div>
+    <select class="billTypeDropDown" id="billTypeDropDown">
+      <option>Select bill type</option>
+      <option value="all">All Bill</option>
+      <option value="clear">Clear bill</option>
+      <option value="notClear">Not Clear bill</option>
+    </select>
+    <button type="submit" class="submit" id="submit">SUBMIT</button>
+    <div class="contentArea" id="contentArea">
+    
+    </div>
+  </form>
+`
+
+hrmActivityMain.innerHTML = html;
+
+
   
-  fetchData(`https://ctgshop.com/erp/API/xbill.ashx?type=get_emp`)
+  await fetchData(`https://ctgshop.com/erp/API/xbill.ashx?type=get_emp`,"")
     .then((res)=>{
+      
       const empDropDown = document.getElementById('empDropDown');
 
       // empDropDown.innerHTML = '<option value="">Select Employee</option>';
@@ -11574,19 +11620,32 @@ function incentiveFunc(){
         
         // check permissible employee list 
         if(incentiveEmCodes.includes(identity)){
+
           res.Data.forEach(emp => {
+        
+            // console.log({name:emp.em_name,plan:emp.pay_plan})
+
             const option = document.createElement('option');
             option.value = emp.em_code; // Set option value as employee ID
             option.textContent = emp.em_name; // Display employee name
-           
+            
             if(emp.em_code === identity){
               option.selected = true;
               em_Name = emp.em_name;
-
+              
               document.getElementById('contentArea') ? document.getElementById('contentArea').innerHTML = "" : "" 
 
               const payPlanArray = emp.pay_plan ? emp.pay_plan.split('|') : [];
+              plan = [];
+              plan.push(...payPlanArray)
               const companyNames = payPlanArray.flatMap((item) => {
+
+                // check if 'gross pay' is in the item or if 'C' is a separate part
+                if( item.trim().replace(/\s+/g, ' ').toUpperCase().includes('GROSS-PAY') ||
+                    item.trim().split('-').map(part=>part.trim()).includes('C')){
+                    return null; // Exclude this item
+                }
+
                 // Split by space as well to handle multiple codes inside one item
                 const itemCodes = item.split(' '); 
   
@@ -11603,7 +11662,9 @@ function incentiveFunc(){
                         return 'BE FRESH EDUCATION & JOBS LIMITED';
                     }
                     return null;
+
                 });
+
               }).filter(Boolean); // Removes null values
             
               if(companyNames && companyNames.length > 0){
@@ -11673,10 +11734,17 @@ function incentiveFunc(){
                 em_Name = emp.em_name;
                 document.getElementById('contentArea') ? document.getElementById('contentArea').innerHTML = "" : ""
                 const payPlanArray = emp.pay_plan ? emp.pay_plan.split('|') : [];
+                plan = [];
+                plan.push(...payPlanArray)
                 const compDropDown = document.getElementById('compDropDown');
                 
 
                 const companyNames = payPlanArray.flatMap((item) => {
+                  // check if 'gross pay' is in the item or if 'C' is a separate part
+                  if( item.trim().replace(/\s+/g, ' ').toUpperCase().includes('GROSS-PAY') || item.trim().split('-').map(part=>part.trim()).includes('C')){
+                      return null; // Exclude this item
+                  }
+                  
                   // Split by space as well to handle multiple codes inside one item
                   const itemCodes = item.split(' '); 
     
@@ -11764,8 +11832,9 @@ function incentiveFunc(){
                   
                 }
               }
-            })
-          })
+            });
+
+          });
           
         }
         else
@@ -11784,8 +11853,14 @@ function incentiveFunc(){
 
 
             const payPlanArray = matchEmp.pay_plan ? matchEmp.pay_plan.split('|') : [];
-
+            plan = [];
+            plan.push(...payPlanArray)
             const companyNames = payPlanArray.flatMap((item) => {
+                // check if 'gross pay' is in the item or if 'C' is a separate part
+                if( item.trim().replace(/\s+/g, ' ').toUpperCase().includes('GROSS-PAY') ||
+                    item.trim().split('-').map(part=>part.trim()).includes('C')){
+                    return null; // Exclude this item
+                }
                 // Split by space as well to handle multiple codes inside one item
                 const itemCodes = item.split(' '); 
   
@@ -11864,49 +11939,7 @@ function incentiveFunc(){
     .catch((err)=>console.log(err))
  
   
-  const html = `
-    <form class="incentiveContainer" id="incentiveContainer">
-      <select class="empDropDown" id="empDropDown">
-      
-      </select>
-      <select class="compDropDown" id="compDropDown">
-        
-      </select>
-      <div style="display:none" class="dateRange" id="dateRange"> 
-        <div class="fromDate" id="fromDate"></div>
-        <div class="toDate" id="toDate"></div>
-      </div>
-      <div class="month_year" id="month_year">
-        <span class="month">
-          <label for="monthSelect">Month:</label>
-          <select id="monthSelect" class="monthSelect">
-            <!-- Months will be dynamically inserted -->
-          </select>
-        </span>
 
-        <span class="year">
-          <label for="yearSelect">Year:</label>
-          <select id="yearSelect" class="yearSelect">
-            <!-- Years will be dynamically inserted -->
-          </select>
-        </span>
-      </div>
-      <select class="billTypeDropDown" id="billTypeDropDown">
-        <option>Select bill type</option>
-        <option value="all">All Bill</option>
-        <option value="clear">Clear bill</option>
-        <option value="notClear">Not Clear bill</option>
-      </select>
-      <button type="submit" class="submit" id="submit">SUBMIT</button>
-      <div class="contentArea" id="contentArea">
-      
-      </div>
-    </form>
-  `
-
- 
-  
-  hrmActivityMain.innerHTML = html;
 
   const startDatePickerInput = handleDateAndTime('fromDate');
   const endDatePickerInput = handleDateAndTime('toDate');
@@ -11975,6 +12008,7 @@ function incentiveFunc(){
   document.getElementById('incentiveContainer').addEventListener('submit', (event) => {
     event.preventDefault();
 
+    
     const form = event.target.closest('form')
     
     const empCode = document.getElementById('empDropDown').value;
@@ -11987,18 +12021,9 @@ function incentiveFunc(){
     const month = monthSelect.value;
     const year = yearSelect.value;
     
-    // const formData = {
-    //   employee_code: empCode,
-    //   company,
-    //   bill_type: billType,
-    //   month: month,
-    //   year: year
-    // };
+  
 
     if(company === 'BE RICH LIMITED'){
-    
-      
-     
       fetchData(`https://ctgshop.com/erp/API/xbill.ashx?type=get_berich&emp=${encodeURIComponent(em_Name)}&m=${Number(month)}&y=${Number(year)}`)
         .then((res)=>{
           if(res.status === true){
@@ -12050,15 +12075,81 @@ function incentiveFunc(){
     }
     else if(company === 'BE FRESH LIMITED')
     {
+      
+      plan && plan.map((item)=>{
+        const parts = item.split('-').map(part=>part.trim());
 
+        if(parts.length > 1 && parts[0] === 'BF' && (parts[parts.length - 1] === 'Bb' )){
+          fetchData(`https://www.befreshbd.com/ZaraApi.ashx?type=get_data&rel_mng=${encodeURIComponent(em_Name)}&led_mo=${Number(month)}&led_yr=${Number(year)}`)
+            .then((res)=>{
+              console.log(res)
+            })
+            .catch((error)=>console.log(error))
+        } else if(parts.length > 1 && parts[0] === 'BF' && parts[parts.length - 1] === 'A'){
+          fetchData(`https://www.befreshbd.com/ZaraApi.ashx?type=get_accmang&acc_mng=${encodeURIComponent(em_Name)}&led_mo=${Number(month)}&led_yr=${Number(year)}`)
+            .then((res)=>{
+              if(res.status === true){
+                const contentArea = document.getElementById('contentArea');
+
+                contentArea.innerHTML = ""
+                res.Data.forEach((item,index)=>{
+                  
+                  const html =`
+                    <div class="card" id="card">
+                      <span>
+                        <label>b2c_total_p</label>
+                        <p>${item.b2c_tot_p}</p>
+                      </span>
+                      <span>
+                        <label>b2c_total_p</label>
+                        <p>${item.b2b_nongrp_tot_p}</p>
+                      </span>
+                      <span>
+                        <label>b2c_total_p</label>
+                        <p>${item.b2b_grp_tot_p}</p>
+                      </span>
+                      <span>
+                        <label>tot_profit</label>
+                        <p>${item.tot_profit}</p>
+                      </span>
+                    </div>
+                  `
+                  contentArea.insertAdjacentHTML('beforeend',html)
+
+                })
+              }else if(res.status === false){
+                const contentArea = document.getElementById('contentArea');
+
+                contentArea.innerHTML = ""
+                document.getElementById('darkOverlay').style.display = 'block';
+                document.body.classList.add('transparent');
+                Swal.fire({
+                  icon: "warning",
+                  title: `${res.message}`,
+                  showConfirmButton: false,
+                  showCloseButton: true,
+                  customClass: {
+                    popup: 'swal2-alert-custom-smallscreen'
+                  },
+                }).then((result) => {
+                  // Hide the overlay when alert is closed
+                  document.getElementById('darkOverlay').style.display = 'none';
+                  document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                });
+              }
+            })
+            .catch((error)=>console.log(error))
+        }
+      });
+      // const befresh_plan= plan.split 
     }
     else if(company === 'SOUTH EAST MONEY EXCHANGE LIMITED') 
     {
-
+      console.log('clicked for SEME')
     }
     else if(company === 'BE FRESH EDUCATION & JOBS LIMITED') 
     {
-
+      console.log('clicked for BFEJ')
     }
 
   });

@@ -1,0 +1,546 @@
+/* ==== RESET STYLES ==== */
+/* Remove default margins, paddings, and set box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Improve text rendering */
+html {
+    scroll-behavior: smooth;
+    /* font-size: 16px; */
+    font-family: Roboto, sans-serif;
+}
+
+/* Remove default button styles */
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+/* ==== GLOBAL STYLES ==== */
+body {
+    background-color: #f9f9f9;  
+    /* color: #333;   */
+    /* line-height: 1.6; */
+    /* padding: 20px; */
+}
+
+/* Container for centering content */
+.container {
+    /* width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; */
+}
+
+/* ==== HEADINGS & TEXT ==== */
+h1, h2, h3, h4, h5, h6 {
+    /* font-weight: bold; */
+    /* margin-bottom: 10px; */
+}
+
+p {
+    /* margin-bottom: 15px; */
+}
+
+/* ==== FLEX UTILITIES ==== */
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ==== BUTTONS ==== */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+
+.container > .nav_div{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    background-color: rgb(45, 45, 240);
+    align-items: center;
+}
+.container > .nav_div > button{
+    height: 100%;
+    padding-right: 10px;
+}
+.container > .nav_div > .title{
+    flex: 1;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    
+}
+
+
+/* clietn ledger css code*/
+
+.container > .amy_main{
+    /* width: 95%;
+    
+    margin: 8px auto 0; */
+}
+.container > .amy_main > .date_range{
+    width: 95%;
+    margin: 8px auto 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+.container > .amy_main > .date_range > input {
+    height: 100%;
+    font-size: 16px;
+    color: #e73194;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 48%;
+}
+.container > .amy_main > .search{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+
+    margin: 20px auto 0;
+}
+.container > .amy_main > .search > input{
+    height: 100%;
+    flex: 1;
+    margin-right: 5px;
+    border: none;
+    outline: none;
+    border-bottom:  1px solid red;
+    font-size: 17px;
+}
+.container > .amy_main > .search > button{
+    height: 100%;
+    color: white;
+    background-color:#16bd19;
+    width: 30%;
+    border-radius: 5px;
+    text-align: center;
+}
+.container > .amy_main > .balance_date_range{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+
+    width: 95%;
+    margin: 8px auto 0;
+} 
+.container > .amy_main > .balance_date_range > .date{ 
+    height: 100%;
+    margin-right: 5px;
+}
+.container > .amy_main > .balance_date_range > .date > input{
+    height: 100%;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 17px;
+    color: #e73194;
+    border: 1px solid gray;
+
+}
+.container > .amy_main > .balance_date_range > button{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: none;
+    background-color: #16bd19;
+    color: white;
+    border-radius: 5px;
+}
+.container > .amy_main > .current_date{
+    display: flex;
+    width: 95%;
+    margin: 8px auto 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: #0056b3;
+    
+}
+.container > .amy_main > .balance {
+    display: flex;
+    flex-direction: column;
+
+    width: 95%;
+    margin: 5px auto 0;
+}
+.container > .amy_main > .balance > .balance_label {
+    display: flex;
+    width: 100%;
+}
+.container > .amy_main > .balance > .balance_label > label:nth-child(1){
+    width: 15%;
+}
+.container > .amy_main > .balance > .balance_label > label:nth-child(2),
+.container > .amy_main > .balance > .balance_label > label:nth-child(4){
+    width: 25%;
+}
+.container > .amy_main > .balance > .balance_label > label:nth-child(3){
+    width: 35%;
+}
+.container > .amy_main > .total{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    height: 40px;
+    margin: auto;
+}
+.container > .amy_main > .amy_money_receipt_nav_button{
+    width: 100%;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+.container > .amy_main > .amy_money_receipt_nav_button > button{
+    width: 50%;
+    text-align: center;
+    height: 100%;
+}
+
+
+.container > .amy_main > .amy_money_receipt_content{
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    width: 95%;
+    margin: auto;
+}
+.container > .amy_main > .amy_money_receipt_content > .client_id_mobile{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.container > .amy_main > .amy_money_receipt_content > .client_id_mobile > input{
+    height: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(63, 61, 61);
+    flex: 1;
+    margin-right: 5px;
+    font-size: 17px;
+}
+.container > .amy_main > .amy_money_receipt_content > .client_id_mobile > button{
+    height: 100%;
+    padding: 0 25px;
+    text-align: center;
+    background-color: #1eb51e;
+    border-radius: 3px;
+    color: white;
+}
+.container > .amy_main > .amy_money_receipt_content > .client_name,
+.container > .amy_main > .amy_money_receipt_content > .client_number,
+.container > .amy_main > .amy_money_receipt_content > .mr_amount
+{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.container > .amy_main > .amy_money_receipt_content > .client_name > label,
+.container > .amy_main > .amy_money_receipt_content > .client_number > label,
+.container > .amy_main > .amy_money_receipt_content > .mr_amount > label{
+    color: gray;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 30%;
+}
+.container > .amy_main > .amy_money_receipt_content > .client_name > input,
+.container > .amy_main > .amy_money_receipt_content > .client_number > input,
+.container > .amy_main > .amy_money_receipt_content > .mr_amount > input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+    height: 100%;
+    flex: 1;
+}
+
+.container > .amy_main > .amy_money_receipt_content > .pay_mode{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.container > .amy_main > .amy_money_receipt_content > .pay_mode > label{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: gray;
+}
+.container > .amy_main > .amy_money_receipt_content > .pay_mode > div{
+    display: flex;
+    flex-wrap: wrap;
+
+    width: 70%;
+}
+.container > .amy_main > .amy_money_receipt_content > .pay_mode > div > span {
+    width: calc(50%); /* Each span takes 50% of width */
+    padding: 4px 0;
+}
+.container > .amy_main > .amy_money_receipt_content > .location {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+}
+.container > .amy_main > .amy_money_receipt_content > .location > label{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: gray;
+}
+.container > .amy_main > .amy_money_receipt_content > .location > select{
+    height: 100%;
+    width: 70%;
+    border-radius: 5px;
+
+}
+
+.container > .amy_main > .amy_money_receipt_content > .pay_type {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+height: 40px;
+}
+.container > .amy_main > .amy_money_receipt_content > .pay_type > label {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    align-items: center;
+    height: 100%;
+}
+.container > .amy_main > .amy_money_receipt_content > .pay_type > div{
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.container > .amy_main > .amy_money_receipt_content > .pay_type > div > span:nth-child(1){
+    padding-right: 10px;
+}
+.container > .amy_main > .amy_money_receipt_content > button{
+    height: 40px;
+    background-color: #1eb51e;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+}
+.container > .amy_main > .amy_money_receipt_content > .date_range{
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+}
+.container > .amy_main > .amy_money_receipt_content > .date_range > .date{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    height: 100%;
+    padding-right: 8px;
+}
+.container > .amy_main > .amy_money_receipt_content > .date_range > .date > input{
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.container > .amy_main > .amy_money_receipt_content > .date_range > .date > input:nth-child(1){
+    margin-right: 5px;
+}
+.container > .amy_main > .amy_money_receipt_content > .date_range > button{
+    width: 20%;
+    border: none;
+    outline: none;
+    text-align: center;
+    background-color: #1eb51e;
+    color: white;
+    border-radius: 5px;
+}
+.container > .amy_main > .amy_money_receipt_content > .view_content > .label{
+    display: flex;
+    flex-direction: row;
+    color: gray;
+}
+.container > .amy_main > .amy_money_receipt_content > .view_content > .label > label:nth-child(1){
+    width: 40%;
+}
+.container > .amy_main > .amy_money_receipt_content > .view_content > .label > label:nth-child(2),
+.container > .amy_main > .amy_money_receipt_content > .view_content > .label > label:nth-child(3){
+    width: 23%;
+}
+.container > .amy_main > .amy_money_receipt_content > .view_content > .label > label:nth-child(4){
+    width: 13%;
+}
+
+.container > .amy_main > .amy_money_receipt_content > .view_total {
+    display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 95%;
+        margin: auto;
+        height: 40px;
+}
+.container > .amy_main > .amy_money_receipt_content > .view_total > span{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.container > .amy_main > .amy_money_receipt_content > .view_total > span > label{
+    margin-right: 5px;
+}
+.container > .amy_main > .amy_money_receipt_content > .view_total > p{
+
+    width: 50%;
+    text-align: center;
+}
+
+
+.container > .amy_main > .amy_report_content {
+    width: 95%;
+    margin: 8px auto auto;
+}
+.container > .amy_main > .amy_report_nav_button{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.container > .amy_main > .amy_report_nav_button > button{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.container > .amy_main > .amy_report_content > .report_title{
+    width: 100%;
+    text-align: center;
+}
+.container > .amy_main > .amy_report_content > .report_date{
+    width: 100%;
+    text-align: center;
+}
+.container > .amy_main > .amy_report_content > .report_write{
+    border: 1px solid gray;
+    width: 95%;
+    margin: auto;
+    border-radius: 5px;
+    display: flex;
+}
+.container > .amy_main > .amy_report_content > .report_write > .report_textarea{
+    width: 95%;
+    height: 95%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin: 5px;
+}
+.container > .amy_main > .amy_report_content > .report_submit{
+        height: 40px;
+    color: white;
+    background-color: #07c350;
+    width: 95%;
+    margin: 5px auto auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.container > .amy_main > .amy_report_content > .date_range{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+.container > .amy_main > .amy_report_content > .date_range  > .date{
+    display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex: 1;
+        padding-right: 5px;
+        height: 100%;
+}
+.container > .amy_main > .amy_report_content > .date_range  > .date > input {
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.container > .amy_main > .amy_report_content > .date_range  > .date > input:nth-child(1){
+    margin-right: 5px;
+}
+.container > .amy_main > .amy_report_content > .date_range  > button{
+    width: 20%;
+    text-align: center;
+    border: none;
+    outline: none;
+    background-color: #07c350;
+    color: white;
+    height: 100%;
+    border-radius: 5px;
+}
+.container > .amy_main > .amy_report_content > span{
+    padding-top: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+/* clietn ledger css code*/

@@ -21,15 +21,36 @@ async function fetchHrData(heading) {
   }
 }
 
-async function fetchData(url) {
+async function fetchData( url = null, heading = null ) {
   try {
-    const response = await fetch(url);
-    // Check if the response is successful
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
+    let data;
+    if(url){
+      const response = await fetch(url);
+      // Check if the response is successful
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      // Get Content-Type header
+      const contentType = response.headers.get("Content-Type");
+      if(contentType && contentType.includes("application/json")){
+        // Parse the JSON response
+        data = await response.json();
+      }else{
+        data = await response.text();
+      }
+      
+    } else if (heading){
+      const response = await fetch("../helpers/dbs.json");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const textData = await response.text();
+      data =  JSON.parse(textData)[heading];
+    } else {
+      throw new Error("Invalid paramters: Provide either  URL or a heading");
     }
-    // Parse the JSON response
-    const data = await response.json();
+    
     return data;
   } catch (error) {
     if(error instanceof TypeError){
@@ -59,6 +80,47 @@ async function fetchData(url) {
       
   }
 }
+
+
+// async function fetchData(url) {
+//   try {
+//     const response = await fetch(url);
+//     // Check if the response is successful
+//     if (!response.ok) {
+//       throw new Error("Network response was not ok");
+//     }
+//     // Parse the JSON response
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     if(error instanceof TypeError){
+//       if(error.message === 'Failed to fetch'){
+//         console.error('Network error: Failed to fetch');
+//       } else if (error.message.includes('ERR_INTERNET_DISCONNECTED')) {
+//         console.error('Network error: ERR_INTERNET_DISCONNECTED');
+//       } else {
+//         console.error('Network error:', error.message);
+//       }
+//     } else{
+//       // console.error('An error occurred:', error.message);
+//       Swal.fire({
+//         icon: "error",
+//           // title: "Oops...",
+//           title: 'Something wrong unknown',
+//           showConfirmButton: true,
+//           // timer: 4000,
+//           confirmButtonText: 'OK'
+//       });
+//     }
+   
+//       // Handle any errors
+//       // console.error("There was a problem with the fetch operation:", error);
+//       // throw error; // rethrow the error to be caught by the caller
+    
+      
+//   }
+// }
+
 
 async function postData(url, data) {
   try {

@@ -5170,8 +5170,6 @@ body {
     width: 49%;
 }
 
-.hrmActivityMain > .leave_application_container > #leave_application_details_rootDiv > #leave_application_form > .date_time_container > span > .datepicker {
-}
 
 .hrmActivityMain > .leave_application_container > #leave_application_details_rootDiv > #leave_application_form > .date_time_container > span > .datepicker > .datepicker-picker {
     display: flex;
@@ -5202,10 +5200,7 @@ body {
     padding-left: 18px;
     padding-right: 18px;
 }
-.hrmActivityMain > .leave_application_container > #leave_application_details_rootDiv > #leave_application_form > .date_time_container > span > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls > button:nth-child(2) {
 
-
-}
 
 .hrmActivityMain > .leave_application_container > #leave_application_details_rootDiv > #leave_application_form > .date_time_container > span > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls > button:nth-child(3) {
     padding-left: 18px;
@@ -5583,10 +5578,6 @@ body {
     font-size: 18px; 
 }
 
-
-.hrmActivityMain > .leave_application_container > #leave_application_details_rootDiv>  #leave_application_status_view > #single_status > span:nth-child(8){
-    
-}
 .hrmActivityMain > .leave_application_container > #leave_application_details_rootDiv>  #leave_application_status_view > #single_status > #bossSpan{
     display: flex;
     flex-direction: row;
@@ -7432,9 +7423,6 @@ body {
     border: none;
     outline: none;
 }
-.hrmActivityMain > #work_from_home_status > #workHome_date_btn > .datepicker {
-    
-}
 .hrmActivityMain > #work_from_home_status > #workHome_date_btn > .datepicker > .datepicker-picker {
     display: flex;
     flex-direction: column;
@@ -7588,9 +7576,6 @@ body {
 .hrmActivityMain > #work_from_location_status > #workLocation_date_btn > .datepicker > .datepicker-picker {
     display: flex;
     flex-direction: column;
-}
-.hrmActivityMain > #work_from_location_status > #workLocation_date_btn > .datepicker > .datepicker-picker > .datepicker-header {
-
 }
 .hrmActivityMain > #work_from_location_status > #workLocation_date_btn > .datepicker > .datepicker-picker > .datepicker-header > .datepicker-controls {
     display: flex;
@@ -8129,10 +8114,7 @@ body {
     margin: 0;
     color: black;
 }
-.hrmActivityMain > #scheme_container > #scheme_detalis > #scheme_table {
-    /* Additional styles can be added here if needed */
-    
-}
+
 .hrmActivityMain > #scheme_container > #scheme_detalis > #scheme_table > #m_scheme_attrib {
     top: 109px;
     position: fixed;
@@ -10450,7 +10432,8 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 100%;
+    width: 95%;
+    margin: 8px auto;
 }
 
 .hrmActivityMain > .incentiveContainer > .empDropDown {

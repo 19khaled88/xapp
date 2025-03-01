@@ -29,9 +29,9 @@ body {
 
 /* Container for centering content */
 .container {
-    width: 90%;
+    /* width: 90%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto; */
 }
 
 /* ==== HEADINGS & TEXT ==== */
@@ -140,6 +140,6 @@ p {
     }
 
     .container {
-        width: 100%;
+        /* width: 100%; */
     }
 }

@@ -37,14 +37,21 @@ document.addEventListener('DOMContentLoaded',()=>{
                 report();
                 break;
             case "Befresh Passenger List":
-
+                passengerList();
+                break;
             case "Befresh Business Performance":
-
+                businessPerformance();
+                break;
             default:
                 // window.location.href =``
 
         }
     }
+
+    const back_button_handle = document.getElementById('bf_btn')
+        back_button_handle && back_button_handle.addEventListener('click',()=>{
+        window.location.href = `https://ctgshop.com/xapp/test/pages/Befresh.html?identity=${identity}&name=${encodeURIComponent(emName)}&boss=${bossId}&bossName=${bossName}`
+    })
 });
 
 
@@ -56,6 +63,7 @@ function clientBalance(){
             <p class="main_title" id="main_title">Client Balance</p>
             <div class="input_fields" id="input_fields">
                 <input id="client_mobile" type="tel"  placeholder="ID/Mobile Number" pattern="[0-9]{10,15}" maxlength="15" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+                <div class="client_bal_info" id="client_bal_info"></div>
                 <div class="date_range" id="date_range">
                     <div class="date" id="date">
                     </div>
@@ -88,8 +96,11 @@ function clientBalance(){
    
 
     
-    document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`
+    document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
 
+
+    fetchData(``)
+        
 }
 
 function clientDues(){
@@ -170,6 +181,7 @@ function moneyReceipt(){
 
 function manageMoneyReceipt(tag,buttons = null){
     buttons !== null ?  buttons.forEach((button,index)=>{
+        let c_name; let c_number;  let c_location; let c_service;
         button.style.cssText = `
             color:black;
             border-bottom:none;
@@ -180,7 +192,6 @@ function manageMoneyReceipt(tag,buttons = null){
                 font-weight:bold;
                 border-bottom: 2px solid #ed0f35;
             `
-
         }
 
         if(button.id === tag && button.id === 'entry'){
@@ -189,20 +200,20 @@ function manageMoneyReceipt(tag,buttons = null){
 
             const html = `
                 <div class="client_id_mobile" id="client_id_mobile">
-                    <input class="id_mobile" id="id_mobile" type="tel"  placeholder="Clients ID/Mobile Number" pattern="[0-9]{10,15}" maxlength="15" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
-                    <button>FIND</button>
+                    <input class="id_mobile" id="id_mobile" type="number" placeholder="Clients ID/Mobile Number" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+                    <button id="fnd_bf_customer">FIND</button>
                 </div>
                 <div class="client_name" id="client_name">
                     <label>Clients Name</label>
-                    <input class="name" id="name" disabled/>
+                    <input style="font-weight:500; color:black" class="name" id="name" disabled/>
                 </div>
                 <div class="client_number" id="client_number">
                     <label>Clients Number</label>
-                    <input class="number" id="number" disabled/>
+                    <input style="font-weight:500; color:black" class="number" id="number" disabled/>
                 </div>
                 <div class="mr_amount" id="mr_amount">
                     <label>MR Amount</label>
-                    <input class="amount" id="amount" type="number"/>
+                    <input style="font-weight:500; color:black" class="amount" id="amount" type="number"/>
                     <p>BDT</p>
                 </div>
                 <div class="pay_mode" id="pay_mode">
@@ -220,28 +231,122 @@ function manageMoneyReceipt(tag,buttons = null){
                 </div>
                 <div class="location" id="location">
                     <label>MR Location</label>
-                    <select>
-                        <option>Select Location</option>
-                        <option>Sylhet Office - Sylhet</option>
-                        <option>Studio Office - Chittagong</option>
-                        <option>Singapore Office - Singapore</option>
+                    <select id="location">
+                        <option value="" selected>Select Location</option>
+                        <option value="sylhet">Sylhet Office - Sylhet</option>
+                        <option value="chittagong">Studio Office - Chittagong</option>
+                        <option value="singapore">Singapore Office - Singapore</option>
                     </select>
                 </div>
                 <div class="service" id="service">
                     <label>Services</label>
-                    <select>
-                        <option>Select</option>
-                        <option>Ticketing</option>
-                        <option>Ticketing - Hajj</option>
-                        <option>Ticketing - Umrah</option>
+                    <select id="service">
+                        <option value="" selected>Select</option>
+                        <option value="ticketing">Ticketing</option>
+                        <option value="ticketing-hajj">Ticketing - Hajj</option>
+                        <option value="ticketing-umrah">Ticketing - Umrah</option>
                     </select>
                 </div>
                 <button type="submit" id="submit">SUBMIT</button>
             `
             content.insertAdjacentHTML("beforeend",html);
 
+            document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
 
-            document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`
+            document.getElementById('fnd_bf_customer') && document.getElementById('fnd_bf_customer').addEventListener('click',async ()=>{
+                let inputValue = document.getElementById('id_mobile')?.value.trim();
+
+                inputValue = inputValue.replace(/[^0-9]/g, '');
+
+
+                try {
+                    await fetchData(`https://www.condomshopbd.com/xapi/emp_com.ashx?cmd=bfclfind&typ=id&v=2&no=${encodeURIComponent(inputValue)}`)
+                        .then((res)=>{
+                            
+                            if (typeof res === "string") {
+                                const dataArray = res.split("|"); // Split data if it's pipe-separated
+                                
+                                if(dataArray.some((item)=>item.includes('Found'))){
+                                    const name = document.getElementById('name');
+                                    const number = document.getElementById('number');
+                                    name.value = dataArray[2];
+                                    number.value = dataArray[1];
+                                    c_name = name.value;
+                                    c_number = number.value
+                                    
+                                }
+                                else
+                                {
+                                    const finalString = dataArray[0];
+                                    document.getElementById('darkOverlay').style.display = 'block';
+                                    document.body.classList.add('transparent');
+                                    Swal.fire({
+                                        icon: "warning",
+                                        title: `${finalString}`,
+                                        showConfirmButton: false,
+                                        showCloseButton: true,
+                                        customClass: {
+                                            popup: 'swal2-alert-custom-smallscreen'
+                                        },
+                                    }).then(() => {
+                                        document.getElementById('darkOverlay').style.display = 'none';
+                                        document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                                    });
+                                }
+                            }
+                        })
+                        .catch((error)=>{
+                            document.getElementById('darkOverlay').style.display = 'block';
+                            document.body.classList.add('transparent');
+                            Swal.fire({
+                                icon: "warning",
+                                title: `${error.message}`,
+                                showConfirmButton: false,
+                                showCloseButton: true,
+                                customClass: {
+                                    popup: 'swal2-alert-custom-smallscreen'
+                                },
+                            }).then(() => {
+                                document.getElementById('darkOverlay').style.display = 'none';
+                                document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                            });
+                        })
+                    
+                } catch (error) {
+                    document.getElementById('darkOverlay').style.display = 'block';
+                    document.body.classList.add('transparent');
+                    Swal.fire({
+                        icon: "warning",
+                        title: `${error.message}`,
+                        showConfirmButton: false,
+                        showCloseButton: true,
+                        customClass: {
+                            popup: 'swal2-alert-custom-smallscreen'
+                        },
+                    }).then(() => {
+                        document.getElementById('darkOverlay').style.display = 'none';
+                        document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                    });
+                }
+            });
+
+            document.getElementById('location').addEventListener('change',(event)=>{
+                c_location = event.target.value
+            });
+
+            document.getElementById('service').addEventListener('change',(event)=>{
+                c_service = event.target.value
+            });
+
+            document.getElementById('submit').addEventListener('click',()=>{
+                
+                const paymentMode = document.querySelector('input[name="mode"]:checked');
+                const selectedMode = paymentMode ? paymentMode.value : null;
+                const amount = document.getElementById('amount').value
+
+                console.log(c_name,c_number,amount,selectedMode,c_location,c_service)
+
+            })
         }else if(button.id === tag && button.id === 'view'){
             const content = document.getElementById('money_receipt_content')
             content.innerHTML = "";
@@ -346,15 +451,21 @@ function manageReport(tag,buttons = null){
 
         if(button.id === tag && button.id === 'entry'){
             const content = document.getElementById('report_content');
-            console.log(content)
+            
             content.innerHTML = "";
 
             const html = `
-
+                <p class="report_title" id="report_title">Report Entry</p>
+                <p class="report_date" id="report_date">Date : </p>
+                <div class="report_write" id="report_write">
+                    <textarea id="report_textarea" class="report_textarea" placeholder="Write your report here..."></textarea>
+                </div>
+                <button class="report_submit" id="report_submit">SUBMIT</button>
 
             `
             content.insertAdjacentHTML('beforeend',html);
             document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
+
             document.getElementById('report_content').style.cssText = `
                 height:${Math.floor(100 - Number(pxToVh(document.getElementById('nav_div').offsetHeight + document.getElementById('report_nav_button').offsetHeight) + 5))}vh;
                 border:1px solid gray;
@@ -363,17 +474,153 @@ function manageReport(tag,buttons = null){
                 margin:auto;
                 margin-top:8px;
             `
+
+            document.getElementById('report_write').style.cssText = `
+                height:${Math.floor(100 - Number(pxToVh(
+                    document.getElementById('nav_div').offsetHeight + 
+                    document.getElementById('report_nav_button').offsetHeight + 
+                    document.getElementById('report_title').offsetHeight + 
+                    document.getElementById('report_date').offsetHeight + 
+                    document.getElementById('report_submit').offsetHeight
+                ) + 10 ))}vh
+            `
+
         } else if(button.id === tag && button.id === 'view'){
             const content = document.getElementById('report_content');
-            console.log(content)
+            
             content.innerHTML = "";
 
             const html = `
-
+                <div class="date_range" id="date_range">
+                    <div class="date" id="date">
+                    </div>
+                  <button>OK</button>
+                </div>
+                <span>Date : </span>
 
             `
             content.insertAdjacentHTML('beforeend',html);
+            document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
+
+            document.getElementById('report_content').style.cssText = '';
+
+            const startDatePickerInput = handleDateAndTime('fromDate');
+            const endDatePickerInput = handleDateAndTime('toDate');
+
+            document.getElementById('date').appendChild(startDatePickerInput.elementName);
+            document.getElementById('date').appendChild(endDatePickerInput.elementName);
 
         }
     }) : "";
+}
+
+function passengerList(){
+    const main = document.getElementById('main');
+
+    main.innerHTML = '';
+    const html =`
+        <div class="passenger_nav_button" id="passenger_nav_button">
+            <button class="arrival" id="arrival">ARRIVAL</button>
+            <button class="departure" id="departure">DEPARTURE</button>
+        </div>
+        <div class="passenger_content" id="passenger_content"></div>
+    `
+    main.insertAdjacentHTML("beforeend",html);
+
+    const buttons =  document.getElementById('passenger_nav_button').querySelectorAll('button')
+    if(buttons){
+        buttons.forEach((button,index)=>{
+            button.addEventListener('click',()=>{
+                
+                managePassengerList(button.id,buttons)
+            })
+        })
+    }
+
+
+    managePassengerList('arrival',buttons)
+}
+
+function managePassengerList(tag,buttons = null){
+    buttons !== null ? buttons.forEach((button,index)=>{
+        button.style.cssText = `
+            color:black;
+            border-bottom:none;
+        `
+
+        if(button.id === tag){
+            button.style.cssText = `
+                color:#ed0f35;
+                font-weight:bold;
+                border-bottom: 2px solid #ed0f35;
+            `
+        }
+
+        if(button.id === tag && button.id === 'arrival'){
+            const content = document.getElementById('passenger_content');
+            
+            content.innerHTML = "";
+
+            const html = `
+                <div class="date_range" id="date_range">
+                    <label>DATE</label>
+                    <div class="date" id="date">
+                    </div>
+                </div>
+                <div class="airlines" id="airlines">
+                    <label>AIRLINES</label>
+                    <select>
+                        <option value="biman">BIMAN</option>
+                    </select>
+                </div>
+                 <div class="location" id="location">
+                    <label>LOCATION</label>
+                    <select>
+                        <option value="dac-cgp">DAC - CGP</option>
+                        <option value="cxb-cgp">CXB - CGP</option>
+                    </select>
+                </div>
+                <button id="pass_arrival_submit" class="pass_arrival_submit" type="submit">SEARCH</button>
+            `
+            content.insertAdjacentHTML('beforeend',html);
+            document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
+
+
+            const startDatePickerInput = handleDateAndTime('fromDate');
+           
+
+            document.getElementById('date').appendChild(startDatePickerInput.elementName);
+            content.style.cssText=``
+
+
+        }else if(button.id === tag && button.id === 'departure'){
+            const content = document.getElementById('passenger_content');
+            
+            content.innerHTML = "";
+
+            const html =`
+                <p>Work On Progress</p>
+            `
+            content.insertAdjacentHTML('beforeend',html);
+            document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
+            content.style.cssText = `
+                display:flex;
+                flex-direction:row;
+                justify-content:center;
+                align-items:center;
+                color:rgb(247 10 194);
+                height:${Math.floor(100 - Number(pxToVh(document.getElementById('nav_div').offsetHeight + document.getElementById('passenger_nav_button').offsetHeight) + 5))}vh;
+            `
+        }
+    }): "";
+
+
+}
+
+function businessPerformance(){
+
+}
+
+function manageBusinessPerformance(){
+
 }

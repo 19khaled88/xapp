@@ -20,7 +20,7 @@ if (pageTitle === "Profile") {
   fetchData(url)
     .then((data) => {
       if (data.status === true) {
-        
+        console.log(data)
         showProfileData(data);
       }
     })

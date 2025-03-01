@@ -87,9 +87,16 @@ let windowW = ''
 let devDpi =''
 let devVersion = ''
 
+window.addEventListener('pageshow',function(event){
+  const loadingSpinnerDiv = document.getElementById('button_loading');
+  if (loadingSpinnerDiv) {
+    loadingSpinnerDiv.style.display = 'none'; // Hide the spinner when coming back
+  }
+})
 
 document.addEventListener("DOMContentLoaded", async function() {
-
+  
+  
   // alert(sessionStorage.getItem('hrmPage_loading'));
   // handleVersion(0, 'get');
   devType = getDeviceType()

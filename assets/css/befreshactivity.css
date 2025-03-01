@@ -73,9 +73,7 @@ p {
 }
 
 
-.container{
 
-}
 
 .container > .nav_div{
     display: flex;
@@ -120,6 +118,9 @@ p {
     border-bottom: 1px solid gray;
     font-size: 17px;
 }
+.container > .main > .input_fields > .client_bal_info{
+    height: 40px;
+}
 .container > .main > .input_fields > .date_range{
     display: flex;
     align-items: center; /* Align inputs and button vertically */
@@ -143,6 +144,8 @@ p {
     font-size: 16px;
     font-weight: 500;
     color: gray;
+    border: 1px solid gray;
+    border-radius: 5px;
 }
 .container > .main > .input_fields > .date_range > button{
    
@@ -155,6 +158,7 @@ p {
     width: 15%;
     text-align: center;
     height: 100%;
+    border-radius: 5px;
 }
 .container > .main > .balance{
     padding-top: 20px;
@@ -201,6 +205,8 @@ p {
     font-size: 16px;
     font-weight: 500;
     color: gray;
+    border: 1px solid gray;
+    border-radius: 5px;
 }
 .container > .main > .date_range_dues > button{
     height: 100%;
@@ -210,6 +216,7 @@ p {
     outline: none;
     background-color: #0dc30d;
     color: white;
+    border-radius: 5px;
 }
 .container > .main > h4{
     width: 95%;
@@ -382,7 +389,15 @@ p {
     width: 30%;
 }
 
-
+.container > .main > .money_receipt_content > .client_id_mobile > input,
+.container > .main > .money_receipt_content > .client_name  > label,
+.container > .main > .money_receipt_content > .client_number > label,
+.container > .main > .money_receipt_content > .mr_amount > label,
+.container > .main > .money_receipt_content > .pay_mode > label,
+.container > .main > .money_receipt_content > .location > label,
+.container > .main > .money_receipt_content > .service > label{
+    margin-right:  5px;
+} 
 
 
 .container > .main > .money_receipt_content > .location {
@@ -458,6 +473,9 @@ p {
     font-size: 16px;
     font-weight: 500;
     color: gray;
+
+    border: 1px solid gray;
+    border-radius: 5px;
 }
 .container > .main > .money_receipt_content > .date_range > .date > input:nth-child(1){
     margin-right: 5px;
@@ -469,6 +487,7 @@ p {
     text-align: center;
     background-color: #1eb51e;
     color: white;
+    border-radius: 5px;
 }
 
 .container > .main > .money_receipt_content > .view_content > .label {
@@ -491,10 +510,6 @@ p {
 .container > .main > .money_receipt_content > .view_content > .label > label:nth-child(4)
 {
     width: 13%;
-}
-
-.container > .main > .money_receipt_content > .view_content > .detail_info{
-    
 }
 
 .container > .main > .money_receipt_content > .view_total {
@@ -537,4 +552,173 @@ p {
     width: 100%;
     text-align: center;
 }
+
+.container > .main > .report_content{
+    margin-top: 8px;
+
+    width: 95%;
+    margin: 8px auto auto;
+}
+.container > .main > .report_content > .report_title{
+    width: 100%;
+    text-align: center;
+}
+.container > .main > .report_content > .report_date{
+    width: 100%;
+    text-align: center;
+}
+.container > .main > .report_content > .report_write{
+    border: 1px solid gray;
+    width: 95%;
+    margin: auto;
+    border-radius: 5px;
+    display: flex;
+}
+.container > .main > .report_content > .report_write > .report_textarea{
+    width: 95%;
+    height: 95%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin: 5px;
+
+}
+.container > .main > .report_content > .report_submit{
+    height: 40px;
+    color: white;
+    background-color: #07c350;
+    width: 95%;
+    margin: 5px auto auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.container > .main > .report_content > .date_range {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+.container > .main > .report_content > .date_range > .date{ 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    padding-right: 5px;
+    height: 100%;
+}
+.container > .main > .report_content > span{
+    padding-top: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.container > .main > .report_content > .date_range > .date > input{
+    height: 100%;
+    width: 50%;
+    text-align: center;
+
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.container > .main > .report_content > .date_range > .date > input:nth-child(1){
+    margin-right: 5px;
+}
+.container > .main > .report_content > .date_range > button {
+    width: 20%;
+    text-align: center;
+    border: none;
+    outline: none;
+    background-color: #07c350;
+    color: white;
+    height: 100%;
+    border-radius: 5px;
+}
 /* befresh client report css code*/
+
+
+/* befresh passenger list css code*/
+.container > .main > .passenger_nav_button{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.container > .main > .passenger_nav_button > button{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.container > .main > .passenger_content{
+    width: 95%;
+    margin: 8px auto auto;
+}
+.container > .main > .passenger_content > .date_range,
+.container > .main > .passenger_content > .airlines,
+.container > .main > .passenger_content > .location{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.container > .main > .passenger_content > .date_range > label,
+.container > .main > .passenger_content > .airlines > label,
+.container > .main > .passenger_content > .location > label
+{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.container > .main > .passenger_content > .date_range > .date,
+.container > .main > .passenger_content > .airlines > select,
+.container > .main > .passenger_content > .location > select{
+    flex: 1;
+    height: 100%;
+    text-align: center;
+
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
+   
+    border-radius: 5px;
+}
+
+.container > .main > .passenger_content > .date_range > .date > input{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(247 10 194);
+    
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.container > .main > .passenger_content > .pass_arrival_submit{
+    height: 40px;
+    color: white;
+    background-color: #07c350;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+}
+/* befresh passenger list css code*/

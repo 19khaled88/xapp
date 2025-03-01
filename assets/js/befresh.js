@@ -66,4 +66,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     main.appendChild(buttonContainer); // Append the single div containing all buttons
+
+    const back_button_handle = document.getElementById('bf_btn');
+    back_button_handle && back_button_handle.addEventListener('click',()=>{
+        window.location.href = `https://ctgshop.com/xapp/test/index.html?identity=${identity}&name=${encodeURIComponent(emName)}&boss=${bossId}&bossName=${bossName}`
+    });
 });
