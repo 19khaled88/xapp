@@ -3141,13 +3141,30 @@ function createNewElement(tagName, classSelector = null,idSelector = null,title=
   return element;
 }
 
-
 function removeEdgeSymbols(str) {
   // Replace unwanted symbols at the start and end of the string
   return str.replace(/^[#$\-:.,;!?]+|[#$\-:.,;!?]+$/g, '');
 }
 
+function formatNumberWithThousandPositionComma(value) {
+  return Number(value).toLocaleString();
+}
 
+function showAlert(message) {
+  document.getElementById('darkOverlay').style.display = 'block';
+  document.body.classList.add('transparent');
+
+  Swal.fire({
+      icon: "warning",
+      title: message,
+      showConfirmButton: false,
+      showCloseButton: true,
+      customClass: { popup: 'swal2-alert-custom-smallscreen' }
+  }).then(() => {
+      document.getElementById('darkOverlay').style.display = 'none';
+      document.body.classList.remove('transparent');
+  });
+}
 
 
 

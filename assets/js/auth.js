@@ -2,20 +2,17 @@ const rootUrl = 'https://api.ctgshop.com';
 const rootWwwUrl = 'https://api.ctgshop.com';
 
 
-
 document.addEventListener('DOMContentLoaded', async function () {
-
-
 
     let testMode = true;
 
-    let type = String(platformDesObj.type);
-    let webView = String(platformDesObj.isWebView);
-    let platform = String(platformDesObj.platform);
-    let browser = String(platformDesObj.browser);
-    let sHeight = String(platformDesObj.sHeight);
-    let sWidth = String(platformDesObj.sWidth);
-    let dpi = String(platformDesObj.dpi);
+    let type      = String(platformDesObj.type);
+    let webView   = String(platformDesObj.isWebView);
+    let platform  = String(platformDesObj.platform);
+    let browser   = String(platformDesObj.browser);
+    let sHeight   = String(platformDesObj.sHeight);
+    let sWidth    = String(platformDesObj.sWidth);
+    let dpi       = String(platformDesObj.dpi);
 
   
 
@@ -29,6 +26,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     
     if(getData && getData.emPhone.length > 0 && getData.authid.length > 0){
+        
       
         const postUrl = `${rootUrl}/xapi/dash_api.ashx?cmd=xloginauth`
               
@@ -94,6 +92,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 url.searchParams.set('name', data.data.emName || "");
                 url.searchParams.set('boss', data.data.bossID || "");
                 url.searchParams.set('bossName', data.data.bossName || "");
+                
 
                 // Convert URL to string and replace "+" with "%20"
                 const formattedUrl = url.toString().replace(/\+/g, '%20');
@@ -108,6 +107,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 fetch(`https://api.ctgshop.com/xapi/dash_api.ashx?cmd=empcode&list=mac&imei=` + data.data.emCode)
                   .then(response => response.json())
                   .then(data => {
+                    
                     if(data.status === false){
                       const welcome = document.getElementById('welcome')
                       
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                       const userInfo = getData || {};
                     
                      
-                      if( userInfo.popupShown !== "1" && webView === 'true'){
+                      if( userInfo.popupShown !== "1" ){
                         
                         const result = [];
 
@@ -232,20 +232,20 @@ document.addEventListener('DOMContentLoaded', async function () {
                             // Clear any previous content except the close button
                             modalContent.innerHTML = '<span class="close">&times;</span>';
 
-                            let html = `<div class="popup_message" style="display:flex;flex-direction:row;justify-content:center;align-items:center;margin-top:50px;">`;
+                            let html = `<div class="popup_message">`;
 
                             // If names exist, add them dynamically
                             const nameEntries = result.filter(entry => entry.txtTitle || entry.txtBody);
                           
                             
                             if (nameEntries.length > 0) {
-                              html += `<div>`;
+                              html += `<div class="birthday_list" id="birthday_list">`;
                               if(nameEntries[0].txtTitle){
                                 html += `<h3>${nameEntries[0].txtTitle}</h3>`;
                               }
                               nameEntries.forEach(entry => {
                                 if(entry.txtBody){
-                                  html += `<p> ${entry.txtBody}</p>`;
+                                  html += `<p> ${entry.txtBody.replace(/\n/g, '<br>')}</p>`;
                                 }
                               });
                               html += `</div>`;
@@ -257,22 +257,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                             const otpEntry = result.find(entry => entry.otp);
                             if (otpEntry && otpEntry.otp) {
                               html += `
-                                <button 
-                                    id="otpButton" 
-                                    style="
-                                      display:flex;
-                                      flex-direction:row;
-                                      justify-content:space-between;
-                                      align-items:center; 
-                                      
-                                      margin-left:10px;
-                                      margin-bottom:10px;
-                                      padding:10px;
-                                      border:none;
-                                      outline:none;
-                                      background-color:#ffffff;
-                                      ";
-                                >
+                                <button id="otpButton" class="otpButton">
                                   <p style="padding-right:10px">Your OTP Yet to redeem : </p>
                                   <h3>${otpEntry.otp}</h3>
                                 </button>
@@ -494,7 +479,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 });
 
 
-                fetchHomePageData(data.data.emCode,data.data.emName,data.data.bossID,data.data.bossName); 
+                fetchHomePageData(data.data.emCode,data.data.emName,data.data.bossID,data.data.bossName,data.data.imei); 
             })
             .catch(error=>{
                 console.log(error)
@@ -722,7 +707,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 // }
 
 
-async function fetchHomePageData(code,name,bossId,bossName) {
+async function fetchHomePageData(code,name,bossId,bossName,imei) {
     
     try {
       
@@ -770,7 +755,7 @@ async function fetchHomePageData(code,name,bossId,bossName) {
           if(file === './assets/images/x-limited.png'){
             
           }else if(file === './assets/images/amybd.png'){
-            window.location.href = `./pages/Amy.html?identity=${code}&name=${encodeURIComponent(name)}&boss=${bossId}&bossName=${encodeURIComponent(bossName)}`
+            window.location.href = `./pages/Amy.html?identity=${code}&name=${encodeURIComponent(name)}&boss=${bossId}&bossName=${encodeURIComponent(bossName)}&imei=${imei}`
           }else if(file === './assets/images/South East Money Exchange Logo.png'){
             window.location.href = `./pages/BefreshFx.html?identity=${code}&name=${encodeURIComponent(name)}&boss=${bossId}&bossName=${encodeURIComponent(bossName)}`
           }else if(file === './assets/images/BeFreshEdu Logo.png'){
@@ -784,7 +769,7 @@ async function fetchHomePageData(code,name,bossId,bossName) {
           }else if(file === './assets/images/best_erp.png'){
             window.location.href = `./pages/BestErp.html?identity=${code}&name=${encodeURIComponent(name)}&boss=${bossId}&bossName=${encodeURIComponent(bossName)}`
           }else if(file === './assets/images/BeFresh Logo.png'){
-            window.location.href = `./pages/Befresh.html?identity=${code}&name=${encodeURIComponent(name)}&boss=${bossId}&bossName=${encodeURIComponent(bossName)}`
+            window.location.href = `./pages/Befresh.html?identity=${code}&name=${encodeURIComponent(name)}&boss=${bossId}&bossName=${encodeURIComponent(bossName)}&imei=${imei}`
           }else if(file = './assets/images/Be Rich Logo.png'){
             window.location.href = `./beRich/index.html?name=${name}`
           }

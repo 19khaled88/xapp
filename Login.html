@@ -186,7 +186,7 @@
                 var form = new FormData(); // Create a new FormData object
 
                 form.append("postData", jsonString); // Append the JSON string to the FormData object
-
+                
                 fetch(postUrl,{
                     method:'POST',
                     body:form
@@ -198,6 +198,7 @@
                     return response.json();
                 })
                 .then(async data=>{
+                    
                     
                     if(data.status === true){
                         const res = data.data; 

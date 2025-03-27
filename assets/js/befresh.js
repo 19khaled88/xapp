@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const emName = urlParams.get("name");
     const bossId = urlParams.get("boss");
     const bossName = urlParams.get("bossName");
-
+    const imei = urlParams.get('imei')
 
 
     const nav_div = document.getElementById('nav_div');
@@ -49,17 +49,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const imgSrc = itemBtn.querySelector("img").src; // Get image source
                 
                 if(imgSrc === 'https://ctgshop.com/xapp/test/assets/buttons/befresh/bf_client_balance_icon.png'){
-                    window.location.href = `https://ctgshop.com/xapp/test/pages/BefreshActivity.html?pageTitle="Befresh Client's Balance"&idenity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}`
+                    window.location.href = `https://ctgshop.com/xapp/test/pages/BefreshActivity.html?pageTitle="Befresh Client's Balance"&identity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}&imei=${imei}`
                 }else if(imgSrc === 'https://ctgshop.com/xapp/test/assets/buttons/befresh/bf_client_dues_icon.png'){
-                    window.location.href = `https://ctgshop.com/xapp/test/pages/BefreshActivity.html?pageTitle="Befresh Client's Dues"&idenity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}`
+                    window.location.href = `https://ctgshop.com/xapp/test/pages/BefreshActivity.html?pageTitle="Befresh Client's Dues"&identity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}&imei=${imei}`
                 }else if(imgSrc === 'https://ctgshop.com/xapp/test/assets/buttons/befresh/bf_mr_icon.png'){
-                    window.location.href = `https://ctgshop.com/xapp/test/pages/BefreshActivity.html?pageTitle="Befresh Money Receipt"&idenity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}`
+                    window.location.href = `https://ctgshop.com/xapp/test/pages/BefreshActivity.html?pageTitle="Befresh Money Receipt"&identity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}&imei=${imei}`
                 }else if(imgSrc === 'https://ctgshop.com/xapp/test/assets/buttons/befresh/bf_activity_report_log.png'){
-                    window.location.href = `https://ctgshop.com/xapp/test/pages/BefreshActivity.html?pageTitle="Befresh Activity Report"&idenity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}`
+                    window.location.href = `https://ctgshop.com/xapp/test/pages/BefreshActivity.html?pageTitle="Befresh Activity Report"&identity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}&imei=${imei}`
                 }else if(imgSrc === 'https://ctgshop.com/xapp/test/assets/buttons/befresh/bf_passenger_list_icon.png'){
-                    window.location.href = `https://ctgshop.com/xapp/test/pages/BefreshActivity.html?pageTitle="Befresh Passenger List"&idenity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}`
+                    window.location.href = `https://ctgshop.com/xapp/test/pages/BefreshActivity.html?pageTitle="Befresh Passenger List"&identity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}&imei=${imei}`
                 }else if(imgSrc === 'https://ctgshop.com/xapp/test/assets/buttons/befresh/bf_business_performance.png'){
-                     window.location.href = `https://ctgshop.com/xapp/test/pages/BefreshActivity.html?pageTitle="Befresh Business Performance"&idenity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}`
+                     window.location.href = `https://ctgshop.com/xapp/test/pages/BefreshActivity.html?pageTitle="Befresh Business Performance"&identity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}&imei=${imei}`
                 }
             })
         });

@@ -381,7 +381,7 @@ body {
     z-index: 998;
     background-color: white;
 
-    padding-bottom: 5px;
+    padding-bottom: 15px;
   
     /* height: 35px; */
 }
@@ -503,8 +503,28 @@ body {
 .modal-content > .content > div > button > img{
     padding-bottom: 3px;
 }
-
-
+.modal-content > .popup_message{
+    margin-top: 45px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+}
+.modal-content > .popup_message > .birthday_list{
+    text-align: center;
+}
+.modal-content > .popup_message > .otpButton{
+    margin-top: 5px;
+    border: none;
+    outline: none;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
   
 #login-form{

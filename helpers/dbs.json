@@ -130,8 +130,13 @@
       "icon":"../assets/icons/accounting-auditing-icon.png",
       "title":"bill application",
       "category":"Employee Application"
+    },
+    {
+      "image":"../assets/images/hrm/otp.png",
+      "icon":"../assets/icons/check_in.png",
+      "title":"Check In",
+      "category":"General Information"
     }
-    
  
   ],
 
@@ -760,6 +765,14 @@
     "../assets/buttons/mfg/berichmfgaccounts.png",
     "../assets/buttons/mfg/berichmfgreports.png",
     "../assets/buttons/mfg/mfg_activity_report.png"
+  ],
+
+  "ctgTravel":[
+    "../assets/buttons/ctgTravel/btn_ct_client_ledger.png",
+    "../assets/buttons/ctgTravel/btn_ct_client_dues.png",
+    "../assets/buttons/ctgTravel/btn_ct_money_receipt.png",
+    "../assets/buttons/ctgTravel/btn_ct_activity_report.png",
+    "../assets/buttons/ctgTravel/btn_ct_business_performance.png"
   ]
 
 

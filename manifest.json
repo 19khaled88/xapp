@@ -2,7 +2,7 @@
     "name":"Xapplication",
     "short_name":"XWeb",
     "description": "A description of your app.",
-    "start_url":"/xapp/",
+    "start_url":"/xapp/test/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",

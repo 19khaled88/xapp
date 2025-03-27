@@ -1214,7 +1214,17 @@ function payslipManage(item){
     
       const fullMonthName = monthList.value;
       const abbreviatedMonthName = monthAbbreviations[fullMonthName];
-      const url = `https://ctgshop.com/erp/Reports/Broker/pay_slip.aspx?dt=30/${abbreviatedMonthName}/${yearList.value}&emp=${encryptedIdentity}&cid=19`
+
+
+      // Get selected year and month
+      const selectedYear = parseInt(yearList.value, 10);
+      const selectedMonthIndex = selectedMonthNumber; // Since `selectedIndex` is 0-based (Jan = 0, Feb = 1, ...)
+      
+      // Get last date of the selected month
+      const lastDate = new Date(selectedYear, selectedMonthIndex + 1, 0).getDate();
+
+
+      const url = `https://ctgshop.com/erp/Reports/Broker/pay_slip.aspx?dt=${lastDate}/${abbreviatedMonthName}/${yearList.value}&emp=${encryptedIdentity}&cid=19`
 
       // const response = await fetch(url);
       // if(!response.ok){
@@ -1332,10 +1342,10 @@ function payslipManage(item){
                 const divs = form.querySelectorAll('div');
                 if (divs.length >= 4) {
                   const fourthDiv = divs[3]; // Access the fourth <div> (index 3)
-                  console.log('Fourth div found:', fourthDiv);
+                  // console.log('Fourth div found:', fourthDiv);
           
                   // You can manipulate or log the fourth div as needed
-                  console.log('Content of the fourth div:', fourthDiv.innerHTML);
+                  // console.log('Content of the fourth div:', fourthDiv.innerHTML);
               }
                 
               }
@@ -2790,8 +2800,6 @@ async function leaveApplication(items){
           });
         });
         
-       
-
       });
 
 
@@ -3135,9 +3143,9 @@ async function leaveApplication(items){
                   const label = document.createElement('label');
                   const cancelBtn = document.createElement('button');
                   cancelBtn.setAttribute('id','cancelAction');
-                    cancelBtn.onclick = function(){
-                      actionFunc(atn,divCode,em_code,'Cancel');
-                    }
+                  cancelBtn.onclick = function(){
+                    actionFunc(atn,divCode,em_code,'Cancel');
+                  }
                   cancelBtn.textContent = 'Cancel';
                   const p = document.createElement('p');
                   key === 'Status' && temp[key] === 'Approved' ? (
@@ -8497,7 +8505,7 @@ async function workFromHomeStatus(){
           left_span.appendChild(img);
           left_span.appendChild(connect_div);
           workHome_status.appendChild(root_div);
-        })
+      })
     })
     .catch(error=>{
       // console.log(error)
@@ -9996,6 +10004,7 @@ function manageContact(){
           
           fetchedData = data.data 
          
+          
           manageShowContact(data.data,'')
       }
     })
@@ -11566,48 +11575,50 @@ async function incentiveFunc(){
 
 
   const html = `
-  <form class="incentiveContainer" id="incentiveContainer">
-    <select class="empDropDown" id="empDropDown">
-    
-    </select>
-    <select class="compDropDown" id="compDropDown">
+    <form class="incentiveContainer" id="incentiveContainer">
+      <select class="empDropDown" id="empDropDown">
       
-    </select>
-    <div style="display:none" class="dateRange" id="dateRange"> 
-      <div class="fromDate" id="fromDate"></div>
-      <div class="toDate" id="toDate"></div>
-    </div>
-    <div class="month_year" id="month_year">
-      <span class="month">
-        <label for="monthSelect">Month:</label>
-        <select id="monthSelect" class="monthSelect">
-          <!-- Months will be dynamically inserted -->
-        </select>
+      </select>
+      <select class="compDropDown" id="compDropDown">
+        
+      </select>
+      <div style="display:none" class="dateRange" id="dateRange"> 
+        <div class="fromDate" id="fromDate"></div>
+        <div class="toDate" id="toDate"></div>
+      </div>
+      <div class="month_year" id="month_year">
+        <span class="month">
+          <label for="monthSelect">Month:</label>
+          <select id="monthSelect" class="monthSelect">
+            <!-- Months will be dynamically inserted -->
+          </select>
+        </span>
+
+        <span class="year">
+          <label for="yearSelect">Year:</label>
+          <select id="yearSelect" class="yearSelect">
+            <!-- Years will be dynamically inserted -->
+          </select>
+        </span>
+      </div>
+      <select class="billTypeDropDown" id="billTypeDropDown">
+        <option>Select bill type</option>
+        <option value="all">All Bill</option>
+        <option value="clear">Clear bill</option>
+        <option value="notClear">Not Clear bill</option>
+      </select>
+      <button type="submit" class="submit" id="submit">SUBMIT</button>
+      <div class="contentArea" id="contentArea">
+      
+        
+      </div>
+      <span class="incentive_overlay" id="incentive_overlay">
+        <div class="incentive_overlay_loading-spinner"></div>
       </span>
+    </form>
+  `
 
-      <span class="year">
-        <label for="yearSelect">Year:</label>
-        <select id="yearSelect" class="yearSelect">
-          <!-- Years will be dynamically inserted -->
-        </select>
-      </span>
-    </div>
-    <select class="billTypeDropDown" id="billTypeDropDown">
-      <option>Select bill type</option>
-      <option value="all">All Bill</option>
-      <option value="clear">Clear bill</option>
-      <option value="notClear">Not Clear bill</option>
-    </select>
-    <button type="submit" class="submit" id="submit">SUBMIT</button>
-    <div class="contentArea" id="contentArea">
-    
-    </div>
-  </form>
-`
-
-hrmActivityMain.innerHTML = html;
-
-
+  hrmActivityMain.innerHTML = html;
   
   await fetchData(`https://ctgshop.com/erp/API/xbill.ashx?type=get_emp`,"")
     .then((res)=>{
@@ -11618,18 +11629,22 @@ hrmActivityMain.innerHTML = html;
       
       if(res.status === true){
         
-        // check permissible employee list 
+        // check permissible employee list from list.js
         if(incentiveEmCodes.includes(identity)){
-
+          
           res.Data.forEach(emp => {
-        
-            // console.log({name:emp.em_name,plan:emp.pay_plan})
+            
 
+            if(!emp.pay_plan || emp.pay_plan.trim() === ""){
+              return;
+            }
+            
             const option = document.createElement('option');
             option.value = emp.em_code; // Set option value as employee ID
             option.textContent = emp.em_name; // Display employee name
             
             if(emp.em_code === identity){
+              console.log(emp)
               option.selected = true;
               em_Name = emp.em_name;
               
@@ -11637,9 +11652,11 @@ hrmActivityMain.innerHTML = html;
 
               const payPlanArray = emp.pay_plan ? emp.pay_plan.split('|') : [];
               plan = [];
-              plan.push(...payPlanArray)
-              const companyNames = payPlanArray.flatMap((item) => {
+              plan.push(...payPlanArray);
 
+              
+              const companyNames = payPlanArray.flatMap((item) => {
+                
                 // check if 'gross pay' is in the item or if 'C' is a separate part
                 if( item.trim().replace(/\s+/g, ' ').toUpperCase().includes('GROSS-PAY') ||
                     item.trim().split('-').map(part=>part.trim()).includes('C')){
@@ -11662,7 +11679,6 @@ hrmActivityMain.innerHTML = html;
                         return 'BE FRESH EDUCATION & JOBS LIMITED';
                     }
                     return null;
-
                 });
 
               }).filter(Boolean); // Removes null values
@@ -11692,6 +11708,7 @@ hrmActivityMain.innerHTML = html;
                   
                 });
     
+                
                 if(compDropDown.options.length === 2){
                   compDropDown.disabled = true;
                 }
@@ -11729,19 +11746,27 @@ hrmActivityMain.innerHTML = html;
             em_Name = '';
             
             res.Data.forEach(emp =>{
-             
+              
+              if(!emp.pay_plan || emp.pay_plan.trim() === ""){
+                return;
+              }
+
               if(emp.em_code === empDropDown.value){
+                console.log(emp)
                 em_Name = emp.em_name;
                 document.getElementById('contentArea') ? document.getElementById('contentArea').innerHTML = "" : ""
                 const payPlanArray = emp.pay_plan ? emp.pay_plan.split('|') : [];
                 plan = [];
                 plan.push(...payPlanArray)
+
+                
                 const compDropDown = document.getElementById('compDropDown');
                 
 
                 const companyNames = payPlanArray.flatMap((item) => {
+                  console.log(item)
                   // check if 'gross pay' is in the item or if 'C' is a separate part
-                  if( item.trim().replace(/\s+/g, ' ').toUpperCase().includes('GROSS-PAY') || item.trim().split('-').map(part=>part.trim()).includes('C')){
+                  if(  item.trim().replace(/\s+/g, ' ').toUpperCase().includes('GROSS-PAY') || item.trim().split('-').map(part=>part.trim()).includes('C')){
                       return null; // Exclude this item
                   }
                   
@@ -11839,7 +11864,7 @@ hrmActivityMain.innerHTML = html;
         }
         else
         {
-          const matchEmp = res.Data.find(emp=> emp.em_code === identity);
+          const matchEmp = res.Data.find(emp=> emp.em_code === identity && emp.pay_plan && emp.pay_plan.trim() !== "") || null;
           
           if(matchEmp){
             em_Name = matchEmp.em_name;
@@ -11929,14 +11954,24 @@ hrmActivityMain.innerHTML = html;
               })
             }
 
+          }else{
+            const incentiveContainer = document.getElementById('incentiveContainer')
 
+            incentiveContainer.innerHTML = ""
 
+            const hrmActivityMain = document.getElementById('hrmActivityMain');
+
+            hrmActivityMain.style.height = `${(100 - Math.floor(pxToVh(document.getElementById('hrmActivityTop').offsetHeight) + 2))}vh`
+            
           }
 
         } 
       }
+
     })
-    .catch((err)=>console.log(err))
+    .catch((err)=>{
+      console.log(err)
+    })
  
   
 
@@ -11949,8 +11984,6 @@ hrmActivityMain.innerHTML = html;
     const fromDateDiv = document.getElementById('fromDate');
     if(fromDateDiv){
       fromDateDiv.appendChild(startDatePickerInput.elementName);
-    }else {
-      console.error("Element with ID 'fromDate' not found.");
     }
   }
  
@@ -11959,8 +11992,6 @@ hrmActivityMain.innerHTML = html;
     const toDateDiv = document.getElementById('toDate');
     if(toDateDiv){
       toDateDiv.appendChild(endDatePickerInput.elementName);
-    }else{
-      console.error("Element with ID 'toDate' not found.");
     }
   }
   
@@ -11975,25 +12006,30 @@ hrmActivityMain.innerHTML = html;
   ];
 
   // Populate Month Dropdown
-  months.forEach((month, index) => {
-      const option = document.createElement("option");
-      option.value = index + 1; // Month values 1-12
-      option.textContent = month;
-      monthSelect.appendChild(option);
-  });
+  if(monthSelect){
+    months.forEach((month, index) => {
+        const option = document.createElement("option");
+        option.value = index + 1; // Month values 1-12
+        option.textContent = month;
+        monthSelect.appendChild(option);
+    });
+  }
 
   // Populate Year Dropdown (Range: 2000 to Current Year + 5)
   const currentYear = new Date().getFullYear();
-  for (let year = 2010; year <= currentYear + 10; year++) {
-      const option = document.createElement("option");
-      option.value = year;
-      option.textContent = year;
-      yearSelect.appendChild(option);
+  if(yearSelect){
+    for (let year = 2010; year <= currentYear + 10; year++) {
+        const option = document.createElement("option");
+        option.value = year;
+        option.textContent = year;
+        yearSelect.appendChild(option);
+    }
+    
   }
 
   // Set Default Selection to Current Month & Year
-  monthSelect.value = new Date().getMonth() + 1; // Current month (1-12)
-  yearSelect.value = currentYear;
+  monthSelect && (monthSelect.value = new Date().getMonth() + 1); // Current month (1-12)
+  yearSelect && (yearSelect.value = currentYear);
 
 
 
@@ -12005,10 +12041,17 @@ hrmActivityMain.innerHTML = html;
   document.getElementById('incentiveContainer').style.height =`${100 - Math.ceil((pxToVh(document.getElementById('hrmActivityTop').offsetHeight)))}vh`
 
   
+  
+  
   document.getElementById('incentiveContainer').addEventListener('submit', (event) => {
     event.preventDefault();
 
-    
+    const incentive_overlay = document.getElementById('incentive_overlay');
+    incentive_overlay.style.display = 'flex'
+
+    // conditional Name change
+    let formattedName = em_Name === "MD. RASHEDUL ALAM" ? "RASHEDUL ALAM" : em_Name === "MOHAMMAD HANIF" ? "MD. HANIF": em_Name === "MD. MAHMUDUL HASSAN" ? "MD MAHMUDUL HASSAN": em_Name === "MD SOFIQUR RAHAMAN" ? "SOFIQUR RAHMAN" : em_Name;
+
     const form = event.target.closest('form')
     
     const empCode = document.getElementById('empDropDown').value;
@@ -12026,8 +12069,9 @@ hrmActivityMain.innerHTML = html;
     if(company === 'BE RICH LIMITED'){
       fetchData(`https://ctgshop.com/erp/API/xbill.ashx?type=get_berich&emp=${encodeURIComponent(em_Name)}&m=${Number(month)}&y=${Number(year)}`)
         .then((res)=>{
+          
           if(res.status === true){
-            
+            incentive_overlay.style.display = 'none'
             const contentArea = document.getElementById('contentArea');
 
             contentArea.innerHTML = ""
@@ -12051,6 +12095,7 @@ hrmActivityMain.innerHTML = html;
               contentArea.insertAdjacentHTML('beforeend',html)
             })
           }else if(res.status === false){
+            incentive_overlay.style.display = 'none'
             const contentArea = document.getElementById('contentArea');
 
             contentArea.innerHTML = ""
@@ -12079,45 +12124,79 @@ hrmActivityMain.innerHTML = html;
       plan && plan.map((item)=>{
         const parts = item.split('-').map(part=>part.trim());
 
-        if(parts.length > 1 && parts[0] === 'BF' && (parts[parts.length - 1] === 'Bb' )){
-          fetchData(`https://www.befreshbd.com/ZaraApi.ashx?type=get_data&rel_mng=${encodeURIComponent(em_Name)}&led_mo=${Number(month)}&led_yr=${Number(year)}`)
+        if(parts.length > 1 && parts[0] === 'BF' && parts[parts.length - 1] === 'Bb' ){
+          fetchData(`https://www.befreshbd.com/ZaraApi.ashx?type=get_data&rel_mng=${encodeURIComponent(formattedName)}&led_mo=${Number(month)}&led_yr=${Number(year)}`)
             .then((res)=>{
-              console.log(res)
-            })
-            .catch((error)=>console.log(error))
-        } else if(parts.length > 1 && parts[0] === 'BF' && parts[parts.length - 1] === 'A'){
-          fetchData(`https://www.befreshbd.com/ZaraApi.ashx?type=get_accmang&acc_mng=${encodeURIComponent(em_Name)}&led_mo=${Number(month)}&led_yr=${Number(year)}`)
-            .then((res)=>{
+              
               if(res.status === true){
+                incentive_overlay.style.display = 'none'
                 const contentArea = document.getElementById('contentArea');
-
                 contentArea.innerHTML = ""
+
                 res.Data.forEach((item,index)=>{
-                  
                   const html =`
                     <div class="card" id="card">
                       <span>
-                        <label>b2c_total_p</label>
-                        <p>${item.b2c_tot_p}</p>
+                        <label>Domestic Ticket</label>
+                        <p>${formatNumberWithThousandPositionComma(item.dom_cnt * 8)}</p>
                       </span>
                       <span>
-                        <label>b2c_total_p</label>
-                        <p>${item.b2b_nongrp_tot_p}</p>
+                        <label>Domestic Ticket(Cor)</label>
+                        <p>${formatNumberWithThousandPositionComma(item.domcor_cnt * 15)}</p>
                       </span>
                       <span>
-                        <label>b2c_total_p</label>
-                        <p>${item.b2b_grp_tot_p}</p>
+                        <label>Indian Domestic</label>
+                        <p>${formatNumberWithThousandPositionComma(item.indom_cnt * 12)}</p>
                       </span>
                       <span>
-                        <label>tot_profit</label>
-                        <p>${item.tot_profit}</p>
+                        <label>Indian Domestic(Cor)</label>
+                        <p>${formatNumberWithThousandPositionComma(item.indomcor_cnt * 25)}</p>
+                      </span>
+                      <span>
+                        <label>International</label>
+                        <p>${formatNumberWithThousandPositionComma(item.int_cnt * 20)}</p>
+                      </span>
+                      <span>
+                        <label>International(Cor)</label>
+                        <p>${formatNumberWithThousandPositionComma(item.intcor_cnt * 40)}</p>
+                      </span>
+                      <span>
+                        <label>Umrah Ticket</label>
+                        <p>${formatNumberWithThousandPositionComma(item.umrah_cnt * 50)}</p>
+                      </span>
+                      <span>
+                        <label>Umrah Package</label>
+                        <p>${formatNumberWithThousandPositionComma(item.umrah_pack_cnt * 1000)}</p>
+                      </span>
+                      <span>
+                        <label>Total Visa</label>
+                        <p>${formatNumberWithThousandPositionComma(item.visa_cnt * 50)}</p>
+                      </span>
+                      <span>
+                        <label>Total Night(Hotel)</label>
+                        <p>${formatNumberWithThousandPositionComma(item.nights_cnt * 50)}</p>
+                      </span>
+                      <span>
+                        <label>Total Incentive Amount</label>
+                        <p>${formatNumberWithThousandPositionComma(
+                          (item.dom_cnt * 8) + 
+                          (item.domcor_cnt * 15) + 
+                          (item.indom_cnt * 12) +
+                          (item.indomcor_cnt * 25) + 
+                          (item.int_cnt * 20) + 
+                          (item.intcor_cnt * 40) + 
+                          (item.umrah_cnt * 50) +
+                          (item.umrah_pack_cnt * 1000) +
+                          (item.visa_cnt * 50) +
+                          (item.nights_cnt * 50)
+                        )}</p>
                       </span>
                     </div>
                   `
                   contentArea.insertAdjacentHTML('beforeend',html)
-
                 })
               }else if(res.status === false){
+                incentive_overlay.style.display = 'none'
                 const contentArea = document.getElementById('contentArea');
 
                 contentArea.innerHTML = ""
@@ -12139,6 +12218,371 @@ hrmActivityMain.innerHTML = html;
               }
             })
             .catch((error)=>console.log(error))
+        } 
+        else if(parts.length > 1 && parts[0] === 'BF' && parts[parts.length - 1] === 'A')
+        {
+          fetchData(`https://www.befreshbd.com/ZaraApi.ashx?type=get_accmang&acc_mng=${encodeURIComponent(formattedName)}&led_mo=${Number(month)}&led_yr=${Number(year)}`)
+            .then((res)=>{
+              console.log(res.Data)
+              if(res.status === true){
+                incentive_overlay.style.display = 'none'
+                const contentArea = document.getElementById('contentArea');
+
+                contentArea.innerHTML = ""
+                res.Data.forEach((item,index)=>{
+                  
+                  const html =`
+                    <div class="card" id="card">
+                      <span>
+                        <label>B2C_Incentive</label>
+                        <p>${formatNumberWithThousandPositionComma(item.b2c_tot_p)}</p>
+                      </span>
+                      <span>
+                        <label>B2B_None_Group_Incentive</label>
+                        <p>${formatNumberWithThousandPositionComma(item.b2b_nongrp_tot_p)}</p>
+                      </span>
+                      <span>
+                        <label>B2B_Grp_Incentive</label>
+                        <p>${formatNumberWithThousandPositionComma(item.b2b_grp_tot_p)}</p>
+                      </span>
+                      <span>
+                        <label>Total Incentive Amount</label>
+                        <p>${formatNumberWithThousandPositionComma(item.tot_profit)}</p>
+                      </span>
+                    </div>
+                  `
+                  contentArea.insertAdjacentHTML('beforeend',html)
+
+                })
+              }else if(res.status === false){
+                incentive_overlay.style.display = 'none'
+                const contentArea = document.getElementById('contentArea');
+
+                contentArea.innerHTML = ""
+                document.getElementById('darkOverlay').style.display = 'block';
+                document.body.classList.add('transparent');
+                Swal.fire({
+                  icon: "warning",
+                  title: `${res.message}`,
+                  showConfirmButton: false,
+                  showCloseButton: true,
+                  customClass: {
+                    popup: 'swal2-alert-custom-smallscreen'
+                  },
+                }).then((result) => {
+                  // Hide the overlay when alert is closed
+                  document.getElementById('darkOverlay').style.display = 'none';
+                  document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                });
+              }
+            })
+            .catch((error)=>console.log(error))
+        } 
+        else if(parts.length > 1 && parts[0] === 'BF' && parts[parts.length - 1] === 'Ba')
+        {
+          fetchData(`https://www.befreshbd.com/ZaraApi.ashx?type=get_data&rel_mng=${encodeURIComponent(formattedName)}&led_mo=${Number(month)}&led_yr=${Number(year)}`)
+            .then((res)=>{
+              if(res.status === true){
+                incentive_overlay.style.display = 'none'
+                const contentArea = document.getElementById('contentArea');
+
+                contentArea.innerHTML = ""
+                res.Data.forEach((item,index)=>{
+                  const html =`
+                  <div class="card" id="card">
+                    <span>
+                      <label>Domestic Ticket</label>
+                      <p>${formatNumberWithThousandPositionComma(item.dom_cnt * 10)}</p>
+                    </span>
+                    <span>
+                      <label>Domestic Ticket(Cor)</label>
+                      <p>${formatNumberWithThousandPositionComma(item.domcor_cnt * 20)}</p>
+                    </span>
+                    <span>
+                      <label>Indian Domestic</label>
+                      <p>${formatNumberWithThousandPositionComma(item.indom_cnt * 15)}</p>
+                    </span>
+                    <span>
+                      <label>Indian Domestic(Cor)</label>
+                      <p>${formatNumberWithThousandPositionComma(item.indomcor_cnt * 30)}</p>
+                    </span>
+                    <span>
+                      <label>International</label>
+                      <p>${formatNumberWithThousandPositionComma(item.int_cnt * 25)}</p>
+                    </span>
+                    <span>
+                      <label>International(Cor)</label>
+                      <p>${formatNumberWithThousandPositionComma(item.intcor_cnt * 50)}</p>
+                    </span>
+                    <span>
+                      <label>Umrah Ticket</label>
+                      <p>${formatNumberWithThousandPositionComma(item.umrah_cnt * 50)}</p>
+                    </span>
+                    <span>
+                      <label>Umrah Package</label>
+                      <p>${formatNumberWithThousandPositionComma(item.umrah_pack_cnt * 1000)}</p>
+                    </span>
+                    <span>
+                      <label>Total Visa</label>
+                      <p>${formatNumberWithThousandPositionComma(item.visa_cnt * 50)}</p>
+                    </span>
+                    <span>
+                      <label>Total Night(Hotel)</label>
+                      <p>${formatNumberWithThousandPositionComma(item.nights_cnt * 50)}</p>
+                    </span>
+                    <span>
+                      <label>Total Incentive Amount</label>
+                      <p>${formatNumberWithThousandPositionComma(
+                        (item.dom_cnt * 8) + 
+                        (item.domcor_cnt * 15) + 
+                        (item.indom_cnt * 12) +
+                        (item.indomcor_cnt * 25) + 
+                        (item.int_cnt * 20) + 
+                        (item.intcor_cnt * 40) + 
+                        (item.umrah_cnt * 50) +
+                        (item.umrah_pack_cnt * 1000) +
+                        (item.visa_cnt * 50) +
+                        (item.nights_cnt * 50)
+                      )}</p>
+                    </span>
+                  </div>
+                `
+                contentArea.insertAdjacentHTML('beforeend',html)
+                })
+              }else if(res.status === false){
+                incentive_overlay.style.display = 'none'
+                const contentArea = document.getElementById('contentArea');
+
+                contentArea.innerHTML = ""
+                document.getElementById('darkOverlay').style.display = 'block';
+                document.body.classList.add('transparent');
+                Swal.fire({
+                  icon: "warning",
+                  title: `${res.message}`,
+                  showConfirmButton: false,
+                  showCloseButton: true,
+                  customClass: {
+                    popup: 'swal2-alert-custom-smallscreen'
+                  },
+                }).then((result) => {
+                  // Hide the overlay when alert is closed
+                  document.getElementById('darkOverlay').style.display = 'none';
+                  document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                });
+              }
+            })
+            .catch((error)=>console.log(error))
+        } 
+        else if(parts.length > 1 && parts[0] === 'BF' && parts[parts.length - 1] === 'Bb.')
+        {
+          fetchData(`https://www.befreshbd.com/ZaraApi.ashx?type=get_data&rel_mng=${encodeURIComponent(formattedName)}&led_mo=${Number(month)}&led_yr=${Number(year)}`)
+          .then((res)=>{
+            if(res.status === true){
+              incentive_overlay.style.display = 'none'
+              const contentArea = document.getElementById('contentArea');
+                contentArea.innerHTML = ""
+
+                res.Data.forEach((item,index)=>{
+                  const html =`
+                    <div class="card" id="card">
+                      <span>
+                        <label>Domestic Ticket</label>
+                        <p>${formatNumberWithThousandPositionComma(item.dom_cnt * 8)}</p>
+                      </span>
+                      <span>
+                        <label>Domestic Ticket(Cor)</label>
+                        <p>${formatNumberWithThousandPositionComma(item.domcor_cnt * 15)}</p>
+                      </span>
+                      <span>
+                        <label>Indian Domestic</label>
+                        <p>${formatNumberWithThousandPositionComma(item.indom_cnt * 12)}</p>
+                      </span>
+                      <span>
+                        <label>Indian Domestic(Cor)</label>
+                        <p>${formatNumberWithThousandPositionComma(item.indomcor_cnt * 25)}</p>
+                      </span>
+                      <span>
+                        <label>International</label>
+                        <p>${formatNumberWithThousandPositionComma(item.int_cnt * 20)}</p>
+                      </span>
+                      <span>
+                        <label>International(Cor)</label>
+                        <p>${formatNumberWithThousandPositionComma(item.intcor_cnt * 40)}</p>
+                      </span>
+                      <span>
+                        <label>Umrah Ticket</label>
+                        <p>${formatNumberWithThousandPositionComma(item.umrah_cnt * 50)}</p>
+                      </span>
+                      <span>
+                        <label>Umrah Package</label>
+                        <p>${formatNumberWithThousandPositionComma(item.umrah_pack_cnt * 1000)}</p>
+                      </span>
+                      <span>
+                        <label>Total Visa</label>
+                        <p>${formatNumberWithThousandPositionComma(item.visa_cnt * 50)}</p>
+                      </span>
+                      <span>
+                        <label>Total Night(Hotel)</label>
+                        <p>${formatNumberWithThousandPositionComma(item.nights_cnt * 50)}</p>
+                      </span>
+                      <span>
+                        <label>Total Incentive Amount</label>
+                        <p>${formatNumberWithThousandPositionComma(
+                          (item.dom_cnt * 8) + 
+                          (item.domcor_cnt * 15) + 
+                          (item.indom_cnt * 12) +
+                          (item.indomcor_cnt * 25) + 
+                          (item.int_cnt * 20) + 
+                          (item.intcor_cnt * 40) + 
+                          (item.umrah_cnt * 50) +
+                          (item.umrah_pack_cnt * 1000) +
+                          (item.visa_cnt * 50) +
+                          (item.nights_cnt * 50)
+                        )}</p>
+                      </span>
+                    </div>
+                  `
+                  contentArea.insertAdjacentHTML('beforeend',html)
+                })
+            }else if(res.status === false){
+              incentive_overlay.style.display = 'none'
+              const contentArea = document.getElementById('contentArea');
+
+                contentArea.innerHTML = ""
+                document.getElementById('darkOverlay').style.display = 'block';
+                document.body.classList.add('transparent');
+                Swal.fire({
+                  icon: "warning",
+                  title: `${res.message}`,
+                  showConfirmButton: false,
+                  showCloseButton: true,
+                  customClass: {
+                    popup: 'swal2-alert-custom-smallscreen'
+                  },
+                }).then((result) => {
+                  // Hide the overlay when alert is closed
+                  document.getElementById('darkOverlay').style.display = 'none';
+                  document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                });
+            }
+          })
+          .catch((error)=>console.log(error))
+        } 
+        else if(parts.length > 1 && parts[0] === 'BF' && parts[parts.length - 1] === 'Ba1')
+        {
+          fetchData(`https://www.befreshbd.com/ZaraApi.ashx?type=get_data&rel_mng=${encodeURIComponent(formattedName)}&led_mo=${Number(month)}&led_yr=${Number(year)}`)
+            .then((res)=>{
+              if(res.status === true){
+                incentive_overlay.style.display = 'none'
+                const contentArea = document.getElementById('contentArea');
+
+                contentArea.innerHTML = ""
+                res.Data.forEach((item,index)=>{
+                  const html =`
+                  <div class="card" id="card">
+                    <span>
+                      <label>Domestic Ticket</label>
+                      <p>${formatNumberWithThousandPositionComma(item.dom_cnt * 10)}</p>
+                    </span>
+                    <span>
+                      <label>Domestic Ticket(Cor)</label>
+                      <p>${formatNumberWithThousandPositionComma(item.domcor_cnt * 20)}</p>
+                    </span>
+                    <span>
+                      <label>Indian Domestic</label>
+                      <p>${formatNumberWithThousandPositionComma(item.indom_cnt * 15)}</p>
+                    </span>
+                    <span>
+                      <label>Indian Domestic(Cor)</label>
+                      <p>${formatNumberWithThousandPositionComma(item.indomcor_cnt * 30)}</p>
+                    </span>
+                    <span>
+                      <label>International</label>
+                      <p>${formatNumberWithThousandPositionComma(item.int_cnt * 25)}</p>
+                    </span>
+                    <span>
+                      <label>International(Cor)</label>
+                      <p>${formatNumberWithThousandPositionComma(item.intcor_cnt * 50)}</p>
+                    </span>
+                    <span>
+                      <label>Umrah Ticket</label>
+                      <p>${formatNumberWithThousandPositionComma(item.umrah_cnt * 50)}</p>
+                    </span>
+                    <span>
+                      <label>Umrah Package</label>
+                      <p>${formatNumberWithThousandPositionComma(item.umrah_pack_cnt * 1000)}</p>
+                    </span>
+                    <span>
+                      <label>Total Visa</label>
+                      <p>${formatNumberWithThousandPositionComma(item.visa_cnt * 50)}</p>
+                    </span>
+                    <span>
+                      <label>Total Night(Hotel)</label>
+                      <p>${formatNumberWithThousandPositionComma(item.nights_cnt * 50)}</p>
+                    </span>
+                    <span>
+                      <label>Total Incentive Amount</label>
+                      <p>${formatNumberWithThousandPositionComma(
+                        (item.dom_cnt * 8) + 
+                        (item.domcor_cnt * 15) + 
+                        (item.indom_cnt * 12) +
+                        (item.indomcor_cnt * 25) + 
+                        (item.int_cnt * 20) + 
+                        (item.intcor_cnt * 40) + 
+                        (item.umrah_cnt * 50) +
+                        (item.umrah_pack_cnt * 1000) +
+                        (item.visa_cnt * 50) +
+                        (item.nights_cnt * 50)
+                      )}</p>
+                    </span>
+                  </div>
+                `
+                contentArea.insertAdjacentHTML('beforeend',html)
+                })
+              }else if(res.status === false){
+                incentive_overlay.style.display = 'none'
+                const contentArea = document.getElementById('contentArea');
+
+                contentArea.innerHTML = ""
+                document.getElementById('darkOverlay').style.display = 'block';
+                document.body.classList.add('transparent');
+                Swal.fire({
+                  icon: "warning",
+                  title: `${res.message}`,
+                  showConfirmButton: false,
+                  showCloseButton: true,
+                  customClass: {
+                    popup: 'swal2-alert-custom-smallscreen'
+                  },
+                }).then((result) => {
+                  // Hide the overlay when alert is closed
+                  document.getElementById('darkOverlay').style.display = 'none';
+                  document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                });
+              }
+            })
+            .catch((error)=>console.log(error))
+        } 
+        else 
+        {
+          incentive_overlay.style.display = 'none'
+          const contentArea = document.getElementById('contentArea');
+          contentArea.innerHTML = ""
+          document.getElementById('darkOverlay').style.display = 'block';
+          document.body.classList.add('transparent');
+          Swal.fire({
+            icon: "warning",
+            title: `No Data`,
+            showConfirmButton: false,
+            showCloseButton: true,
+            customClass: {
+              popup: 'swal2-alert-custom-smallscreen'
+            },
+          }).then((result) => {
+            // Hide the overlay when alert is closed
+            document.getElementById('darkOverlay').style.display = 'none';
+            document.body.classList.remove('transparent'); // Remove class to allow scrolling
+          });
         }
       });
       // const befresh_plan= plan.split 
@@ -12163,4 +12607,12 @@ hrmActivityMain.innerHTML = html;
 
 
 
+// emCode: "BR-0293-16"
+// emName: "MD. THANBIR AZIZ"
+// emReportingBoss: "BR-0230-15"
+
+
+// emCode: "BR-0465-18"
+// emName : "SNEHAMAY NANDI"
+// emReportingBoss: "BR-0324-16"
 

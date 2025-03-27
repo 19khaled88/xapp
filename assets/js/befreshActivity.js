@@ -1,18 +1,22 @@
 
 
+const rootUrl = 'https://api.ctgshop.com';
+
+// Parse the query string
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+// Get the value of the parameter you want to use in the title
+let page_title = urlParams.get("pageTitle")
+const identity = urlParams.get("identity");
+const emName = urlParams.get("name");
+const bossId = urlParams.get("bossId");
+const bossName = urlParams.get("bossName");
+const imei = urlParams.get('imei')
+
 document.addEventListener('DOMContentLoaded',()=>{
-    // Parse the query string
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-
-    // Get the value of the parameter you want to use in the title
-    let page_title = urlParams.get("pageTitle")
-    const identity = urlParams.get("identity");
-    const emName = urlParams.get("name");
-    const bossId = urlParams.get("boss");
-    const bossName = urlParams.get("bossName");
-
     
+
     // Remove double quotes from page_title if present
     if (page_title) {
         page_title = page_title.replace(/"/g, ""); // Removes all double quotes
@@ -49,57 +53,115 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
 
     const back_button_handle = document.getElementById('bf_btn')
-        back_button_handle && back_button_handle.addEventListener('click',()=>{
-        window.location.href = `https://ctgshop.com/xapp/test/pages/Befresh.html?identity=${identity}&name=${encodeURIComponent(emName)}&boss=${bossId}&bossName=${bossName}`
-    })
-});
+    back_button_handle && back_button_handle.addEventListener('click',()=>{
+        window.location.href = `https://ctgshop.com/xapp/test/pages/Befresh.html?identity=${identity}&name=${encodeURIComponent(emName)}&boss=${bossId}&bossName=${bossName}&imei=${imei}`
+    });
 
+
+    const back_home_button_handle = document.getElementById('bf_home_btn');
+    back_home_button_handle && back_home_button_handle.addEventListener('click',()=>{
+        window.location.href = `https://ctgshop.com/xapp/test/index.html?identity=${identity}&name=${encodeURIComponent(emName)}&boss=${bossId}&bossName=${bossName}`
+    })
+
+});
 
 function clientBalance(){
     const main = document.getElementById('main');
 
     main.innerHTML = '';
     const html =`
-            <p class="main_title" id="main_title">Client Balance</p>
-            <div class="input_fields" id="input_fields">
-                <input id="client_mobile" type="tel"  placeholder="ID/Mobile Number" pattern="[0-9]{10,15}" maxlength="15" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
-                <div class="client_bal_info" id="client_bal_info"></div>
-                <div class="date_range" id="date_range">
-                    <div class="date" id="date">
-                    </div>
-                    <button>OK</button>
+        <p class="main_title" id="main_title">Client Balance</p>
+        <div class="input_fields" id="input_fields">
+            <input id="id_mobile" class="id_mobile" type="tel"  placeholder="ID/Mobile Number" pattern="[0-9]{10,15}" maxlength="15" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+            <div class="client_bal_info" id="client_bal_info"></div>
+            <div class="date_range" id="date_range">
+                <div class="date" id="date">
                 </div>
+                <button class="cl_bl_btn" id="cl_bl_btn">OK</button>
             </div>
-            <div class="balance" id="balance">
-                <span>
-                    <label>Opening Balance</label>
-                    <p></p>
-                </span>
-                <span>
-                <label>Closing Balance</label>
-                <p></p>
+        </div>
+        <div class="balance" id="balance">
+            <span>
+                <label>Opening Balance : </label>
+                <p class="op_bl" id="op_bl"></p>
             </span>
-            </div>
-            
-        
+            <span>
+            <label>Closing Balance : </label>
+            <p class="cl_bl" id="cl_bl"></p>
+        </span>
+        </div>
     `
     main.insertAdjacentHTML("beforeend",html)
 
 
     const startDatePickerInput = handleDateAndTime('fromDate');
     const endDatePickerInput = handleDateAndTime('toDate');
-
     
 
     document.getElementById('date').appendChild(startDatePickerInput.elementName)
     document.getElementById('date').appendChild(endDatePickerInput.elementName)
    
-
     
     document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
 
 
-    fetchData(``)
+    document.getElementById('cl_bl_btn').addEventListener('click',()=>{
+        const id_mobile = document.getElementById('id_mobile').value;
+        
+       
+        fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=bfclbn&typ=id&no=${id_mobile}&dt1=${startDatePickerInput.elementName.value}&dt2=${endDatePickerInput.elementName.value}`)
+            .then((res)=>{
+                const result = res.split('|');
+                console.log(result)
+                if(result[0] === 'Found'){
+                    
+                    document.getElementById('op_bl').textContent = result[4];
+                    document.getElementById('cl_bl').textContent = result[5];
+
+                    const client_bal_info =  document.getElementById('client_bal_info');
+
+                    // Function to create a span with label and p tag
+                    function createSpan(labelText, pText) {
+                        const span = document.createElement('span');
+                        const label = document.createElement('label');
+                        const p = document.createElement('p');
+
+                        label.textContent = labelText;
+                        p.textContent = pText;
+
+                        span.appendChild(label);
+                        span.appendChild(p);
+
+                        return span;
+                    }
+
+                    // Append two spans
+                    client_bal_info.appendChild(createSpan('ID:', `${result[1]}`));
+                    client_bal_info.appendChild(createSpan('Name:', `${result[2]}`));
+                    
+                }else{
+                    document.getElementById('darkOverlay').style.display = 'block';
+                    document.body.classList.add('transparent');
+                    Swal.fire({
+                        icon: "warning",
+                        title: `No Data Found`,
+                        showConfirmButton: false,
+                        showCloseButton: true,
+                        customClass: {
+                            popup: 'swal2-alert-custom-smallscreen'
+                        },
+                    }).then((result) => {
+                        // Hide the overlay when alert is closed
+                        document.getElementById('darkOverlay').style.display = 'none';
+                        document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                    }); 
+                }
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+
+    })
         
 }
 
@@ -113,7 +175,7 @@ function clientDues(){
             <div class="date_range_dues" id="date_range_dues">
                 <div class="date" id="date">
                 </div>
-                <button>OK</button>
+                <button id="cl_due_btn" class="cl_due_btn">OK</button>
             </div>
             <h4 class="current_date" id="current_date" style="color:#3689e1fa"></h4>
             
@@ -128,7 +190,7 @@ function clientDues(){
             </div>
             <div class="total_amount" id="total_amount">
                 <label>Total</label>
-                <p>0</p>
+                <p id="dues_amt">0</p>
             </div>
         
     `
@@ -138,16 +200,131 @@ function clientDues(){
 
     document.getElementById('date').appendChild(startDatePickerInput.elementName);
 
-    const now = new Date();
-    const day = now.getDate().toString().padStart(2, '0'); // Ensure two digits
-    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    const month = monthNames[now.getMonth()]; // Get three-letter month name
-    const year = now.getFullYear();
+    document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
 
-    const formattedDate = `${day}/${month}/${year}`;
-    document.getElementById('current_date').innerHTML = `As On: ${formattedDate}`
+    document.getElementById('client_info').style.cssText = `
+        height:${Math.floor(Number(100 - (pxToVh(
+            document.getElementById('nav_div').offsetHeight +
+            document.getElementById('main_title').offsetHeight +
+            document.getElementById('date_range_dues').offsetHeight +
+            document.getElementById('current_date').offsetHeight +
+            document.getElementById('total_amount').offsetHeight
+        ) + 2)))}vh
+    `
 
-    document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`
+    document.getElementById('cl_due_btn').addEventListener('click',()=>{
+        
+        fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=bfcdues&dt1=${startDatePickerInput.elementName.value}&imei=1662203027792`)
+            .then((res) =>{
+                if (typeof res === "string") return res; // Handle string response
+                if (res.text) return res.text(); // Handle fetch() response
+                throw new Error("Unexpected response format");
+            }) // Read response as text
+            .then((text) => {
+                const parts = text.split("|"); // Split records by `|`
+                const date = parts.shift().trim(); // Extract the date (first element)
+
+                const data = parts.map((record) => {
+                    const fields = record.split("=");
+                    return {
+                        id: fields[0].trim(),
+                        name: fields[1].trim(),
+                        amount: parseFloat(fields[2].replace(/,/g, '')), // Convert to number
+                        rank: parseInt(fields[3], 10) // Convert to number
+                    };
+                });
+
+                document.getElementById('current_date').innerHTML = `As On: ${date}`
+                
+
+                const tableContainer = document.getElementById("content");
+                tableContainer.innerHTML = "";
+
+
+                // Create a table element
+                const table = document.createElement("table");
+                table.style.width = "100%"; // Optional: Adjust styles
+                table.style.borderCollapse = "collapse"; // Optional: For better styling
+
+                let totalAmount = 0;
+
+
+                data && data.forEach((due)=>{
+                    const row = document.createElement("tr");
+
+                     // Add Rank column (first)
+                     const rankCell = document.createElement("td");
+                     rankCell.textContent = due.rank;
+                     rankCell.style.textAlign = "center"; // Optional: Center the rank
+                     rankCell.style.backgroundColor = "#f2f2f2"; // Optional: Light gray background for rank
+                     rankCell.style.padding = "8px"; // Optional: Add spacing
+                     rankCell.style.border = "1px solid #ddd"; // Optional: Add border
+                     row.appendChild(rankCell);
+
+                     // Add ID column (second)
+                     const idCell = document.createElement("td");
+                     idCell.textContent = due.id;
+                     idCell.style.fontWeight = "bold";
+                     idCell.style.color = "blue";
+                     idCell.style.padding = "8px"; // Optional: Add spacing
+                     idCell.style.border = "1px solid #ddd"; // Optional: Add border
+                     row.appendChild(idCell);
+
+                     // Add Name column (third)
+                     const nameCell = document.createElement("td");
+                     nameCell.textContent = due.name;
+                     nameCell.style.textTransform = "uppercase"; // Optional: Uppercase for name
+                     nameCell.style.padding = "8px"; // Optional: Add spacing
+                     nameCell.style.border = "1px solid #ddd"; // Optional: Add border
+                     row.appendChild(nameCell);
+
+                     // Add Amount column (last)
+                     const amountCell = document.createElement("td");
+                     amountCell.textContent = due.amount.toLocaleString(); // Format the amount with commas
+                     amountCell.style.fontWeight = "bold";
+                     amountCell.style.color = due.amount < 0 ? "red" : "green"; // Negative in red, positive in green
+                     amountCell.style.padding = "8px"; // Optional: Add spacing
+                     amountCell.style.border = "1px solid #ddd"; // Optional: Add border
+                     row.appendChild(amountCell);
+
+                     // Append the row to the table
+                     table.appendChild(row); 
+
+                     // Update the total amount
+                    totalAmount += due.amount;
+                    const dues_amt = document.getElementById('dues_amt')
+                    dues_amt.textContent = totalAmount
+                })
+
+                // Append the table to the container
+                tableContainer.appendChild(table);
+                
+
+                document.getElementById('client_info').style.cssText = `
+                    height:${Math.floor(Number(100 - (pxToVh(
+                        document.getElementById('nav_div').offsetHeight +
+                        document.getElementById('main_title').offsetHeight +
+                        document.getElementById('date_range_dues').offsetHeight +
+                        document.getElementById('current_date').offsetHeight +
+                        document.getElementById('total_amount').offsetHeight
+                    ) + 1)))}vh
+                `
+                document.getElementById('content').style.cssText = `
+                    height:${Math.floor(Number(100 - (pxToVh(
+                        document.getElementById('nav_div').offsetHeight +
+                        document.getElementById('main_title').offsetHeight +
+                        document.getElementById('date_range_dues').offsetHeight +
+                        document.getElementById('current_date').offsetHeight +
+                        document.getElementById('total_amount').offsetHeight
+                    ) + 4)))}vh;
+                    overflow-y:auto;
+                `
+            })
+            .catch((error) => {
+                console.error("Fetch error:", error);
+            });
+        
+    })
 }
 
 function moneyReceipt(){
@@ -156,8 +333,8 @@ function moneyReceipt(){
     main.innerHTML = '';
     const html =`
         <div class="money_receipt_nav_button" id="money_receipt_nav_button">
-            <button class="entry" id="entry">MONEY RECEIPT ENTRY</button>
-            <button class="view" id="view">MONEY RECEIPT VIEW</button>
+            <button class="entry" id="entry">ENTRY</button>
+            <button class="view" id="view">VIEW</button>
         </div>
         <div class="money_receipt_content" id="money_receipt_content"></div>
     `
@@ -168,7 +345,6 @@ function moneyReceipt(){
     if(buttons){
         buttons.forEach((button,index)=>{
             button.addEventListener('click',()=>{
-                
                 manageMoneyReceipt(button.id,buttons)
             })
         })
@@ -181,7 +357,8 @@ function moneyReceipt(){
 
 function manageMoneyReceipt(tag,buttons = null){
     buttons !== null ?  buttons.forEach((button,index)=>{
-        let c_name; let c_number;  let c_location; let c_service;
+        let c_name; let c_number;  let c_location; let c_service; let c_currency;
+
         button.style.cssText = `
             color:black;
             border-bottom:none;
@@ -198,6 +375,7 @@ function manageMoneyReceipt(tag,buttons = null){
             const content = document.getElementById('money_receipt_content')
             content.innerHTML = "";
 
+            
             const html = `
                 <div class="client_id_mobile" id="client_id_mobile">
                     <input class="id_mobile" id="id_mobile" type="number" placeholder="Clients ID/Mobile Number" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
@@ -213,39 +391,66 @@ function manageMoneyReceipt(tag,buttons = null){
                 </div>
                 <div class="mr_amount" id="mr_amount">
                     <label>MR Amount</label>
-                    <input style="font-weight:500; color:black" class="amount" id="amount" type="number"/>
-                    <p>BDT</p>
+                    <div>
+                        <input style="font-weight:500; color:black" class="amount" id="amount" type="number"/>
+                        <p class="currency" id="currency">BDT</p>
+                    </div>
                 </div>
                 <div class="pay_mode" id="pay_mode">
                     <label>Pay Mode</label>
-                    <span>
-                        <input type="radio" id="cash" name="mode" value="cash">
-                        <label for="cash">CASH</label>
+                    <div>
+                        <span>
+                            <input type="radio" id="cash" name="mode" value="CASH" checked>
+                            <label for="cash">CASH</label>
+                        </span>
+                        <span>
+                            <input type="radio" id="cheque" name="mode" value="CHEQUE">
+                            <label for="cheque">CHEQUE</label>
+                        </span>
+                        <span>
+                            <input type="radio" id="bank_deposit" name="mode" value="Bank Deposit">
+                            <label for="bank_deposit">Bank Deposit</label>
+                        </span>
+                        
 
-                        <input type="radio" id="cheque" name="mode" value="cheque">
-                        <label for="cheque">CHEQUE</label>
-
-                        <input type="radio" id="bank_deposit" name="mode" value="bank_deposit">
-                        <label for="bank_deposit">Bank Deposit</label>
-                    </span>
+                    </div>
                 </div>
                 <div class="location" id="location">
                     <label>MR Location</label>
-                    <select id="location">
-                        <option value="" selected>Select Location</option>
-                        <option value="sylhet">Sylhet Office - Sylhet</option>
-                        <option value="chittagong">Studio Office - Chittagong</option>
-                        <option value="singapore">Singapore Office - Singapore</option>
-                    </select>
+                    <div id="dropdown" class="custom-dropdown">Select Location</div>
+                    <div id="dropdownList" class="dropdown-list">
+                        <div data-value="Airport Office - Chittagong">Airport Office - Chittagong</div>
+                        <div data-value="Central Office - Chittagong">Central Office - Chittagong</div>
+                        <div data-value="Chatkhil Office - Noakhali">Chatkhil Office - Noakhali</div>
+                        <div data-value="Chawkbazar Office - Chittagong">Chawkbazar Office - Chittagong</div>
+                        <div data-value="Dhaka Office - Dhaka">Dhaka Office - Dhaka</div>
+                        <div data-value="EPZ Office - Chittagong">EPZ Office - Chittagong</div>
+                        <div data-value="GEC Office - Chittagong">GEC Office - Chittagong</div>
+                        <div data-value="Khulshi Office - Chittagong">Khulshi Office - Chittagong</div>
+                        <div data-value="Saidpur Office - Saidpur">Saidpur Office - Saidpur</div>
+                        <div data-value="Sandwip Office - Chittagong">Sandwip Office - Chittagong</div>
+                        <div data-value="Seabeach Office - Coxs Bazar">Seabeach Office - Coxs Bazar</div>
+                        <div data-value="Singapore Office - Singapore">Singapore Office - Singapore</div>
+                        <div data-value="Studio Office - Chittagong">Studio Office - Chittagong</div>
+                        <div data-value="Sylhet Office - Sylhet">Sylhet Office - Sylhet</div>
+                    </div>
                 </div>
                 <div class="service" id="service">
                     <label>Services</label>
-                    <select id="service">
-                        <option value="" selected>Select</option>
-                        <option value="ticketing">Ticketing</option>
-                        <option value="ticketing-hajj">Ticketing - Hajj</option>
-                        <option value="ticketing-umrah">Ticketing - Umrah</option>
-                    </select>
+                    <div id="service_dropdown" class="service_dropdown">Select</div>
+                    <div id="service_dropdownList" class="service_dropdownList">
+                        <div data-value="Amusement">Amusement</div>
+                        <div data-value="Dining">Dining</div>
+                        <div data-value="Living">Living</div>
+                        <div data-value="Others">Others</div>
+                        <div data-value="Passport & Visa">Passport & Visa</div>
+                        <div data-value="Passport Endorsement">Passport Endorsement</div>
+                        <div data-value="Ticketing">Ticketing</div>
+                        <div data-value="Ticketing - Hajj">Ticketing - Hajj</div>
+                        <div data-value="Ticketing - Hajj & Umrah">Ticketing - Hajj & Umrah</div>
+                        <div data-value="Ticketing - Umrah">Ticketing - Umrah</div>
+                        <div data-value="Transportation">Transportation</div>
+                    </div>
                 </div>
                 <button type="submit" id="submit">SUBMIT</button>
             `
@@ -260,12 +465,15 @@ function manageMoneyReceipt(tag,buttons = null){
 
 
                 try {
-                    await fetchData(`https://www.condomshopbd.com/xapi/emp_com.ashx?cmd=bfclfind&typ=id&v=2&no=${encodeURIComponent(inputValue)}`)
+                    await fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=bfclfind&typ=id&v=2&no=${encodeURIComponent(inputValue)}`)
                         .then((res)=>{
-                            
                             if (typeof res === "string") {
                                 const dataArray = res.split("|"); // Split data if it's pipe-separated
-                                
+                                if(dataArray){
+                                    const currency = document.getElementById('currency')
+                                    currency.textContent = dataArray[4]
+                                    c_currency = dataArray[4]
+                                }
                                 if(dataArray.some((item)=>item.includes('Found'))){
                                     const name = document.getElementById('name');
                                     const number = document.getElementById('number');
@@ -334,17 +542,125 @@ function manageMoneyReceipt(tag,buttons = null){
                 c_location = event.target.value
             });
 
+
+
+            // location code
+            document.getElementById("dropdown").addEventListener("click", () => {
+                dropdownList.style.display = dropdownList.style.display === "block" ? "none" : "block";
+            });
+            document.getElementById("dropdownList").addEventListener("click", (event) => {
+                if (event.target.dataset.value) {
+                    dropdown.textContent = event.target.textContent;
+                    c_location = event.target.dataset.value;                    
+                    dropdownList.style.display = "none";
+                }
+            });
+            
+
+            // service code
+            document.getElementById('service_dropdown').addEventListener('click',()=>{
+                service_dropdownList.style.display = service_dropdownList.style.display === 'block' ? 'none' : 'block';
+            })
+            document.getElementById('service_dropdownList').addEventListener('click',(event)=>{
+                if(event.target.dataset.value){
+                    service_dropdown.textContent = event.target.textContent;
+                    c_service = event.target.dataset.value;
+                    service_dropdownList.style.display = 'none';
+                }
+            })
+
+            // manage display/hide if click outside scroll area
+            document.addEventListener("click", (event) => {
+
+                if (document.getElementById('dropdown') && document.getElementById('dropdownList') && !dropdown.contains(event.target) && !dropdownList.contains(event.target)) {
+                    dropdownList.style.display = "none";
+                }
+
+
+                if (document.getElementById('service_dropdown') && document.getElementById('service_dropdownList') && !service_dropdown.contains(event.target) && !service_dropdownList.contains(event.target)) {
+                    service_dropdownList.style.display = "none";
+                }
+            });
+
+
             document.getElementById('service').addEventListener('change',(event)=>{
                 c_service = event.target.value
             });
 
             document.getElementById('submit').addEventListener('click',()=>{
-                
                 const paymentMode = document.querySelector('input[name="mode"]:checked');
                 const selectedMode = paymentMode ? paymentMode.value : null;
-                const amount = document.getElementById('amount').value
+                let amount = document.getElementById('amount').value
 
-                console.log(c_name,c_number,amount,selectedMode,c_location,c_service)
+                // Validate and convert amount to an integer
+                if (!/^\d+$/.test(amount)) {
+                    Swal.fire("Please enter a valid integer amount!");
+                    return;
+                }
+
+                amount = parseInt(amount, 10); // Convert to integer
+                
+                const fields = {
+                    "Please Find User!":        !c_number && !c_name,
+                    "Please Enter Amount!":     !amount,
+                    "Please Select Mode!":      !selectedMode,
+                    "Please Select Location!":  !c_location,
+                    "Please Select Currency!":  !c_currency,
+                    "Please Select Service!":   !c_service
+                };
+
+                if(!validateFields(fields)) return
+
+
+                const url = `${rootUrl}/xapi/emp_com.ashx?cmd=savebfmrnew&imei=${imei}&cusid=${c_number}&mramnt=${amount}&mrmode=${selectedMode}&mrcurr=${c_currency}&mrcoord=&mrloca=${c_location}&serv=${c_service}`
+                
+                try {
+                    fetchData(url)
+                        .then((res)=>{
+                            // "Success | MR Posted|khaled277|"
+                            
+                            const result = res.split("|").map(item => item.trim().replace(/^"|"$/g, "")); // Trim whitespace from all parts
+                            console.log(result)
+                            if (result[0] === "Success") {
+                                document.getElementById('darkOverlay').style.display = 'block';
+                                document.body.classList.add('transparent');
+                                Swal.fire({
+                                    icon: "success",
+                                    title: `${result[2]}, Your MR posted successfully!`,
+                                    showConfirmButton: false,
+                                    showCloseButton: true,
+                                    customClass: {
+                                        popup: 'swal2-alert-custom-smallscreen'
+                                    },
+                                }).then((result) => {
+                                    // Hide the overlay when alert is closed
+                                    document.getElementById('darkOverlay').style.display = 'none';
+                                    document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                                });
+                            } else{
+                                document.getElementById('darkOverlay').style.display = 'block';
+                                document.body.classList.add('transparent');
+                                Swal.fire({
+                                    icon: "error",
+                                    title: `MR not posted successfully!`,
+                                    showConfirmButton: false,
+                                    showCloseButton: true,
+                                    customClass: {
+                                        popup: 'swal2-alert-custom-smallscreen'
+                                    },
+                                }).then((result) => {
+                                    // Hide the overlay when alert is closed
+                                    document.getElementById('darkOverlay').style.display = 'none';
+                                    document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                                });
+                            }
+                        })
+                        .catch((error)=>{
+                            console.log(error)
+                        })
+                } catch (error) {
+                    
+                }
 
             })
         }else if(button.id === tag && button.id === 'view'){
@@ -355,9 +671,16 @@ function manageMoneyReceipt(tag,buttons = null){
                 <div class="date_range" id="date_range">
                     <div class="date" id="date">
                     </div>
-                  <button>OK</button>
+                  <button class="mr_show" id="mr_show">OK</button>
                 </div>
-                <span>Date: </span>
+
+
+                <span class="current_date" id="current_date">
+                    <label>Date: </label>
+                    <p class="s_date" id="s_date"></p>
+                    <p> - </p>
+                    <p class="e_date" id="e_date"></p>
+                </span>
                 <div class="view_content" id="view_content">
                     <span class="label" id="label">
                         <label>Date/Name</label>
@@ -370,9 +693,9 @@ function manageMoneyReceipt(tag,buttons = null){
                 <div class="view_total" id="view_total">
                     <span>
                         <label>Total Client : </label>
-                        <p>0</p>
+                        <p class="t_client" id="t_client">0</p>
                     </span>
-                    <p>0</p>
+                    <p class="t_amount" id="t_amount">0</p>
                 </div>
             `
             content.insertAdjacentHTML("beforeend",html);
@@ -380,8 +703,15 @@ function manageMoneyReceipt(tag,buttons = null){
             const startDatePickerInput = handleDateAndTime('fromDate');
             const endDatePickerInput = handleDateAndTime('toDate');
 
+            
             document.getElementById('date').appendChild(startDatePickerInput.elementName);
             document.getElementById('date').appendChild(endDatePickerInput.elementName);
+
+
+
+            document.getElementById('s_date').textContent = startDatePickerInput.elementName.value;
+            document.getElementById('e_date').textContent = endDatePickerInput.elementName.value;
+
 
             document.getElementById('detail_info').style.cssText=`
                     display:flex;
@@ -396,10 +726,122 @@ function manageMoneyReceipt(tag,buttons = null){
             document.getElementById('view_total').style.cssText = `
                 position:fixed;
                 bottom:0;
-                left:0;
-                right:0;
+                left:10px;
+                right:10px;
+                display:flex;
+                align-items:center;
+                height:40px;
+                flex-direction:row;
 
             `
+            
+            document.getElementById('mr_show').addEventListener('click',()=>{
+                try {
+                    
+                    fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=BFMrRep&dt1=${startDatePickerInput.elementName.value}&dt2=${endDatePickerInput.elementName.value}&imei=${imei}`)
+                        .then((res)=>{
+                            
+                            const result = res.split('|');
+                            const date = result[0].split('-');
+
+                            document.getElementById('s_date').textContent = date[0];
+                            document.getElementById('e_date').textContent = date[1];
+
+                            // Get all elements except the first one
+                            const remainingElements = result.slice(1);
+
+
+                            if(remainingElements.length === 1 && remainingElements[0] === ' = = =0=Posted'){
+                                const t_client = document.getElementById('t_client');
+                                const t_amount = document.getElementById('t_amount');
+                                t_amount.innerHTML=0
+                                t_client.innerHTML=0
+
+                                document.getElementById('darkOverlay').style.display = 'block';
+                                document.body.classList.add('transparent');
+                                Swal.fire({
+                                    icon: "warning",
+                                    title: `No Data Found`,
+                                    showConfirmButton: false,
+                                    showCloseButton: true,
+                                    customClass: {
+                                        popup: 'swal2-alert-custom-smallscreen'
+                                    },
+                                }).then((result) => {
+                                    // Hide the overlay when alert is closed
+                                    document.getElementById('darkOverlay').style.display = 'none';
+                                    document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                                });
+
+                            }
+                            else
+                            {
+                                // Create a table 
+                                const table = document.createElement('table');
+                                const t_client = document.getElementById('t_client');
+                                const t_amount = document.getElementById('t_amount');
+                                t_amount.innerHTML=0;
+                                t_client.innerHTML=0;
+                                t_client.textContent = remainingElements.length; 
+                                
+                                let totalAmount = 0;
+
+                                // Append data rows
+                                remainingElements.forEach((item,index)=>{
+                                    const row = document.createElement('tr');
+                                    const singleItem = item.split('=');
+                                    
+                                    // Combine the first two elements into one column
+                                    const firstColumn = document.createElement("td");
+                                    firstColumn.textContent = singleItem[0] + " " + singleItem[1]; // Merge first two elements
+                                    row.appendChild(firstColumn);
+
+                                    // Append the remaining elements normally
+                                    for (let i = 2; i < singleItem.length; i++) {
+                                        const td = document.createElement("td");
+
+                                        if(singleItem[i].includes("(") && singleItem[i].includes(")")){
+                                            const parts = singleItem[i].split(/(\(.*?\))/);
+                                            td.innerHTML = parts[0] + "<br>" + parts[1];
+                                        }else{
+
+                                            td.textContent = singleItem[i];
+                                        }
+                                        if (i === 4 && singleItem[i].trim().toLowerCase() === "pending") {
+                                            td.style.color = "red";
+                                            
+                                        }
+                                        row.appendChild(td);
+
+                                        if(i === 3){
+                                            const numericValue = parseFloat(singleItem[i].replace(/,/g, ''));
+                                            if(!isNaN(numericValue)){
+                                                totalAmount += numericValue;
+                                            }
+                                        }
+                                    }
+
+                                    table.appendChild(row);
+                                });
+
+                                // Set the total amount to the 't_amount' element
+                                t_amount.textContent = totalAmount.toLocaleString();
+
+                                document.getElementById('detail_info').innerHTML = "";
+                                document.getElementById('detail_info').appendChild(table);
+                            }
+                           
+
+                        })
+                        .catch((error)=>{
+                            console.log(error)
+                        })
+
+                    
+                } catch (error) {
+                   console.log(error) 
+                }
+            })
             
         }
     }) : "";
@@ -411,8 +853,8 @@ function report(){
     main.innerHTML = '';
     const html =`
         <div class="report_nav_button" id="report_nav_button">
-            <button class="entry" id="entry">ACTIVITY ENTRY</button>
-            <button class="view" id="view">ACTIVITY VIEW</button>
+            <button class="entry" id="entry">ENTRY</button>
+            <button class="view" id="view">VIEW</button>
         </div>
         <div class="report_content" id="report_content"></div>
     `
@@ -428,7 +870,6 @@ function report(){
         })
     }
 
-
     manageReport('entry',buttons)
 }
 
@@ -436,6 +877,7 @@ function manageReport(tag,buttons = null){
 
     buttons !== null ? buttons.forEach((button,index)=>{
 
+       
         button.style.cssText = `
             color:black;
             border-bottom:none;
@@ -515,6 +957,7 @@ function manageReport(tag,buttons = null){
 }
 
 function passengerList(){
+    
     const main = document.getElementById('main');
 
     main.innerHTML = '';
@@ -524,6 +967,7 @@ function passengerList(){
             <button class="departure" id="departure">DEPARTURE</button>
         </div>
         <div class="passenger_content" id="passenger_content"></div>
+        <div id="pass_table" class="pass_table"></div>
     `
     main.insertAdjacentHTML("beforeend",html);
 
@@ -542,6 +986,9 @@ function passengerList(){
 }
 
 function managePassengerList(tag,buttons = null){
+    // get_pass_arr_time", airlinesName, locationName, btnDate1
+    // const api = `${rootUrl}/xapi/emp_com.ashx?cmd=get_pass_arr_time&fl_nm=&rt=${}&dt=${endDatePickerInput.elementName.value}`
+
     buttons !== null ? buttons.forEach((button,index)=>{
         button.style.cssText = `
             color:black;
@@ -570,14 +1017,14 @@ function managePassengerList(tag,buttons = null){
                 <div class="airlines" id="airlines">
                     <label>AIRLINES</label>
                     <select>
-                        <option value="biman">BIMAN</option>
+                        <option value="BIMAN">BIMAN</option>
                     </select>
                 </div>
                  <div class="location" id="location">
                     <label>LOCATION</label>
                     <select>
-                        <option value="dac-cgp">DAC - CGP</option>
-                        <option value="cxb-cgp">CXB - CGP</option>
+                        <option value="DAC - CGP">DAC - CGP</option>
+                        <option value="CXB - CGP">CXB - CGP</option>
                     </select>
                 </div>
                 <button id="pass_arrival_submit" class="pass_arrival_submit" type="submit">SEARCH</button>
@@ -590,8 +1037,70 @@ function managePassengerList(tag,buttons = null){
            
 
             document.getElementById('date').appendChild(startDatePickerInput.elementName);
-            content.style.cssText=``
+            content.style.cssText=``;
 
+
+            document.getElementById('pass_arrival_submit').addEventListener('click',()=>{
+                const airlineSelect = document.querySelector('#airlines select'); 
+                const locationSelect = document.querySelector('#location select');
+
+                const selectedAirline = airlineSelect.value;
+                const selectedLocation = locationSelect.value;
+                const selectedDate = startDatePickerInput.elementName.value 
+               
+
+                fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=get_pass_arr_time&fl_nm=${selectedAirline}&rt=${selectedLocation}&dt=${selectedDate}`)
+                    .then((res)=>{
+                        return typeof res === 'string' ? JSON.parse(res) : res;
+                    })
+                    .then((data)=>{
+                       
+                        if (data.status) {
+                            const result = data.Data;
+                            const tableContainer = document.getElementById("pass_table");
+                        
+                            // Clear previous content before appending new data
+                            tableContainer.innerHTML = "";
+                        
+                            // Create the table structure once
+                            let tableHTML = `
+                                <table border="1" style="width: 99%; border-collapse: collapse;margin:auto;margin-top:5px">
+                                    <thead style="height:30px">
+                                        <tr style="height:30px">
+                                            <th>Flight</th>
+                                            <th>Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                            `;
+                        
+                            // Append rows dynamically
+                            result.forEach((flight) => {
+                                const tm = flight.Arrival_Time.split(',');
+                                tableHTML += `
+                                    <tr style="height:30px">
+                                        <td style="padding-left:5px">${flight.Airlines} ${flight.FlightNo}</td>
+                                        <td style="text-align:center">${tm[1] || "N/A"}</td>
+                                    </tr>
+                                `;
+                            });
+                        
+                            // Close the table tag
+                            tableHTML += `
+                                    </tbody>
+                                </table>
+                            `;
+                        
+                            // Append final tableHTML to pass_table
+                            tableContainer.innerHTML = tableHTML;
+                        }
+                        
+                    })
+                    .catch((error)=>{
+                        console.log(error)
+                    })
+
+            });
 
         }else if(button.id === tag && button.id === 'departure'){
             const content = document.getElementById('passenger_content');
@@ -618,9 +1127,205 @@ function managePassengerList(tag,buttons = null){
 }
 
 function businessPerformance(){
+    const main = document.getElementById('main');
+
+    main.innerHTML = '';
+    const html =`
+        <div class="performance_nav_button" id="performance_nav_button">
+            <button class="performance" id="performance">PERFORMANCE</button>
+            <button class="dues" id="dues">DUES</button>
+        </div>
+        <div class="performance_content" id="performance_content"></div>
+    `
+    main.insertAdjacentHTML("beforeend",html); 
+    
+    const buttons =  document.getElementById('performance_nav_button').querySelectorAll('button')
+    if(buttons){
+        buttons.forEach((button,index)=>{
+            button.addEventListener('click',()=>{
+                
+                manageBusinessPerformance(button.id,buttons)
+            })
+        })
+    }
+    manageBusinessPerformance('performance',buttons);
+
+
+    
+}
+
+function manageBusinessPerformance(tag,buttons = null){
+    buttons !== null ? buttons.forEach((button,index)=>{
+       
+        button.style.cssText = `
+            color:black;
+            border-bottom:none;
+        `
+        if(button.id === tag){
+            button.style.cssText = `
+                color:#ed0f35;
+                font-weight:bold;
+                border-bottom: 2px solid #ed0f35;
+            `
+        }
+
+        
+        if(button.id === tag && button.id === 'performance'){
+            const performance_content = document.getElementById('performance_content')
+            performance_content.innerHTML = ""
+
+            const html = `
+                <div id="date_search" class="date_search">
+                    <span id="date" class="date"></span>
+                    <button id="src_btn" class="src_btn">SEARCH</button>  
+                </div>
+                <div id="content" class="content">
+                    <span id="table" class="table"></span>
+                    <span id="total" class="total">
+                     <label>Total : </label>
+                     <p>0</p>
+                    </span>
+                </div>
+            `
+
+            performance_content.insertAdjacentHTML('beforeend',html)
+
+            document.getElementById('main').style.height = `${Math.floor(Number(100 - (pxToVh(document.getElementById('performance_nav_button').offsetHeight) + 2)))}vh`;
+
+            const startDatePickerInput = handleDateAndTime('fromDate');
+            const endDatePickerInput = handleDateAndTime('toDate');
+            
+
+            document.getElementById('date').appendChild(startDatePickerInput.elementName);
+            document.getElementById('date').appendChild(endDatePickerInput.elementName);
+
+
+            document.getElementById('content').style.cssText = `
+                height:${Math.floor(Number(100 - pxToVh(
+                    document.getElementById('nav_div').offsetHeight + 
+                    document.getElementById('performance_nav_button').offsetHeight + 
+                    document.getElementById('date_search').offsetHeight +
+                    4
+                )))}vh;
+                display:flex;
+                flex-direction:column;
+            `
+            document.getElementById('total').style.cssText =`
+                height:5vh;
+            `
+            
+   
+        }else if(button.id === tag && button.id === 'dues'){
+            const performance_content = document.getElementById('performance_content')
+            performance_content.innerHTML = ""
+
+            const html = `
+                <div id="acc_type" class="acc_type">
+                    <label>ACCOUNT TYPE</label>
+                    <div id="acc_type_dropdown" class="acc_type_dropdown">Select</div>
+                    <div id="acc_type_dropdownList" class="acc_type_dropdownList">
+                        <div data-value="All">ALL</div>
+                        <div data-value="Broker">Broker</div>
+                        <div data-value="Corporate">Corporate</div>
+                        <div data-value="Individual">Individual</div>
+                        <div data-value="Travel Agent">Travel Agent</div>
+                    </div>
+                </div>
+                <div id="date_search" class="date_search">
+                    <span id="date" class="date"></span>
+                    <button>SEARCH</button>
+                </div>
+                <div id="table" class="table">
+                    <table border="1" style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>ID/Name</th>
+                                <th>Credit Limit</th>
+                                <th>Dues</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody> 
+                    </table>
+                </div>
+                <div id="footer" class="footer">
+                    <label>Total</label>
+                    <p id="total_amt" class="total_amt">0</p>
+                </div>
+
+            `
+            performance_content.insertAdjacentHTML('beforeend',html)
+
+            document.getElementById('main').style.height = `${Math.floor(Number(100 - (pxToVh(document.getElementById('performance_nav_button').offsetHeight) + 2)))}vh`;
+           
+            const startDatePickerInput = handleDateAndTime('fromDate');
+            document.getElementById('date').appendChild(startDatePickerInput.elementName);
+
+
+
+            // account type dropdown code
+            document.getElementById("acc_type_dropdown").addEventListener("click", () => {
+                acc_type_dropdownList.style.display = acc_type_dropdownList.style.display === "block" ? "none" : "block";
+            });
+            document.getElementById("acc_type_dropdownList").addEventListener("click", (event) => {
+                if (event.target.dataset.value) {
+                    acc_type_dropdown.textContent = event.target.textContent;
+                    c_location = event.target.dataset.value;                    
+                    acc_type_dropdownList.style.display = "none";
+                }
+            });
+            // manage display/hide if click outside scroll area
+            document.addEventListener("click", (event) => {
+
+                if (document.getElementById('acc_type_dropdown') && document.getElementById('acc_type_dropdownList') && !acc_type_dropdown.contains(event.target) && !acc_type_dropdownList.contains(event.target)) {
+                    acc_type_dropdownList.style.display = "none";
+                }
+            });
+            document.getElementById('acc_type_dropdownList').style.cssText = `
+                top:${Number(document.getElementById('nav_div').offsetHeight + document.getElementById('performance_nav_button').offsetHeight)}px
+            `
+        
+            document.getElementById('table').style.cssText = `
+                height:${Math.floor(Number(100 - (pxToVh(
+                    document.getElementById('nav_div').offsetHeight + 
+                    document.getElementById('performance_nav_button').offsetHeight + 
+                    document.getElementById('acc_type').offsetHeight + 
+                    document.getElementById('date_search').offsetHeight +
+                    document.getElementById('footer').offsetHeight 
+                )
+                + 1
+            )))
+            }vh;
+            display:flex;
+            flex-direction:row;
+            
+            align-items:flex-start
+            `
+        }
+    }) :"";
+
+
+
+    
+    
+    
 
 }
 
-function manageBusinessPerformance(){
+function validateFields(fields) {
+    for (const [message, condition] of Object.entries(fields)) {
+        if (condition) return showAlert(message);
+    }
 
+    return true;
 }
+
+
+
+
+// https://api.ctgshop.com/xapi/emp_com.ashx?cmd=savebfmrnew&imei=70:3A:51:90:39:05&cusid=28850&mramnt=1"&mrmode=cash&mrcurr=BDT&mrcoord=""&mrloca=gec office&serv=amusement
+
+
+// https://api.ctgshop.com/xapi/emp_com.ashx?cmd=savebfmrnew&imei=70:3A:51:90:39:05&cusid=28850&mramnt=1&mrmode=cash&mrcurr=BDT&mrcoord=&mrloca=gec office&serv=amusement

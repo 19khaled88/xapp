@@ -5142,10 +5142,7 @@ body {
     text-align: right;
 }
 
-.hrmActivityMain > .leave_application_container >  #leave_application_details_rootDiv > p{
-        /* margin: 0;
-        width: 100%; */
-}
+
 .hrmActivityMain > .leave_application_container >  #leave_application_details_rootDiv > #leave_application_form{
         width: 100%;
         padding-top: 5px;
@@ -10565,6 +10562,27 @@ body {
     margin: 0;
     padding: 5px;
 }
+.hrmActivityMain > .incentiveContainer > .incentive_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 9999; /* Ensure it's on top */
+    
+    justify-content: center;
+    align-items: center;
+    display: none; /* Initially hidden */
+}
+.hrmActivityMain > .incentiveContainer > .incentive_overlay > .incentive_overlay_loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3); /* Light outer border */
+    border-top-color: #fff; /* White color for the top border */
+    border-radius: 50%;
+    animation: incentive_spin 1s linear infinite; /* Rotation animation */
+}
 
 /* incentive css code*/
 /*media query starts here*/
@@ -11231,7 +11249,11 @@ body {
 
 /*keyframe*/
 
-
+/* Keyframes for the spinning effect */
+@keyframes incentive_spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
 
 /*keyframe*/

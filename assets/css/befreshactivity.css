@@ -84,7 +84,7 @@ p {
 }
 .container > .nav_div > button{
     height: 100%;
-    padding-right: 10px;
+    padding: 0 5px;
 }
 .container > .nav_div > .title{
     flex: 1;
@@ -120,6 +120,16 @@ p {
 }
 .container > .main > .input_fields > .client_bal_info{
     height: 40px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+.container > .main > .input_fields > .client_bal_info > span{
+    display: flex;
+    flex-direction: row;
+}
+.container > .main > .input_fields > .client_bal_info > span > label{
+    padding-right: 5px;
 }
 .container > .main > .input_fields > .date_range{
     display: flex;
@@ -245,7 +255,7 @@ p {
     width: 100%;
 } 
 .container > .main > .total_amount{
-    width: 95%;
+    padding: 0 5px;
     margin: auto;
 
     display: flex;
@@ -253,6 +263,8 @@ p {
     justify-content: space-between;
     align-items: center;
     height: 40px;
+    background-color: gray;
+    color: white;
 }
 /* befresh client dues css code*/
 
@@ -361,21 +373,31 @@ p {
     align-items: center;
     width: 30%;
 }
-.container > .main > .money_receipt_content > .mr_amount > input{
+.container > .main > .money_receipt_content > .mr_amount > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    flex: 1;
+}
+.container > .main > .money_receipt_content > .mr_amount > div > input{
     border: none;
     outline: none;
     border-bottom: 2px solid rgb(214, 7, 41);
     height: 100%;
-    flex: 1;
+    
+    font-size: 18px;
 
     
 }
-.container > .main > .money_receipt_content > .mr_amount > p{
+.container > .main > .money_receipt_content > .mr_amount > div > p{
     color: gray;
     height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: fit-content;
 }
 .container > .main > .money_receipt_content > .pay_mode {
     margin-top: 10px;
@@ -388,6 +410,16 @@ p {
     color: gray;
     width: 30%;
 }
+.container > .main > .money_receipt_content > .pay_mode > div{
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%
+}
+.container > .main > .money_receipt_content > .pay_mode > div > span{
+    width: calc(50%);
+    padding: 4px 0;
+}
+
 
 .container > .main > .money_receipt_content > .client_id_mobile > input,
 .container > .main > .money_receipt_content > .client_name  > label,
@@ -417,10 +449,65 @@ p {
     color: gray;
     width: 30%;
 }
-.container > .main > .money_receipt_content > .service > select{
+.container > .main > .money_receipt_content > .location > select{
     flex: 1;
     height: 100%;
     font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid gray;
+}
+
+.container > .main > .money_receipt_content > .location > .custom-dropdown {
+    position: relative;
+    width: 70%; /* Adjust width as needed */
+    max-width: 300px; 
+    border: 1px solid gray;
+    background: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.container > .main > .money_receipt_content > .location > .dropdown-list {
+    position: absolute;
+    width: 80%;
+    max-height: 400px; /* Set height to prevent full-screen */
+    overflow-y: auto;
+    border: 1px solid #db4d4d;
+    background: white;
+    display: none; /* Hidden by default */
+    z-index: 100;
+    right: 5px;
+}
+
+.container > .main > .money_receipt_content > .location > .dropdown-list div {
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+    cursor: pointer;
+}
+
+.container > .main > .money_receipt_content > .location > .dropdown-list div:hover {
+    background: #f0f0f0;
+}
+
+/* Custom Scrollbar for WebKit Browsers (Chrome, Android WebView) */
+.container > .main > .money_receipt_content > .location > .dropdown-list::-webkit-scrollbar {
+    width: 2px; /* Adjust width of the scrollbar */
+}
+
+.container > .main > .money_receipt_content > .location > .dropdown-list::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Background of scrollbar track */
+    border-radius: 2px;
+}
+
+.container > .main > .money_receipt_content > .location > .dropdown-list::-webkit-scrollbar-thumb {
+    background: gray; /* Color of the scrollbar */
+    border-radius: 2px;
+}
+
+.container > .main > .money_receipt_content > .location > .dropdown-list::-webkit-scrollbar-thumb:hover {
+    background: darkgray; /* Darker shade when hovered */
 }
 
 .container > .main > .money_receipt_content > .service {
@@ -440,11 +527,47 @@ p {
     color: gray;
     width: 30%;
 }
-.container > .main > .money_receipt_content > .location > select{
+.container > .main > .money_receipt_content > .service > select{
     flex: 1;
     height: 100%;
     font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid gray;
 }
+
+
+.container > .main > .money_receipt_content > .service > .service_dropdown{
+    position: relative;
+    width: 70%; /* Adjust width as needed */
+    max-width: 300px; 
+    border: 1px solid gray;
+    background: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.container > .main > .money_receipt_content > .service > .service_dropdownList{
+    position: absolute;
+    width: 80%;
+    max-height: 400px; /* Set height to prevent full-screen */
+    overflow-y: auto;
+    border: 1px solid #db4d4d;
+    background: white;
+    display: none; /* Hidden by default */
+    z-index: 100;
+    right: 5px;
+}
+.container > .main > .money_receipt_content > .service > .service_dropdownList > div{
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+    cursor: pointer;
+}
+.container > .main > .money_receipt_content > .service > .service_dropdownList > div:hover{
+    background: #f0f0f0;
+}
+
+
 .container > .main > .money_receipt_content > button{
     color: white;
     background-color: #1eb51e;
@@ -490,6 +613,23 @@ p {
     border-radius: 5px;
 }
 
+.container > .main > .money_receipt_content > .current_date{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.container > .main > .money_receipt_content > .current_date > .s_date,
+.container > .main > .money_receipt_content > .current_date > .e_date{
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.container > .main > .money_receipt_content > span{
+    padding-top: 5px;
+    color: #118ec1;
+    text-align: center;
+}
 .container > .main > .money_receipt_content > .view_content > .label {
     display: flex;
     flex-direction: row;
@@ -509,9 +649,43 @@ p {
 }
 .container > .main > .money_receipt_content > .view_content > .label > label:nth-child(4)
 {
-    width: 13%;
+    width: 14%;
 }
 
+.container > .main > .money_receipt_content > .view_content > .detail_info{
+    overflow-y: auto; /* Enables vertical scrolling */
+    display: block; /* Ensures scrolling works */
+    border: 1px solid black; /* Optional: Add border */
+}
+
+.container > .main > .money_receipt_content > .view_content > .detail_info > table{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+}
+.container > .main > .money_receipt_content > .view_content > .detail_info > table > tr{
+    width: 100%;
+    border-collapse: collapse;
+    padding-bottom: 4px;
+    
+}
+
+.container > .main > .money_receipt_content > .view_content > .detail_info > table > tr > td {
+    border: 1px solid black;
+    padding: 3px;
+    text-align: left;
+}
+.container > .main > .money_receipt_content > .view_content > .detail_info > table > tr > td:nth-child(1){
+    width: 40%;
+}
+.container > .main > .money_receipt_content > .view_content > .detail_info > table > tr > td:nth-child(2),
+.container > .main > .money_receipt_content > .view_content > .detail_info > table > tr > td:nth-child(3){
+    width: 23%;
+}
+.container > .main > .money_receipt_content > .view_content > .detail_info > table > tr > td:nth-child(4){
+    width: 14%;
+}
+.container > .main > .money_receipt_content > .view_content > .detail_info > table
 .container > .main > .money_receipt_content > .view_total {
     display: flex;
     flex-direction: row;
@@ -527,6 +701,7 @@ p {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    height: 40px;
 }
 .container > .main > .money_receipt_content > .view_total > span > label{
     padding-right: 10px;
@@ -535,6 +710,11 @@ p {
 .container > .main > .money_receipt_content > .view_total > p{
     width: 50%;
     text-align: center;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 /* befresh client money receipt css code*/
 
@@ -721,4 +901,144 @@ p {
     width: 100%;
     text-align: center;
 }
+
+.container > .main > .performance_nav_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+.container > .main > .performance_nav_button > .performance,
+.container > .main > .performance_nav_button > .dues{
+    width: 50%;
+    height: 40px;
+    text-align: center;
+}
+.container > .main > .performance_content > .date_search,
+.container > .main > .performance_content > .content,
+.container > .main > .performance_content > .acc_type,
+.container > .main > .performance_content > .footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 99vw;
+    padding-top: 5px;
+    margin: auto;
+    
+}
+.container > .main > .performance_content > .table{
+    padding-top: 8px;
+}
+.container > .main > .performance_content > .table > table >thead{
+    height: 25px;
+}
+.container > .main > .performance_content > div > .date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 78%;
+
+}
+.container > .main > .performance_content > div > .date > input{
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    width: 49%;
+}
+.container > .main > .performance_content > div > button{
+    width: 20%;
+    height: 40px;
+    text-align: center;
+    border: none;
+    outline: none;
+    background-color: #07c350;
+    color: white;
+    border-radius: 5px;
+
+}
+.container > .main > .performance_content > .content > .table{
+    flex: 1;
+    overflow-y: auto;
+}
+.container > .main > .performance_content > .content > .total{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    padding: 0 5px;
+    color: white;
+    background-color: gray;
+}
+
+
+.container > .main > .performance_content > .acc_type ,
+.container > .main > .performance_content > .date_search {
+    margin-top:5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.container > .main > .performance_content > .date_search > .date{
+    width: 68%;
+}
+.container > .main > .performance_content > .date_search > button{
+    width: 30%;
+}
+.container > .main > .performance_content > .date_search > .date > input {
+    width: 100%;
+    margin-right: 5px;
+}
+
+.container > .main > .performance_content > .acc_type > .acc_type_dropdown{
+    position: relative;
+    width: 50%; /* Adjust width as needed */
+    max-width: 300px; 
+    border: 1px solid gray;
+    background: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.container > .main > .performance_content > .acc_type > label{
+    width: 40%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container > .main > .performance_content > .acc_type > .acc_type_dropdownList{
+    position: absolute;
+    width: 50%;
+    max-height: 400px; /* Set height to prevent full-screen */
+    overflow-y: auto;
+    border: 1px solid #db4d4d;
+    background: white;
+    display: none; /* Hidden by default */
+    z-index: 100;
+    right: 5px;
+}
+.container > .main > .performance_content > .acc_type > .acc_type_dropdownList > div{
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+    cursor: pointer;
+}
+.container > .main > .performance_content > .acc_type > .acc_type_dropdownList > div:hover{
+    background: #f0f0f0;
+}
+.container > .main > .performance_content > .footer{
+    height: 40px;
+    width: 100%;
+    background-color: gray;
+    color: white;
+    padding: 0 5px;
+}
+
 /* befresh passenger list css code*/

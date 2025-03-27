@@ -1,17 +1,20 @@
 
+const rootUrl = 'https://api.ctgshop.com';
+
+// Parse the query string
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+// Get the value of the parameter you want to use in the title
+let page_title = urlParams.get("pageTitle")
+const identity = urlParams.get("identity");
+const emName = urlParams.get("name");
+const bossId = urlParams.get("bossId");
+const bossName = urlParams.get("bossName");
+const imei = urlParams.get('imei')
 
 document.addEventListener('DOMContentLoaded',()=>{
 
-    // Parse the query string
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-
-    // Get the value of the parameter you want to use in the title
-    let page_title = urlParams.get("pageTitle")
-    const identity = urlParams.get("identity");
-    const emName = urlParams.get("name");
-    const bossId = urlParams.get("boss");
-    const bossName = urlParams.get("bossName");
 
     // Remove double quotes from page_title if present
     if (page_title) {
@@ -56,6 +59,11 @@ document.addEventListener('DOMContentLoaded',()=>{
     back_button_handle && back_button_handle.addEventListener('click',()=>{
         window.location.href = `https://ctgshop.com/xapp/test/pages/Amy.html?identity=${identity}&name=${emName}&boss=${bossId}&bossName=${bossName}`
     });
+
+    const back_home_button_handle = document.getElementById('bf_home_btn');
+    back_home_button_handle && back_home_button_handle.addEventListener('click',()=>{
+        window.location.href = `https://ctgshop.com/xapp/test/index.html?identity=${identity}&name=${encodeURIComponent(emName)}&boss=${bossId}&bossName=${bossName}`
+    })
 });
 
 function clientLedger(){
@@ -138,8 +146,8 @@ function amyMoneyReciept(){
     main.innerHTML = '';
     const html =`
         <div class="amy_money_receipt_nav_button" id="amy_money_receipt_nav_button">
-            <button class="entry" id="entry">MONEY RECEIPT ENTRY</button>
-            <button class="view" id="view">MONEY RECEIPT VIEW</button>
+            <button class="entry" id="entry">ENTRY</button>
+            <button class="view" id="view">VIEW</button>
         </div>
         <div class="amy_money_receipt_content" id="amy_money_receipt_content"></div>
     `
@@ -195,7 +203,7 @@ function manageAmyMoneyReceipt(tag,buttons = null){
             <div class="mr_amount" id="mr_amount">
                 <label>MR Amount</label>
                 <input class="amount" id="amount" type="number"/>
-                <p>BDT</p>
+                <p class="currency" id="currency">BDT</p>
             </div>
             <div class="pay_mode" id="pay_mode">
                 <label>Pay Mode</label>
@@ -203,11 +211,11 @@ function manageAmyMoneyReceipt(tag,buttons = null){
                     <span>
                         <input type="radio" id="cash" name="mode" value="cash" checked>
                         <label for="cash">CASH</label>
-                        </span>
+                    </span>
                     <span>
                         <input type="radio" id="cheque" name="mode" value="cheque">
                         <label for="cheque">CHEQUE</label>
-                        </span>
+                    </span>
                     <span>
                         <input type="radio" id="bank_deposit" name="mode" value="bank_deposit">
                         <label for="bank_deposit">Bank Deposit</label>
@@ -251,9 +259,16 @@ function manageAmyMoneyReceipt(tag,buttons = null){
                 <div class="date_range" id="date_range">
                     <div class="date" id="date">
                     </div>
-                  <button>OK</button>
+                  <button class="mr_show" id="mr_show">OK</button>
                 </div>
-                <span>Date: </span>
+
+
+                <span class="current_date" id="current_date">
+                    <label>Date: </label>
+                    <p class="s_date" id="s_date"></p>
+                    <p> - </p>
+                    <p class="e_date" id="e_date"></p>
+                </span>
                 <div class="view_content" id="view_content">
                     <span class="label" id="label">
                         <label>Date/Name</label>
@@ -266,9 +281,9 @@ function manageAmyMoneyReceipt(tag,buttons = null){
                 <div class="view_total" id="view_total">
                     <span>
                         <label>Total Client : </label>
-                        <p>0</p>
+                        <p class="t_client" id="t_client">0</p>
                     </span>
-                    <p>0</p>
+                    <p class="t_amount" id="t_amount">0</p>
                 </div>
             `
             content.insertAdjacentHTML("beforeend",html);
@@ -278,6 +293,10 @@ function manageAmyMoneyReceipt(tag,buttons = null){
 
             document.getElementById('date').appendChild(startDatePickerInput.elementName);
             document.getElementById('date').appendChild(endDatePickerInput.elementName);
+
+            document.getElementById('s_date').textContent = startDatePickerInput.elementName.value;
+            document.getElementById('e_date').textContent = endDatePickerInput.elementName.value;
+
 
             document.getElementById('detail_info').style.cssText=`
                     display:flex;
@@ -296,6 +315,115 @@ function manageAmyMoneyReceipt(tag,buttons = null){
                 right:0;
 
             `
+            document.getElementById('mr_show').addEventListener('click',()=>{
+                try {
+                    fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=BFMrRep&dt1=${startDatePickerInput.elementName.value}&dt2=${endDatePickerInput.elementName.value}&imei=${imei}`)
+                        .then((res)=>{
+                            
+                            const result = res.split('|');
+                            const date = result[0].split('-');
+
+                            document.getElementById('s_date').textContent = date[0];
+                            document.getElementById('e_date').textContent = date[1];
+
+                            // Get all elements except the first one
+                            const remainingElements = result.slice(1);
+
+
+                            
+                            if(remainingElements.length === 1 && remainingElements[0] === ' = = =0=Posted'){
+                                const t_client = document.getElementById('t_client');
+                                const t_amount = document.getElementById('t_amount');
+                                t_amount.innerHTML=0
+                                t_client.innerHTML=0
+
+                                document.getElementById('darkOverlay').style.display = 'block';
+                                document.body.classList.add('transparent');
+                                Swal.fire({
+                                    icon: "warning",
+                                    title: `No Data Found`,
+                                    showConfirmButton: false,
+                                    showCloseButton: true,
+                                    customClass: {
+                                        popup: 'swal2-alert-custom-smallscreen'
+                                    },
+                                }).then((result) => {
+                                    // Hide the overlay when alert is closed
+                                    document.getElementById('darkOverlay').style.display = 'none';
+                                    document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                                });
+
+                                
+
+                            }
+                            else
+                            {
+                                // Create a table 
+                                const table = document.createElement('table');
+                                const t_client = document.getElementById('t_client');
+                                const t_amount = document.getElementById('t_amount');
+                                t_amount.innerHTML=0;
+                                t_client.innerHTML=0;
+                                t_client.textContent = remainingElements.length; 
+                                
+                                let totalAmount = 0;
+
+                                // Append data rows
+                                remainingElements.forEach((item,index)=>{
+                                    const row = document.createElement('tr');
+                                    const singleItem = item.split('=');
+                                    
+                                    // Combine the first two elements into one column
+                                    const firstColumn = document.createElement("td");
+                                    firstColumn.textContent = singleItem[0] + " " + singleItem[1]; // Merge first two elements
+                                    row.appendChild(firstColumn);
+
+                                    // Append the remaining elements normally
+                                    for (let i = 2; i < singleItem.length; i++) {
+                                        const td = document.createElement("td");
+
+                                        if(singleItem[i].includes("(") && singleItem[i].includes(")")){
+                                            const parts = singleItem[i].split(/(\(.*?\))/);
+                                            td.innerHTML = parts[0] + "<br>" + parts[1];
+                                        }else{
+
+                                            td.textContent = singleItem[i];
+                                        }
+                                        if (i === 4 && singleItem[i].trim().toLowerCase() === "pending") {
+                                            td.style.color = "red";
+                                            
+                                        }
+                                        row.appendChild(td);
+
+                                        if(i === 3){
+                                            const numericValue = parseFloat(singleItem[i].replace(/,/g, ''));
+                                            if(!isNaN(numericValue)){
+                                                totalAmount += numericValue;
+                                            }
+                                        }
+                                    }
+
+                                    table.appendChild(row);
+                                });
+
+                                // Set the total amount to the 't_amount' element
+                                t_amount.textContent = totalAmount.toLocaleString();
+
+                                document.getElementById('detail_info').innerHTML = "";
+                                document.getElementById('detail_info').appendChild(table);
+                            }
+                           
+
+                        })
+                        .catch((error)=>{
+                            console.log(error)
+                        })
+
+                    
+                } catch (error) {
+                   console.log(error) 
+                }
+            })
         }
     }) : "";
 }
@@ -306,8 +434,8 @@ function amyReport(){
     main.innerHTML = '';
     const html =`
         <div class="amy_report_nav_button" id="amy_report_nav_button">
-            <button class="entry" id="entry">ACTIVITY ENTRY</button>
-            <button class="view" id="view">ACTIVITY VIEW</button>
+            <button class="entry" id="entry">ENTRY</button>
+            <button class="view" id="view">VIEW</button>
         </div>
         <div class="amy_report_content" id="amy_report_content"></div>
     `

@@ -86,7 +86,7 @@ p {
     align-items: center;
 }
 .container > .nav_div > button{
-    padding-right: 10px;
+    padding:0 5px;
     height: 100%;
 }
 .container > .nav_div > .title{

@@ -15,6 +15,8 @@ const boss = urlParams.get("boss");
 const bossName = urlParams.get("bossName");
 const version = urlParams.get('v');
 
+let locationEnabled = false;
+let locationPermissionGranted = false;
 
 function getAndroidVersion() {
   const userAgent = navigator.userAgent || navigator.vendor || window.opera; // Get the user agent string
@@ -608,6 +610,61 @@ function createButton(item, index,parsedData,buttonContainer) {
           } else if (item.title === 'bill application') {
              
               navigateToPage('hrmRoute', '../pages/AccountActivity.html', '', 'Bill entry', `${identity}`, `${emName}`, `${boss}`, `${bossName}`);
+          } else if(item.title === 'Check In' && isWebV === true){
+            // if (window.Android) {
+            //   if (Android.checkGpsEnabled()) {
+            //     navigateToPage('hrmRoute', '../pages/HumanResourceActivity.html', '', item.title, `${identity}`, `${emName}`, `${boss}`, `${bossName}`);
+            //   } 
+            //   else 
+            //   {
+            //       if (confirm("GPS is required for Check-In. Enable GPS now?")) {
+            //           Android.requestEnableGps();
+            //           // Optional: Add retry logic after enabling GPS
+            //           setTimeout(function() {
+            //               if (Android.checkGpsEnabled()) {
+            //                 navigateToPage('hrmRoute', '../pages/HumanResourceActivity.html', '', item.title, `${identity}`, `${emName}`, `${boss}`, `${bossName}`);
+            //               } else {
+            //                   alert("GPS still not enabled. Please enable GPS to continue.");
+            //               }
+            //           }, 1000); // Check again after 1 second
+            //       }
+            //   }   
+              
+            // } 
+            // else 
+            // {
+            //       alert("Location permission is only available in the WebView app.");
+            // }
+            
+
+            if (typeof Android !== 'undefined' && Android !== null) {
+              if (!Android.isLocationEnabled()) {
+                  // Location services are disabled, prompt the user to enable them
+                  if (confirm("Location services are disabled. Do you want to enable them?")) {
+                      Android.enableLocationSettings();
+                      
+                      loadingSpinnerDiv.style.display = 'none';
+                      
+                  }else{
+                    loadingSpinnerDiv.style.display = 'none';
+                  }
+                  return;
+              }
+      
+              if (!Android.checkLocationPermission()) {
+                  // Location permission not granted, request it
+                  Android.requestLocationPermission();
+                 
+              } else {
+                  // Location permission already granted, proceed with getting location
+                  navigateToPage('hrmRoute', '../pages/HumanResourceActivity.html', '', item.title, `${identity}`, `${emName}`, `${boss}`, `${bossName}`);
+              }
+
+              navigateToPage('hrmRoute', '../pages/HumanResourceActivity.html', '', item.title, `${identity}`, `${emName}`, `${boss}`, `${bossName}`);
+            } else {
+                console.log("Android interface not available.");
+                // Handle the case where the code is running outside the WebView
+            }
           } else {
              
               navigateToPage('hrmRoute', '../pages/HumanResourceActivity.html', '', item.title, `${identity}`, `${emName}`, `${boss}`, `${bossName}`);
@@ -619,14 +676,76 @@ function createButton(item, index,parsedData,buttonContainer) {
 
     }
 
+    
   });
   
   buttonContainer.appendChild(div)
   // div.style.width = '100%'
-  div.style.height = `${div.offsetWidth}px` 
-  itemBtn.style.height = `${itemBtn.offsetWidth}px`
+  div.style.height = `${div.offsetWidth}px`;
+  itemBtn.style.height = `${itemBtn.offsetWidth}px`;
   
-  imgSpan.style.height = `${imgSpan.offsetWidth}px`
+  imgSpan.style.height = `${imgSpan.offsetWidth}px`;
+
+
+
+}
+
+
+function onLocationStatusChanged(isEnabled) {
+  locationEnabled = isEnabled;
+  updateLocationUI();
+  if (locationEnabled && locationPermissionGranted) {
+      getLocation(); // Try getting location again if both are now true
+  }
+}
+
+
+function onLocationPermissionGranted() {
+  const loadingSpinnerDiv = document.getElementById('button_loading');
+  alert("Location permission granted by the user.");
+  locationPermissionGranted = true;
+  updateLocationUI();
+  if (locationEnabled && locationPermissionGranted) {
+      getLocation();
+  }
+
+  loadingSpinnerDiv.style.display = 'none'
+  navigateToPage('hrmRoute', '../pages/HumanResourceActivity.html', '', 'Check In', `${identity}`, `${emName}`, `${boss}`, `${bossName}`);
+}
+
+function onLocationPermissionDenied() {
+  const loadingSpinnerDiv = document.getElementById('button_loading');
+  
+  locationPermissionGranted = false;
+  updateLocationUI();
+  showPermissionDeniedMessage();
+  loadingSpinnerDiv.style.display = 'none'
+}
+
+
+function getLocation() {
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+      console.log("Geolocation is not supported by this browser.");
+  }
+}
+
+function showPermissionDeniedMessage() {
+  const message = document.getElementById('permission-denied-message'); // Assuming you have an element with this ID
+  if (message) {
+      message.style.display = 'block';
+  } else {
+      console.warn("Permission denied message element not found.");
+  }
+}
+
+function updateLocationUI() {
+  const statusElement = document.getElementById('location-status'); // Optional: Display status
+  if (statusElement) {
+      statusElement.textContent = `GPS Enabled: ${locationEnabled}, Permission Granted: ${locationPermissionGranted}`;
+  }
+  // Update other UI elements based on the status
 }
 
 

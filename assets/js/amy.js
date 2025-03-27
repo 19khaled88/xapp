@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const emName = urlParams.get("name");
     const bossId = urlParams.get("boss");
     const bossName = urlParams.get("bossName");
-
+    const imei = urlParams.get('imei')
 
     
     const nav_div = document.getElementById('nav_div');
@@ -46,19 +46,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                 
                 
                 if(imgSrc === 'https://ctgshop.com/xapp/test/assets/buttons/amy/btn_amy_client_ledger.png'){
-                    window.location.href = `https://ctgshop.com/xapp/test/pages/AmyActivity.html?pageTitle="Client Ledger"&idenity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}`
+                    window.location.href = `https://ctgshop.com/xapp/test/pages/AmyActivity.html?pageTitle="Client Ledger"&identity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}&imei=${imei}`
                 }else if(imgSrc === 'https://ctgshop.com/xapp/test/assets/buttons/amy/btn_amy_client_balance.png'){
-                    window.location.href = `https://ctgshop.com/xapp/test/pages/AmyActivity.html?pageTitle="Client Balance"&idenity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}`
+                    window.location.href = `https://ctgshop.com/xapp/test/pages/AmyActivity.html?pageTitle="Client Balance"&identity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}&imei=${imei}`
                 }else if(imgSrc === 'https://ctgshop.com/xapp/test/assets/buttons/amy/btn_amy_money_receipt.png'){
-                    window.location.href = `https://ctgshop.com/xapp/test/pages/AmyActivity.html?pageTitle="Amy Money Receipt"&idenity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}`
+                    window.location.href = `https://ctgshop.com/xapp/test/pages/AmyActivity.html?pageTitle="Amy Money Receipt"&identity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}&imei=${imei}`
                 }else if(imgSrc === 'https://ctgshop.com/xapp/test/assets/buttons/amy/btn_amy_activity_report.png'){
-                    window.location.href = `https://ctgshop.com/xapp/test/pages/AmyActivity.html?pageTitle="Amy Activity Report"&idenity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}`
+                    window.location.href = `https://ctgshop.com/xapp/test/pages/AmyActivity.html?pageTitle="Amy Activity Report"&identity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}&imei=${imei}`
                 }else if(imgSrc === 'https://ctgshop.com/xapp/test/assets/buttons/amy/btn_amy_business_performance.png'){
-                    window.location.href = `https://ctgshop.com/xapp/test/pages/AmyActivity.html?pageTitle="Business Performance"&idenity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}`
+                    window.location.href = `https://ctgshop.com/xapp/test/pages/AmyActivity.html?pageTitle="Business Performance"&identity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}&imei=${imei}`
                 }else if(imgSrc === 'https://ctgshop.com/xapp/test/assets/buttons/amy/btn_amy_clientvisit.png'){
-                    window.location.href = `https://ctgshop.com/xapp/test/pages/AmyActivity.html?pageTitle="Client Visit"&idenity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}`
+                    window.location.href = `https://ctgshop.com/xapp/test/pages/AmyActivity.html?pageTitle="Client Visit"&identity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}&imei=${imei}`
                 }else if(imgSrc === 'https://ctgshop.com/xapp/test/assets/buttons/amy/btn_amy_visittrack.png'){
-                    window.location.href = `https://ctgshop.com/xapp/test/pages/AmyActivity.html?pageTitle="Client Visit Track"&idenity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}`
+                    window.location.href = `https://ctgshop.com/xapp/test/pages/AmyActivity.html?pageTitle="Client Visit Track"&identity=${identity}&name=${emName}&bossId=${bossId}&bossName=${bossName}&imei=${imei}`
                 }
             })
         });

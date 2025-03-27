@@ -82,7 +82,7 @@ p {
 }
 .container > .nav_div > button{
     height: 100%;
-    padding-right: 10px;
+    padding:0 5px;
 }
 .container > .nav_div > .title{
     flex: 1;
@@ -294,6 +294,21 @@ p {
     flex: 1;
 }
 
+.container > .amy_main > .amy_money_receipt_content > .current_date{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #118ec1;
+    padding-top: 5px;
+}
+
+.container > .amy_main > .amy_money_receipt_content > .current_date > .s_date,
+.container > .amy_main > .amy_money_receipt_content > .current_date > .e_date{
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
 .container > .amy_main > .amy_money_receipt_content > .pay_mode{
     display: flex;
     flex-direction: row;
@@ -418,7 +433,35 @@ height: 40px;
 .container > .amy_main > .amy_money_receipt_content > .view_content > .label > label:nth-child(4){
     width: 13%;
 }
+.container > .amy_main > .amy_money_receipt_content > .view_content > .detail_info {
+    overflow-y: auto;
+    border: 1px solid black;
+}
+.container > .amy_main > .amy_money_receipt_content > .view_content > .detail_info > table{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+}
+.container > .amy_main > .amy_money_receipt_content > .view_content > .detail_info > table > tr{
+    width: 100%;
+    border-collapse: collapse;
+    padding-bottom: 4px;
+}
+.container > .amy_main > .amy_money_receipt_content > .view_content > .detail_info > table > tr > td {
+    border: 1px solid black;
+    padding: 3px;
+    text-align: left;
+}
 
+.container > .amy_main > .amy_money_receipt_content > .view_content > .detail_info > table > tr > td:nth-child(1){
+    width: 40%;
+}
+.container > .amy_main > .amy_money_receipt_content > .view_content > .detail_info > table > tr > td:nth-child(3){
+    width: 23%;
+}
+.container > .amy_main > .amy_money_receipt_content > .view_content > .detail_info > table > tr > td:nth-child(4){
+    width: 14%;
+}
 .container > .amy_main > .amy_money_receipt_content > .view_total {
     display: flex;
         flex-direction: row;
