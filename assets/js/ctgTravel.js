@@ -71,5 +71,5 @@ document.addEventListener("DOMContentLoaded", async () => {
         window.location.href = `https://ctgshop.com/xapp/test/index.html?identity=${identity}&name=${encodeURIComponent(emName)}&boss=${bossId}&bossName=${bossName}`
     });
     
-    console.log(parsedData)
+    
 });

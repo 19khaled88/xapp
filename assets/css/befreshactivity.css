@@ -240,6 +240,7 @@ p {
 .container > .main > .client_info  > .table_title{
     display: flex;
     flex-direction: row;
+    padding-bottom: 5px;
 }
 .container > .main > .client_info  > .table_title > p:nth-child(1){
     width: 10%;

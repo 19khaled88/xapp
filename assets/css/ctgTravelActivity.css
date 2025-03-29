@@ -1,0 +1,333 @@
+/* ==== RESET STYLES ==== */
+/* Remove default margins, paddings, and set box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Improve text rendering */
+html {
+    scroll-behavior: smooth;
+    /* font-size: 16px; */
+    font-family: Roboto, sans-serif;
+}
+
+/* Remove default button styles */
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+/* ==== GLOBAL STYLES ==== */
+body {
+    background-color: #f9f9f9;  
+    /* color: #333;   */
+    /* line-height: 1.6; */
+    /* padding: 20px; */
+}
+
+/* Container for centering content */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==== HEADINGS & TEXT ==== */
+h1, h2, h3, h4, h5, h6 {
+    /* font-weight: bold; */
+    /* margin-bottom: 10px; */
+}
+
+p {
+    /* margin-bottom: 15px; */
+}
+
+/* ==== FLEX UTILITIES ==== */
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ==== BUTTONS ==== */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+.container > .nav_div{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    background-color: rgb(45, 45, 240);
+    align-items: center;
+}
+.container > .nav_div > button{
+    height: 100%;
+    padding: 0 5px;
+}
+.container > .nav_div > .title{
+    flex: 1;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    
+}
+
+.container > .main > .date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 98%;
+    margin: auto;
+    margin-top: 5px;
+}
+.container > .main > .date > input{
+    height: 100%;
+    width: 49%;
+    border-radius: 5px;
+    border: 1px solid gray;
+    text-align: center;
+    font-size: 16px;
+}
+.container > .main > .search_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px; 
+    width: 98%;
+    margin: auto;
+    margin-top: 5px;
+}
+.container > .main > .search_div > .id_mobile,
+.container > .main > .search_div > .client_search_btn{
+    height: 100%;
+    border-radius: 5px;
+    
+    text-align: center;
+    
+}
+.container > .main > .search_div > .id_mobile{
+    width: 63%;
+    font-size: 16px;
+    border: 1px solid gray;
+}
+.container > .main > .search_div > .client_search_btn{
+    width: 35%;
+    font-size: 15px;
+    background-color: #0dc30d;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+.container > .main > .main_title {
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.container > .main > .date_range_dues{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 98%;
+    margin: auto;
+}
+.container > .main > .date_range_dues > .date{
+    width: 49%;
+    height: 40px;
+}
+.container > .main > .date_range_dues > .date > input{
+    height: 100%;
+    text-align: center;
+    font-size: 16px;
+    width: 99%;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+.container > .main > .date_range_dues > button{
+    width: 48%;
+    height: 40px;
+    background: limegreen;
+    color: white;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-radius: 5px
+}
+.container > .main > .current_date{
+    text-align: center;
+}
+.container > .main > .client_info > .table_title{
+    display: flex;
+    flex-direction: row;
+    height: 23px;
+    color: #453e3e;
+    align-items: center;
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+.container > .main > .client_info > .table_title > p:nth-child(1){
+    width: 10%;
+    text-align: center;
+}
+.container > .main > .client_info > .table_title > p:nth-child(2){
+    width: 25%;
+}
+.container > .main > .client_info > .table_title > p:nth-child(3){
+    width: 35%;
+}
+.container > .main > .client_info > .table_title > p:nth-child(4){
+    width: 30%;
+}
+
+.container > .main > .total_amount{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    align-items: center;
+    height: 40px;
+    background-color: gray;
+    color: white;
+}
+.container > .main > .total_amount > label,
+.container > .main > .total_amount > p{
+    padding: 0 5px;
+}
+
+.container > .main > .money_receipt_nav_button{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.container > .main > .money_receipt_nav_button > button{
+    height: 100%;
+    width: 49%;
+    text-align: center;
+}
+
+.container > .main > .money_receipt_content > .client_id_mobile {
+    height: 40px;
+    width: 98%;
+    margin: auto;
+    margin-top: 5px;
+}
+.container > .main > .money_receipt_content > .client_id_mobile > input,
+.container > .main > .money_receipt_content > .client_id_mobile > button{
+    height: 40px;
+}
+.container > .main > .money_receipt_content > .client_id_mobile > input {
+    width: 58%;
+}
+.container > .main > .money_receipt_content > .client_id_mobile > button {
+    width: 40%;
+    background-color: #0dc30d;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.container > .main > .money_receipt_content > .client_name,
+.container > .main > .money_receipt_content > .client_number,
+.container > .main > .money_receipt_content > .mr_amount,
+.container > .main > .money_receipt_content > .pay_mode,
+.container > .main > .money_receipt_content > .service{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    height: 40px;
+    
+    width: 98%;
+    margin: 8px auto 0;
+}
+.container > .main > .money_receipt_content > .client_name > input,
+.container > .main > .money_receipt_content > .client_number > input{
+    width: 60%;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.container > .main > .money_receipt_content > .mr_amount > div{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+}
+.container > .main > .money_receipt_content > .pay_mode > div{
+    width: 60%;
+}
+.container > .main > .money_receipt_content > .mr_amount > div > input{
+    width: 80%;
+}
+.container > .main > .money_receipt_content > .mr_amount > div > p{
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.container > .main > .money_receipt_content > button{
+    text-align: center;
+}
+
+.container > .main > .money_receipt_content > .service > .service_dropdown{
+    position: relative;
+    width: 70%; /* Adjust width as needed */
+    max-width: 300px; 
+    border: 1px solid gray;
+    background: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.container > .main > .money_receipt_content > .service > .service_dropdownList{
+    position: absolute;
+    width: 80%;
+    max-height: 400px; /* Set height to prevent full-screen */
+    overflow-y: auto;
+    border: 1px solid #db4d4d;
+    background: white;
+    display: none; /* Hidden by default */
+    z-index: 100;
+    right: 5px;
+}
+.container > .main > .money_receipt_content > .service > .service_dropdownList > div{
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+    cursor: pointer;
+}
+.container > .main > .money_receipt_content > .service > .service_dropdownList > div:hover{
+    background: #f0f0f0;
+}

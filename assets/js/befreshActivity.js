@@ -108,59 +108,96 @@ function clientBalance(){
     document.getElementById('cl_bl_btn').addEventListener('click',()=>{
         const id_mobile = document.getElementById('id_mobile').value;
         
-       
-        fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=bfclbn&typ=id&no=${id_mobile}&dt1=${startDatePickerInput.elementName.value}&dt2=${endDatePickerInput.elementName.value}`)
-            .then((res)=>{
-                const result = res.split('|');
-                console.log(result)
-                if(result[0] === 'Found'){
+        
+        if(!id_mobile || id_mobile.length ===0){
+            document.getElementById('darkOverlay').style.display = 'block';
+            document.body.classList.add('transparent');
+            Swal.fire({
+                icon: "warning",
+                title: 'Customer ID Empty!',
+                showConfirmButton: false,
+                showCloseButton: true,
+                customClass: {
+                    popup: 'swal2-alert-custom-smallscreen'
+                },
+            }).then((result) => {
+                // Hide the overlay when alert is closed
+                document.getElementById('darkOverlay').style.display = 'none';
+                document.body.classList.remove('transparent'); // Remove class to allow scrolling
+            });
+        }else{
+            
+            fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=bfclbn&typ=id&no=${id_mobile}&dt1=${startDatePickerInput.elementName.value}&dt2=${endDatePickerInput.elementName.value}`)
+                .then((res)=>{
+                    const result = res.split('|');
                     
-                    document.getElementById('op_bl').textContent = result[4];
-                    document.getElementById('cl_bl').textContent = result[5];
+                    if(result[0] === 'Found'){
+                        
+                        document.getElementById('op_bl').textContent = result[4];
+                        document.getElementById('cl_bl').textContent = result[5];
 
-                    const client_bal_info =  document.getElementById('client_bal_info');
+                        const client_bal_info =  document.getElementById('client_bal_info');
+                        client_bal_info.innerHTML = "";
 
-                    // Function to create a span with label and p tag
-                    function createSpan(labelText, pText) {
-                        const span = document.createElement('span');
-                        const label = document.createElement('label');
-                        const p = document.createElement('p');
+                        // Function to create a span with label and p tag
+                        function createSpan(labelText, pText) {
+                            const span = document.createElement('span');
+                            const label = document.createElement('label');
+                            const p = document.createElement('p');
 
-                        label.textContent = labelText;
-                        p.textContent = pText;
+                            label.textContent = labelText;
+                            p.textContent = pText;
 
-                        span.appendChild(label);
-                        span.appendChild(p);
+                            span.appendChild(label);
+                            span.appendChild(p);
 
-                        return span;
+                            return span;
+                        }
+
+                        // Append two spans
+                        client_bal_info.appendChild(createSpan('ID:', `${result[1]}`));
+                        client_bal_info.appendChild(createSpan('Name:', `${result[2]}`));
+                        
+                    }else if(res.includes('Invalid Date Range')){
+                        const result = res.split('|');
+
+                        document.getElementById('darkOverlay').style.display = 'block';
+                        document.body.classList.add('transparent');
+                        Swal.fire({
+                            icon: "warning",
+                            title: result[1],
+                            showConfirmButton: false,
+                            showCloseButton: true,
+                            customClass: {
+                                popup: 'swal2-alert-custom-smallscreen'
+                            },
+                        }).then((result) => {
+                            // Hide the overlay when alert is closed
+                            document.getElementById('darkOverlay').style.display = 'none';
+                            document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                        });
+                    }else{
+                        document.getElementById('darkOverlay').style.display = 'block';
+                        document.body.classList.add('transparent');
+                        Swal.fire({
+                            icon: "warning",
+                            title: `No Data Found`,
+                            showConfirmButton: false,
+                            showCloseButton: true,
+                            customClass: {
+                                popup: 'swal2-alert-custom-smallscreen'
+                            },
+                        }).then((result) => {
+                            // Hide the overlay when alert is closed
+                            document.getElementById('darkOverlay').style.display = 'none';
+                            document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                        }); 
                     }
-
-                    // Append two spans
-                    client_bal_info.appendChild(createSpan('ID:', `${result[1]}`));
-                    client_bal_info.appendChild(createSpan('Name:', `${result[2]}`));
-                    
-                }else{
-                    document.getElementById('darkOverlay').style.display = 'block';
-                    document.body.classList.add('transparent');
-                    Swal.fire({
-                        icon: "warning",
-                        title: `No Data Found`,
-                        showConfirmButton: false,
-                        showCloseButton: true,
-                        customClass: {
-                            popup: 'swal2-alert-custom-smallscreen'
-                        },
-                    }).then((result) => {
-                        // Hide the overlay when alert is closed
-                        document.getElementById('darkOverlay').style.display = 'none';
-                        document.body.classList.remove('transparent'); // Remove class to allow scrolling
-                    }); 
-                }
-            })
-            .catch((error)=>{
-                console.log(error)
-            })
-
+                })
+                .catch((error)=>{
+                    console.log(error)
+                })
+        }
     })
         
 }
@@ -214,90 +251,111 @@ function clientDues(){
 
     document.getElementById('cl_due_btn').addEventListener('click',()=>{
         
-        fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=bfcdues&dt1=${startDatePickerInput.elementName.value}&imei=1662203027792`)
+        fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=bfcdues&dt1=${startDatePickerInput.elementName.value}&imei=${imei}`)
             .then((res) =>{
                 if (typeof res === "string") return res; // Handle string response
                 if (res.text) return res.text(); // Handle fetch() response
                 throw new Error("Unexpected response format");
             }) // Read response as text
             .then((text) => {
-                const parts = text.split("|"); // Split records by `|`
-                const date = parts.shift().trim(); // Extract the date (first element)
-
-                const data = parts.map((record) => {
-                    const fields = record.split("=");
-                    return {
-                        id: fields[0].trim(),
-                        name: fields[1].trim(),
-                        amount: parseFloat(fields[2].replace(/,/g, '')), // Convert to number
-                        rank: parseInt(fields[3], 10) // Convert to number
-                    };
-                });
-
-                document.getElementById('current_date').innerHTML = `As On: ${date}`
                 
-
-                const tableContainer = document.getElementById("content");
-                tableContainer.innerHTML = "";
-
-
-                // Create a table element
-                const table = document.createElement("table");
-                table.style.width = "100%"; // Optional: Adjust styles
-                table.style.borderCollapse = "collapse"; // Optional: For better styling
-
-                let totalAmount = 0;
-
-
-                data && data.forEach((due)=>{
-                    const row = document.createElement("tr");
-
-                     // Add Rank column (first)
-                     const rankCell = document.createElement("td");
-                     rankCell.textContent = due.rank;
-                     rankCell.style.textAlign = "center"; // Optional: Center the rank
-                     rankCell.style.backgroundColor = "#f2f2f2"; // Optional: Light gray background for rank
-                     rankCell.style.padding = "8px"; // Optional: Add spacing
-                     rankCell.style.border = "1px solid #ddd"; // Optional: Add border
-                     row.appendChild(rankCell);
-
-                     // Add ID column (second)
-                     const idCell = document.createElement("td");
-                     idCell.textContent = due.id;
-                     idCell.style.fontWeight = "bold";
-                     idCell.style.color = "blue";
-                     idCell.style.padding = "8px"; // Optional: Add spacing
-                     idCell.style.border = "1px solid #ddd"; // Optional: Add border
-                     row.appendChild(idCell);
-
-                     // Add Name column (third)
-                     const nameCell = document.createElement("td");
-                     nameCell.textContent = due.name;
-                     nameCell.style.textTransform = "uppercase"; // Optional: Uppercase for name
-                     nameCell.style.padding = "8px"; // Optional: Add spacing
-                     nameCell.style.border = "1px solid #ddd"; // Optional: Add border
-                     row.appendChild(nameCell);
-
-                     // Add Amount column (last)
-                     const amountCell = document.createElement("td");
-                     amountCell.textContent = due.amount.toLocaleString(); // Format the amount with commas
-                     amountCell.style.fontWeight = "bold";
-                     amountCell.style.color = due.amount < 0 ? "red" : "green"; // Negative in red, positive in green
-                     amountCell.style.padding = "8px"; // Optional: Add spacing
-                     amountCell.style.border = "1px solid #ddd"; // Optional: Add border
-                     row.appendChild(amountCell);
-
-                     // Append the row to the table
-                     table.appendChild(row); 
-
-                     // Update the total amount
-                    totalAmount += due.amount;
-                    const dues_amt = document.getElementById('dues_amt')
-                    dues_amt.textContent = totalAmount
-                })
-
-                // Append the table to the container
-                tableContainer.appendChild(table);
+                if(!text.includes("Invalid Account Manager")){
+                    const parts = text.split("|"); // Split records by `|`
+                    const date = parts.shift().trim(); // Extract the date (first element)
+    
+                    const data = parts.map((record) => {
+                        const fields = record.split("=");
+                        return {
+                            id: fields[0].trim(),
+                            name: fields[1].trim(),
+                            amount: parseFloat(fields[2].replace(/,/g, '')), // Convert to number
+                            rank: parseInt(fields[3], 10) // Convert to number
+                        };
+                    });
+    
+                    document.getElementById('current_date').innerHTML = `As On: ${date}`
+                    
+    
+                    const tableContainer = document.getElementById("content");
+                    tableContainer.innerHTML = "";
+    
+    
+                    // Create a table element
+                    const table = document.createElement("table");
+                    table.style.width = "100%"; // Optional: Adjust styles
+                    table.style.borderCollapse = "collapse"; // Optional: For better styling
+    
+                    let totalAmount = 0;
+    
+    
+                    data && data.forEach((due)=>{
+                        const row = document.createElement("tr");
+    
+                         // Add Rank column (first)
+                         const rankCell = document.createElement("td");
+                         rankCell.textContent = due.rank;
+                         rankCell.style.textAlign = "center"; // Optional: Center the rank
+                         rankCell.style.backgroundColor = "#f2f2f2"; // Optional: Light gray background for rank
+                         rankCell.style.padding = "8px"; // Optional: Add spacing
+                         rankCell.style.border = "1px solid #ddd"; // Optional: Add border
+                         row.appendChild(rankCell);
+    
+                         // Add ID column (second)
+                         const idCell = document.createElement("td");
+                         idCell.textContent = due.id;
+                         idCell.style.fontWeight = "bold";
+                         idCell.style.color = "blue";
+                         idCell.style.padding = "8px"; // Optional: Add spacing
+                         idCell.style.border = "1px solid #ddd"; // Optional: Add border
+                         row.appendChild(idCell);
+    
+                         // Add Name column (third)
+                         const nameCell = document.createElement("td");
+                         nameCell.textContent = due.name;
+                         nameCell.style.textTransform = "uppercase"; // Optional: Uppercase for name
+                         nameCell.style.padding = "8px"; // Optional: Add spacing
+                         nameCell.style.border = "1px solid #ddd"; // Optional: Add border
+                         row.appendChild(nameCell);
+    
+                         // Add Amount column (last)
+                         const amountCell = document.createElement("td");
+                         amountCell.textContent = due.amount.toLocaleString(); // Format the amount with commas
+                         amountCell.style.fontWeight = "bold";
+                         amountCell.style.color = due.amount < 0 ? "red" : "green"; // Negative in red, positive in green
+                         amountCell.style.padding = "8px"; // Optional: Add spacing
+                         amountCell.style.border = "1px solid #ddd"; // Optional: Add border
+                         row.appendChild(amountCell);
+    
+                         // Append the row to the table
+                         table.appendChild(row); 
+    
+                         // Update the total amount
+                        totalAmount += due.amount;
+                        const dues_amt = document.getElementById('dues_amt')
+                        dues_amt.textContent = totalAmount
+                    })
+    
+                    // Append the table to the container
+                    tableContainer.appendChild(table);
+                }else{
+                    const response = text.split("|")
+                    document.getElementById('darkOverlay').style.display = 'block';
+                    document.body.classList.add('transparent');
+                    Swal.fire({
+                        icon: "warning",
+                        title: response[1],
+                        showConfirmButton: false,
+                        showCloseButton: true,
+                        customClass: {
+                            popup: 'swal2-alert-custom-smallscreen'
+                        },
+                    }).then((result) => {
+                        // Hide the overlay when alert is closed
+                        document.getElementById('darkOverlay').style.display = 'none';
+                        document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                    });
+                }
+                
                 
 
                 document.getElementById('client_info').style.cssText = `
@@ -594,7 +652,7 @@ function manageMoneyReceipt(tag,buttons = null){
 
                 // Validate and convert amount to an integer
                 if (!/^\d+$/.test(amount)) {
-                    Swal.fire("Please enter a valid integer amount!");
+                    Swal.fire("Please enter a valid amount!");
                     return;
                 }
 
@@ -620,7 +678,7 @@ function manageMoneyReceipt(tag,buttons = null){
                             // "Success | MR Posted|khaled277|"
                             
                             const result = res.split("|").map(item => item.trim().replace(/^"|"$/g, "")); // Trim whitespace from all parts
-                            console.log(result)
+                            
                             if (result[0] === "Success") {
                                 document.getElementById('darkOverlay').style.display = 'block';
                                 document.body.classList.add('transparent');
@@ -637,7 +695,9 @@ function manageMoneyReceipt(tag,buttons = null){
                                     document.getElementById('darkOverlay').style.display = 'none';
                                     document.body.classList.remove('transparent'); // Remove class to allow scrolling
                                 });
-                            } else{
+                            } 
+                            else
+                            {
                                 document.getElementById('darkOverlay').style.display = 'block';
                                 document.body.classList.add('transparent');
                                 Swal.fire({
