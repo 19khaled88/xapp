@@ -765,7 +765,7 @@ async function fetchHomePageData(code,name,bossId,bossName,imei) {
           }else if(file === './assets/images/Be Rich Manufacturing Logo.png'){
             window.location.href = `./pages/BerichMfg.html?identity=${code}&name=${encodeURIComponent(name)}&boss=${bossId}&bossName=${encodeURIComponent(bossName)}`
           }else if(file === './assets/images/Chittagong travel.png'){
-            window.location.href = `./pages/CtgTravel.html?identity=${code}&name=${encodeURIComponent(name)}&boss=${bossId}&bossName=${encodeURIComponent(bossName)}`
+            window.location.href = `./pages/CtgTravel.html?identity=${code}&name=${encodeURIComponent(name)}&boss=${bossId}&bossName=${encodeURIComponent(bossName)}&imei=${imei}`
           }else if(file === './assets/images/best_erp.png'){
             window.location.href = `./pages/BestErp.html?identity=${code}&name=${encodeURIComponent(name)}&boss=${bossId}&bossName=${encodeURIComponent(bossName)}`
           }else if(file === './assets/images/BeFresh Logo.png'){

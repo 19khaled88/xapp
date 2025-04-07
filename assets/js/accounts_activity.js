@@ -43,7 +43,7 @@ if (pageTitle) {
         });
       break;
     default:
-      // console.log("Test");
+      
       break;
   }
 }
@@ -144,10 +144,8 @@ function bill_entry_func(response){
     const url = `https://ctgshop.com/erp/api/xbill.ashx?type=get_info`;
 
     const response = await fetchData(url,{mode:'no-cors'})
-      .then((res)=>res)
-      .catch(error=>{
-        // console.log(error)
-      });
+      .then(res=>res)
+      .catch(error=>{console.log(error)});
     
 
     if(key === 'Entry'){
@@ -474,6 +472,8 @@ function bill_entry_func(response){
         let selectedFiles = [];
         let totalAmount = 0;
         useForm.addEventListener("formSubmitted",(event)=>{
+          
+          console.log('add bill clicke')
           const submitData = event.detail.formData;
 
           // Extract billNoteInput from the formData
@@ -521,6 +521,7 @@ function bill_entry_func(response){
             });
             return
           }
+          
           txtNote = submitData.bill_Note;
           txtAmount = submitData.bill_amount;
 
@@ -577,6 +578,22 @@ function bill_entry_func(response){
 
           const postUrl = `https://ctgshop.com/erp/api/xbill.ashx?type=ent_bill_pur&bno=${txtBillRef}&btp=${spinBillType}&bpur=${spinPurpose}&bnote=${txtNote}&bamo=${txtAmount}&cid=${spinCompany}&bfor=${spinBillFor}&bemp=${identity}`;
           
+
+          const overlay = document.getElementById('darkOverlay');
+          // Clear previous content if needed
+          overlay.innerHTML = '';
+
+          // Create spinner div
+          const spinner = document.createElement('div');
+          spinner.setAttribute('id', 'spinner');
+          spinner.setAttribute('class', 'spinner'); // Add spinner class (for styling)
+
+          // Append spinner to overlay
+          overlay.appendChild(spinner);
+
+
+          overlay.style.display = 'flex'
+
           fetch(postUrl,{
             method: 'POST',
             body: newFormData
@@ -607,6 +624,7 @@ function bill_entry_func(response){
 
               }else if(data.status === true){
 
+                overlay.style.display = 'none'
                 const Ref = txtBillRef;
                 const Date = txtBillDate;
                 const Time = txtBillTime;
@@ -691,8 +709,45 @@ function bill_entry_func(response){
                     const footerData = ['Total',"",totalAmount];
                     const table = createTable('',['SL','Purpose','Taka'],tBody,'bill_entry_table_attrib',false,footerData);
 
-                    entry_container_middle.appendChild(table)
                     
+                    entry_container_middle.appendChild(table)
+                    const tempTable = document.getElementById('bill_entry_table_attrib')
+
+                    
+                    tempTable.style.maxHeight = '80px';
+                    tempTable.style.overflowY = 'auto';
+                    tempTable.style.display = 'flex';
+                    tempTable.style.flexDirection = 'column';
+                    
+                    tempTable.querySelector('thead').style.width = '100'
+
+                    const thead = tempTable.querySelector('thead');
+                    const theadRows = thead.querySelectorAll('tr');
+                    theadRows.forEach((row,rowIndex)=>{
+                      row.style.width = '100';
+                      row.style.display = 'flex'
+                    });
+                    
+                    
+
+                    const tbody = tempTable.querySelector('tbody');
+                    const tbodyRows = tbody.querySelectorAll('tr');
+                    tbodyRows.forEach((row,rowIndex)=>{
+                      row.style.width = '100';
+                      row.style.display = 'flex';
+                      row.style.flexDirection = 'row';
+                    });
+                    
+
+                    const tfoot = tempTable.querySelector('tfoot');
+                    const tfootRow = tfoot.querySelectorAll('tr');
+                    tfootRow.forEach((row,rowIndex)=>{
+                      row.style.width='100';
+                      row.style.display='flex';
+                      row.style.flexDirection='row';
+                    })
+                    
+
 
                     // Create a submit button
                     const submitBtn = document.createElement("button");
@@ -902,8 +957,8 @@ function bill_entry_func(response){
         const stylesToRemove = [ 'tops','lefts', 'rights'];
         
         
-        setStyles(bill_entry_button_container, addStyles);
-        removeStyles(bill_entry_button_container, stylesToRemove);
+        // setStyles(bill_entry_button_container, addStyles);
+        // removeStyles(bill_entry_button_container, stylesToRemove);
 
 
         const overlay_visibility = document.getElementById('overlay')
@@ -933,18 +988,28 @@ function bill_entry_func(response){
           bill_create_ref.innerHTML = '<i class="fa-solid fa-link fa-lg"></i>' + bill_create_ref.innerHTML
         }
         
-        entry_class.style.paddingTop = `${bill_entry_button_container.offsetHeight + bill_entry_title.offsetHeight + entry_container_top.offsetHeight + 50}px`;
+        // entry_class.style.paddingTop = `${bill_entry_button_container.offsetHeight + bill_entry_title.offsetHeight + entry_container_top.offsetHeight + 50}px`;
 
         
 
 
         window.addEventListener('resize', function() {
-          entry_class.style.paddingTop = `${bill_entry_button_container.offsetHeight + bill_entry_title.offsetHeight + entry_container_top.offsetHeight + 50}px`;
+          // entry_class.style.paddingTop = `${bill_entry_button_container.offsetHeight + bill_entry_title.offsetHeight + entry_container_top.offsetHeight + 50}px`;
          
         });
 
         // Initial calculation
         window.dispatchEvent(new Event('resize'));
+
+
+        document.getElementById('entry_container_middle').style.cssText = `
+          height:${Math.floor(100 - (pxToVh(
+            document.getElementById('accountsActivityTop').offsetHeight + 
+            document.getElementById('bill_entry_button_container').offsetHeight + 
+            document.getElementById('bill_entry_title').offsetHeight +
+            document.getElementById('entry_container_top').offsetHeight
+          ) + 2))}vh 
+        `
     }
     else if(key === 'view'){
       if (document.body.classList.contains('no-scroll')) {
@@ -1030,8 +1095,12 @@ function bill_entry_func(response){
       handleViewFormSubmission(formDataObj);
       
       useForm.addEventListener("formSubmitted",(event)=>{
+        
         const submitData = event.detail.formData;   
         handleViewFormSubmission(submitData);
+
+       
+
       });   
       
       
@@ -1042,28 +1111,37 @@ function bill_entry_func(response){
         left: "0", /*left: 2%*/
         right: "0", /*right: 2%*/
         width: "100%",  /*width : 96%*/
-    };
+      };
 
 
-    // add self bill cancel button
-    const bill_show_btns = document.getElementById('bill_show_btns');
+      // add self bill cancel button
+      const bill_show_btns = document.getElementById('bill_show_btns');
 
 
-    // styles to remove
-    const stylesToRemove = ['zIndex', 'overflow'];
-  
-    setStyles(bill_entry_button_container, addStyles);
-    removeStyles(bill_entry_button_container, stylesToRemove);
+      // styles to remove
+      const stylesToRemove = ['zIndex', 'overflow'];
+    
+      // setStyles(bill_entry_button_container, addStyles);
+      // removeStyles(bill_entry_button_container, stylesToRemove);
 
-    overlay_cancel.style.top = `${bill_entry_button_container.offsetHeight}px`;
-    overlayImageContainer.style.paddingTop = `${bill_entry_button_container.offsetHeight + overlay_cancel.offsetHeight + 5}px`;
+      overlay_cancel.style.top = `${bill_entry_button_container.offsetHeight}px`;
+      overlayImageContainer.style.paddingTop = `${bill_entry_button_container.offsetHeight + overlay_cancel.offsetHeight + 5}px`;
 
-    const overlay_visibility = document.getElementById('overlay')
-        if (overlay_visibility.style.visibility === 'visible') {
-          overlay_visibility.style.visibility = 'hidden';
-        }
+      const overlay_visibility = document.getElementById('overlay')
+          if (overlay_visibility.style.visibility === 'visible') {
+            overlay_visibility.style.visibility = 'hidden';
+          }
 
-       
+        
+
+      document.getElementById('entry_container_middle').style.cssText = `
+        height:${Math.floor(100 - (pxToVh(
+          document.getElementById('accountsActivityTop').offsetHeight + 
+          document.getElementById('bill_entry_button_container').offsetHeight
+        
+        ) + 2))}vh 
+      `
+      
         
     }
     else if(key === 'Approval'){
@@ -1174,13 +1252,21 @@ function bill_entry_func(response){
       // styles to remove
       const stylesToRemove = ['zIndex', 'overflow'];
     
-      setStyles(bill_entry_button_container, addStyles);
-      removeStyles(bill_entry_button_container, stylesToRemove);
+      // setStyles(bill_entry_button_container, addStyles);
+      // removeStyles(bill_entry_button_container, stylesToRemove);
 
       const overlay_visibility = document.getElementById('overlay')
         if (overlay_visibility.style.visibility === 'visible') {
           overlay_visibility.style.visibility = 'hidden';
         }
+
+        document.getElementById('entry_container_middle').style.cssText = `
+          height:${Math.floor(100 - (pxToVh(
+            document.getElementById('accountsActivityTop').offsetHeight + 
+            document.getElementById('bill_entry_button_container').offsetHeight
+          
+          ) + 2))}vh 
+        `
     }
 
   });
@@ -1189,6 +1275,28 @@ function bill_entry_func(response){
   bill_entry_button_container.appendChild(buttons);
 
 
+  // dynamic height of accountsActivityMain 
+  container.style.cssText = `
+    height:${Math.floor(100 - (pxToVh(
+      document.getElementById('accountsActivityTop').offsetHeight
+    )))}vh
+  `
+  document.getElementById('bill_entry_container').style.cssText = `
+    height:${Math.floor(100 - pxToVh(
+      document.getElementById('accountsActivityTop').offsetHeight
+    ))}vh
+  `
+
+  document.getElementById('bill_entry_details_container').style.cssText = `
+    height:${Math.floor(100 - (pxToVh(
+      document.getElementById('accountsActivityTop').offsetHeight + 
+      document.getElementById('bill_entry_button_container').offsetHeight + 
+      document.getElementById('bill_entry_title').offsetHeight
+
+    ) + 2))}vh 
+  `
+
+  
   
 }
 
@@ -1320,8 +1428,7 @@ const handleViewFormSubmission = async(submitData)=>{
         let bill_date_item = document.getElementsByClassName('bill_date')
         bill_date_item = Array.from(bill_date_item)
 
-        
-        
+       
 
 }
 
@@ -1479,6 +1586,17 @@ const handleApprovalFormSubmission = async(submitData)=>{
           });
         }
   
+        console.log('found')
+
+        console.log(document.getElementById('view_class'))
+        document.getElementById('all_cards') ? document.getElementById('all_cards').style.cssText = `
+          height:${Math.floor(100 - (pxToVh(
+            document.getElementById('accountsActivityTop').offsetHeight + 
+            document.getElementById('bill_entry_button_container').offsetHeight +
+            document.getElementById('approval_class').offsetHeight 
+          ) + 2))}vh;
+          overflow-y:auto;
+        ` : ""
 
       }else if(data.status === false){
         document.getElementById('darkOverlay').style.display = 'block';
@@ -1507,7 +1625,7 @@ const handleApprovalFormSubmission = async(submitData)=>{
       const view_class = document.getElementById('approval_class')
       const view_class_height = view_class.offsetHeight;
       
-      document.getElementById('all_cards') != null ? document.getElementById('all_cards').style.paddingTop = `${(bill_entry_button_container_height + view_class_height+document.getElementsByClassName('accounts_Activity_back_btn')[0].offsetHeight + 10)}px` :'';
+      // document.getElementById('all_cards') != null ? document.getElementById('all_cards').style.paddingTop = `${(bill_entry_button_container_height + view_class_height+document.getElementsByClassName('accounts_Activity_back_btn')[0].offsetHeight + 10)}px` :'';
 
     })
     .catch(error=>{
@@ -1791,10 +1909,24 @@ function processFetchedData(encodedUrl, identity, entry_container_middle,sd,ed) 
       if (all_cards) {
         all_cards.style.paddingTop = `${(bill_entry_button_container_height + view_class_height +document.getElementsByClassName('accounts_Activity_back_btn')[0].offsetHeight + 10)}px`;
       }
+
+      
+      console.log(document.getElementById('view_class'))
+      document.getElementById('all_cards') ? document.getElementById('all_cards').style.cssText = `
+        height:${Math.floor(100 - (pxToVh(
+          document.getElementById('accountsActivityTop').offsetHeight + 
+          document.getElementById('bill_entry_button_container').offsetHeight +
+          document.getElementById('view_class').offsetHeight 
+        ) + 2))}vh;
+        overflow-y:auto;
+      ` : ""
     })
     .catch(error => {
       // console.log(error)
     });
+
+
+   
 }
 
 

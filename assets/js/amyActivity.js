@@ -93,7 +93,7 @@ function clientLedger(){
    
 
     
-    document.getElementById('amy_main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`
+    // document.getElementById('amy_main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`
 
     document.getElementById('amy_cl_leg').addEventListener("click",()=>{
         const cusID = document.getElementById('client_mobile').value
@@ -116,7 +116,7 @@ function clientLedger(){
             });
         }else{
            
-            fetchData(`https://www.condomshopbd.com/xapi/emp_com.ashx?cmd=bfclbn&typ=id&no=${cusID}&dt1=${startDatePickerInput.elementName.value}&dt2=${endDatePickerInput.elementName.value}`)
+            fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=bfclbn&typ=id&no=${cusID}&dt1=${startDatePickerInput.elementName.value}&dt2=${endDatePickerInput.elementName.value}`)
                 .then((res)=>{
                     console.log(res)
                 })
@@ -165,19 +165,12 @@ function clientBalance(){
     if(startDatePickerInput.elementName.value){
         document.getElementById('current_date').textContent = `As On : ${startDatePickerInput.elementName.value}`
     }
-    document.getElementById('amy_main').style.height = `${Math.floor(Number(100 - (pxToVh(document.getElementById('nav_div').offsetHeight) + 1)))}vh`;
-    document.getElementById('content').style.height = `
-        ${Math.floor(100 - Number(pxToVh(
-            document.getElementById('nav_div').offsetHeight + 
-            document.getElementById('balance_date_range').offsetHeight +
-            document.getElementById('balance_label').offsetHeight + 
-            document.getElementById('total').offsetHeight
-        ) + 5))}vh
-    `
+    
+
     document.getElementById('amy_cl_bal').addEventListener('click',()=>{
         document.getElementById('current_date').textContent = `As On : ${startDatePickerInput.elementName.value}`
 
-        fetchData(`https://www.condomshopbd.com/xapi/emp_com.ashx?cmd=bfcdues&dt1=${startDatePickerInput.elementName.value}&imei=${imei}`)
+        fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=bfcdues&dt1=${startDatePickerInput.elementName.value}&imei=${imei}`)
             .then((res)=>{
                 if (typeof res === "string") return res; // Handle string response
                 if (res.text) return res.text(); // Handle fetch() response
@@ -413,7 +406,7 @@ function manageAmyMoneyReceipt(tag,buttons = null){
             content.insertAdjacentHTML("beforeend",html);
 
 
-            document.getElementById('amy_main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
+            // document.getElementById('amy_main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
 
 
             // location code
@@ -530,11 +523,12 @@ function manageAmyMoneyReceipt(tag,buttons = null){
                 amount = parseInt(amount, 10); // Convert to integer
 
                 const fields = {
-                    "Please Find User!":        !c_number && !c_name,
+                    "User Name Missing!":       !c_name,
+                    "User ID Missing!":         !c_number ,
                     "Please Enter Amount!":     !amount,
+                    "Please Select Currency!":  !c_currency,
                     "Please Select Pay Mode!":  !selectedMode,
                     "Please Select Location!":  !c_location,
-                    "Please Select Currency!":  !c_currency,
                     "Please Select Pay Type!":  !selectedType
                 };
 
@@ -589,7 +583,9 @@ function manageAmyMoneyReceipt(tag,buttons = null){
                 }
             })
 
-        }else if(button.id === tag && button.id === 'view'){
+        }
+        else if(button.id === tag && button.id === 'view')
+        {
             const content = document.getElementById('amy_money_receipt_content')
             content.innerHTML = "";
 
@@ -637,22 +633,18 @@ function manageAmyMoneyReceipt(tag,buttons = null){
 
 
             document.getElementById('detail_info').style.cssText=`
-                    display:flex;
-                    height:${Math.floor(100 - Number(pxToVh(
-                        document.getElementById('nav_div').offsetHeight + 
-                        document.getElementById('amy_money_receipt_nav_button').offsetHeight + 
-                        document.getElementById('date_range').offsetHeight + 
-                        document.getElementById('label').offsetHeight ) + 10))}vh;
+                display:flex;
+                flex:1
                     
             `;
 
-            document.getElementById('view_total').style.cssText = `
-                position:fixed;
-                bottom:0;
-                left:0;
-                right:0;
+            // document.getElementById('view_total').style.cssText = `
+            //     position:fixed;
+            //     bottom:0;
+            //     left:0;
+            //     right:0;
 
-            `
+            // `
             document.getElementById('mr_show').addEventListener('click',()=>{
                 try {
                     fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=BFMrRep&dt1=${startDatePickerInput.elementName.value}&dt2=${endDatePickerInput.elementName.value}&imei=${imei}`)
@@ -668,6 +660,7 @@ function manageAmyMoneyReceipt(tag,buttons = null){
                             const remainingElements = result.slice(1);
 
 
+                           
                             
                             if(remainingElements.length === 1 && remainingElements[0] === ' = = =0=Posted'){
                                 const t_client = document.getElementById('t_client');
@@ -706,10 +699,19 @@ function manageAmyMoneyReceipt(tag,buttons = null){
                                 
                                 let totalAmount = 0;
 
+                                // sort based on date
+                                remainingElements.sort((a,b)=>{
+                                    const dateA = new Date(a.split('=')[0]);
+                                    const dateB = new Date(b.split('=')[0]);
+
+                                    return dateA - dateB;
+                                })
+
                                 // Append data rows
                                 remainingElements.forEach((item,index)=>{
                                     const row = document.createElement('tr');
                                     const singleItem = item.split('=');
+                                    
                                     
                                     // Combine the first two elements into one column
                                     const firstColumn = document.createElement("td");

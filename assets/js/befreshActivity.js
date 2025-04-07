@@ -101,8 +101,32 @@ function clientBalance(){
     document.getElementById('date').appendChild(startDatePickerInput.elementName)
     document.getElementById('date').appendChild(endDatePickerInput.elementName)
    
+    document.getElementById('fromDate').addEventListener('click',()=>{
+        const datepicker = document.querySelector('.datepicker-dropdown');
+        
+        if(datepicker){
+            // datepicker.style.cssText = `
+            //     position:'fixed';
+            //     left:0;
+            //     top:${document.getElementById('fromDate').getBoundingClientRect().bottom + window.scrollY}px
+            // `
+        }
+    })
+    document.getElementById('toDate').addEventListener('click',()=>{
+        const datepicker = document.querySelector('.datepicker-dropdown');
+        
+        if(datepicker){
+            // datepicker.style.cssText = `
+            //     position:'fixed';
+            //     right:0;
+            //     top:${document.getElementById('fromDate').getBoundingClientRect().bottom + window.scrollY}px
+            // `
+        }
+    })
     
-    document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
+    
+
+    document.getElementById('main').style.height = `${Math.floor(Number(100 - (pxToVh(document.getElementById('nav_div').offsetHeight) + 1)))}vh`;
 
 
     document.getElementById('cl_bl_btn').addEventListener('click',()=>{
@@ -237,7 +261,9 @@ function clientDues(){
 
     document.getElementById('date').appendChild(startDatePickerInput.elementName);
 
-    document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
+    document.getElementById('main').style.height = `${Math.floor(Number(100 - (pxToVh(
+        document.getElementById('nav_div').offsetHeight
+    ) + 1)))}vh`;
 
     document.getElementById('client_info').style.cssText = `
         height:${Math.floor(Number(100 - (pxToVh(
@@ -246,7 +272,14 @@ function clientDues(){
             document.getElementById('date_range_dues').offsetHeight +
             document.getElementById('current_date').offsetHeight +
             document.getElementById('total_amount').offsetHeight
-        ) + 2)))}vh
+        ) + 4)))}vh
+    `
+
+    document.getElementById('total_amount').style.cssText = `
+        position:fixed;
+        bottom:0;
+        left:0;
+        right:0;
     `
 
     document.getElementById('cl_due_btn').addEventListener('click',()=>{
@@ -365,7 +398,7 @@ function clientDues(){
                         document.getElementById('date_range_dues').offsetHeight +
                         document.getElementById('current_date').offsetHeight +
                         document.getElementById('total_amount').offsetHeight
-                    ) + 1)))}vh
+                    ) + 2)))}vh
                 `
                 document.getElementById('content').style.cssText = `
                     height:${Math.floor(Number(100 - (pxToVh(
@@ -376,6 +409,12 @@ function clientDues(){
                         document.getElementById('total_amount').offsetHeight
                     ) + 4)))}vh;
                     overflow-y:auto;
+                `
+                document.getElementById('total_amount').style.cssText = `
+                    position:fixed;
+                    bottom:0;
+                    left:0;
+                    right:0;
                 `
             })
             .catch((error) => {
@@ -398,6 +437,7 @@ function moneyReceipt(){
     `
     main.insertAdjacentHTML("beforeend",html);
 
+    document.getElementById('main').style.height = `${Math.floor(Number(100 - (pxToVh(document.getElementById('nav_div').offsetHeight) + 1)))}vh`;
 
     const buttons =  document.getElementById('money_receipt_nav_button').querySelectorAll('button')
     if(buttons){
@@ -514,7 +554,6 @@ function manageMoneyReceipt(tag,buttons = null){
             `
             content.insertAdjacentHTML("beforeend",html);
 
-            document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
 
             document.getElementById('fnd_bf_customer') && document.getElementById('fnd_bf_customer').addEventListener('click',async ()=>{
                 let inputValue = document.getElementById('id_mobile')?.value.trim();
@@ -659,11 +698,13 @@ function manageMoneyReceipt(tag,buttons = null){
                 amount = parseInt(amount, 10); // Convert to integer
                 
                 const fields = {
-                    "Please Find User!":        !c_number && !c_name,
+                    "User Name missing!":       !c_name,
+                    "User ID missing!":         !c_number ,
                     "Please Enter Amount!":     !amount,
+                    "Please Select Currency!":  !c_currency,
                     "Please Select Mode!":      !selectedMode,
                     "Please Select Location!":  !c_location,
-                    "Please Select Currency!":  !c_currency,
+                    
                     "Please Select Service!":   !c_service
                 };
 
@@ -759,6 +800,8 @@ function manageMoneyReceipt(tag,buttons = null){
                 </div>
             `
             content.insertAdjacentHTML("beforeend",html);
+
+    
 
             const startDatePickerInput = handleDateAndTime('fromDate');
             const endDatePickerInput = handleDateAndTime('toDate');
@@ -1031,6 +1074,8 @@ function passengerList(){
     `
     main.insertAdjacentHTML("beforeend",html);
 
+    document.getElementById('main').style.height = `${Math.floor(Number(100 - (pxToVh(document.getElementById('nav_div').offsetHeight) + 1)))}vh`;
+
     const buttons =  document.getElementById('passenger_nav_button').querySelectorAll('button')
     if(buttons){
         buttons.forEach((button,index)=>{
@@ -1090,8 +1135,7 @@ function managePassengerList(tag,buttons = null){
                 <button id="pass_arrival_submit" class="pass_arrival_submit" type="submit">SEARCH</button>
             `
             content.insertAdjacentHTML('beforeend',html);
-            document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
-
+        
 
             const startDatePickerInput = handleDateAndTime('fromDate');
            
@@ -1164,14 +1208,14 @@ function managePassengerList(tag,buttons = null){
 
         }else if(button.id === tag && button.id === 'departure'){
             const content = document.getElementById('passenger_content');
-            
+            const table = document.getElementById('pass_table')
             content.innerHTML = "";
-
+            table.innerHTML = "";
             const html =`
                 <p>Work On Progress</p>
             `
             content.insertAdjacentHTML('beforeend',html);
-            document.getElementById('main').style.height = `${Math.floor(Number(100 - pxToVh(document.getElementById('nav_div').offsetHeight)))}vh`;
+            
             content.style.cssText = `
                 display:flex;
                 flex-direction:row;
@@ -1199,6 +1243,20 @@ function businessPerformance(){
     `
     main.insertAdjacentHTML("beforeend",html); 
     
+    document.getElementById('main').style.height = `${Math.floor(Number(100 - (pxToVh(
+        document.getElementById('nav_div').offsetHeight
+    ) + 1)))}vh`;
+
+    document.getElementById('performance_content').style.cssText = `
+        height:${Math.floor(Number(100 - (pxToVh(
+            document.getElementById('nav_div').offsetHeight + 
+            document.getElementById('performance_nav_button').offsetHeight 
+        ) + 2)))}vh;
+        display:flex;
+        flex-direction:column;
+    `
+
+
     const buttons =  document.getElementById('performance_nav_button').querySelectorAll('button')
     if(buttons){
         buttons.forEach((button,index)=>{
@@ -1250,7 +1308,7 @@ function manageBusinessPerformance(tag,buttons = null){
 
             performance_content.insertAdjacentHTML('beforeend',html)
 
-            document.getElementById('main').style.height = `${Math.floor(Number(100 - (pxToVh(document.getElementById('performance_nav_button').offsetHeight) + 2)))}vh`;
+            
 
             const startDatePickerInput = handleDateAndTime('fromDate');
             const endDatePickerInput = handleDateAndTime('toDate');
@@ -1261,17 +1319,12 @@ function manageBusinessPerformance(tag,buttons = null){
 
 
             document.getElementById('content').style.cssText = `
-                height:${Math.floor(Number(100 - pxToVh(
-                    document.getElementById('nav_div').offsetHeight + 
-                    document.getElementById('performance_nav_button').offsetHeight + 
-                    document.getElementById('date_search').offsetHeight +
-                    4
-                )))}vh;
+                flex:1;
                 display:flex;
                 flex-direction:column;
             `
             document.getElementById('total').style.cssText =`
-                height:5vh;
+                height:40px;
             `
             
    
@@ -1318,7 +1371,7 @@ function manageBusinessPerformance(tag,buttons = null){
             `
             performance_content.insertAdjacentHTML('beforeend',html)
 
-            document.getElementById('main').style.height = `${Math.floor(Number(100 - (pxToVh(document.getElementById('performance_nav_button').offsetHeight) + 2)))}vh`;
+            
            
             const startDatePickerInput = handleDateAndTime('fromDate');
             document.getElementById('date').appendChild(startDatePickerInput.elementName);
@@ -1347,30 +1400,16 @@ function manageBusinessPerformance(tag,buttons = null){
                 top:${Number(document.getElementById('nav_div').offsetHeight + document.getElementById('performance_nav_button').offsetHeight)}px
             `
         
-            document.getElementById('table').style.cssText = `
-                height:${Math.floor(Number(100 - (pxToVh(
-                    document.getElementById('nav_div').offsetHeight + 
-                    document.getElementById('performance_nav_button').offsetHeight + 
-                    document.getElementById('acc_type').offsetHeight + 
-                    document.getElementById('date_search').offsetHeight +
-                    document.getElementById('footer').offsetHeight 
-                )
-                + 1
-            )))
-            }vh;
-            display:flex;
-            flex-direction:row;
             
-            align-items:flex-start
+            document.getElementById('table').style.cssText = `
+                flex:1;
+                display:flex;
+                flex-direction:row;
+                align-items:flex-start
             `
         }
     }) :"";
 
-
-
-    
-    
-    
 
 }
 

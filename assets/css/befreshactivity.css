@@ -85,13 +85,14 @@ p {
 .container > .nav_div > button{
     height: 100%;
     padding: 0 5px;
+    width: 10%;
 }
 .container > .nav_div > .title{
     flex: 1;
     text-align: center;
     color: white;
     font-size: 20px;
-    
+    width: 80%;
 }
 
 /* befresh client balance css code*/
@@ -306,6 +307,7 @@ p {
     flex: 1;
     margin-right: 5px;
     font-size: 17px;
+    width: 70%;
 }
 .container > .main > .money_receipt_content > .client_id_mobile > button{
     height: 100%;
@@ -336,6 +338,7 @@ p {
     border-bottom: 1px solid gray;
     height: 100%;
     flex: 1;
+    width: 68%;
 }
 .container > .main > .money_receipt_content > .client_number{
     height: 40px;
@@ -358,6 +361,7 @@ p {
     border-bottom: 1px solid gray;
     height: 100%;
     flex: 1;
+    width: 68%;
 }
 .container > .main > .money_receipt_content > .mr_amount{
     height: 40px;
@@ -380,17 +384,17 @@ p {
     justify-content: space-between;
     align-items: center;
     height: 40px;
-    flex: 1;
+    width: 68%;;
 }
 .container > .main > .money_receipt_content > .mr_amount > div > input{
     border: none;
     outline: none;
     border-bottom: 2px solid rgb(214, 7, 41);
     height: 100%;
-    
+    flex: 1;
     font-size: 18px;
 
-    
+    width: 70%;
 }
 .container > .main > .money_receipt_content > .mr_amount > div > p{
     color: gray;
@@ -631,6 +635,7 @@ p {
     color: #118ec1;
     text-align: center;
 }
+
 .container > .main > .money_receipt_content > .view_content > .label {
     display: flex;
     flex-direction: row;
@@ -663,28 +668,33 @@ p {
     display: flex;
     flex-direction: column;
     border: 1px solid gray;
+    width: 100%;
 }
 .container > .main > .money_receipt_content > .view_content > .detail_info > table > tr{
     width: 100%;
     border-collapse: collapse;
     padding-bottom: 4px;
-    
+    display: flex;
+    flex-direction: row;
 }
 
 .container > .main > .money_receipt_content > .view_content > .detail_info > table > tr > td {
     border: 1px solid black;
     padding: 3px;
     text-align: left;
+    white-space: normal;
+    word-break: break-word;
 }
 .container > .main > .money_receipt_content > .view_content > .detail_info > table > tr > td:nth-child(1){
-    width: 40%;
+    width: 34%;
 }
 .container > .main > .money_receipt_content > .view_content > .detail_info > table > tr > td:nth-child(2),
 .container > .main > .money_receipt_content > .view_content > .detail_info > table > tr > td:nth-child(3){
     width: 23%;
 }
 .container > .main > .money_receipt_content > .view_content > .detail_info > table > tr > td:nth-child(4){
-    width: 14%;
+    width: 20%;
+    font-size: 15px;
 }
 .container > .main > .money_receipt_content > .view_content > .detail_info > table
 .container > .main > .money_receipt_content > .view_total {

@@ -167,6 +167,9 @@ body {
     position: fixed;
     overflow: auto;
     z-index: 998;
+
+    left: 5px;
+    right: 5px;
 }
 
 .main > div {

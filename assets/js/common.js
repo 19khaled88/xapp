@@ -3150,8 +3150,8 @@ function formatNumberWithThousandPositionComma(value) {
   return Number(value).toLocaleString();
 }
 
-function showAlert(message) {
-  document.getElementById('darkOverlay').style.display = 'block';
+function showAlert(message,overlay = 'block') {
+  document.getElementById('darkOverlay').style.display = overlay;
   document.body.classList.add('transparent');
 
   Swal.fire({

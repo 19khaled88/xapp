@@ -29,9 +29,12 @@ body {
 
 /* Container for centering content */
 .container {
-    width: 90%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    height: 100vh;
 }
 
 /* ==== HEADINGS & TEXT ==== */
@@ -136,7 +139,5 @@ p {
         /* padding: 10px; */
     }
 
-    .container {
-        width: 100%;
-    }
+    
 }
