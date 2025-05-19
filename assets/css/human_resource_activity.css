@@ -10433,6 +10433,38 @@ body {
     margin: 8px auto;
 }
 
+.hrmActivityMain > .incentiveContainer > .em_dropdown_container{
+    width: 100%;
+}
+.hrmActivityMain > .incentiveContainer > .em_dropdown_container > .emDropDown{
+    position: relative;
+    width: 100%;
+    
+    border: 1px solid gray;
+    background: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.hrmActivityMain > .incentiveContainer > .em_dropdown_container > .emDropDownList{
+    position: absolute;
+    width: 80%;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #db4d4d;
+    background: white;
+    display: none;
+    z-index: 100;
+    right: 5px;
+}
+
+.hrmActivityMain > .incentiveContainer > .em_dropdown_container > .emDropDownList > span{
+    display: block;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer
+}
 .hrmActivityMain > .incentiveContainer > .empDropDown {
     height: 40px;
     width: 100%;

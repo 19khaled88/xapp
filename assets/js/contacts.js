@@ -68,6 +68,7 @@ function handleFilterItem(item){
     const overlay = document.getElementById('overlay');
     overlay.innerHTML = '';
    let uniqueNames;
+
    if(item === 'Company'){
     uniqueNames = getUniqueValues(fetchedData, 'emOrganization');
     document.body.style.overflow = 'hidden';
@@ -85,9 +86,28 @@ function handleFilterItem(item){
                manageEmployeeDataShow(filteredCompany,'')
                document.body.style.overflow = 'auto';
                overlay.style.display = "none";
+
+               document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+               document.getElementById('single_emp_overlay').style.display = 'none';
+               
+
             });
             overlay.style.display = "flex";
+    });
+
+    overlay.querySelector('button').style.top = `
+        ${document.getElementById('contactTop').offsetHeight}px
+    `
+    // document.getElementById('contactTop').style.zIndex = `999`;
+    document.getElementById('single_emp_overlay').style.display = `flex`;
+    document.getElementById('single_emp_overlay').style.zIndex = `998`;
+
+    overlay.querySelector('button').addEventListener('click',()=>{
+        document.getElementById('contactTop').style.zIndex = `1`;
+        document.getElementById('single_emp_overlay').style.display = `none`;
+        document.getElementById('single_emp_overlay').style.zIndex = `1000`;
     })
+
    } else if(item === 'Location'){
     uniqueNames = getUniqueValues(fetchedData, 'emLocation');
     document.body.style.overflow = 'hidden';
@@ -105,9 +125,28 @@ function handleFilterItem(item){
                 manageEmployeeDataShow(filteredLocation,'');
                 document.body.style.overflow = 'auto';
                 overlay.style.display = "none";
+
+                document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+                document.getElementById('single_emp_overlay').style.display = 'none';
+               
             });
             overlay.style.display = "flex";
+    });
+
+    overlay.querySelector('button').style.top = `
+        ${document.getElementById('contactTop').offsetHeight}px
+    `
+
+    // document.getElementById('contactTop').style.zIndex = `999`;
+    document.getElementById('single_emp_overlay').style.display = `flex`;
+    document.getElementById('single_emp_overlay').style.zIndex = `998`;
+
+    overlay.querySelector('button').addEventListener('click',()=>{
+        document.getElementById('contactTop').style.zIndex = `1`;
+        document.getElementById('single_emp_overlay').style.display = `none`;
+        document.getElementById('single_emp_overlay').style.zIndex = `1000`;
     })
+
    } else if(item === 'Department'){
     uniqueNames = getUniqueValues(fetchedData, 'emDepartment');
     document.body.style.overflow = 'hidden';
@@ -125,8 +164,26 @@ function handleFilterItem(item){
                 manageEmployeeDataShow(filteredDepartment,'')
                 document.body.style.overflow = 'auto';
                 overlay.style.display = "none";
+
+                document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+                document.getElementById('single_emp_overlay').style.display = 'none';
+               
             });
             overlay.style.display = "flex";
+    });
+
+    overlay.querySelector('button').style.top = `
+        ${document.getElementById('contactTop').offsetHeight}px
+    `
+
+    // document.getElementById('contactTop').style.zIndex = `999`;
+    document.getElementById('single_emp_overlay').style.display = `flex`;
+    document.getElementById('single_emp_overlay').style.zIndex = `998`;
+
+    overlay.querySelector('button').addEventListener('click',()=>{
+        document.getElementById('contactTop').style.zIndex = `1`;
+        document.getElementById('single_emp_overlay').style.display = `none`;
+        document.getElementById('single_emp_overlay').style.zIndex = `1000`;
     })
    } else if(item === 'Position'){
     uniqueNames = getUniqueValues(fetchedData, 'emPosition');
@@ -146,8 +203,26 @@ function handleFilterItem(item){
                 manageEmployeeDataShow(filteredPosition,'')
                 document.body.style.overflow = 'auto';
                 overlay.style.display = "none";
+
+                document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+                document.getElementById('single_emp_overlay').style.display = 'none';
+                
             });
             overlay.style.display = "flex";
+    });
+
+    overlay.querySelector('button').style.top = `
+        ${document.getElementById('contactTop').offsetHeight}px
+    `
+
+    // document.getElementById('contactTop').style.zIndex = `999`;
+    document.getElementById('single_emp_overlay').style.display = `flex`;
+    document.getElementById('single_emp_overlay').style.zIndex = `998`;
+
+    overlay.querySelector('button').addEventListener('click',()=>{
+        document.getElementById('contactTop').style.zIndex = `1`;
+        document.getElementById('single_emp_overlay').style.display = `none`;
+        document.getElementById('single_emp_overlay').style.zIndex = `1000`;
     })
    } else if(item === 'Office'){
     uniqueNames = getUniqueValues(fetchedData, 'emOffice');
@@ -168,8 +243,26 @@ function handleFilterItem(item){
                 manageEmployeeDataShow(filteredOffice,'')
                 document.body.style.overflow = 'auto';
                 overlay.style.display = "none";
+
+                document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+                document.getElementById('single_emp_overlay').style.display = 'none';
+                
             });
             overlay.style.display = "flex";
+    });
+
+    overlay.querySelector('button').style.top = `
+        ${document.getElementById('contactTop').offsetHeight}px
+    `
+
+    // document.getElementById('contactTop').style.zIndex = `999`;
+    document.getElementById('single_emp_overlay').style.display = `flex`;
+    document.getElementById('single_emp_overlay').style.zIndex = `998`;
+
+    overlay.querySelector('button').addEventListener('click',()=>{
+        document.getElementById('contactTop').style.zIndex = `1`;
+        document.getElementById('single_emp_overlay').style.display = `none`;
+        document.getElementById('single_emp_overlay').style.zIndex = `1000`;
     })
    } else if(item === 'single-column'){
     if(newFilterData != undefined){
@@ -193,6 +286,8 @@ function handleFilterItem(item){
     overlay.style.display = "none";
     document.body.style.overflow = 'auto';
    } 
+
+   
 }
 
 function getUniqueValues(arrayOfObjects, key) {
@@ -244,7 +339,6 @@ function handleConnect(info,type){
 }
 
 
-
 function manageEmployeeDataShow(filterData,classHint){
     let contact_top = true
     
@@ -290,8 +384,8 @@ function manageEmployeeDataShow(filterData,classHint){
             <div class="leftView">
                 <span class="index">${index + 1}</span>
                 <div id="image_icon" class="loading">
-                    <span style="width:100%;height:100%" class="spin">
-                        <i class="fas fa-circle-notch fa-spin fa-3x spin" style="width:100%;color:blue"></i>
+                    <span style="width:100%;height:100%;display:flex" class="spin">
+                        <i class="fas fa-circle-notch fa-spin fa-3x spin" style="width:100%;color:blue;display:flex"></i>
                     </span>
                     <img 
                         data-src="${element.emImage}" 
@@ -500,6 +594,30 @@ function manageEmployeeDataShow(filterData,classHint){
 
         
 
+    }else if(classHint === 'single-column'){
+        contactsMain.innerHTML =` 
+        <div class="individual-employee-container">
+        <div id="contentContainer"></div>
+            ${
+                classHint === 'double-column' ? 
+                `<div id="double_column">
+                    ${newEmployeeHTML}
+                </div>`:
+                classHint === 'single-column' ? 
+                `<div id="single_column">
+                    ${newEmployeeHTML}
+                </div>`:
+                classHint === 'emp-details' ? 
+                `<div id="emp-details"> 
+                   ${empDetails}
+                </div>`:
+                `<div id="single_emp">
+                    ${newEmployeeHTML}
+                </div>`
+            }
+        </div>`;
+        document.body.style.overflow = 'auto';
+        
     }else{
         contactsMain.innerHTML =` 
         <div class="individual-employee-container">
@@ -650,6 +768,7 @@ function manageEmployeeDataShow(filterData,classHint){
     
     const contactTop_height =contactTop.offsetHeight 
     lazyLoadImages()
+
 }
 
 function toggleFilterContent() {
@@ -748,6 +867,7 @@ function toggleFilterContent() {
 
 
               closeButton.onclick = function(){
+                
                 const extendedFilterContent = document.getElementById('extendedFilterContent');
                 const value = `${ extendedFilterContent.offsetHeight}`;
                 closeFunction(extendedFilterContent,value);
@@ -758,6 +878,7 @@ function toggleFilterContent() {
                   }) : '';
                 },300);
                 document.body.style.overflow = 'auto';
+                
               }
 
               operationDiv.appendChild(closeButton);
@@ -784,6 +905,8 @@ function toggleFilterContent() {
               }
 
               confirmButton.onclick = function(){
+                
+
                 const individual_employee_container = document.querySelector('.individual-employee-container');
                 
                 if(individual_employee_container){
@@ -874,6 +997,8 @@ function closeButton(overlay) {
     });
 
     overlay.appendChild(closeButton);
+
+    
 }
 
 

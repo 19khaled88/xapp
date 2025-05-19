@@ -108,6 +108,10 @@ p {
 .container > .main > .cusName,
 .container > .main > .curQuantity,
 .container > .main > .curRate,
+.container > .main > .costRateBdt,
+.container > .main > .EndrsFee,
+.container > .main > .VisCntr,
+.container > .main > .PassprtQnt,
 .container > .main > .note
 {
     display: flex;
@@ -125,6 +129,10 @@ p {
 .container > .main > .cusName > label,
 .container > .main > .curQuantity > label,
 .container > .main > .curRate > label,
+.container > .main > .costRateBdt > label,
+.container > .main > .EndrsFee > label,
+.container > .main > .VisCntr > label,
+.container > .main > .PassprtQnt > label,
 .container > .main > .note > label{
     width: 40%;
     height: 100%;
@@ -137,6 +145,10 @@ p {
 .container > .main > .cusName > input,
 .container > .main > .curQuantity > input,
 .container > .main > .curRate > input,
+.container > .main > .costRateBdt > input,
+.container > .main > .EndrsFee > input,
+.container > .main > .VisCntr > input,
+.container > .main > .PassprtQnt > input,
 .container > .main > .note > input{
     width: 60%;
     height: 100%;
@@ -147,6 +159,7 @@ p {
 .container > .main > .cusName > input,
 .container > .main > .curQuantity > input,
 .container > .main > .curRate > input,
+.container > .main > .costRateBdt > input,
 .container > .main > .note > input {
     font-size: 16px;
     padding-left: 5px;

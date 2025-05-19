@@ -8,149 +8,7 @@ body {
     flex-direction: column;
 }
 
-.contactTops {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #28282b;
-    background-color: #fff;
-    position: fixed;
-    top: 0;
-    left: 0;
 
-    z-index: 1;
-    width: 100vw;
-
-    .backBtns {
-        display: flex;
-        /* display: none; */
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        background-color: rgba(13, 212, 227, 0.93);
-        height: 30px;
-        width: 100%;
-        .contact_back_btn{
-            background-color: transparent;
-            border: none;
-            
-        }
-        
-    }
-
-    .backBtn{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        height: 50px;
-        background-color: #0d47a1;
-       
-    
-        /* position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 999; */
-    
-        button{
-            width: 50px;
-            height: 50px;
-            padding-left: 5px;
-            border: none;
-            background-color: #0d47a1;
-            img{
-                width: 50%;
-                height: 60%;
-           
-            }
-        }
-        p{
-            color: white;
-            padding-right: 5px;
-            font-size: 20px;
-            flex: 1;
-            text-align: center;
-            font-family: 'Roboto',sans-serif;
-            font-weight: 500;
-        }
-    }
-
-    .search-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        height: 40px;
-        width: 100%;
-        gap: 1px;
-        #inputSpace {
-            height: 98%;
-            width: 80%;
-            border:none;
-            color: white;
-            input {
-                height: 100%;
-                width: 100%;
-                margin: 0;
-                padding: 0;
-                background-color: white;
-                color: black;
-                font-size: 15px;
-                padding-left: 5px;
-                border: none;
-            }
-        }
-
-        #searchBtn {
-            width: 20%;
-            height: 100%;
-            /* border:2px solid gray; */
-            #empSearchButton {
-                height: 100%;
-                width: 100%;
-                background-color: #08c531;
-                border: none;
-                i{
-                    color: white;
-                }
-            }
-        }
-
-    }
-
-    .filter-container {
-        display: flex;
-        flex-direction: row;
-        gap: 2px;
-        padding: 1px 2px 4px;
-        width: 98%;
-        
-       
-        .filterBtn{
-            width: 14.3%;
-            /* height: 14.3%; */
-            button {
-                padding: 0;
-                width: 100%;
-                height: 100%;
-                h1 {
-                    margin: 0;
-                }
-
-                label {
-                    font-size: 8px;
-                } 
-                img{
-                    width: 80%;
-                    height: 80%;
-                }
-            }
-        }
-    }
-}
 
 
 .contactTop {
@@ -325,7 +183,7 @@ body {
     justify-content: space-between;
     margin-bottom: 10px;
 }
-.hrmActivityMain > .contactTop > .search-container > #filter > .extended-filter-content > .content.active > div:nth-child(1) > span:nth-child(1) > p {
+.contactsMain > .contactTop > .search-container > #filter > .extended-filter-content > .content.active > div:nth-child(1) > span:nth-child(1) > p {
     margin: 0;
     color: black;
     font-size: 18px;
@@ -536,555 +394,6 @@ body {
 
 
 
-.contactsMains {
-
-    padding-top: 32%;
-    
-    .goBack{
-        display: flex;
-        
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        height: 35px;
-        width: 100%;
-        border: none;
-        background-color: rgb(19, 86, 195);
-        img{
-            width: 18px;
-            height: 15px;
-        }
-        p{
-            margin: 0;
-            color: white;
-        }
-
-        display: none;
-    }
-    .individual-employee-container {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        width: 100vw;
-
-        .contentContainer {
-            /* position: relative; */
-            top: 0;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            background-color: gray;
-            width: 100vw;
-            max-height: 70vh;
-            overflow-y: auto;
-            /* padding: 10px; */
-
-            label {
-                width: 100%;
-                font-size: 14px;
-                color: white;
-                padding: 5px;
-            }
-        }
-
-        #single_emps {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding-top: 10px;
-            padding-bottom:10px;
-            width: 100%;
-            .employee {
-                display: flex;
-                flex-direction: row;
-                gap: 5px;
-                box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-                margin-left: 5px;
-                margin-right: 5px;
-                border-radius: 10px;
-                .leftView  {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
-                    flex: 1;
-                    margin-top: 5px;
-                    margin-bottom: 5px;
-                    span {
-                        color: black;
-                        width: 20%;
-                        text-align: center;
-                    }
-
-                    #image_icon{
-                        width: 80%;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;
-                        align-items: center;
-                        gap: 5px;
-                        height: 100%;
-                        #connect{
-                            display: flex;
-                            flex-direction: row;
-                            gap: 8px;
-                            button{
-                                padding: 0;
-                                border: none;
-                                background-color: white;
-                                img{
-                                    width: 100%;
-                                    height: 95%;
-                                }
-                            }
-                        }
-                        img {
-                            max-width: 100%;
-                            max-height: 100%;
-                            border-radius: 8px;
-                            flex: 1;
-                        }
-                        .lazy{
-                            display: none;
-                        }
-                        span{
-                            width: 100%;
-                            flex: 1;
-                        }
-                    }
-                }
-
-                .rightView {
-                    flex: 2;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    gap: 3px;
-                    color: black;
-
-                    .emName {
-                        font-size: 15px;
-                    }
-
-                    p {
-                        margin: 0;
-                        font-size: 12px;
-                    }
-                }
-            }
-
-            /* .employee {
-                display: flex;
-                flex-direction: row;
-                gap: 8px;
-                padding: 0 5px 0 5px;
-                .leftView{
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
-                    flex: 1;
-                    gap: 2px;
-                    span{
-                        color: white;
-                        width: 22%;
-                    }
-                    img {
-                        width: 78%;
-                        height: 100%;
-                    }
-                }
-                .rightView{
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    flex: 2;
-                    .emName{
-                        font-size: 15px;
-                        font-weight: bold;
-                    }
-                    p {
-                        font-size: 11px;
-                        color: white;
-                        margin: 0;
-                    }
-                }
-
-                
-
-                
-            } */
-        }
-
-        #single_emp{
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding-top: 10px;
-            padding-bottom:10px;
-            width: 100%;
-        }
-        #single_emp > .employee {
-            display: flex;
-            flex-direction: row;
-            gap: 5px;
-            box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-            margin-left: 5px;
-            margin-right: 5px;
-            border-radius: 10px;
-        }
-        #single_emp > .employee > .leftView{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            flex: 1;
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-        #single_emp > .employee > .leftView > span {
-            color: black;
-            width: 20%;
-            text-align: center;
-        }
-        #single_emp > .employee > .leftView > #image_icon{
-            width: 80%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            gap: 5px;
-            height: 100%;
-        }
-        #single_emp > .employee > .leftView > #image_icon > #connect {
-            display: flex;
-            flex-direction: row;
-            gap: 8px;
-        }
-        #single_emp > .employee > .leftView > #image_icon > #connect > button{
-            padding: 0;
-            border: none;
-            background-color: white;
-            
-        }
-        #single_emp > .employee > .leftView > #image_icon > #connect > button > img{
-            width: 100%;
-            height: 95%;
-        }
-        #single_emp > .employee > .leftView > #image_icon > img {
-            max-width: 100%;
-            max-height: 100%;
-            border-radius: 8px;
-            flex: 1;
-        }
-        #single_emp > .employee > .leftView > #image_icon > .lazy{
-            display: none;
-        }
-        #single_emp > .employee > .leftView > #image_icon > span{
-            width: 100%;
-            flex: 1;
-        }
-        #single_emp > .employee > .rightView {
-            flex: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 3px;
-            color: black;
-
-            
-        }
-        #single_emp > .employee > .rightView >.emName {
-            font-size: 15px;
-        }
-        #single_emp > .employee > .rightView > p {
-            margin: 0;
-            font-size: 12px;
-        }
-
-
-
-
-
-        #double_column {
-            position: absolute;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            row-gap: 12px;
-            column-gap: 8px;
-            padding: 5px;
-            min-width: 97%;
-            .employee {
-                display: flex;
-                flex-direction: column;
-                gap: 2px;
-                box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-                border-radius: 10px;
-                .topView {
-                    display: flex;
-                    flex-direction: row;
-                    gap: 2px;
-                    align-items: center;
-                    flex: 0 0 10%;
-                    width: 100%;
-                    
-                    p {
-                        margin: 0;
-                        font-size: 12px;
-                        color: black;
-                        height: 30px;
-                        width: 100%;
-                        text-align: center;
-                        padding-top: 5px;
-                    }
-                }
-
-                .buttomView {
-                    flex: 1;
-                    width: 100%;
-                    /* height: 100%; */
-                    height: 30vh;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    align-items: center;
-                    gap: 5px;
-
-                    #imgDiv{
-                        /* display: flex;
-                        flex-direction: row;
-                        justify-content: flex-start;
-                        align-items: center; */
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: flex-start;
-                        flex: 1;
-                        align-items: center;
-                        img{
-                            width: 90%;
-                            border-radius: 10px;
-                            /* height: auto; */
-                            /* height: 30vh; */
-                        }
-                    }
-
-                    #connect{
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: center;
-                        gap: 15px;
-                        height: 40px;
-                        width: 100%;
-                        padding-bottom: 3px;
-                        padding-top: 5px;
-                        button{
-                            padding: 0;
-                            border: none;
-                            background-color: white;
-                            img {
-                                width: 35px;
-                                height: 35px;
-                            }
-                        }
-                    }
-                   
-                  
-                }
-            }
-        }
-
-        #single_column {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding-top: 10px;
-            padding-bottom:10px;
-            width: 100%;
-            .employee {
-                display: flex;
-                flex-direction: row;
-                gap: 5px;
-
-                box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-                margin-left: 5px;
-                margin-right: 5px;
-                border-radius: 10px;
-
-                .leftView {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
-                    flex: 1;
-                    margin-top: 5px;
-                    margin-bottom: 5px;
-
-                    #image_icon{
-                        width: 80%;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;
-                        align-items: center;
-                        gap: 5px;
-                        height: 100%;
-                        #connect{
-                            display: flex;
-                            flex-direction: row;
-                            gap: 8px;
-                            button{
-                                padding: 0;
-                                border: none;
-                                background-color: white;
-                                img{
-                                    width: 100%;
-                                    height: 95%;
-                                }
-                            }
-                        }
-                        img {
-                            max-width: 100%;
-                            max-height: 100%;
-                            border-radius: 8px;
-                            flex: 1;
-                        }
-                        span{
-                            width: 100%;
-                            flex: 1;
-                        }
-                    }
-
-                    span {
-                        color: black;
-                        width: 20%;
-                        text-align: center;
-                    }
-
-                    
-                }
-
-                .rightView {
-                    flex: 2;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    color: black;
-
-                    .emName {
-                        font-size: 15px;
-                    }
-
-                    p {
-                        margin: 0;
-                        font-size: 12px;
-                    }
-                }
-            }
-        }
-
-        #emp-details {
-
-            .topDetails {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 5px;
-                color: white;
-                padding-bottom: 15px;
-                background-color: gray;
-
-                .em_image {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    padding-top: 20px;
-                    img {
-                        width: 180px;
-                        height: 180px;
-                        border-radius: 50%;
-                    }
-                }
-
-                #connect {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 5px;
-
-                    button {
-                        width: 40px;
-                        height: 40px;
-                        border: none;
-                        border-radius: 50%;
-                        /* width: 40px;
-                        height: 40px;
-                        padding: 5px;
-                        border: none;
-                        border-radius: 50%;
-                        cursor: pointer;
-                        color: white; */
-                        position: relative;
-                        background-color: white;
-                        cursor: pointer;
-                        img {
-                            width: 70%;
-                            height: 70%;
-                            position: absolute;
-                            top: 50;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
-
-                            
-                        }
-                    }
-
-
-                }
-            }
-
-            .bottomDetils {
-                padding: 15px 5px 15px;
-                display: flex;
-                flex-direction: column;
-                gap: 3px;
-
-                span {
-                    display: flex;
-                    flex-direction: row;
-                    font-size: 13px;
-
-                    label {
-                        
-                        width: 35%;
-                        font-size: 14px;
-                        color: black;
-                        font-weight: 600;
-                    }
-
-                    p {
-                        margin: 0;
-                        color: gray;
-                        width: 65%;
-                        font-size: 14px;
-                    }
-                }
-            }
-        }
-
-        #image_icon{
-
-        }
-    }
-}
-
-
-
 
 .contactsMain {
     padding-top: 32%;
@@ -1142,6 +451,7 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;
+    
 }
 .contactsMain > .individual-employee-container > #single_emp > .employee {
     display: flex;
@@ -1152,6 +462,11 @@ body {
     margin-right: 5px;
     margin-bottom: 8px;
     border-radius: 10px;
+
+    padding-top: 12px;
+    width: 95vw;
+
+    padding-bottom: 12px;
 }
 .contactsMain > .individual-employee-container > #single_emp > .employee:last-child{
     margin-bottom: 0;
@@ -1162,10 +477,11 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex: 1;
+    /* flex: 1;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 5px; */
     margin-right: 5px;
+    width: 35%;
 }
 
 .contactsMain > .individual-employee-container > #single_emp > .employee > .leftView > span {
@@ -1176,13 +492,13 @@ body {
 
 /* Image icon styling */
 .contactsMain > .individual-employee-container > #single_emp > .employee > .leftView > #image_icon {
-    width: 80%;
+    width: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     
-    height: 100%;
+    /* height: 100%; */
 }
 .contactsMain > .individual-employee-container > #single_emp > .employee > .leftView > #image_icon > #connect {
     display: flex;
@@ -1206,7 +522,7 @@ body {
     max-width: 100%;
     max-height: 80%;
     border-radius: 8px;
-    flex: 1;
+    /* flex: 1; */
     margin-bottom: 8px;
 }
 .contactsMain > .individual-employee-container > #single_emp > .employee > .leftView > #image_icon > .lazy {
@@ -1328,20 +644,26 @@ body {
 .contactsMain > .individual-employee-container > #single_column > .employee {
     display: flex;
     flex-direction: row;
-    gap: 5px;
+    /* gap: 5px; */
+    padding-top: 12px;
+    width: 95vw;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
     margin-left: 5px;
     margin-right: 5px;
+    margin-bottom: 8px;
     border-radius: 10px;
+    padding-bottom: 12px;
 }
 .contactsMain > .individual-employee-container > #single_column > .employee > .leftView {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex: 1;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    /* flex: 1; */
+    width: 35%;
+    margin-right: 8px;
+    /* margin-top: 5px;
+    margin-bottom: 5px; */
 }
 .contactsMain > .individual-employee-container > #single_column > .employee > .leftView > span {
     color: black;
@@ -1349,13 +671,14 @@ body {
     text-align: center;
 }
 .contactsMain > .individual-employee-container > #single_column > .employee > .leftView > #image_icon {
-    width: 80%;
+    /* width: 80%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px;
-    height: 100%;
+    /* gap: 5px;
+    height: 100%; */
+    width: auto;
 }
 .contactsMain > .individual-employee-container > #single_column > .employee > .leftView > #image_icon > #connect {
     display: flex;
@@ -1373,10 +696,11 @@ body {
     height: 95%;
 }
 .contactsMain > .individual-employee-container > #single_column > .employee > .leftView > #image_icon > img {
-    max-width: 100%;
+    /* max-width: 100%; */
     max-height: 100%;
-    border-radius: 8px;
-    flex: 1;
+    border-radius: 5px;
+    width: 100%;
+    /* flex: 1; */
 }
 .contactsMain > .individual-employee-container > #single_column > .employee > .leftView > #image_icon > span {
     width: 100%;

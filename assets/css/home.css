@@ -164,6 +164,7 @@ body {
     flex-wrap: wrap; /* Allows items to wrap into multiple rows */
 
     padding-top: 5px !important;
+    padding-bottom: 5px !important;
     position: fixed;
     overflow: auto;
     z-index: 998;
@@ -387,7 +388,7 @@ body {
     z-index: 998;
     background-color: white;
 
-    padding-bottom: 15px;
+    padding-bottom: 30px;
   
     /* height: 35px; */
 }
@@ -425,6 +426,7 @@ body {
     background-color: transparent;
     font-weight: 500;
     color: black;
+    font-size: 11px;
  }
 
 

@@ -161,15 +161,15 @@
 
             
 
-                // const secretkey = createHash(type,webView,platform,browser,sHeight,sWidth,dpi,)
-                const staticHash = createHash("Android","true","Linux aarch64","Chrome","851","393","2.75",);
-                const dynamicHash = createHash(type,webView,platform,browser,sHeight,sWidth,dpi,);
+                const secretkey = createHash(type,webView,platform,browser,sHeight,sWidth,dpi,)
+                // const staticHash = createHash("Android","true","Linux aarch64","Chrome","851","393","2.75",);
+                // const dynamicHash = createHash(type,webView,platform,browser,sHeight,sWidth,dpi,);
                 
                 formData.emPhone        = mobile;
                 formData.otp            = "";
                 formData.authid         = "";
-                formData.secretkey      = mobile === '01730444535' ? staticHash : dynamicHash;
-                // formData.secretkey      = secretkey;
+                // formData.secretkey      = mobile === '01730444535' ? staticHash : dynamicHash;
+                formData.secretkey      = secretkey;
 
 
                 let formObject = {};
@@ -262,8 +262,8 @@
                                     newFormData.emPhone = mobile;
                                     newFormData.otp = otpValue;
                                     newFormData.authid = "";
-                                    newFormData.secretkey = mobile === '01730444535' ? staticHash : dynamicHash;
-                                    // newFormData.secretkey = secretkey;
+                                    // newFormData.secretkey = mobile === '01730444535' ? staticHash : dynamicHash;
+                                    newFormData.secretkey = secretkey;
 
                                     
                                     let formObject = {};

@@ -140,7 +140,7 @@
  
   ],
 
-  "Image": [
+  "Images": [
     "./assets/images/x-limited.png",
     "./assets/images/Be Rich Logo.png",
     "./assets/images/BeFresh Logo.png",
@@ -151,6 +151,89 @@
     "./assets/images/Be Rich Manufacturing Logo.png",
     "./assets/images/Chittagong travel.png",
     "./assets/images/best_erp.png"
+  ],
+
+  "Boss":[
+    {
+      "name": "XLimited",
+      "img": "../assets/images/x-limited.png"
+    },
+    {
+      "name": "BeRichLimited",
+      "img": "../assets/images/Be Rich Logo.png"
+    },
+    {
+      "name": "BeFreshLimited",
+      "img": "../assets/images/BeFresh Logo.png"
+    },
+    {
+      "name": "AmyTravelTech",
+      "img": "../assets/images/amybd.png"
+    },
+    {
+      "name": "BeFreshFX",
+      "img": "../assets/images/South East Money Exchange Logo.png"
+    },
+    {
+      "name": "BEC",
+      "img": "../assets/images/BeFreshEdu Logo.png"
+    },
+    {
+      "name": "CtgShop",
+      "img": "../assets/images/CtgShop.com_Logo,_2018.svg.png"
+    },
+    {
+      "name": "BeRichMfg",
+      "img": "../assets/images/Be Rich Manufacturing Logo.png"
+    }
+    ,
+    {
+      "name": "Admin",
+      "img": "../assets/images/admin.png"
+    }
+  ],
+ 
+  "Image": [
+    {
+      "name": "XLimited",
+      "img": "./assets/images/x-limited.png"
+    },
+    {
+      "name": "BeRichLimited",
+      "img": "./assets/images/Be Rich Logo.png"
+    },
+    {
+      "name": "BeFreshLimited",
+      "img": "./assets/images/BeFresh Logo.png"
+    },
+    {
+      "name": "AmyTravelTech",
+      "img": "./assets/images/amybd.png"
+    },
+    {
+      "name": "BeFreshFX",
+      "img": "./assets/images/South East Money Exchange Logo.png"
+    },
+    {
+      "name": "BEC",
+      "img": "./assets/images/BeFreshEdu Logo.png"
+    },
+    {
+      "name": "CtgShop",
+      "img": "./assets/images/CtgShop.com_Logo,_2018.svg.png"
+    },
+    {
+      "name": "BeRichMfg",
+      "img": "./assets/images/Be Rich Manufacturing Logo.png"
+    },
+    {
+      "name": "ChittagongTravel",
+      "img": "./assets/images/Chittagong travel.png"
+    },
+    {
+      "name": "BestErp",
+      "img": "./assets/images/best_erp.png"
+    }
   ],
 
   "accounts": [

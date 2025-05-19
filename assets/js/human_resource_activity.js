@@ -64,7 +64,7 @@ let newEmployeeHTML;
 // Check if the parameter is present
 if (pageTitle) {
   // Set the title of the HTML page
-  //   document.title = pageTitle;
+  // document.title = pageTitle;
   title.textContent = pageTitle;
   
   
@@ -5160,10 +5160,11 @@ async function workFromHome(items){
             return; // Stop further execution to prevent the POST request
           }
 
+          // Check if any unwanted symbol exists at the start or end of applyNote
           if(formObject.applyNote){
             const unwantedSymbolsAtEdges = /^[#$\-:.,;!?]+|[#$\-:.,;!?]+$/;
 
-            // Check if any unwanted symbol exists at the start or end of applyNote
+            
             if (unwantedSymbolsAtEdges.test(formObject.applyNote)) {
               Swal.fire({
                   icon: "warning",
@@ -5210,6 +5211,7 @@ async function workFromHome(items){
              return false; // Prevent further execution
            }
  
+           // check application date & applicable time
            const isValidDate = isFutureOrTodayDate(fromFormatted, toFormatted,'work_from_home');
            if (!isValidDate) {
              document.getElementById('darkOverlay').style.display = 'block';
@@ -10065,7 +10067,7 @@ function manageShowContact(filterData,classHint){
 
   document.getElementById('contact_overlay').style.cssText =`
     padding-top:15px;
-    background-color: rgb(19, 86, 195);;
+    background-color: #4b59bf;
     display:none;
     flex-direction:column;
 
@@ -11576,6 +11578,10 @@ async function incentiveFunc(){
 
   const html = `
     <form class="incentiveContainer" id="incentiveContainer">
+      <div class="em_dropdown_container" id="em_dropdown_container" style="display:none">
+        <span class="emDropDown" id="emDropDown"></span>
+        <div class="emDropDownList" id="emDropDownList"></div>
+      </div>
       <select class="empDropDown" id="empDropDown">
       
       </select>
@@ -11625,6 +11631,9 @@ async function incentiveFunc(){
       
       const empDropDown = document.getElementById('empDropDown');
 
+      const emDropDown = document.getElementById('emDropDown');
+      const emDropDownList = document.getElementById('emDropDownList');
+
       // empDropDown.innerHTML = '<option value="">Select Employee</option>';
       
       if(res.status === true){
@@ -11642,9 +11651,13 @@ async function incentiveFunc(){
             const option = document.createElement('option');
             option.value = emp.em_code; // Set option value as employee ID
             option.textContent = emp.em_name; // Display employee name
+
+            const span = document.createElement('span');
+            span.dataset.value = emp.em_code;
+            span.textContent = emp.em_name
             
             if(emp.em_code === identity){
-              console.log(emp)
+              document.getElementById('emDropDown').textContent = emp.em_name
               option.selected = true;
               em_Name = emp.em_name;
               
@@ -11737,10 +11750,38 @@ async function incentiveFunc(){
 
 
             empDropDown.appendChild(option);
+            emDropDownList.appendChild(span);
 
             
           });
+
+
+          // Employee list code
+          document.getElementById("emDropDown").addEventListener("click", () => {
+            emDropDownList.style.display = emDropDownList.style.display === "block" ? "none" : "block";
+
+            document.getElementById("emDropDownList") ? document.getElementById("emDropDownList").style.top =`${document.getElementById('hrmActivityTop').offsetHeight}px` : ""
+          });
+
+          document.getElementById("emDropDownList").addEventListener("click", (event) => {
+              if (event.target.dataset.value) {
+                  emDropDown.textContent = event.target.textContent;
+                  c_location = event.target.dataset.value;                    
+                  emDropDownList.style.display = "none";
+              }
+
+             
+          });
           
+
+          // manage display/hide if click outside scroll area
+          document.addEventListener("click", (event) => {
+
+            if (document.getElementById('emDropDown') && document.getElementById('emDropDownList') && !emDropDown.contains(event.target) && !emDropDownList.contains(event.target)) {
+              emDropDownList.style.display = "none";
+            }
+          });
+
 
           empDropDown.addEventListener('change',()=>{
             em_Name = '';

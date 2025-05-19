@@ -1759,9 +1759,26 @@ function handleFilterItem(item){
              manageEmployeeDataShow(filteredCompany,'')
              document.body.style.overflow = 'auto';
              overlay.style.display = "none";
+
+             document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+             document.getElementById('single_emp_overlay').style.display = 'none';
           });
           overlay.style.display = "flex";
   })
+
+  // document.getElementById('contactTop').style.zIndex = `999`;
+    document.getElementById('single_emp_overlay').style.display = `flex`;
+    document.getElementById('single_emp_overlay').style.zIndex = `998`;
+
+    document.getElementById('hrmActivityTop').style.zIndex = '998';
+
+    overlay.style.zIndex = '999';
+    overlay.querySelector('button').addEventListener('click',()=>{
+        document.getElementById('contactTop').style.zIndex = `1`;
+        document.getElementById('single_emp_overlay').style.display = `none`;
+        document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+    })
+
  } else if(item === 'Location'){
   uniqueNames = getUniqueValues(fetchedData, 'emLocation');
   document.body.style.overflow = 'hidden';
@@ -1779,9 +1796,25 @@ function handleFilterItem(item){
               manageEmployeeDataShow(filteredLocation,'');
               document.body.style.overflow = 'auto';
               overlay.style.display = "none";
+
+              document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+              document.getElementById('single_emp_overlay').style.display = 'none';
           });
           overlay.style.display = "flex";
-  })
+  });
+
+   // document.getElementById('contactTop').style.zIndex = `999`;
+    document.getElementById('single_emp_overlay').style.display = `flex`;
+    document.getElementById('single_emp_overlay').style.zIndex = `998`;
+
+    document.getElementById('hrmActivityTop').style.zIndex = '998';
+
+    overlay.style.zIndex = '999';
+    overlay.querySelector('button').addEventListener('click',()=>{
+        document.getElementById('contactTop').style.zIndex = `1`;
+        document.getElementById('single_emp_overlay').style.display = `none`;
+        document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+    });
  } else if(item === 'Department'){
   uniqueNames = getUniqueValues(fetchedData, 'emDepartment');
   document.body.style.overflow = 'hidden';
@@ -1799,9 +1832,26 @@ function handleFilterItem(item){
               manageEmployeeDataShow(filteredDepartment,'')
               document.body.style.overflow = 'auto';
               overlay.style.display = "none";
+
+              document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+              document.getElementById('single_emp_overlay').style.display = 'none';
           });
           overlay.style.display = "flex";
-  })
+  });
+
+   // document.getElementById('contactTop').style.zIndex = `999`;
+    document.getElementById('single_emp_overlay').style.display = `flex`;
+    document.getElementById('single_emp_overlay').style.zIndex = `998`;
+
+    document.getElementById('hrmActivityTop').style.zIndex = '998';
+
+    overlay.style.zIndex = '999';
+    overlay.querySelector('button').addEventListener('click',()=>{
+        document.getElementById('contactTop').style.zIndex = `1`;
+        document.getElementById('single_emp_overlay').style.display = `none`;
+        document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+    });
+
  } else if(item === 'Position'){
   uniqueNames = getUniqueValues(fetchedData, 'emPosition');
   document.body.style.overflow = 'hidden';
@@ -1820,9 +1870,26 @@ function handleFilterItem(item){
               manageEmployeeDataShow(filteredPosition,'')
               document.body.style.overflow = 'auto';
               overlay.style.display = "none";
+
+              document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+              document.getElementById('single_emp_overlay').style.display = 'none';
           });
           overlay.style.display = "flex";
-  })
+  });
+
+   // document.getElementById('contactTop').style.zIndex = `999`;
+    document.getElementById('single_emp_overlay').style.display = `flex`;
+    document.getElementById('single_emp_overlay').style.zIndex = `998`;
+
+    document.getElementById('hrmActivityTop').style.zIndex = '998';
+
+    overlay.style.zIndex = '999';
+    overlay.querySelector('button').addEventListener('click',()=>{
+        document.getElementById('contactTop').style.zIndex = `1`;
+        document.getElementById('single_emp_overlay').style.display = `none`;
+        document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+    });
+
  } else if(item === 'Office'){
   uniqueNames = getUniqueValues(fetchedData, 'emOffice');
   document.body.style.overflow = 'hidden';
@@ -1842,9 +1909,26 @@ function handleFilterItem(item){
               manageEmployeeDataShow(filteredOffice,'')
               document.body.style.overflow = 'auto';
               overlay.style.display = "none";
+
+              document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+              document.getElementById('single_emp_overlay').style.display = 'none';
           });
           overlay.style.display = "flex";
-  })
+  });
+
+   // document.getElementById('contactTop').style.zIndex = `999`;
+    document.getElementById('single_emp_overlay').style.display = `flex`;
+    document.getElementById('single_emp_overlay').style.zIndex = `998`;
+
+    document.getElementById('hrmActivityTop').style.zIndex = '998';
+
+    overlay.style.zIndex = '999';
+    overlay.querySelector('button').addEventListener('click',()=>{
+        document.getElementById('contactTop').style.zIndex = `1`;
+        document.getElementById('single_emp_overlay').style.display = `none`;
+        document.getElementById('single_emp_overlay').style.zIndex = `1000`;
+    });
+
  } else if(item === 'single-column'){
   if(newFilterData != undefined){
       manageEmployeeDataShow(newFilterData, 'single-column')
@@ -3167,6 +3251,30 @@ function showAlert(message,overlay = 'block') {
 }
 
 
+async function adjustContentHeight(primaryElement, dependantElement,value) {
+  // const content = document.getElementById('content');
+  const content = document.getElementById(primaryElement);
+  
+  
+  if (!content) return;
+
+  // const elements = ['nav_div', 'date_range', 'as_on_date'];
+  const elements = dependantElement;
+
+  let totalVh = 0;
+  elements.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      totalVh += pxToVh(el.offsetHeight);
+    }
+  });
+
+  totalVh += value; // extra margin or spacing
+  const remainingVh = 100 - totalVh;
+
+  
+  content.style.height = `${remainingVh}vh`;
+}
 
 
 

@@ -473,7 +473,7 @@ function bill_entry_func(response){
         let totalAmount = 0;
         useForm.addEventListener("formSubmitted",(event)=>{
           
-          console.log('add bill clicke')
+          
           const submitData = event.detail.formData;
 
           // Extract billNoteInput from the formData
@@ -1586,9 +1586,9 @@ const handleApprovalFormSubmission = async(submitData)=>{
           });
         }
   
-        console.log('found')
+       
 
-        console.log(document.getElementById('view_class'))
+       
         document.getElementById('all_cards') ? document.getElementById('all_cards').style.cssText = `
           height:${Math.floor(100 - (pxToVh(
             document.getElementById('accountsActivityTop').offsetHeight + 
@@ -1911,7 +1911,7 @@ function processFetchedData(encodedUrl, identity, entry_container_middle,sd,ed) 
       }
 
       
-      console.log(document.getElementById('view_class'))
+      
       document.getElementById('all_cards') ? document.getElementById('all_cards').style.cssText = `
         height:${Math.floor(100 - (pxToVh(
           document.getElementById('accountsActivityTop').offsetHeight + 

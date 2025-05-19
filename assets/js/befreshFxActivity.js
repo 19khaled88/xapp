@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     })
 })
 
-
 function transactionEntry(){
     const main = document.getElementById('main');
 
@@ -116,7 +115,9 @@ function transactionEntry(){
         type_dropdownList.style.top = type_dropdownList.style.display === "block" ? 
         `${(
             document.getElementById('nav_div').offsetHeight + 
-            document.getElementById('traDate').offsetHeight
+            document.getElementById('traDate').offsetHeight +
+            document.getElementById('traType').offsetHeight +
+            10
         )}px` : "";
     });
     document.getElementById("type_dropdownList").addEventListener("click", (event) => {
@@ -126,6 +127,10 @@ function transactionEntry(){
             type_dropdownList.style.display = "none";
             
         }
+        const selectedValue = event.target.dataset.value;
+
+
+        manageTraTypeDropdown(selectedValue)
     });
 
     // Currency select option 
@@ -134,7 +139,10 @@ function transactionEntry(){
         cur_dropdownList.style.top = cur_dropdownList.style.display === "block" ? 
         `${(
             document.getElementById('nav_div').offsetHeight + 
-            document.getElementById('traDate').offsetHeight
+            document.getElementById('traDate').offsetHeight +
+            document.getElementById('traType').offsetHeight +
+            document.getElementById('curName').offsetHeight +
+            15
         )}px` : "";
     });
     document.getElementById("cur_dropdownList").addEventListener("click", (event) => {
@@ -184,23 +192,90 @@ function transactionEntry(){
         .catch((error)=>{
             console.log(error)
         })
-    })
+    });
+    
     document.getElementById('fx_fnd_cus').addEventListener('click',()=>{
         let mobileInputValue = document.getElementById('id_mobile').value;
 
-        if(mobileInputValue.length >= 0){
-            fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=semeJsCf&key=${mobileInputValue.value}`)
+       
+        if(mobileInputValue){
+            fetchData(`${rootUrl}/xapi/emp_com.ashx?cmd=semeJsCf&key=${mobileInputValue}`)
                 .then((res)=>{
-                    console.log(res)
+                    if(res.success === true){
+                        
+                        // res.befreshfx.forEach((cus)=>{
+                            
+                            
+                        //     if(cus.id !== mobileInputValue){
+                        //         document.getElementById('darkOverlay').style.display = 'block';
+                        //         document.body.classList.add('transparent');
+                        //         Swal.fire({
+                        //             icon: "warning",
+                        //             title: `ID not found!`,
+                        //             showConfirmButton: false,
+                        //             showCloseButton: true,
+                        //             customClass: {
+                        //                 popup: 'swal2-alert-custom-smallscreen'
+                        //             },
+                        //         })
+                        //         .then(() => {
+                        //             document.getElementById('darkOverlay').style.display = 'none';
+                        //             document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                        //         });
+                        //     }else{
+                        //         console.log(cus.name,cus.id)
+                        //     }
+                        // })
+                        const exists = res.befreshfx.some(cus => Number(cus.id) === mobileInputValue)
+                        console.log(exists)
+                    }else{
+                        document.body.classList.add('transparent');
+                        Swal.fire({
+                            icon: "warning",
+                            title: `Data not found!`,
+                            showConfirmButton: false,
+                            showCloseButton: true,
+                            customClass: {
+                                popup: 'swal2-alert-custom-smallscreen'
+                            },
+                        })
+                        .then(() => {
+                            document.getElementById('darkOverlay').style.display = 'none';
+                            document.body.classList.remove('transparent'); // Remove class to allow scrolling
+                        });
+                    }
                 })
                 .catch((error)=>{
                     console.log(error)
                 })
 
 
+        }else{
+            // document.getElementById('darkOverlay').style.display = 'block';
+            document.body.classList.add('transparent');
+            Swal.fire({
+                icon: "warning",
+                title: `ID is empty!`,
+                showConfirmButton: false,
+                showCloseButton: true,
+                customClass: {
+                    popup: 'swal2-alert-custom-smallscreen'
+                },
+            })
+            .then(() => {
+                document.getElementById('darkOverlay').style.display = 'none';
+                document.body.classList.remove('transparent'); // Remove class to allow scrolling
+            });
         }
         
-    })
+    });
+
+    const defaultOption = document.querySelector('#type_dropdownList [data-value="BUY"]');
+    if(defaultOption){
+        document.getElementById('type_dropdown').textContent = defaultOption.textContent
+    }
+
+   
     
 }
 
@@ -320,4 +395,125 @@ function safeGetComputedStyle(element) {
         console.warn("Invalid element passed to getComputedStyle:", element);
         return null; // Return null instead of throwing an error
     }
+}
+
+function manageTraTypeDropdown(type){
+
+    // remove   = ['element id name']
+    // add      = [{'element id name'}:[label,element name,id,type,placeholder]]
+
+    switch(type){
+        case "BUY":
+            adjustDynamicField(
+                remove = ['costRateBdt','EndrsFee','VisCntr','PassprtQnt'],
+                add =[]
+            )
+            break;
+        case "SELL":
+            adjustDynamicField(
+                remove = ['EndrsFee','VisCntr','PassprtQnt'],
+                add =[{'costRateBdt':['Cost Rate in BDT','input','costRateBdt','tel','Enter Cost rate in BDT']}]
+            )            
+            break;
+        case "ENDORSEMENT":
+            adjustDynamicField(
+                remove = ['costRateBdt'],
+                add =[
+                    {'EndrsFee':['Endorsement Fee','input','EndrsFee','text','Enter endorsement fee']},
+                    {'VisCntr':['Visiting Country','input','VisCntr','text','Enter visiting country ']},
+                    {'PassprtQnt':['Passport Qty','input','PassprtQnt','text','Enter Passport Quantity']}
+                ]
+            )
+            break;
+        case "PROFIT WIDTHDRAWN":
+            adjustDynamicField(
+                remove = ['costRateBdt','EndrsFee','VisCntr','PassprtQnt'],
+                add =[]
+            )
+            break;
+        case "DEPOSIT":
+            adjustDynamicField(
+                remove = ['costRateBdt','EndrsFee','VisCntr','PassprtQnt'],
+                add =[]
+            )
+            break;
+        case "WIDTHDRAWN":
+            adjustDynamicField(
+                remove = ['costRateBdt','EndrsFee','VisCntr','PassprtQnt'],
+                add =[]
+            )
+            break;
+        case "CAPITAL INVESTMENT":
+            adjustDynamicField(
+                remove = ['costRateBdt','EndrsFee','VisCntr','PassprtQnt'],
+                add =[]
+            )
+            break;
+        case "CAPITAL WIDTHDRAWN":
+            adjustDynamicField(
+                remove = ['costRateBdt','EndrsFee','VisCntr','PassprtQnt'],
+                add =[]
+            )
+            break;
+        default: 
+            adjustDynamicField(
+                remove = ['costRateBdt','EndrsFee','VisCntr','PassprtQnt'],
+                add =[]
+            )
+    }
+}
+
+
+function adjustDynamicField(remove=[],add=[]) {
+    
+    // 1. Remove specified divs
+    remove.forEach(id=>{
+        const elem = document.getElementById(id);
+        if(elem){
+            elem.remove();
+        }
+    });
+
+    // 2. Add new fields 
+    add.forEach(fieldObj=>{
+        for(const key in fieldObj){
+            const [labelText, elemType, id, inputType, placeholder] = fieldObj[key];
+
+            // skip if already exists 
+            if(document.getElementById(id)) return;
+
+            // create wrapper div 
+            const wrapper = document.createElement('div');
+            wrapper.id = id;
+            wrapper.className = id; 
+
+            // create label 
+            const label = document.createElement('label');
+            label.textContent = labelText; 
+
+            // create input or any other element type 
+            const input = document.createElement(elemType);
+            input.id = id;
+            input.className = id;
+            input.placeholder = placeholder;
+            input.type = inputType; 
+
+            // Optional: input pattern if tel
+            if (inputType === 'tel') {
+                input.pattern = '[0-9]{10,15}';
+                input.setAttribute('oninput', "this.value = this.value.replace(/[^0-9]/g, '')");
+            }
+
+            // append to wrapper 
+            wrapper.appendChild(label);
+            wrapper.appendChild(input);
+
+            // Append at a specific position
+            const noteDiv = document.getElementById('note');
+            if (noteDiv && noteDiv.parentNode) {
+                noteDiv.parentNode.insertBefore(wrapper, noteDiv);
+            } 
+        }
+    });
+    
 }

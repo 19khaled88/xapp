@@ -643,6 +643,7 @@ function manageMoneyReceipt(tag,buttons = null){
 
             // location code
             document.getElementById("dropdown").addEventListener("click", () => {
+                console.log('clicked')
                 dropdownList.style.display = dropdownList.style.display === "block" ? "none" : "block";
             });
             document.getElementById("dropdownList").addEventListener("click", (event) => {

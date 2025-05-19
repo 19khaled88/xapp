@@ -4,7 +4,18 @@ function handleOffline() {
         <div style="text-align: center; margin-top: 20px;">
           <h2>No Internet Connection</h2>
           <p>It looks like you're offline. Please check your internet connection and try again.</p>
-          <button onclick="reloadPage()">Retry</button>
+          <button 
+          style="
+            padding: 10px 30px; 
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+            font-size: 16px;
+            margin-top:10px;
+          "
+           onclick="reloadPage()">Retry</button>
         </div>
       `;
     } catch (error) {

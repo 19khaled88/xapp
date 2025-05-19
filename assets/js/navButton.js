@@ -1,59 +1,65 @@
 
-function routeToPage(path, classInfo,dataTitle,identity) {
+function routeToPage(path, classInfo, dataTitle, identity) {
   const url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}`;
- 
+
   window.location.href = url;
 }
 
-function profileRoute(path, classInfo,dataTitle,identity){
-  const url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}`;
- 
+function routeToBirthdayPage(path, classInfo, dataTitle, identity, emName, bossCode, bossName, birthday = null) {
+  const url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}&name=${encodeURIComponent(emName)}&boss=${encodeURIComponent(bossCode)}&bossName=${encodeURIComponent(bossName)}&birthdays=${birthday}`;
+
   window.location.href = url;
 }
 
-function hrmRoute(path, classInfo,dataTitle,identity,emName,bossCode,bossName){
+function profileRoute(path, classInfo, dataTitle, identity) {
+  const url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}`;
+
+  window.location.href = url;
+}
+
+function hrmRoute(path, classInfo, dataTitle, identity, emName, bossCode, bossName) {
   const url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}&name=${encodeURIComponent(emName)}&boss=${encodeURIComponent(bossCode)}&bossName=${encodeURIComponent(bossName)}`;
   window.location.href = url;
 }
 
-function lateApplicationRoute(path,classInfo,dataTitle,identity,emName,bossCode,bossName){
-  
+function lateApplicationRoute(path, classInfo, dataTitle, identity, emName, bossCode, bossName) {
+
   const url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}&name=${encodeURIComponent(emName)}&boss=${encodeURIComponent(bossCode)}&bossName=${encodeURIComponent(bossName)}`;
- 
+
   window.location.href = url;
 }
 
 
 function navigateToPage(type, path, classInfo, dataTitle, identity, emName = '', bossCode = '', bossName = '') {
   return new Promise((resolve) => {
-      let url;
+    let url;
 
-      // Build the URL based on the type of route
-      if (type === 'routeToPage') {
-          url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}`;
-      } else if (type === 'profileRoute') {
-          url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}`;
-      } else if (type === 'hrmRoute') {
-          url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}&name=${encodeURIComponent(emName)}&boss=${encodeURIComponent(bossCode)}&bossName=${encodeURIComponent(bossName)}`;
-      } else if (type === 'lateApplicationRoute') {
-          url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}&name=${encodeURIComponent(emName)}&boss=${encodeURIComponent(bossCode)}&bossName=${encodeURIComponent(bossName)}`;
-      } else {
-          throw new Error('Invalid route type');
-      }
+    // Build the URL based on the type of route
+    if (type === 'routeToPage') {
+      url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}`;
+    } else if (type === 'profileRoute') {
+      url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}`;
+    } else if (type === 'hrmRoute') {
+      url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}&name=${encodeURIComponent(emName)}&boss=${encodeURIComponent(bossCode)}&bossName=${encodeURIComponent(bossName)}`;
+    } else if (type === 'lateApplicationRoute') {
+      url = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}&name=${encodeURIComponent(emName)}&boss=${encodeURIComponent(bossCode)}&bossName=${encodeURIComponent(bossName)}`;
+    } else {
+      throw new Error('Invalid route type');
+    }
 
-      // Navigate to the URL
-      window.location.href = url;
+    // Navigate to the URL
+    window.location.href = url;
 
-      // Resolve the promise
-      resolve();
+    // Resolve the promise
+    resolve();
   });
 }
 
-function handleBackButton(pageName = null,obj = {}){
+function handleBackButton(pageName = null, obj = {}) {
 
-  if(window.Android && typeof window.Android.goToMainActivity === "function"){
+  if (window.Android && typeof window.Android.goToMainActivity === "function") {
     window.Android.goToMainActivity()
-  }else{
+  } else {
     console.warn('Android interface not found')
   }
 
@@ -74,12 +80,12 @@ function handleBackButton(pageName = null,obj = {}){
   //   }
   // }
 
-  window.location.href ='https://ctgshop.com/xapp/test/index.html'
+  window.location.href = 'https://ctgshop.com/xapp/test/index.html'
 
   // else if(navigator.userAgent.includes('iPhone') || navigator.userAgent.includes('iPad') || navigator.userAgent.includes('iPod'))
   // {
   //   // alert("Back button pressed on iOS device.");
-    
+
   //   if(pageName === 'hrm'){
   //     const url = `https://ctgshop.com/xapp/test/pages/HRM.html?class_name=${encodeURIComponent(obj.class_name)}&data_title=${encodeURIComponent(obj.data_title)}&identity=${encodeURIComponent(obj.identity)}&name=${encodeURIComponent(obj.emName)}&boss=${encodeURIComponent(obj.applyReportingBoss)}&bossName=${encodeURIComponent(obj.reportingBossName)}`;
   //     window.location.href = url;
@@ -93,7 +99,7 @@ function handleBackButton(pageName = null,obj = {}){
   //     // window.history.back();
   //     // console.log(pageName)
   //   }
-   
+
 
   // }
   // else 
@@ -116,24 +122,28 @@ function handleBackButton(pageName = null,obj = {}){
 
 }
 
+function bossRoute( path, classInfo, dataTitle, identity, emName = '', bossCode = '', bossName = '', imei = ''){
 
-async function handleButtonBack(){
-  const res =await platformDes()
+ window.location.href = `${path}?class_name=${encodeURIComponent(classInfo)}&data_title=${encodeURIComponent(dataTitle)}&identity=${encodeURIComponent(identity)}&name=${encodeURIComponent(emName)}&boss=${encodeURIComponent(bossCode)}&bossName=${encodeURIComponent(bossName)}&imei=${imei}`
+}
+
+async function handleButtonBack() {
+  const res = await platformDes()
   const parsedRes = JSON.parse(res)
   // console.log(parsedRes.userAgent,parsedRes)
   // alert(JSON.stringify((parsedRes.platform).split(' ')[0]))
-  if((parsedRes.platform).includes('Linux')){
-    
+  if ((parsedRes.platform).includes('Linux')) {
+
   }
 
 }
 
-function logout(){
+function logout() {
   // window.location.href ='https://www.google.com/'
-  window.location.href ='https://ctgshop.com/xapp/test/index.html'
+  window.location.href = 'https://ctgshop.com/xapp/test/index.html'
 }
 
-function handleHomeButon(){
+function handleHomeButon() {
   Android.goToMainActivity();
 }
 
